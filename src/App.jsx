@@ -586,6 +586,335 @@ export default function App() {
           <div style={{ textAlign: 'center', padding: '50px 0', color: '#2a3a50', fontFamily: mono, fontSize: 12 }}>No games on this slate</div>
         )}
       </div>
+    </div>  
+    function GameScreen({ game, onBack }) {
+  const [activePitcher, setActivePitcher] = useState('away')
+
+  const getGradeData = (d) => {
+    if (!d) return { grade: null, projK: null }
+    const r = projectK({ kPer9: d.kPer9, kPct: d.kPct, swStrPct: d.swStrPct, cswPct: d.cswPct, projectedIP: d.projectedIP || 6, last5: d.last5, last10AvgK: d.last10AvgK, last10AvgOppKRank: d.last10AvgOppKRank, seasonIP: d.seasonIP, platoonVsR: d.platoonVsR, platoonVsL: d.platoonVsL, hand: d.hand, opposing: d.opposing || {}, parkKFactor: d.parkKFactor || 1.0, daysRest: d.daysRest || 4, umpireKFactor: d.umpireKFactor || 1.0, isFirstStartBack: d.isFirstStartBack || false })
+    const kl = buildKLines(r.projectedK)
+    const pl = kl.find(l => l.isProjected)
+    const grade = pl ? (pl.overPct >= 58 ? 9 : pl.overPct >= 54 ? 8 : pl.overPct >= 50 ? 7 : pl.overPct >= 46 ? 6 : pl.overPct >= 42 ? 5 : 4) : null
+    return { grade, projK: Math.round(r.projectedK), overPct: pl?.overPct }
+  }
+
+  return (
+    <div style={{ minHeight: '100vh', background: C.bg, maxWidth: 520, margin: '0 auto' }}>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap');
+        *{box-sizing:border-box;margin:0;padding:0}
+        ::-webkit-scrollbar{width:0;height:3px}
+        @keyframes spin{to{transform:rotate(360deg)}}
+        @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+        body{background:#000}
+        button{-webkit-tap-highlight-color:transparent}
+      `}</style>
+
+      <div style={{ position: 'sticky', top: 0, zIndex: 10, background: 'rgba(0,0,0,0.95)', backdropFilter: 'blur(12px)', borderBottom: `1px solid ${C.border}`, padding: '12px 16px' }}>
+        <button onClick={onBack} style={{ background: 'none', border: 'none', color: C.muted, cursor: 'pointer', fontSize: 13, fontFamily: sans, display: 'flex', alignItems: 'center', gap: 6, marginBottom: 10, padding: 0 }}>
+          ← Back to slate
+        </button>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
+          <div>
+            <div style={{ fontFamily: display, fontSize: 28, color: '#fff', letterSpacing: '0.06em', lineHeight: 1 }}>
+              {game.awayAbbr} <span style={{ color: C.faint }}>@</span> {game.homeAbbr}
+            </div>
+            <div style={{ fontSize: 11, color: C.muted, fontFamily: mono, marginTop: 2 }}>{game.time} · {game.venue}</div>
+          </div>
+          <div style={{ display: 'flex', gap: 6 }}>
+            {[{ key: 'away', d: game.awayData, loading: game.awayLoading, abbr: game.awayAbbr },
+              { key: 'home', d: game.homeData, loading: game.homeLoading, abbr: game.homeAbbr }
+            ].map(({ key, d, loading, abbr }) => {
+              const { grade } = getGradeData(d)
+              const gc = grade ? gradeColor(grade) : C.faint
+              return (
+                <button key={key} onClick={() => setActivePitcher(key)} style={{ width: 44, height: 44, borderRadius: 12, border: `2px solid ${activePitcher === key ? gc : C.border}`, background: activePitcher === key ? `${gc}18` : C.surface, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
+                  {loading ? <Spinner small color={gc} /> : grade ? (
+                    <><span style={{ fontFamily: display, fontSize: 18, color: gc, lineHeight: 1 }}>{grade}</span><span style={{ fontSize: 8, color: gc, fontFamily: mono }}>{abbr}</span></>
+                  ) : <span style={{ fontSize: 9, color: C.faint, fontFamily: mono }}>{abbr}</span>}
+                </button>
+              )
+            })}
+          </div>
+        </div>
+        <div style={{ display: 'flex', background: C.surface, borderRadius: 10, padding: 3 }}>
+          {[{ key: 'away', label: game.awayPitcher || `${game.awayAbbr} SP`, sub: 'Away SP' },
+            { key: 'home', label: game.homePitcher || `${game.homeAbbr} SP`, sub: 'Home SP' }
+          ].map(({ key, label, sub }) => (
+            <button key={key} onClick={() => setActivePitcher(key)} style={{ flex: 1, padding: '8px 6px', borderRadius: 8, border: 'none', cursor: 'pointer', background: activePitcher === key ? C.surface2 : 'transparent' }}>
+              <div style={{ fontSize: 9, color: activePitcher === key ? C.muted : C.faint, fontFamily: mono, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 1 }}>{sub}</div>
+              <div style={{ fontSize: 13, color: activePitcher === key ? C.text : C.faint, fontFamily: sans, fontWeight: 500, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{label}</div>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div style={{ padding: '14px 16px 60px' }}>
+        {activePitcher === 'away' ? (
+          <PitcherDetail data={game.awayData} name={game.awayPitcher} hand={game.awayHand} side={`Away SP · ${game.awayTeam}`} loading={game.awayLoading} />
+        ) : (
+          <PitcherDetail data={game.homeData} name={game.homePitcher} hand={game.homeHand} side={`Home SP · ${game.homeTeam}`} loading={game.homeLoading} />
+        )}
+      </div>
     </div>
   )
 }
+
+function GameCard({ game, onSelect }) {
+  const getGrade = (d) => {
+    if (!d) return null
+    const r = projectK({ kPer9: d.kPer9, kPct: d.kPct, swStrPct: d.swStrPct, cswPct: d.cswPct, projectedIP: d.projectedIP || 6, last5: d.last5, last10AvgK: d.last10AvgK, last10AvgOppKRank: d.last10AvgOppKRank, seasonIP: d.seasonIP, platoonVsR: d.platoonVsR, platoonVsL: d.platoonVsL, hand: d.hand, opposing: d.opposing || {}, parkKFactor: d.parkKFactor || 1.0, daysRest: d.daysRest || 4, umpireKFactor: d.umpireKFactor || 1.0, isFirstStartBack: d.isFirstStartBack || false })
+    const kl = buildKLines(r.projectedK)
+    const pl = kl.find(l => l.isProjected)
+    return pl ? (pl.overPct >= 58 ? 9 : pl.overPct >= 54 ? 8 : pl.overPct >= 50 ? 7 : pl.overPct >= 46 ? 6 : pl.overPct >= 42 ? 5 : 4) : null
+  }
+  const getLean = (d) => {
+    if (!d) return null
+    const r = projectK({ kPer9: d.kPer9, kPct: d.kPct, swStrPct: d.swStrPct, cswPct: d.cswPct, projectedIP: d.projectedIP || 6, last5: d.last5, last10AvgK: d.last10AvgK, last10AvgOppKRank: d.last10AvgOppKRank, seasonIP: d.seasonIP, platoonVsR: d.platoonVsR, platoonVsL: d.platoonVsL, hand: d.hand, opposing: d.opposing || {}, parkKFactor: d.parkKFactor || 1.0, daysRest: d.daysRest || 4, umpireKFactor: d.umpireKFactor || 1.0, isFirstStartBack: d.isFirstStartBack || false })
+    const kl = buildKLines(r.projectedK)
+    const pl = kl.find(l => l.isProjected)
+    return pl ? (pl.overPct > 52 ? 'OVER' : pl.overPct < 48 ? 'UNDER' : null) : null
+  }
+
+  const awayGrade = getGrade(game.awayData)
+  const homeGrade = getGrade(game.homeData)
+  const awayLean = getLean(game.awayData)
+  const homeLean = getLean(game.homeData)
+  const hasTopPick = (awayGrade >= 8 && awayLean === 'OVER') || (homeGrade >= 8 && homeLean === 'OVER')
+
+  return (
+    <button onClick={() => onSelect(game)} style={{ width: '100%', background: C.surface, border: `1px solid ${hasTopPick ? `${C.green}33` : C.border}`, borderRadius: 14, padding: '14px 16px', cursor: 'pointer', textAlign: 'left', marginBottom: 8, display: 'block', animation: 'fadeUp 0.3s ease' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 10 }}>
+        <div>
+          <div style={{ fontFamily: display, fontSize: 22, color: '#fff', letterSpacing: '0.07em', lineHeight: 1 }}>
+            {game.awayAbbr} <span style={{ color: C.faint }}>@</span> {game.homeAbbr}
+          </div>
+          <div style={{ fontSize: 11, color: C.faint, fontFamily: mono, marginTop: 2 }}>{game.time} · {game.venue}</div>
+        </div>
+        {hasTopPick && <div style={{ background: `${C.green}14`, border: `1px solid ${C.green}33`, borderRadius: 8, padding: '3px 8px', fontSize: 10, color: C.green, fontFamily: mono }}>⚡ TOP PICK</div>}
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+        {[
+          { name: game.awayPitcher, hand: game.awayHand, grade: awayGrade, lean: awayLean, loading: game.awayLoading, role: 'Away' },
+          { name: game.homePitcher, hand: game.homeHand, grade: homeGrade, lean: homeLean, loading: game.homeLoading, role: 'Home' },
+        ].map(({ name, hand, grade, lean, loading: l, role }) => {
+          const gc = grade ? gradeColor(grade) : C.faint
+          const lc = lean === 'OVER' ? C.green : lean === 'UNDER' ? C.red : C.muted
+          return (
+            <div key={role} style={{ display: 'flex', alignItems: 'center', gap: 10, background: C.surface2, borderRadius: 9, padding: '8px 10px' }}>
+              <div style={{ width: 32, height: 32, borderRadius: 8, background: `${gc}18`, border: `1px solid ${gc}33`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                {l ? <Spinner small color={gc} /> : grade ? <span style={{ fontFamily: display, fontSize: 17, color: gc }}>{grade}</span> : <span style={{ fontSize: 10, color: C.faint, fontFamily: mono }}>—</span>}
+              </div>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ fontSize: 13, color: name ? C.text : C.faint, fontFamily: sans, fontWeight: 500, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{name || 'TBD'}</div>
+                <div style={{ fontSize: 10, color: C.faint, fontFamily: mono }}>{role} SP{hand ? ` · ${hand}HP` : ''}</div>
+              </div>
+              {lean && <div style={{ padding: '2px 7px', borderRadius: 6, background: `${lc}12`, border: `1px solid ${lc}28`, fontSize: 10, color: lc, fontFamily: mono, fontWeight: 700 }}>{lean}</div>}
+              {l && <div style={{ fontSize: 10, color: C.faint, fontFamily: mono }}>analyzing…</div>}
+            </div>
+          )
+        })}
+      </div>
+      <div style={{ fontSize: 11, color: C.faint, fontFamily: mono, marginTop: 8, textAlign: 'right' }}>Tap for full analysis →</div>
+    </button>
+  )
+}
+
+export default function App() {
+  const [screen, setScreen] = useState('slate')
+  const [selectedGame, setSelectedGame] = useState(null)
+  const [tab, setTab] = useState('today')
+  const [slates, setSlates] = useState({ today: null, tomorrow: null })
+  const [status, setStatus] = useState({ today: 'idle', tomorrow: 'idle' })
+  const [errorMsg, setErrorMsg] = useState({ today: '', tomorrow: '' })
+  const [lastLoaded, setLastLoaded] = useState(null)
+
+  useEffect(() => {
+    const cached = loadCache()
+    if (cached) {
+      setSlates(cached.slates || { today: null, tomorrow: null })
+      setLastLoaded(cached.ts ? new Date(cached.ts) : null)
+    }
+  }, [])
+
+  const updateGame = useCallback((which, gameId, key, value) => {
+    setSlates(s => {
+      const updated = { ...s, [which]: { games: (s[which]?.games || []).map(g => g.gameId === gameId ? { ...g, [key]: value } : g) } }
+      saveCache({ slates: updated, ts: Date.now() })
+      return updated
+    })
+  }, [])
+
+  const loadSlate = useCallback(async (which) => {
+    setStatus(s => ({ ...s, [which]: 'loading' }))
+    setErrorMsg(e => ({ ...e, [which]: '' }))
+    setSlates(s => ({ ...s, [which]: null }))
+    const offset = which === 'today' ? 0 : 1
+    const dateStr = getDateStr(offset)
+    try {
+      const games = await callClaude(gamesPrompt(dateStr, getDateStr(0)))
+      if (!Array.isArray(games) || games.length === 0) throw new Error('No games returned')
+      const initialGames = games.map(g => ({ ...g, awayData: null, homeData: null, awayLoading: false, homeLoading: false }))
+      setSlates(s => ({ ...s, [which]: { games: initialGames } }))
+      setStatus(s => ({ ...s, [which]: 'analyzing' }))
+      setLastLoaded(new Date())
+      for (const game of games) {
+        if (game.awayPitcher) {
+          updateGame(which, game.gameId, 'awayLoading', true)
+          try {
+            const data = await callClaude(pitcherPrompt(game, { name: game.awayPitcher, hand: game.awayHand }, true, dateStr), 4000)
+            updateGame(which, game.gameId, 'awayData', data)
+          } catch (e) { console.warn('Away pitcher failed', e) }
+          updateGame(which, game.gameId, 'awayLoading', false)
+        }
+        if (game.homePitcher) {
+          updateGame(which, game.gameId, 'homeLoading', true)
+          try {
+            const data = await callClaude(pitcherPrompt(game, { name: game.homePitcher, hand: game.homeHand }, false, dateStr), 4000)
+            updateGame(which, game.gameId, 'homeData', data)
+          } catch (e) { console.warn('Home pitcher failed', e) }
+          updateGame(which, game.gameId, 'homeLoading', false)
+        }
+      }
+      setStatus(s => ({ ...s, [which]: 'done' }))
+    } catch (e) {
+      setErrorMsg(err => ({ ...err, [which]: e.message || 'Failed to load' }))
+      setStatus(s => ({ ...s, [which]: 'error' }))
+    }
+  }, [updateGame])
+
+  const handleTab = (t) => {
+    setTab(t)
+    if (!slates[t] && status[t] === 'idle') loadSlate(t)
+  }
+
+  if (screen === 'game' && selectedGame) {
+    const currentGame = slates[tab]?.games?.find(g => g.gameId === selectedGame.gameId) || selectedGame
+    return <GameScreen game={currentGame} onBack={() => setScreen('slate')} />
+  }
+
+  const activeGames = slates[tab]?.games || []
+  const activeStatus = status[tab]
+  const activeError = errorMsg[tab]
+  const isLoading = activeStatus === 'loading' || activeStatus === 'analyzing'
+  const analyzedCount = activeGames.filter(g => g.awayData || g.homeData).length
+
+  const topPicks = activeGames.filter(g => {
+    const check = (d) => {
+      if (!d) return false
+      const r = projectK({ kPer9: d.kPer9, kPct: d.kPct, swStrPct: d.swStrPct, cswPct: d.cswPct, projectedIP: d.projectedIP || 6, last5: d.last5, last10AvgK: d.last10AvgK, last10AvgOppKRank: d.last10AvgOppKRank, seasonIP: d.seasonIP, platoonVsR: d.platoonVsR, platoonVsL: d.platoonVsL, hand: d.hand, opposing: d.opposing || {}, parkKFactor: d.parkKFactor || 1.0, daysRest: d.daysRest || 4, umpireKFactor: d.umpireKFactor || 1.0, isFirstStartBack: d.isFirstStartBack || false })
+      const kl = buildKLines(r.projectedK)
+      const pl = kl.find(l => l.isProjected)
+      return pl?.overPct >= 54
+    }
+    return check(g.awayData) || check(g.homeData)
+  })
+
+  return (
+    <div style={{ minHeight: '100vh', background: C.bg, maxWidth: 520, margin: '0 auto' }}>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap');
+        *{box-sizing:border-box;margin:0;padding:0}
+        ::-webkit-scrollbar{width:0;height:3px}
+        @keyframes spin{to{transform:rotate(360deg)}}
+        @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+        body{background:#000}
+        button{-webkit-tap-highlight-color:transparent}
+      `}</style>
+
+      <div style={{ position: 'sticky', top: 0, zIndex: 10, background: 'rgba(0,0,0,0.95)', backdropFilter: 'blur(12px)', borderBottom: `1px solid ${C.border}`, padding: '20px 16px 0' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 12 }}>
+          <div>
+            <div style={{ fontSize: 10, color: C.faint, fontFamily: mono, letterSpacing: '0.16em', textTransform: 'uppercase', marginBottom: 2 }}>MLB · Strikeout Scout</div>
+            <div style={{ fontFamily: display, fontSize: 38, color: '#fff', letterSpacing: '0.06em', lineHeight: 1 }}>K PROPS</div>
+            {lastLoaded && !isLoading && (
+              <div style={{ fontSize: 10, color: C.faint, fontFamily: mono, marginTop: 3 }}>
+                Updated {lastLoaded.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}
+              </div>
+            )}
+          </div>
+          <button onClick={() => loadSlate(tab)} disabled={isLoading} style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 12, padding: '8px 14px', color: isLoading ? C.faint : C.purple, fontSize: 12, fontFamily: mono, cursor: isLoading ? 'default' : 'pointer', display: 'flex', alignItems: 'center', gap: 6 }}>
+            {isLoading ? <><Spinner small color={C.purple} />{activeStatus === 'loading' ? 'Loading…' : `${analyzedCount}/${activeGames.length}`}</> : activeGames.length > 0 ? '↻ Refresh' : '↻ Load Slate'}
+          </button>
+        </div>
+        <div style={{ display: 'flex', background: C.surface, borderRadius: 12, padding: 3, marginBottom: 0 }}>
+          {[{ id: 'today', label: `Today · ${getShortDate(0)}` }, { id: 'tomorrow', label: `Tomorrow · ${getShortDate(1)}` }].map(t => (
+            <button key={t.id} onClick={() => handleTab(t.id)} style={{ flex: 1, padding: '9px 8px', borderRadius: 10, border: 'none', cursor: 'pointer', background: tab === t.id ? C.surface2 : 'transparent', color: tab === t.id ? C.text : C.muted, fontSize: 12, fontFamily: mono, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}>
+              {t.label}
+              {slates[t.id]?.games?.length > 0 && <span style={{ background: tab === t.id ? `${C.purple}22` : C.border, borderRadius: 6, padding: '1px 6px', fontSize: 10, color: tab === t.id ? C.purple : C.faint }}>{slates[t.id].games.length}</span>}
+              {(status[t.id] === 'loading' || status[t.id] === 'analyzing') && <Spinner small />}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div style={{ padding: '14px 16px 60px' }}>
+        {activeError && (
+          <div onClick={() => loadSlate(tab)} style={{ padding: '12px 14px', background: `${C.red}0a`, border: `1px solid ${C.red}22`, borderRadius: 12, fontSize: 13, color: '#a04050', fontFamily: mono, marginBottom: 14, cursor: 'pointer', lineHeight: 1.5 }}>
+            ⚠ {activeError.slice(0, 120)}<br /><span style={{ fontSize: 11, color: '#6a2030' }}>Tap to retry</span>
+          </div>
+        )}
+
+        {!isLoading && activeGames.length === 0 && !activeError && (
+          <div style={{ textAlign: 'center', padding: '70px 0', animation: 'fadeUp 0.4s ease' }}>
+            <div style={{ fontSize: 40, marginBottom: 14, opacity: 0.3 }}>⚾</div>
+            <div style={{ fontSize: 16, color: C.muted, fontFamily: sans, fontWeight: 500, marginBottom: 8 }}>No slate loaded</div>
+            <div style={{ fontSize: 13, color: C.faint, fontFamily: mono, marginBottom: 24 }}>Tap Load Slate to pull today's games and run projections</div>
+            <button onClick={() => loadSlate(tab)} style={{ background: `${C.purple}18`, border: `1px solid ${C.purple}44`, borderRadius: 12, padding: '12px 24px', color: C.purple, fontSize: 14, fontFamily: sans, fontWeight: 600, cursor: 'pointer' }}>
+              Load {tab === 'today' ? "Today's" : "Tomorrow's"} Slate
+            </button>
+          </div>
+        )}
+
+        {activeStatus === 'loading' && activeGames.length === 0 && (
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '70px 0', gap: 16 }}>
+            <Spinner />
+            <div style={{ fontSize: 13, color: C.muted, fontFamily: mono, textAlign: 'center', lineHeight: 1.8 }}>Pulling {tab === 'today' ? "today's" : "tomorrow's"} slate…</div>
+          </div>
+        )}
+
+        {topPicks.length > 0 && (
+          <div style={{ background: `${C.green}08`, border: `1px solid ${C.green}18`, borderRadius: 12, padding: '12px 14px', marginBottom: 14, animation: 'fadeUp 0.4s ease' }}>
+            <div style={{ fontSize: 10, color: C.green, fontFamily: mono, letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 8 }}>⚡ Top K Props Today</div>
+            <div style={{ display: 'flex', gap: 7, flexWrap: 'wrap' }}>
+              {topPicks.slice(0, 4).map((g, i) => {
+                const getPick = (d, name) => {
+                  if (!d) return null
+                  const r = projectK({ kPer9: d.kPer9, kPct: d.kPct, swStrPct: d.swStrPct, cswPct: d.cswPct, projectedIP: d.projectedIP || 6, last5: d.last5, last10AvgK: d.last10AvgK, last10AvgOppKRank: d.last10AvgOppKRank, seasonIP: d.seasonIP, platoonVsR: d.platoonVsR, platoonVsL: d.platoonVsL, hand: d.hand, opposing: d.opposing || {}, parkKFactor: d.parkKFactor || 1.0, daysRest: d.daysRest || 4, umpireKFactor: d.umpireKFactor || 1.0, isFirstStartBack: d.isFirstStartBack || false })
+                  const kl = buildKLines(r.projectedK)
+                  const pl = kl.find(l => l.isProjected)
+                  if (!pl || pl.overPct < 54) return null
+                  return { name: d.name || name, proj: Math.round(r.projectedK), pct: pl.overPct, odds: pl.overOdds }
+                }
+                const pick = getPick(g.awayData, g.awayPitcher) || getPick(g.homeData, g.homePitcher)
+                if (!pick) return null
+                return (
+                  <button key={i} onClick={() => { setSelectedGame(g); setScreen('game') }} style={{ background: `${C.green}0d`, border: `1px solid ${C.green}22`, borderRadius: 9, padding: '5px 10px', cursor: 'pointer', textAlign: 'left' }}>
+                    <div style={{ fontFamily: display, fontSize: 13, color: C.green, letterSpacing: '0.04em' }}>{pick.name}</div>
+                    <div style={{ fontSize: 10, color: '#1a4030', fontFamily: mono }}>Proj {pick.proj}K · {pick.pct}% · {fmt(pick.odds)}</div>
+                  </button>
+                )
+              })}
+            </div>
+          </div>
+        )}
+
+        {activeGames.map(g => <GameCard key={g.gameId} game={g} onSelect={(game) => { setSelectedGame(game); setScreen('game') }} />)}
+
+        {activeStatus === 'analyzing' && activeGames.length > 0 && (
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '12px 0', justifyContent: 'center' }}>
+            <Spinner small />
+            <span style={{ fontSize: 12, color: C.faint, fontFamily: mono }}>Analyzing pitchers ({analyzedCount * 2}/{activeGames.length * 2})</span>
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}
+
+    
+    
+  )
+}
+

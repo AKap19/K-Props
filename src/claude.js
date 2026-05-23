@@ -1,16 +1,9 @@
 const SYSTEM = `You are a JSON-only API. Never output any text, explanation, markdown, or code fences. Output ONLY raw valid JSON. The very first character must be [ or {. No preamble. No postamble.`
 
 export async function callClaude(prompt, maxTokens = 4000) {
-  const apiKey = import.meta.env.VITE_ANTHROPIC_API_KEY
-  if (!apiKey) throw new Error('Missing VITE_ANTHROPIC_API_KEY in .env file')
-
-  const resp = await fetch('https://api.anthropic.com/v1/messages', {
+  const resp = await fetch('/api/proxy', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'x-api-key': apiKey,
-      'anthropic-version': '2023-06-01',
-    },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       model: 'claude-sonnet-4-20250514',
       max_tokens: maxTokens,
@@ -40,7 +33,6 @@ function parseJSON(text) {
   if (ai === -1) start = oi
   else if (oi === -1) start = ai
   else start = Math.min(ai, oi)
-
   const s = stripped.slice(start)
   try { return JSON.parse(s) } catch {
     const isArr = s[0] === '['

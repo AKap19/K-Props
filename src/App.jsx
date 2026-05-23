@@ -1,7 +1,8 @@
 import { useState, useEffect, useCallback } from 'react'
 import { callClaude } from './claude.js'
 import { buildKLines, buildStatLine, findOutliers, projectK } from './math.js'
-import { gamesPrompt, pitcherPrompt } from './prompts.js'
+import { fetchRealGames, pitcherPrompt } from './prompts.js'
+
 
 // ─── Date helpers ─────────────────────────────────────────────────────────────
 function getDateStr(offset = 0) {
@@ -753,7 +754,7 @@ export default function App() {
     const offset = which === 'today' ? 0 : 1
     const dateStr = getDateStr(offset)
     try {
-      const games = await callClaude(gamesPrompt(dateStr, getDateStr(0)))
+      const games = await fetchRealGames(dateStr)
       if (!Array.isArray(games) || games.length === 0) throw new Error('No games returned')
       const initialGames = games.map(g => ({ ...g, awayData: null, homeData: null, awayLoading: false, homeLoading: false }))
       setSlates(s => ({ ...s, [which]: { games: initialGames } }))

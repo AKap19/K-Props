@@ -1,5 +1,22 @@
-export function gamesPrompt(dateStr, todayStr) {
-  return `MLB schedule for ${dateStr}. Today is ${todayStr}. Real 2026 probable pitchers. Return array: [{"gameId":"g1","time":"7:05 PM ET","awayAbbr":"NYY","homeAbbr":"BOS","awayTeam":"New York Yankees","homeTeam":"Boston Red Sox","venue":"Fenway Park","awayPitcher":"Gerrit Cole","awayHand":"R","homePitcher":"Brayan Bello","homeHand":"R"}] All games. No other text.`
+export function gamesPrompt(dateStr) {
+  return `Fetch today's MLB schedule from the proxy and return the games as JSON.
+Date: ${dateStr}
+
+Return ONLY this exact JSON array with real games from today's MLB schedule:
+[{
+  "gameId": "g1",
+  "time": "1:05 PM ET",
+  "awayAbbr": "NYY",
+  "homeAbbr": "BOS",
+  "awayTeam": "New York Yankees",
+  "homeTeam": "Boston Red Sox",
+  "venue": "Fenway Park",
+  "awayPitcher": "Gerrit Cole",
+  "awayHand": "R",
+  "homePitcher": "Brayan Bello",
+  "homeHand": "R"
+}]
+No other text. Real games only. If you do not know today's exact schedule, return an empty array [].`
 }
 
 export function pitcherPrompt(game, pitcher, isAway, dateStr) {
@@ -7,27 +24,12 @@ export function pitcherPrompt(game, pitcher, isAway, dateStr) {
   const opposingTeam = isAway ? game.homeTeam : game.awayTeam
   const opposingAbbr = isAway ? game.homeAbbr : game.awayAbbr
 
-  return `You are an MLB strikeout prop analyst providing raw data inputs for a weighted projection model.
-Date: ${dateStr}. Game: ${game.awayTeam} @ ${game.homeTeam} at ${game.venue}.
+  return `You are an MLB strikeout prop analyst. Date: ${dateStr}.
+Game: ${game.awayTeam} @ ${game.homeTeam} at ${game.venue}.
 Pitcher: ${pitcher.name} (${pitcher.hand}HP, ${role} SP) vs ${opposingTeam}.
 
-Return ONLY this exact JSON object with REAL accurate 2026 season data through the most recent start.
-Every number must be accurate — this feeds a mathematical projection model, not a display.
-
-Key data points needed and why:
-- swStrPct: swing-and-miss % — strongest stuff indicator, used as primary projection input
-- cswPct: called strikes + whiffs % — if known, overrides swStrPct in model
-- seasonIP: total innings pitched — used for confidence scoring
-- last5: each start with oppKRank so model can opponent-adjust recent form
-- oppKRank: 1=hardest lineup to K, 30=easiest — critical for L5 adjustment
-- platoonVsR/L: actual K% splits — used to adjust projection for tonight's lineup handedness
-- lineupKRankVsHand: how hard tonight's specific lineup is to K vs this pitcher's hand
-- kPctVsHand: tonight's lineup K% vs this pitcher's hand (not overall K%)
-- chaseRate: lineup chase rate out of zone — feeds small chase-rate bonus in model
-- rhbCount/lhbCount: tonight's projected lineup composition
-- parkKFactor: 1.0=neutral, >1=K-friendly (e.g. Petco=0.97, Wrigley wind-in=0.94, COL=1.08)
-- projectedIP: expected innings tonight based on recent workload and pitch count trajectory
-- isFirstStartBack: true only if returning from IL/surgery this start
+Return ONLY raw JSON with accurate 2025 season stats for ${pitcher.name}.
+Use real stats. Every number must be accurate.
 
 {
   "name": "${pitcher.name}",
@@ -47,13 +49,13 @@ Key data points needed and why:
   "umpireKFactor": 1.0,
   "platoonVsR": {"kPct": "31.2", "bbPct": "6.8", "avgAgainst": "0.198", "slgAgainst": "0.291"},
   "platoonVsL": {"kPct": "26.1", "bbPct": "8.2", "avgAgainst": "0.221", "slgAgainst": "0.334"},
-  "platoonNote": "one sentence on dominant split or weakness tonight",
+  "platoonNote": "one sentence on dominant split tonight",
   "last5": [
     {"date": "May 18", "opp": "HOU", "oppKRank": 3, "ip": "7.0", "k": 10, "h": 4, "er": 1, "bb": 1, "pitches": 98},
     {"date": "May 12", "opp": "TEX", "oppKRank": 12, "ip": "6.0", "k": 8, "h": 6, "er": 2, "bb": 2, "pitches": 94},
-    {"date": "May 7",  "opp": "LAA", "oppKRank": 22, "ip": "7.0", "k": 9, "h": 5, "er": 1, "bb": 0, "pitches": 101},
-    {"date": "May 1",  "opp": "DET", "oppKRank": 8,  "ip": "5.1", "k": 6, "h": 7, "er": 4, "bb": 3, "pitches": 96},
-    {"date": "Apr 25", "opp": "MIN", "oppKRank": 5,  "ip": "6.2", "k": 8, "h": 4, "er": 2, "bb": 1, "pitches": 92}
+    {"date": "May 7", "opp": "LAA", "oppKRank": 22, "ip": "7.0", "k": 9, "h": 5, "er": 1, "bb": 0, "pitches": 101},
+    {"date": "May 1", "opp": "DET", "oppKRank": 8, "ip": "5.1", "k": 6, "h": 7, "er": 4, "bb": 3, "pitches": 96},
+    {"date": "Apr 25", "opp": "MIN", "oppKRank": 5, "ip": "6.2", "k": 8, "h": 4, "er": 2, "bb": 1, "pitches": 92}
   ],
   "last10AvgK": 7.8,
   "last10AvgH": 5.5,
@@ -61,8 +63,8 @@ Key data points needed and why:
   "last10AvgBB": 1.7,
   "last10AvgPitches": 94,
   "last10AvgOppKRank": 9,
-  "pitchMix": "brief note on primary swing-and-miss pitches and current effectiveness",
-  "recentFormNote": "one sentence on trajectory — improving, declining, or stable over last 3 starts",
+  "pitchMix": "brief note on primary swing-and-miss pitches",
+  "recentFormNote": "one sentence on trajectory",
   "projectedPitches": 96,
   "projectedOuts": 19,
   "projectedER": 2,
@@ -71,7 +73,7 @@ Key data points needed and why:
   "opposing": {
     "team": "${opposingTeam}",
     "abbr": "${opposingAbbr}",
-    "lineupKRankVsHand": 4,
+    "lineupKRankVsHand": 14,
     "kPctVsHand": "23.4",
     "overallKPct": "21.8",
     "chaseRate": "28.1",
@@ -79,8 +81,8 @@ Key data points needed and why:
     "kPctLast14": "21.8",
     "rhbCount": 5,
     "lhbCount": 4,
-    "platoonNote": "one sentence on how lineup handedness affects this specific matchup tonight",
-    "lineupNote": "one sentence on any notable lineup factors — hot/cold bats, injuries, lineup position changes",
+    "platoonNote": "one sentence on lineup handedness matchup",
+    "lineupNote": "one sentence on notable lineup factors",
     "lineup": [
       {"order":1,"name":"Player Name","bats":"L","kRank":6,"projH":0.31,"projTB":0.52,"projK":0.38,"projBB":0.09},
       {"order":2,"name":"Player Name","bats":"R","kRank":14,"projH":0.26,"projTB":0.38,"projK":0.28,"projBB":0.07},

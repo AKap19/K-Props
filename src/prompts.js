@@ -1,22 +1,42 @@
-export function gamesPrompt(dateStr) {
-  return `Fetch today's MLB schedule from the proxy and return the games as JSON.
-Date: ${dateStr}
+export async function fetchRealGames(dateStr) {
+  // Format date as YYYY-MM-DD for MLB API
+  const d = new Date()
+  const month = String(d.getMonth() + 1).padStart(2, '0')
+  const day = String(d.getDate()).padStart(2, '0')
+  const year = d.getFullYear()
+  const formatted = `${year}-${month}-${day}`
 
-Return ONLY this exact JSON array with real games from today's MLB schedule:
-[{
-  "gameId": "g1",
-  "time": "1:05 PM ET",
-  "awayAbbr": "NYY",
-  "homeAbbr": "BOS",
-  "awayTeam": "New York Yankees",
-  "homeTeam": "Boston Red Sox",
-  "venue": "Fenway Park",
-  "awayPitcher": "Gerrit Cole",
-  "awayHand": "R",
-  "homePitcher": "Brayan Bello",
-  "homeHand": "R"
-}]
-No other text. Real games only. If you do not know today's exact schedule, return an empty array [].`
+  const resp = await fetch('/api/proxy', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ mlb: true, date: formatted }),
+  })
+  const data = await resp.json()
+
+  const games = []
+  const dates = data?.dates || []
+  for (const dateObj of dates) {
+    for (const game of dateObj.games || []) {
+      const away = game.teams?.away
+      const home = game.teams?.home
+      const gameTime = new Date(game.gameDate)
+      const timeStr = gameTime.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: 'America/New_York' }) + ' ET'
+      games.push({
+        gameId: String(game.gamePk),
+        time: timeStr,
+        awayAbbr: away?.team?.abbreviation || '',
+        homeAbbr: home?.team?.abbreviation || '',
+        awayTeam: away?.team?.name || '',
+        homeTeam: home?.team?.name || '',
+        venue: game.venue?.name || '',
+        awayPitcher: away?.probablePitcher?.fullName || null,
+        awayHand: away?.probablePitcher?.pitchHand?.code || 'R',
+        homePitcher: home?.probablePitcher?.fullName || null,
+        homeHand: home?.probablePitcher?.pitchHand?.code || 'R',
+      })
+    }
+  }
+  return games
 }
 
 export function pitcherPrompt(game, pitcher, isAway, dateStr) {
@@ -29,7 +49,6 @@ Game: ${game.awayTeam} @ ${game.homeTeam} at ${game.venue}.
 Pitcher: ${pitcher.name} (${pitcher.hand}HP, ${role} SP) vs ${opposingTeam}.
 
 Return ONLY raw JSON with accurate 2025 season stats for ${pitcher.name}.
-Use real stats. Every number must be accurate.
 
 {
   "name": "${pitcher.name}",

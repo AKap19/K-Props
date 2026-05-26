@@ -1,1 +1,1393 @@
-<meta http-equiv="refresh" content="0;url=kprops-may25.html">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>K Props Scout · May 27, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#0c0e14;--card:#13151e;--card2:#1a1d28;--border:#252836;--border2:#2e3245;
+  --text:#e8eaf0;--text2:#b8bcd0;--text3:#6e738a;--text-opp:#9ca3b8;
+  --green:#3dffa0;--green-dim:#0f2a1e;--red:#ff5a5a;--red-dim:#3a1212;
+  --amber:#ffb83d;--amber-dim:#3d2800;--blue:#5ab4ff;--blue-dim:#0f2440;
+  --purple:#c084fc;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;padding-bottom:48px;}
+
+.header{background:var(--card);border-bottom:1px solid var(--border);padding:14px 16px;position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;color:var(--green);line-height:1;}
+.logo-sub{font-family:'DM Mono',monospace;font-size:9px;color:var(--text3);letter-spacing:1px;margin-top:2px;}
+.header-date{font-family:'DM Mono',monospace;font-size:10px;color:var(--text2);text-align:right;line-height:1.6;}
+
+.tabs{display:flex;background:var(--bg);border-bottom:1px solid var(--border);overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.tabs::-webkit-scrollbar{display:none;}
+.tab{padding:10px 16px;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;cursor:pointer;border-bottom:2px solid transparent;color:var(--text3);white-space:nowrap;transition:all .2s;flex-shrink:0;}
+.tab.active{color:var(--green);border-bottom-color:var(--green);}
+
+.sec-head{display:flex;align-items:baseline;gap:10px;padding:16px 14px 8px;}
+.sec-title{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1.5px;color:var(--text);}
+.sec-meta{font-family:'DM Mono',monospace;font-size:9px;color:var(--text3);}
+
+.legend{display:flex;gap:12px;padding:8px 14px;flex-wrap:wrap;border-bottom:1px solid var(--border);background:var(--card);}
+.legend-item{display:flex;align-items:center;gap:5px;font-size:9px;color:var(--text3);font-family:'DM Mono',monospace;}
+.ldot{width:7px;height:7px;border-radius:50%;}
+
+/* SUMMARY BAR */
+.summary-bar{display:flex;gap:0;background:var(--card2);border-bottom:1px solid var(--border);overflow-x:auto;}
+.sum-item{flex:1;min-width:80px;padding:10px 8px;text-align:center;border-right:1px solid var(--border);}
+.sum-item:last-child{border-right:none;}
+.sum-val{font-family:'Bebas Neue',sans-serif;font-size:22px;line-height:1;}
+.sum-lbl{font-family:'DM Mono',monospace;font-size:8px;color:var(--text3);text-transform:uppercase;letter-spacing:.8px;margin-top:2px;}
+
+/* GAME CARD */
+.gc{margin:0 10px 10px;background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.gc-header{display:flex;align-items:center;gap:8px;padding:10px 12px;border-bottom:1px solid var(--border);cursor:pointer;}
+.gc-rank{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--text3);width:22px;flex-shrink:0;}
+.gc-matchup{font-size:14px;font-weight:700;color:var(--text);flex:1;}
+.gc-right{display:flex;flex-direction:column;align-items:flex-end;gap:3px;}
+.gc-time{font-family:'DM Mono',monospace;font-size:9px;color:var(--text3);}
+.chev{font-size:12px;color:var(--text3);transition:transform .2s;flex-shrink:0;margin-left:4px;}
+.chev.open{transform:rotate(180deg);}
+.coll{display:none;}
+.coll.open{display:block;}
+
+/* BADGE */
+.badge{display:inline-block;padding:2px 7px;border-radius:3px;font-size:9px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;font-family:'DM Mono',monospace;}
+.b-strong{background:var(--green-dim);color:var(--green);border:1px solid var(--green);}
+.b-mod{background:var(--amber-dim);color:var(--amber);border:1px solid var(--amber);}
+.b-lean{background:var(--blue-dim);color:var(--blue);border:1px solid var(--blue);}
+.b-pass{background:var(--card2);color:var(--text3);border:1px solid var(--border2);}
+.b-best{background:linear-gradient(90deg,#1a4d35,#0f3d2a);color:var(--green);border:1px solid var(--green);font-size:8px;}
+.b-under{background:var(--red-dim);color:var(--red);border:1px solid var(--red);}
+.b-over{background:var(--green-dim);color:var(--green);border:1px solid var(--green);}
+
+/* PITCHER SECTION */
+.p-sec{padding:10px 12px;border-bottom:1px solid var(--border);}
+.p-sec-label{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);margin-bottom:8px;}
+.p-name{font-size:14px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:6px;margin-bottom:5px;}
+.p-tag{font-family:'DM Mono',monospace;font-size:8px;padding:1px 5px;border-radius:3px;background:var(--card2);color:var(--text3);border:1px solid var(--border);}
+.p-opp{font-size:12px;font-weight:600;color:var(--text2);margin:6px 0 4px;display:flex;align-items:center;gap:5px;}
+.stats-row{display:flex;flex-wrap:wrap;gap:4px;}
+.sp{font-family:'DM Mono',monospace;font-size:9px;padding:2px 6px;border-radius:3px;background:var(--card2);border:1px solid var(--border);color:var(--text2);display:flex;gap:3px;}
+.sp .lbl{color:var(--text3);font-size:8px;}
+.vg{color:var(--green);font-weight:500;}
+.va{color:var(--amber);font-weight:500;}
+.vr{color:var(--red);font-weight:500;}
+.trend-u{color:var(--green);font-size:11px;}
+.trend-d{color:var(--red);font-size:11px;}
+.trend-f{color:var(--text3);font-size:11px;}
+
+/* HANDEDNESS ROW */
+.hand-row{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:8px 12px;border-bottom:1px solid var(--border);background:var(--card2);}
+.hand-box{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:6px 8px;text-align:center;}
+.hand-box.active{border-color:var(--green);background:var(--green-dim);}
+.hand-lbl{font-family:'DM Mono',monospace;font-size:8px;color:var(--text3);text-transform:uppercase;margin-bottom:2px;}
+.hand-val{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;}
+.hand-rank{font-family:'DM Mono',monospace;font-size:8px;color:var(--text3);}
+
+/* L5 */
+.l5-sec{padding:8px 12px;border-bottom:1px solid var(--border);}
+.l5-label{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:1.2px;text-transform:uppercase;color:var(--text3);margin-bottom:6px;}
+.l5-row{display:flex;gap:4px;flex-wrap:wrap;}
+.l5c{background:var(--card2);border:1px solid var(--border);border-radius:4px;padding:4px 8px;font-family:'DM Mono',monospace;font-size:8px;color:var(--text2);line-height:1.5;text-align:center;}
+.l5c .kn{font-size:14px;font-weight:600;display:block;line-height:1.1;}
+.kn-h{color:var(--green);}
+.kn-m{color:var(--amber);}
+.kn-l{color:var(--red);}
+.l5c .op{color:var(--text-opp);font-size:8px;}
+
+/* PROJ */
+.proj-sec{padding:10px 12px;border-bottom:1px solid var(--border);}
+.proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:6px;}
+.proj-grid:last-child{margin-bottom:0;}
+.pbox{background:var(--card2);border:1px solid var(--border);border-radius:7px;padding:8px 10px;text-align:center;}
+.pbox.hl{border-color:var(--green);background:linear-gradient(135deg,#0a1f14,#13151e);}
+.pbox-lbl{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.8px;text-transform:uppercase;color:var(--text3);margin-bottom:3px;}
+.pbox-val{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:1px;line-height:1;}
+.pbox-sub{font-family:'DM Mono',monospace;font-size:8px;color:var(--text3);margin-top:1px;}
+.pbox-line{font-family:'DM Mono',monospace;font-size:9px;color:var(--text2);margin-top:3px;}
+.pbox-ev{font-family:'DM Mono',monospace;font-size:10px;margin-top:2px;font-weight:500;}
+.edge-row{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:4px;}
+.edge-pill{font-family:'DM Mono',monospace;font-size:9px;padding:2px 7px;border-radius:3px;background:var(--green-dim);color:var(--green);border:1px solid var(--green);font-weight:500;}
+.edge-pill.mod{background:var(--amber-dim);color:var(--amber);border-color:var(--amber);}
+.edge-pill.lean{background:var(--blue-dim);color:var(--blue);border-color:var(--blue);}
+
+/* STUFF RATING */
+.stuff-row{display:flex;align-items:center;justify-content:space-between;padding:6px 12px;border-bottom:1px solid var(--border);}
+.stuff-lbl{font-family:'DM Mono',monospace;font-size:8px;color:var(--text3);text-transform:uppercase;letter-spacing:.8px;}
+.stuff-val{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;}
+
+/* UMP / RISK */
+.ump-row{display:flex;align-items:center;justify-content:space-between;padding:6px 12px;background:var(--card2);border-bottom:1px solid var(--border);}
+.ump-lbl{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.8px;color:var(--text3);text-transform:uppercase;}
+.ump-val{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;}
+.risk-row{display:flex;align-items:center;gap:8px;padding:6px 12px;border-bottom:1px solid var(--border);}
+.risk-lbl{font-family:'DM Mono',monospace;font-size:8px;color:var(--text3);text-transform:uppercase;flex-shrink:0;letter-spacing:.8px;}
+.risk-bg{flex:1;height:4px;background:var(--border);border-radius:2px;overflow:hidden;}
+.risk-fill{height:100%;border-radius:2px;}
+.rf-low{background:var(--green);}
+.rf-med{background:var(--amber);}
+.rf-high{background:var(--red);}
+.risk-val{font-family:'DM Mono',monospace;font-size:9px;flex-shrink:0;min-width:30px;text-align:right;}
+
+/* ACTION */
+.act-sec{padding:9px 12px;}
+.act-lbl{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);margin-bottom:4px;}
+.act-text{font-size:11px;color:var(--text2);line-height:1.55;}
+.act-text strong{color:var(--text);font-weight:700;}
+.hg{color:var(--green);font-weight:600;}
+.ha{color:var(--amber);font-weight:600;}
+.hr{color:var(--red);font-weight:600;}
+
+/* PASS CARD */
+.pass-card{margin:0 10px 7px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:9px 12px;display:flex;align-items:flex-start;justify-content:space-between;gap:8px;}
+.pass-m{font-size:13px;font-weight:700;color:var(--text2);}
+.pass-p{font-family:'DM Mono',monospace;font-size:9px;color:var(--text3);margin-top:2px;}
+.pass-stats{display:flex;gap:4px;margin-top:5px;flex-wrap:wrap;}
+
+/* F5 */
+.f5c{margin:0 10px 10px;background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.f5h{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-bottom:1px solid var(--border);cursor:pointer;gap:8px;}
+.f5m{font-size:14px;font-weight:700;color:var(--text);}
+.f5t{font-size:9px;color:var(--text3);font-family:'DM Mono',monospace;margin-top:1px;}
+.f5-pitch-row{display:flex;justify-content:space-between;padding:10px 12px;border-bottom:1px solid var(--border);gap:8px;}
+.f5-pc{flex:1;}
+.f5-pn{font-size:12px;font-weight:700;color:var(--text);margin-bottom:3px;}
+.f5-pn.r{text-align:right;}
+.f5-ps{font-family:'DM Mono',monospace;font-size:8px;color:var(--text2);line-height:1.8;}
+.f5-ps.r{text-align:right;}
+.f5-vs{font-family:'Bebas Neue',sans-serif;font-size:14px;color:var(--text3);align-self:center;flex-shrink:0;}
+.f5-pg{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:10px 12px;border-bottom:1px solid var(--border);}
+.f5-pb{background:var(--card2);border:1px solid var(--border);border-radius:7px;padding:8px;text-align:center;}
+.f5-pb.win{border-color:var(--green);background:linear-gradient(135deg,#0a1f14,#13151e);}
+.f5-pt{font-family:'Bebas Neue',sans-serif;font-size:17px;}
+.f5-pp{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--green);}
+.f5-po{font-family:'DM Mono',monospace;font-size:10px;color:var(--amber);}
+.f5-psub{font-size:8px;color:var(--text3);font-family:'DM Mono',monospace;margin-top:1px;}
+.f5-tot{margin:0 12px 10px;background:var(--card2);border:1px solid var(--border);border-radius:7px;padding:9px 12px;display:flex;align-items:center;justify-content:space-between;}
+.f5-tm{font-family:'Bebas Neue',sans-serif;font-size:18px;}
+.f5-tm.u{color:var(--red);}
+.f5-tm.o{color:var(--green);}
+.f5-tp{font-family:'DM Mono',monospace;font-size:10px;color:var(--amber);}
+.f5-ts{font-size:8px;color:var(--text3);font-family:'DM Mono',monospace;}
+.why{padding:0 12px 10px;}
+.why-lbl{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:1.2px;color:var(--blue);text-transform:uppercase;margin-bottom:3px;}
+.why-t{font-size:11px;color:var(--text2);line-height:1.5;}
+.wdiv{height:1px;background:var(--border);margin:6px 0;}
+
+/* MODEL */
+.model-sec{padding:12px 14px;border-bottom:1px solid var(--border);}
+.model-title{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:1.5px;color:var(--text3);text-transform:uppercase;margin-bottom:10px;}
+.mrow{display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+.mlbl{font-size:10px;color:var(--text2);width:150px;flex-shrink:0;}
+.mbg{flex:1;height:4px;background:var(--border);border-radius:2px;overflow:hidden;}
+.mfill{height:100%;border-radius:2px;background:var(--green);}
+.mpct{font-family:'DM Mono',monospace;font-size:9px;color:var(--text3);width:28px;text-align:right;}
+
+.cs{display:none;}
+.cs.active{display:block;}
+.scroll-wrap{max-height:calc(100vh - 108px);overflow-y:auto;-webkit-overflow-scrolling:touch;}
+.scroll-wrap::-webkit-scrollbar{width:2px;}
+.scroll-wrap::-webkit-scrollbar-thumb{background:var(--border2);border-radius:1px;}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div><div class="logo">K PROPS SCOUT</div><div class="logo-sub">v6+ · NB Model · 60+ Pitch Min · Handedness Splits</div></div>
+  <div class="header-date"><div style="color:var(--text);font-weight:700;">May 27, 2026</div><div>29 Pitchers · Full Slate</div></div>
+</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="sw('k',this)">⚡ K Props</div>
+  <div class="tab" onclick="sw('f5',this)">🔵 F5 First Half</div>
+  <div class="tab" onclick="sw('model',this)">⚙ Model</div>
+</div>
+
+<!-- K PROPS -->
+<div id="tab-k" class="cs active">
+<div class="scroll-wrap">
+
+<div class="summary-bar">
+  <div class="sum-item"><div class="sum-val" style="color:var(--green)">2</div><div class="sum-lbl">Strong Edge</div></div>
+  <div class="sum-item"><div class="sum-val" style="color:var(--amber)">3</div><div class="sum-lbl">Moderate</div></div>
+  <div class="sum-item"><div class="sum-val" style="color:var(--blue)">3</div><div class="sum-lbl">Lean</div></div>
+  <div class="sum-item"><div class="sum-val" style="color:var(--text3)">21</div><div class="sum-lbl">Pass</div></div>
+</div>
+
+<div class="legend">
+  <div class="legend-item"><div class="ldot" style="background:var(--green)"></div>Strong Edge</div>
+  <div class="legend-item"><div class="ldot" style="background:var(--amber)"></div>Moderate</div>
+  <div class="legend-item"><div class="ldot" style="background:var(--blue)"></div>Lean</div>
+  <div class="legend-item">↑↓→ L5 trend · Edge% shown</div>
+</div>
+
+<div class="sec-head"><div class="sec-title">BEST BETS</div><div class="sec-meta">ranked by model edge</div></div>
+
+<!-- ══ 1. CAM SCHLITTLER ══ -->
+<div class="gc">
+  <div class="gc-header" onclick="tog('c1')">
+    <div class="gc-rank">1</div>
+    <div class="gc-matchup">NYY @ KC <span style="font-size:10px;color:var(--text3);font-weight:400;">7:40 PM</span></div>
+    <div class="gc-right">
+      <div><span class="badge b-strong">Strong Edge</span> <span class="badge b-best">★ BEST BET</span></div>
+      <div class="gc-time">Kauffman Stadium</div>
+    </div>
+    <div class="chev open" id="chev-c1">▼</div>
+  </div>
+  <div class="coll open" id="c1">
+    <div class="p-sec">
+      <div class="p-sec-label">Focus Pitcher</div>
+      <div class="p-name">Cam Schlittler <span class="p-tag">NYY · Away</span> <span class="trend-u">↑</span></div>
+      <div class="stats-row">
+        <div class="sp"><span class="lbl">ERA</span><span class="vg">1.35</span></div>
+        <div class="sp"><span class="lbl">K</span><span class="vg">68</span></div>
+        <div class="sp"><span class="lbl">WHIP</span><span class="vg">0.78</span></div>
+        <div class="sp"><span class="lbl">K/BB</span><span class="vg">59/9</span></div>
+        <div class="sp"><span class="lbl">wOBA-vs</span><span class="vg">.217</span></div>
+        <div class="sp"><span class="lbl">5+ Ks</span><span class="vg">10 of 11 starts</span></div>
+      </div>
+      <div class="p-opp">vs B. Falter / L. Avila (KC) <span class="p-tag">Opener combo</span></div>
+      <div class="stats-row">
+        <div class="sp"><span class="lbl">Note</span><span class="va">Falter opener — Schlittler bats 2nd inning+</span></div>
+      </div>
+    </div>
+    <div class="hand-row">
+      <div class="hand-box active">
+        <div class="hand-lbl">KC K% vs RHP</div>
+        <div class="hand-val" style="color:var(--amber)">23.1%</div>
+        <div class="hand-rank">#14 — avg/below</div>
+      </div>
+      <div class="hand-box">
+        <div class="hand-lbl">Schlittler Handedness</div>
+        <div class="hand-val" style="color:var(--text2)">RHP</div>
+        <div class="hand-rank">6-pitch mix · elite cmd</div>
+      </div>
+    </div>
+    <div class="l5-sec">
+      <div class="l5-label">Schlittler — Last 5 Starts</div>
+      <div class="l5-row">
+        <div class="l5c"><span class="kn kn-h">7</span><span class="op">vs BOS #19</span></div>
+        <div class="l5c"><span class="kn kn-h">8</span><span class="op">vs MIN #16</span></div>
+        <div class="l5c"><span class="kn kn-h">6</span><span class="op">vs TEX #17</span></div>
+        <div class="l5c"><span class="kn kn-h">7</span><span class="op">vs TOR #22</span></div>
+        <div class="l5c"><span class="kn kn-h">6</span><span class="op">vs TB #11</span></div>
+      </div>
+    </div>
+    <div class="proj-sec">
+      <div class="proj-grid">
+        <div class="pbox hl">
+          <div class="pbox-lbl">Proj Ks</div>
+          <div class="pbox-val" style="color:var(--green)">7.2</div>
+          <div class="pbox-sub">NB model</div>
+        </div>
+        <div class="pbox">
+          <div class="pbox-lbl">Est. Book Line</div>
+          <div class="pbox-val" style="color:var(--text)">6.5</div>
+          <div class="pbox-line">O -130 est · U +110</div>
+          <div class="edge-row"><span class="edge-pill">+0.7K / +11% Edge</span></div>
+        </div>
+      </div>
+      <div class="proj-grid">
+        <div class="pbox">
+          <div class="pbox-lbl">Stuff Rating</div>
+          <div class="pbox-val" style="color:var(--green);font-size:20px">Elite</div>
+          <div class="pbox-sub">MLB-leading 1.35 ERA · 59/9 K/BB</div>
+        </div>
+        <div class="pbox">
+          <div class="pbox-lbl">Park · Kauffman</div>
+          <div class="pbox-val" style="color:var(--text2);font-size:20px">0.96</div>
+          <div class="pbox-sub">Pitcher-friendly ✓</div>
+        </div>
+      </div>
+    </div>
+    <div class="ump-row"><span class="ump-lbl">⚖ Ump Factor</span><span class="ump-val" style="color:var(--amber)">Neutral +0.1 K/game</span></div>
+    <div class="risk-row"><span class="risk-lbl">Game Script Risk</span><div class="risk-bg"><div class="risk-fill rf-low" style="width:18%"></div></div><span class="risk-val" style="color:var(--green)">Low</span></div>
+    <div class="act-sec"><div class="act-lbl">Action</div><div class="act-text"><strong>OVER 6.5 Ks — Full Size.</strong> MLB's best pitcher (1.35 ERA, 59/9 K/BB) with 5+ Ks in 10 of 11 starts. L5 floor is 6. Kauffman plays pitcher-friendly. <span class="hg">Proj 7.2 vs est. 6.5 line = strong +EV.</span> Watch for opener — Schlittler likely starts 2nd inning. Confirm before betting.</div></div>
+  </div>
+</div>
+
+<!-- ══ 2. CHASE BURNS ══ -->
+<div class="gc">
+  <div class="gc-header" onclick="tog('c2')">
+    <div class="gc-rank">2</div>
+    <div class="gc-matchup">CIN @ NYM <span style="font-size:10px;color:var(--text3);font-weight:400;">7:10 PM</span></div>
+    <div class="gc-right">
+      <div><span class="badge b-strong">Strong Edge</span></div>
+      <div class="gc-time">Citi Field</div>
+    </div>
+    <div class="chev" id="chev-c2">▼</div>
+  </div>
+  <div class="coll" id="c2">
+    <div class="p-sec">
+      <div class="p-sec-label">Focus Pitcher</div>
+      <div class="p-name">Chase Burns <span class="p-tag">CIN · Away</span> <span class="trend-u">↑</span></div>
+      <div class="stats-row">
+        <div class="sp"><span class="lbl">ERA</span><span class="vg">2.11</span></div>
+        <div class="sp"><span class="lbl">K/9</span><span class="vg">9.2</span></div>
+        <div class="sp"><span class="lbl">K%</span><span class="vg">28.6%</span></div>
+        <div class="sp"><span class="lbl">Whiff%</span><span class="vg">34.8%</span></div>
+        <div class="sp"><span class="lbl">Slider Whiff</span><span class="vg">47%</span></div>
+        <div class="sp"><span class="lbl">48K/47IP</span></div>
+      </div>
+      <div class="p-opp">vs D. Peterson (NYM) <span class="p-tag">NYM · Home</span></div>
+      <div class="stats-row">
+        <div class="sp"><span class="lbl">NYM K% vs RHP</span><span class="va">21.8%</span></div>
+        <div class="sp"><span class="lbl">#18 — avg</span></div>
+      </div>
+    </div>
+    <div class="hand-row">
+      <div class="hand-box active">
+        <div class="hand-lbl">NYM K% vs RHP</div>
+        <div class="hand-val" style="color:var(--amber)">21.8%</div>
+        <div class="hand-rank">#18 — avg matchup</div>
+      </div>
+      <div class="hand-box">
+        <div class="hand-lbl">Burns Pitch Profile</div>
+        <div class="hand-val" style="color:var(--text2)">2-Pitch</div>
+        <div class="hand-rank">FF + Slider dominant</div>
+      </div>
+    </div>
+    <div class="l5-sec">
+      <div class="l5-label">Burns — Last 5 Starts (7+ Ks in 5 of 7 starts this year)</div>
+      <div class="l5-row">
+        <div class="l5c"><span class="kn kn-h">8</span><span class="op">vs PIT #25</span></div>
+        <div class="l5c"><span class="kn kn-h">7</span><span class="op">vs MIL #13</span></div>
+        <div class="l5c"><span class="kn kn-h">9</span><span class="op">vs ATL #11</span></div>
+        <div class="l5c"><span class="kn kn-m">6</span><span class="op">vs COL #27</span></div>
+        <div class="l5c"><span class="kn kn-h">7</span><span class="op">vs STL #21</span></div>
+      </div>
+    </div>
+    <div class="proj-sec">
+      <div class="proj-grid">
+        <div class="pbox hl">
+          <div class="pbox-lbl">Proj Ks</div>
+          <div class="pbox-val" style="color:var(--green)">7.0</div>
+          <div class="pbox-sub">NB model</div>
+        </div>
+        <div class="pbox">
+          <div class="pbox-lbl">Est. Book Line</div>
+          <div class="pbox-val" style="color:var(--text)">6.5</div>
+          <div class="pbox-line">O -125 est · U +105</div>
+          <div class="edge-row"><span class="edge-pill">+0.5K / +8% Edge</span></div>
+        </div>
+      </div>
+      <div class="proj-grid">
+        <div class="pbox">
+          <div class="pbox-lbl">Stuff Rating</div>
+          <div class="pbox-val" style="color:var(--green);font-size:20px">Elite</div>
+          <div class="pbox-sub">95th pct whiff · 47% slider whiff</div>
+        </div>
+        <div class="pbox">
+          <div class="pbox-lbl">Citi Field Park</div>
+          <div class="pbox-val" style="color:var(--green);font-size:20px">0.95</div>
+          <div class="pbox-sub">Pitcher-friendly ✓</div>
+        </div>
+      </div>
+    </div>
+    <div class="ump-row"><span class="ump-lbl">⚖ Ump Factor</span><span class="ump-val" style="color:var(--text2)">Neutral +0.1</span></div>
+    <div class="risk-row"><span class="risk-lbl">Game Script Risk</span><div class="risk-bg"><div class="risk-fill rf-low" style="width:22%"></div></div><span class="risk-val" style="color:var(--green)">Low</span></div>
+    <div class="act-sec"><div class="act-lbl">Action</div><div class="act-text"><strong>OVER 6.5 Ks — Full Size.</strong> Burns has elite whiff stuff (34.8%, slider 47%) and 7+ Ks in 5 of 7 starts. Citi plays pitcher-friendly. NYM avg vs RHP. <span class="hg">Proj 7.0 vs 6.5 line = solid +EV.</span> If 7.5 available, that's worth a look at +105 or better.</div></div>
+  </div>
+</div>
+
+<!-- ══ 3. BRAXTON ASHCRAFT ══ -->
+<div class="gc">
+  <div class="gc-header" onclick="tog('c3')">
+    <div class="gc-rank">3</div>
+    <div class="gc-matchup">CHC @ PIT <span style="font-size:10px;color:var(--text3);font-weight:400;">6:40 PM</span></div>
+    <div class="gc-right">
+      <div><span class="badge b-mod">Moderate</span></div>
+      <div class="gc-time">PNC Park</div>
+    </div>
+    <div class="chev" id="chev-c3">▼</div>
+  </div>
+  <div class="coll" id="c3">
+    <div class="p-sec">
+      <div class="p-sec-label">Focus Pitcher</div>
+      <div class="p-name">Braxton Ashcraft <span class="p-tag">PIT · Home</span> <span class="trend-u">↑</span></div>
+      <div class="stats-row">
+        <div class="sp"><span class="lbl">ERA</span><span class="vg">2.89</span></div>
+        <div class="sp"><span class="lbl">K/9</span><span class="vg">9.11</span></div>
+        <div class="sp"><span class="lbl">65K/62.1IP</span></div>
+        <div class="sp"><span class="lbl">Curve Whiff</span><span class="vg">50.9%</span></div>
+        <div class="sp"><span class="lbl">WHIP</span><span class="vg">1.03</span></div>
+        <div class="sp"><span class="lbl">7IP 9K last start</span></div>
+      </div>
+      <div class="p-opp">vs J. Wicks (CHC) <span class="p-tag">CHC · Away</span></div>
+      <div class="stats-row">
+        <div class="sp"><span class="lbl">CHC K% vs RHP</span><span class="va">22.4%</span></div>
+        <div class="sp"><span class="lbl">#15 — avg</span></div>
+      </div>
+    </div>
+    <div class="hand-row">
+      <div class="hand-box active">
+        <div class="hand-lbl">CHC K% vs RHP</div>
+        <div class="hand-val" style="color:var(--amber)">22.4%</div>
+        <div class="hand-rank">#15 — avg matchup</div>
+      </div>
+      <div class="hand-box">
+        <div class="hand-lbl">Stuff Rating</div>
+        <div class="hand-val" style="color:var(--green)">A+</div>
+        <div class="hand-rank">Splitter added in 2026</div>
+      </div>
+    </div>
+    <div class="l5-sec">
+      <div class="l5-label">Ashcraft — Last 5 Starts</div>
+      <div class="l5-row">
+        <div class="l5c"><span class="kn kn-m">5</span><span class="op">vs MIL #13</span></div>
+        <div class="l5c"><span class="kn kn-m">6</span><span class="op">vs SD #20</span></div>
+        <div class="l5c"><span class="kn kn-m">6</span><span class="op">vs STL #21</span></div>
+        <div class="l5c"><span class="kn kn-h">7</span><span class="op">vs STL #21</span></div>
+        <div class="l5c"><span class="kn kn-h">9</span><span class="op">vs STL #21</span></div>
+      </div>
+    </div>
+    <div class="proj-sec">
+      <div class="proj-grid">
+        <div class="pbox hl">
+          <div class="pbox-lbl">Proj Ks</div>
+          <div class="pbox-val" style="color:var(--amber)">6.3</div>
+          <div class="pbox-sub">NB model</div>
+        </div>
+        <div class="pbox">
+          <div class="pbox-lbl">Est. Book Line</div>
+          <div class="pbox-val" style="color:var(--text)">5.5</div>
+          <div class="pbox-line">O -120 est · U +100</div>
+          <div class="edge-row"><span class="edge-pill mod">+0.8K / +15% Edge</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="ump-row"><span class="ump-lbl">⚖ Ump Factor</span><span class="ump-val" style="color:var(--text2)">Neutral 0.0</span></div>
+    <div class="risk-row"><span class="risk-lbl">Game Script Risk</span><div class="risk-bg"><div class="risk-fill rf-low" style="width:24%"></div></div><span class="risk-val" style="color:var(--green)">Low</span></div>
+    <div class="act-sec"><div class="act-lbl">Action</div><div class="act-text"><strong>OVER 5.5 Ks — Half to Full Size.</strong> Ashcraft trending hot — 9 Ks last start, curveball at 50.9% whiff. CHC avg K lineup. PNC neutral park. <span class="ha">Proj 6.3 vs 5.5 gives solid cushion. Play at -120 or better.</span></div></div>
+  </div>
+</div>
+
+<!-- ══ 4. KYLE HARRISON ══ -->
+<div class="gc">
+  <div class="gc-header" onclick="tog('c4')">
+    <div class="gc-rank">4</div>
+    <div class="gc-matchup">STL @ MIL <span style="font-size:10px;color:var(--text3);font-weight:400;">7:40 PM</span></div>
+    <div class="gc-right">
+      <div><span class="badge b-mod">Moderate</span></div>
+      <div class="gc-time">AmFam Field</div>
+    </div>
+    <div class="chev" id="chev-c4">▼</div>
+  </div>
+  <div class="coll" id="c4">
+    <div class="p-sec">
+      <div class="p-sec-label">Focus Pitcher</div>
+      <div class="p-name">Kyle Harrison <span class="p-tag">MIL · Home</span> <span class="trend-u">↑</span></div>
+      <div class="stats-row">
+        <div class="sp"><span class="lbl">ERA</span><span class="vg">2.89</span></div>
+        <div class="sp"><span class="lbl">K/9</span><span class="vg">10.8</span></div>
+        <div class="sp"><span class="lbl">K%</span><span class="vg">29.4%</span></div>
+        <div class="sp"><span class="lbl">Whiff%</span><span class="vg">30.1%</span></div>
+        <div class="sp"><span class="lbl">L5 ERA</span><span class="vg">2.44</span></div>
+      </div>
+      <div class="p-opp">vs M. McGreevy (STL) <span class="p-tag">STL · Away</span></div>
+    </div>
+    <div class="hand-row">
+      <div class="hand-box active">
+        <div class="hand-lbl">STL K% vs LHP</div>
+        <div class="hand-val" style="color:var(--green)">25.3%</div>
+        <div class="hand-rank">#7 — favorable ✓</div>
+      </div>
+      <div class="hand-box">
+        <div class="hand-lbl">STL K% vs RHP</div>
+        <div class="hand-val" style="color:var(--text2)">20.8%</div>
+        <div class="hand-rank">#22 — Harrison LHP matchup better</div>
+      </div>
+    </div>
+    <div class="l5-sec">
+      <div class="l5-label">Harrison — Last 5 Starts</div>
+      <div class="l5-row">
+        <div class="l5c"><span class="kn kn-h">7</span><span class="op">vs SD #20</span></div>
+        <div class="l5c"><span class="kn kn-h">8</span><span class="op">vs LAD #3</span></div>
+        <div class="l5c"><span class="kn kn-h">7</span><span class="op">vs PHI #9</span></div>
+        <div class="l5c"><span class="kn kn-m">6</span><span class="op">vs NYM #18</span></div>
+        <div class="l5c"><span class="kn kn-h">7</span><span class="op">vs ATL #11</span></div>
+      </div>
+    </div>
+    <div class="proj-sec">
+      <div class="proj-grid">
+        <div class="pbox hl">
+          <div class="pbox-lbl">Proj Ks</div>
+          <div class="pbox-val" style="color:var(--green)">6.8</div>
+          <div class="pbox-sub">NB model</div>
+        </div>
+        <div class="pbox">
+          <div class="pbox-lbl">Est. Book Line</div>
+          <div class="pbox-val" style="color:var(--text)">5.5</div>
+          <div class="pbox-line">O -118 est · U -102</div>
+          <div class="edge-row"><span class="edge-pill">+1.3K / +24% Edge</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="ump-row"><span class="ump-lbl">⚖ Ump Factor</span><span class="ump-val" style="color:var(--text2)">Neutral 0.0</span></div>
+    <div class="risk-row"><span class="risk-lbl">Game Script Risk</span><div class="risk-bg"><div class="risk-fill rf-low" style="width:20%"></div></div><span class="risk-val" style="color:var(--green)">Low</span></div>
+    <div class="act-sec"><div class="act-lbl">Action</div><div class="act-text"><strong>OVER 5.5 Ks — Full Size.</strong> <span class="hg">STL is #7 in K-rate vs LHP</span> — Harrison's best matchup type. 6+ in 4 of last 5. Proj 6.8 gives 1.3K cushion over a 5.5 line. Play at -120 or better.</div></div>
+  </div>
+</div>
+
+<!-- ══ 5. SPENCER STRIDER ══ -->
+<div class="gc">
+  <div class="gc-header" onclick="tog('c5')">
+    <div class="gc-rank">5</div>
+    <div class="gc-matchup">ATL @ BOS <span style="font-size:10px;color:var(--text3);font-weight:400;">6:45 PM</span></div>
+    <div class="gc-right">
+      <div><span class="badge b-mod">Moderate</span></div>
+      <div class="gc-time">Fenway Park</div>
+    </div>
+    <div class="chev" id="chev-c5">▼</div>
+  </div>
+  <div class="coll" id="c5">
+    <div class="p-sec">
+      <div class="p-sec-label">Focus Pitcher</div>
+      <div class="p-name">Spencer Strider <span class="p-tag">ATL · Away</span> <span class="trend-u">↑</span></div>
+      <div class="stats-row">
+        <div class="sp"><span class="lbl">ERA</span><span class="va">3.00</span></div>
+        <div class="sp"><span class="lbl">K/9</span><span class="vg">11.6</span></div>
+        <div class="sp"><span class="lbl">K%</span><span class="vg">31.4%</span></div>
+        <div class="sp"><span class="lbl">Whiff%</span><span class="vg">33.0%</span></div>
+        <div class="sp"><span class="lbl">BB%</span><span class="vr">14.6%</span></div>
+        <div class="sp"><span class="lbl">27K/21IP</span></div>
+      </div>
+      <div class="p-opp">vs R. Suarez (BOS) <span class="p-tag">BOS · Home</span></div>
+    </div>
+    <div class="hand-row">
+      <div class="hand-box active">
+        <div class="hand-lbl">BOS K% vs RHP</div>
+        <div class="hand-val" style="color:var(--red)">19.2%</div>
+        <div class="hand-rank">#25 — contact team ⚠</div>
+      </div>
+      <div class="hand-box">
+        <div class="hand-lbl">Strider BB Risk</div>
+        <div class="hand-val" style="color:var(--red)">14.6%</div>
+        <div class="hand-rank">Short outing risk</div>
+      </div>
+    </div>
+    <div class="l5-sec">
+      <div class="l5-label">Strider — Last 5 Starts (2026)</div>
+      <div class="l5-row">
+        <div class="l5c"><span class="kn kn-m">5</span><span class="op">vs COL #27</span></div>
+        <div class="l5c"><span class="kn kn-m">6</span><span class="op">vs NYM #18</span></div>
+        <div class="l5c"><span class="kn kn-m">6</span><span class="op">vs WSH #24</span></div>
+        <div class="l5c"><span class="kn kn-h">9</span><span class="op">vs MIA #26</span></div>
+        <div class="l5c"><span class="kn kn-m">6</span><span class="op">vs BOS #25</span></div>
+      </div>
+    </div>
+    <div class="proj-sec">
+      <div class="proj-grid">
+        <div class="pbox hl">
+          <div class="pbox-lbl">Proj Ks</div>
+          <div class="pbox-val" style="color:var(--amber)">6.1</div>
+          <div class="pbox-sub">NB model</div>
+        </div>
+        <div class="pbox">
+          <div class="pbox-lbl">Est. Book Line</div>
+          <div class="pbox-val" style="color:var(--text)">5.5</div>
+          <div class="pbox-line">O -115 est · U -105</div>
+          <div class="edge-row"><span class="edge-pill mod">+0.6K / +11% Edge</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="ump-row"><span class="ump-lbl">⚖ Ump Factor</span><span class="ump-val" style="color:var(--text2)">Neutral 0.0</span></div>
+    <div class="risk-row"><span class="risk-lbl">Game Script Risk</span><div class="risk-bg"><div class="risk-fill rf-med" style="width:42%"></div></div><span class="risk-val" style="color:var(--amber)">Mod-High</span></div>
+    <div class="act-sec"><div class="act-lbl">Action</div><div class="act-text"><strong>Lean OVER 5.5 — Half Size.</strong> Stuff is back (31.4% K-rate, 15 whiffs last start). BOS is <span class="hr">#25 in K-rate vs RHP</span> — biggest negative. Fenway doesn't help. BB rate 14.6% = early hook risk. <span class="ha">Only at -110 or better. Skip at -120+.</span></div></div>
+  </div>
+</div>
+
+<!-- ══ 6. JOEY CANTILLO ══ -->
+<div class="gc">
+  <div class="gc-header" onclick="tog('c6')">
+    <div class="gc-rank">6</div>
+    <div class="gc-matchup">WSH @ CLE <span style="font-size:10px;color:var(--text3);font-weight:400;">6:10 PM</span></div>
+    <div class="gc-right">
+      <div><span class="badge b-lean">Lean</span></div>
+      <div class="gc-time">Progressive Field</div>
+    </div>
+    <div class="chev" id="chev-c6">▼</div>
+  </div>
+  <div class="coll" id="c6">
+    <div class="p-sec">
+      <div class="p-sec-label">Focus Pitcher</div>
+      <div class="p-name">Joey Cantillo <span class="p-tag">CLE · Home</span> <span class="trend-u">↑</span></div>
+      <div class="stats-row">
+        <div class="sp"><span class="lbl">ERA</span><span class="vg">3.50</span></div>
+        <div class="sp"><span class="lbl">K%</span><span class="vg">27.1%</span></div>
+        <div class="sp"><span class="lbl">xFIP</span><span class="vg">3.69</span></div>
+        <div class="sp"><span class="lbl">BB%</span><span class="va">10.8%</span></div>
+        <div class="sp"><span class="lbl">43 whiffs L3 starts</span></div>
+      </div>
+    </div>
+    <div class="hand-row">
+      <div class="hand-box active">
+        <div class="hand-lbl">WSH K% vs LHP</div>
+        <div class="hand-val" style="color:var(--amber)">22.1%</div>
+        <div class="hand-rank">#17 — below avg</div>
+      </div>
+      <div class="hand-box">
+        <div class="hand-lbl">Cantillo BB Risk</div>
+        <div class="hand-val" style="color:var(--amber)">10.8%</div>
+        <div class="hand-rank">Walk rate limits depth</div>
+      </div>
+    </div>
+    <div class="l5-sec">
+      <div class="l5-label">Cantillo — Last 5 Starts (improving)</div>
+      <div class="l5-row">
+        <div class="l5c"><span class="kn kn-l">3</span><span class="op">vs DET #15</span></div>
+        <div class="l5c"><span class="kn kn-m">6</span><span class="op">vs KC #23</span></div>
+        <div class="l5c"><span class="kn kn-h">9</span><span class="op">vs BAL #10</span></div>
+        <div class="l5c"><span class="kn kn-m">6</span><span class="op">vs DET #15</span></div>
+        <div class="l5c"><span class="kn kn-h">7</span><span class="op">vs MIN #16</span></div>
+      </div>
+    </div>
+    <div class="proj-sec">
+      <div class="proj-grid">
+        <div class="pbox">
+          <div class="pbox-lbl">Proj Ks</div>
+          <div class="pbox-val" style="color:var(--blue)">5.8</div>
+          <div class="pbox-sub">NB model</div>
+        </div>
+        <div class="pbox">
+          <div class="pbox-lbl">Est. Book Line</div>
+          <div class="pbox-val" style="color:var(--text)">5.5</div>
+          <div class="pbox-line">O -112 est · U -108</div>
+          <div class="edge-row"><span class="edge-pill lean">+0.3K / +5% Edge</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="ump-row"><span class="ump-lbl">⚖ Ump Factor</span><span class="ump-val" style="color:var(--text2)">Neutral +0.1</span></div>
+    <div class="risk-row"><span class="risk-lbl">Game Script Risk</span><div class="risk-bg"><div class="risk-fill rf-med" style="width:35%"></div></div><span class="risk-val" style="color:var(--amber)">Mod</span></div>
+    <div class="act-sec"><div class="act-lbl">Action</div><div class="act-text">Trending up — 43 whiffs in last 3 starts. WSH is below-avg K lineup vs LHP. Walk rate is the main risk. <span class="ha">Lean only at -110 or better. Price-dependent.</span></div></div>
+  </div>
+</div>
+
+<!-- ══ 7. RANDY VASQUEZ ══ -->
+<div class="gc">
+  <div class="gc-header" onclick="tog('c7')">
+    <div class="gc-rank">7</div>
+    <div class="gc-matchup">PHI @ SD <span style="font-size:10px;color:var(--text3);font-weight:400;">9:40 PM</span></div>
+    <div class="gc-right">
+      <div><span class="badge b-lean">Lean</span></div>
+      <div class="gc-time">Petco Park</div>
+    </div>
+    <div class="chev" id="chev-c7">▼</div>
+  </div>
+  <div class="coll" id="c7">
+    <div class="p-sec">
+      <div class="p-sec-label">Focus Pitcher</div>
+      <div class="p-name">Randy Vasquez <span class="p-tag">SD · Home</span> <span class="trend-f">→</span></div>
+      <div class="stats-row">
+        <div class="sp"><span class="lbl">ERA</span><span class="vg">2.68</span></div>
+        <div class="sp"><span class="lbl">K/9</span><span>8.05</span></div>
+        <div class="sp"><span class="lbl">FIP</span><span class="vg">3.31</span></div>
+        <div class="sp"><span class="lbl">CH Whiff</span><span class="vg">50%</span></div>
+        <div class="sp"><span class="lbl">FB Whiff</span><span>30.2%</span></div>
+        <div class="sp"><span class="lbl">K%</span><span>26.3%</span></div>
+      </div>
+      <div class="p-opp">vs A. Nola (PHI) <span class="p-tag">PHI · Away</span></div>
+    </div>
+    <div class="hand-row">
+      <div class="hand-box active">
+        <div class="hand-lbl">PHI K% vs RHP</div>
+        <div class="hand-val" style="color:var(--amber)">21.4%</div>
+        <div class="hand-rank">#19 — avg/below</div>
+      </div>
+      <div class="hand-box">
+        <div class="hand-lbl">Petco Park</div>
+        <div class="hand-val" style="color:var(--green)">0.93</div>
+        <div class="hand-rank">Best park on slate ✓</div>
+      </div>
+    </div>
+    <div class="l5-sec">
+      <div class="l5-label">Vasquez — Last 5 Starts (K-rate declining from hot start)</div>
+      <div class="l5-row">
+        <div class="l5c"><span class="kn kn-h">8</span><span class="op">vs DET #15</span></div>
+        <div class="l5c"><span class="kn kn-m">3</span><span class="op">vs BOS #25</span></div>
+        <div class="l5c"><span class="kn kn-h">8</span><span class="op">vs COL #27</span></div>
+        <div class="l5c"><span class="kn kn-m">5</span><span class="op">vs SF #12</span></div>
+        <div class="l5c"><span class="kn kn-m">3</span><span class="op">vs SEA #8</span></div>
+      </div>
+    </div>
+    <div class="proj-sec">
+      <div class="proj-grid">
+        <div class="pbox">
+          <div class="pbox-lbl">Proj Ks</div>
+          <div class="pbox-val" style="color:var(--blue)">5.4</div>
+          <div class="pbox-sub">NB model</div>
+        </div>
+        <div class="pbox">
+          <div class="pbox-lbl">Est. Book Line</div>
+          <div class="pbox-val" style="color:var(--text)">5.5</div>
+          <div class="pbox-line">O -115 est · U -105</div>
+          <div class="edge-row"><span class="edge-pill lean" style="background:var(--red-dim);color:var(--red);border-color:var(--red)">-0.1K · Below Line</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="ump-row"><span class="ump-lbl">⚖ Ump Factor</span><span class="ump-val" style="color:var(--text2)">Neutral 0.0</span></div>
+    <div class="risk-row"><span class="risk-lbl">Game Script Risk</span><div class="risk-bg"><div class="risk-fill rf-med" style="width:38%"></div></div><span class="risk-val" style="color:var(--amber)">Mod</span></div>
+    <div class="act-sec"><div class="act-lbl">Action</div><div class="act-text">K-rate declining from hot start — 3 Ks in two of last 5. Changeup 50% whiff is real but inconsistent. PHI below-avg K lineup. Model proj below the line. <span class="hr">Pass or consider UNDER 5.5 at +105.</span> Petco helps but not enough to overcome declining K trend.</div></div>
+  </div>
+</div>
+
+<!-- ══ 8. DAVID PETERSON ══ -->
+<div class="gc">
+  <div class="gc-header" onclick="tog('c8')">
+    <div class="gc-rank">8</div>
+    <div class="gc-matchup">CIN @ NYM <span style="font-size:10px;color:var(--text3);font-weight:400;">7:10 PM</span></div>
+    <div class="gc-right">
+      <div><span class="badge b-lean">Lean</span></div>
+      <div class="gc-time">Citi Field</div>
+    </div>
+    <div class="chev" id="chev-c8">▼</div>
+  </div>
+  <div class="coll" id="c8">
+    <div class="p-sec">
+      <div class="p-sec-label">Focus Pitcher</div>
+      <div class="p-name">David Peterson <span class="p-tag">NYM · Home</span> <span class="trend-u">↑</span></div>
+      <div class="stats-row">
+        <div class="sp"><span class="lbl">ERA</span><span class="va">5.03</span></div>
+        <div class="sp"><span class="lbl">May ERA</span><span class="vg">2.50</span></div>
+        <div class="sp"><span class="lbl">May K/9</span><span class="vg">10.6</span></div>
+        <div class="sp"><span class="lbl">18IP May</span></div>
+      </div>
+    </div>
+    <div class="hand-row">
+      <div class="hand-box active">
+        <div class="hand-lbl">CIN K% vs LHP</div>
+        <div class="hand-val" style="color:var(--green)">24.8%</div>
+        <div class="hand-rank">#9 — favorable ✓</div>
+      </div>
+      <div class="hand-box">
+        <div class="hand-lbl">Season ERA risk</div>
+        <div class="hand-val" style="color:var(--red)">5.03</div>
+        <div class="hand-rank">May form much better</div>
+      </div>
+    </div>
+    <div class="l5-sec">
+      <div class="l5-label">Peterson — Last 5 Starts (May turnaround)</div>
+      <div class="l5-row">
+        <div class="l5c"><span class="kn kn-l">2</span><span class="op">vs PHI #9</span></div>
+        <div class="l5c"><span class="kn kn-m">5</span><span class="op">vs ATL #11</span></div>
+        <div class="l5c"><span class="kn kn-h">7</span><span class="op">vs MIA #26</span></div>
+        <div class="l5c"><span class="kn kn-m">6</span><span class="op">vs WSH #24</span></div>
+        <div class="l5c"><span class="kn kn-m">3</span><span class="op">vs PIT #25</span></div>
+      </div>
+    </div>
+    <div class="proj-sec">
+      <div class="proj-grid">
+        <div class="pbox">
+          <div class="pbox-lbl">Proj Ks</div>
+          <div class="pbox-val" style="color:var(--blue)">5.6</div>
+          <div class="pbox-sub">NB model — May-weighted</div>
+        </div>
+        <div class="pbox">
+          <div class="pbox-lbl">Est. Book Line</div>
+          <div class="pbox-val" style="color:var(--text)">5.5</div>
+          <div class="pbox-line">O -112 est · U -108</div>
+          <div class="edge-row"><span class="edge-pill lean">+0.1K · Marginal</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="ump-row"><span class="ump-lbl">⚖ Ump Factor</span><span class="ump-val" style="color:var(--text2)">Neutral 0.0</span></div>
+    <div class="risk-row"><span class="risk-lbl">Game Script Risk</span><div class="risk-bg"><div class="risk-fill rf-med" style="width:40%"></div></div><span class="risk-val" style="color:var(--amber)">Mod</span></div>
+    <div class="act-sec"><div class="act-lbl">Action</div><div class="act-text">May form (2.50 ERA, 10.6 K/9) is real. CIN is #9 in K-rate vs LHP — good matchup. But season ERA 5.03 and inconsistent L5 (2,5,7,6,3) is volatile. <span class="ha">Only at -108 or better (close to even). Skip if -115+.</span></div></div>
+  </div>
+</div>
+
+<!-- PASS SECTION -->
+<div class="sec-head"><div class="sec-title">PASSES</div><div class="sec-meta">all 21 remaining pitchers · compact</div></div>
+
+<div class="pass-card">
+  <div>
+    <div class="pass-m">LAA @ DET — J. Kochanowicz</div>
+    <div class="pass-p">6:40 PM · Comerica Park</div>
+    <div class="pass-stats">
+      <div class="sp"><span class="lbl">ERA</span><span class="va">3.90</span></div>
+      <div class="sp"><span class="lbl">K/9</span><span>6.8</span></div>
+      <div class="sp"><span class="lbl">LAA K%</span><span class="vg">25.6% vs RHP #1</span></div>
+      <div class="sp"><span class="lbl">Proj Ks</span><span>5.1</span></div>
+    </div>
+    <div class="pass-p" style="margin-top:4px">LAA is #1 K lineup vs RHP but Kochanowicz K/9 too low to clear line</div>
+  </div>
+  <span class="badge b-pass">PASS</span>
+</div>
+
+<div class="pass-card">
+  <div>
+    <div class="pass-m">LAA @ DET — K. Montero</div>
+    <div class="pass-p">6:40 PM · Comerica Park</div>
+    <div class="pass-stats">
+      <div class="sp"><span class="lbl">ERA</span><span class="va">3.80</span></div>
+      <div class="sp"><span class="lbl">xERA</span><span class="vg">1.20</span></div>
+      <div class="sp"><span class="lbl">K%</span><span>22.4%</span></div>
+      <div class="sp"><span class="lbl">LAA K%</span><span class="vg">25.6% #1</span></div>
+      <div class="sp"><span class="lbl">Proj Ks</span><span>5.3</span></div>
+    </div>
+    <div class="pass-p" style="margin-top:4px">LAA K% helps but Montero's K-rate too low for 5.5+ lines</div>
+  </div>
+  <span class="badge b-pass">PASS</span>
+</div>
+
+<div class="pass-card">
+  <div>
+    <div class="pass-m">TB @ BAL — G. Jax / S. Baz</div>
+    <div class="pass-p">6:35 PM · Camden Yards</div>
+    <div class="pass-stats">
+      <div class="sp"><span class="lbl">Jax K/9</span><span>8.0</span></div>
+      <div class="sp"><span class="lbl">Baz K/9</span><span>9.7</span></div>
+      <div class="sp"><span class="lbl">TB K%</span><span class="va">21.5% #17</span></div>
+      <div class="sp"><span class="lbl">BAL K%</span><span class="va">22.3% #15</span></div>
+    </div>
+    <div class="pass-p" style="margin-top:4px">Jax proj 4.8 Ks · Baz proj 5.6 — marginal lean only on Baz at 5.5 line sub -108</div>
+  </div>
+  <span class="badge b-pass">PASS</span>
+</div>
+
+<div class="pass-card">
+  <div>
+    <div class="pass-m">MIA @ TOR — S. Alcantara / S. Miles</div>
+    <div class="pass-p">7:07 PM · Rogers Centre</div>
+    <div class="pass-stats">
+      <div class="sp"><span class="lbl">Alcantara K%</span><span class="vr">17.8%</span></div>
+      <div class="sp"><span class="lbl">Miles ERA</span><span class="vg">2.17</span></div>
+      <div class="sp"><span class="lbl">Miles K%</span><span class="va">22.1%</span></div>
+      <div class="sp"><span class="lbl">Miles proj</span><span>4.9 Ks</span></div>
+    </div>
+    <div class="pass-p" style="margin-top:4px">Alcantara post-TJS hard pass. Miles ERA great but K-rate limits upside — proj below 5.5 line</div>
+  </div>
+  <span class="badge b-pass">PASS</span>
+</div>
+
+<div class="pass-card">
+  <div>
+    <div class="pass-m">STL @ MIL — M. McGreevy</div>
+    <div class="pass-p">7:40 PM · AmFam Field</div>
+    <div class="pass-stats">
+      <div class="sp"><span class="lbl">ERA</span><span class="va">4.50</span></div>
+      <div class="sp"><span class="lbl">K%</span><span class="vr">18.5%</span></div>
+      <div class="sp"><span class="lbl">Proj Ks</span><span>3.8</span></div>
+    </div>
+    <div class="pass-p" style="margin-top:4px">Low K-rate profile. Hard pass</div>
+  </div>
+  <span class="badge b-pass">PASS</span>
+</div>
+
+<div class="pass-card">
+  <div>
+    <div class="pass-m">MIN @ CWS — J. Ryan / S. Burke</div>
+    <div class="pass-p">7:40 PM · Guaranteed Rate</div>
+    <div class="pass-stats">
+      <div class="sp"><span class="lbl">Ryan K/9</span><span class="vg">10.9</span></div>
+      <div class="sp"><span class="lbl">Ryan proj</span><span>6.5 Ks</span></div>
+      <div class="sp"><span class="lbl">CWS K%</span><span class="vg">27.8% #4</span></div>
+    </div>
+    <div class="pass-p" style="margin-top:4px">Ryan proj 6.5 vs est 6.5 line — no edge. Burke proj 4.7 pass. Ryan OVER only if line is 5.5</div>
+  </div>
+  <span class="badge b-pass">PASS</span>
+</div>
+
+<div class="pass-card">
+  <div>
+    <div class="pass-m">HOU @ TEX — J. Alexander / J. Leiter</div>
+    <div class="pass-p">8:05 PM · Globe Life Field</div>
+    <div class="pass-stats">
+      <div class="sp"><span class="lbl">Leiter ERA</span><span class="vr">4.81</span></div>
+      <div class="sp"><span class="lbl">Alexander K/9</span><span>8.2</span></div>
+      <div class="sp"><span class="lbl">Proj Ks</span><span>4.8 / 5.0</span></div>
+    </div>
+    <div class="pass-p" style="margin-top:4px">Both proj below typical 5.5 lines. Skip</div>
+  </div>
+  <span class="badge b-pass">PASS</span>
+</div>
+
+<div class="pass-card">
+  <div>
+    <div class="pass-m">WSH @ CLE — C. Cavalli</div>
+    <div class="pass-p">6:10 PM · Progressive Field</div>
+    <div class="pass-stats">
+      <div class="sp"><span class="lbl">ERA</span><span class="va">3.86</span></div>
+      <div class="sp"><span class="lbl">K%</span><span>22.5%</span></div>
+      <div class="sp"><span class="lbl">CLE K%</span><span class="va">20.6% vs LHP #23</span></div>
+      <div class="sp"><span class="lbl">Proj Ks</span><span>5.3</span></div>
+    </div>
+    <div class="pass-p" style="margin-top:4px">CLE tough K lineup vs LHP. Proj below line</div>
+  </div>
+  <span class="badge b-pass">PASS</span>
+</div>
+
+<div class="pass-card">
+  <div>
+    <div class="pass-m">SEA @ ATH — E. Hancock / L. Severino</div>
+    <div class="pass-p">9:40 PM · Oakland Coliseum</div>
+    <div class="pass-stats">
+      <div class="sp"><span class="lbl">Hancock K/9</span><span>8.5</span></div>
+      <div class="sp"><span class="lbl">Severino wOBA-vs</span><span class="vr">.345</span></div>
+      <div class="sp"><span class="lbl">SEA K%</span><span class="vg">25.1% vs RHP #6</span></div>
+    </div>
+    <div class="pass-p" style="margin-top:4px">Hancock proj 5.0 vs SEA's good K lineup — marginal at best. Severino getting hit hard, pass</div>
+  </div>
+  <span class="badge b-pass">PASS</span>
+</div>
+
+<div class="pass-card">
+  <div>
+    <div class="pass-m">AZ @ SF — E. Rodriguez / T. Mahle</div>
+    <div class="pass-p">9:45 PM · Oracle Park</div>
+    <div class="pass-stats">
+      <div class="sp"><span class="lbl">Rodriguez K/9</span><span>6.6</span></div>
+      <div class="sp"><span class="lbl">Rodriguez Whiff</span><span class="vr">18.8%</span></div>
+      <div class="sp"><span class="lbl">Mahle K/9</span><span>7.2</span></div>
+      <div class="sp"><span class="lbl">Oracle Park</span><span class="vg">0.91</span></div>
+    </div>
+    <div class="pass-p" style="margin-top:4px">Rodriguez low K profile despite COL being K-heavy (#2 vs LHP). Mahle post-shoulder, limited K upside. Oracle park factor not enough</div>
+  </div>
+  <span class="badge b-pass">PASS</span>
+</div>
+
+<div class="pass-card">
+  <div>
+    <div class="pass-m">COL @ LAD — K. Freeland / E. Lauer</div>
+    <div class="pass-p">10:10 PM · Dodger Stadium</div>
+    <div class="pass-stats">
+      <div class="sp"><span class="lbl">Freeland K%</span><span class="vr">16.4%</span></div>
+      <div class="sp"><span class="lbl">Lauer K/9</span><span class="vr">6.9</span></div>
+      <div class="sp"><span class="lbl">LAD K%</span><span class="vr">18.4% #29</span></div>
+    </div>
+    <div class="pass-p" style="margin-top:4px">LAD #29 in K-rate. Both pitchers low K-rate. Hard pass both</div>
+  </div>
+  <span class="badge b-pass">PASS</span>
+</div>
+
+<div class="pass-card">
+  <div>
+    <div class="pass-m">ATL @ BOS — R. Suarez</div>
+    <div class="pass-p">6:45 PM · Fenway Park</div>
+    <div class="pass-stats">
+      <div class="sp"><span class="lbl">ERA</span><span class="vg">3.20</span></div>
+      <div class="sp"><span class="lbl">K%</span><span>23.2%</span></div>
+      <div class="sp"><span class="lbl">ATL K%</span><span class="vr">20.1% vs LHP #24</span></div>
+      <div class="sp"><span class="lbl">Proj Ks</span><span>5.1</span></div>
+    </div>
+    <div class="pass-p" style="margin-top:4px">ATL #24 vs LHP. Fenway 1.07. Proj below 5.5 line. Consider UNDER 5.5 at +105</div>
+  </div>
+  <span class="badge b-pass">PASS / UNDER</span>
+</div>
+
+<div class="pass-card">
+  <div>
+    <div class="pass-m">CHC @ PIT — J. Wicks</div>
+    <div class="pass-p">6:40 PM · PNC Park</div>
+    <div class="pass-stats">
+      <div class="sp"><span class="lbl">ERA</span><span class="va">4.20</span></div>
+      <div class="sp"><span class="lbl">K/9</span><span>8.1</span></div>
+      <div class="sp"><span class="lbl">PIT K%</span><span class="va">21.8% vs LHP #17</span></div>
+      <div class="sp"><span class="lbl">Proj Ks</span><span>4.9</span></div>
+    </div>
+    <div class="pass-p" style="margin-top:4px">Avg K profile vs avg K lineup. Proj below line</div>
+  </div>
+  <span class="badge b-pass">PASS</span>
+</div>
+
+<div style="height:20px"></div>
+</div></div>
+
+<!-- F5 TAB -->
+<div id="tab-f5" class="cs">
+<div class="scroll-wrap">
+<div class="sec-head"><div class="sec-title">F5 — First Half</div><div class="sec-meta">all 15 matchups · May 27</div></div>
+
+<!-- F5-1: NYY@KC -->
+<div class="f5c">
+  <div class="f5h" onclick="tog('f1')">
+    <div><div class="f5m">NYY @ KC</div><div class="f5t">7:40 PM · Kauffman Stadium</div></div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px"><span class="badge b-strong">NYY ML</span><span class="badge b-under">UNDER F5</span></div>
+    <div class="chev open" id="chev-f1">▼</div>
+  </div>
+  <div class="coll open" id="f1">
+    <div class="f5-pitch-row">
+      <div class="f5-pc"><div class="f5-pn">Cam Schlittler</div><div class="f5-ps">NYY Away<br>ERA 1.35 · WHIP 0.78<br>L5 F5 ERA 1.20<br>1st Inn ERA 0.8<br>K/BB 59/9</div></div>
+      <div class="f5-vs">VS</div>
+      <div class="f5-pc"><div class="f5-pn r">B. Falter (op)</div><div class="f5-ps r">KC · Opener<br>ERA 3.80 · limited IP<br>L. Avila bulk<br>ERA 4.20<br>1st Inn ERA 3.5</div></div>
+    </div>
+    <div class="f5-pg">
+      <div class="f5-pb win"><div class="f5-pt" style="color:var(--green)">NYY</div><div class="f5-pp">74%</div><div class="f5-po">-185</div><div class="f5-psub">F5 win prob · odds</div></div>
+      <div class="f5-pb"><div class="f5-pt" style="color:var(--red)">KC</div><div class="f5-pp" style="color:var(--red)">26%</div><div class="f5-po">+260</div><div class="f5-psub">F5 win prob · odds</div></div>
+    </div>
+    <div class="f5-tot"><div><div class="f5-tm u">UNDER</div><div class="f5-tp">~3.6 proj F5 runs</div><div class="f5-ts">NYY proj ER: 0.6 · KC proj ER: 3.0 · Park ×0.96</div></div><span class="badge b-under">F5 UNDER</span></div>
+    <div class="why"><div class="why-lbl">Why NYY</div><div class="why-t">Schlittler (1.35 ERA, 0.78 WHIP) is dominant through 5. KC using opener combo — early scoring opportunity for NYY. 74% F5 win prob.</div><div class="wdiv"></div><div class="why-lbl">Why Under</div><div class="why-t">Schlittler allows almost nothing (L5 F5 ERA 1.20). Avila bulk limits KC upside. Combined 3.6 proj — strong UNDER lean at 4.5.</div></div>
+  </div>
+</div>
+
+<!-- F5-2: CIN@NYM -->
+<div class="f5c">
+  <div class="f5h" onclick="tog('f2')">
+    <div><div class="f5m">CIN @ NYM</div><div class="f5t">7:10 PM · Citi Field</div></div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px"><span class="badge b-mod">NYM ML</span><span class="badge b-under">UNDER F5</span></div>
+    <div class="chev" id="chev-f2">▼</div>
+  </div>
+  <div class="coll" id="f2">
+    <div class="f5-pitch-row">
+      <div class="f5-pc"><div class="f5-pn">C. Burns</div><div class="f5-ps">CIN Away<br>ERA 2.11 · FIP 2.35<br>L5 F5 ERA 1.90<br>1st Inn ERA 1.4<br>Whiff% 34.8%</div></div>
+      <div class="f5-vs">VS</div>
+      <div class="f5-pc"><div class="f5-pn r">D. Peterson</div><div class="f5-ps r">NYM Home<br>ERA 5.03 · May ERA 2.50<br>L5 F5 ERA 3.80<br>1st Inn ERA 3.2<br>K/9 May 10.6</div></div>
+    </div>
+    <div class="f5-pg">
+      <div class="f5-pb"><div class="f5-pt" style="color:var(--amber)">CIN</div><div class="f5-pp" style="color:var(--amber)">44%</div><div class="f5-po">+130</div><div class="f5-psub">F5 win prob · odds</div></div>
+      <div class="f5-pb win"><div class="f5-pt" style="color:var(--green)">NYM</div><div class="f5-pp">56%</div><div class="f5-po">-135</div><div class="f5-psub">F5 win prob · odds</div></div>
+    </div>
+    <div class="f5-tot"><div><div class="f5-tm u">UNDER</div><div class="f5-tp">~4.1 proj F5 runs</div><div class="f5-ts">CIN proj ER: 1.8 · NYM proj ER: 2.3 · Citi ×0.95</div></div><span class="badge b-under">F5 UNDER</span></div>
+    <div class="why"><div class="why-lbl">Why NYM</div><div class="why-t">Burns is elite (34.8% whiff) but CIN is away. Peterson at home in May form (2.50 ERA). NYM at 56%.</div><div class="wdiv"></div><div class="why-lbl">Why Under</div><div class="why-t">Burns limits CIN to ~1.8 proj ER. Peterson improved but L5 F5 ERA 3.80 is risk. Citi plays pitcher-friendly. Combined 4.1 — lean UNDER at 4.5+.</div></div>
+  </div>
+</div>
+
+<!-- F5-3: CHC@PIT -->
+<div class="f5c">
+  <div class="f5h" onclick="tog('f3')">
+    <div><div class="f5m">CHC @ PIT</div><div class="f5t">6:40 PM · PNC Park</div></div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px"><span class="badge b-mod">PIT ML</span><span class="badge b-under">UNDER F5</span></div>
+    <div class="chev" id="chev-f3">▼</div>
+  </div>
+  <div class="coll" id="f3">
+    <div class="f5-pitch-row">
+      <div class="f5-pc"><div class="f5-pn">J. Wicks</div><div class="f5-ps">CHC Away<br>ERA 4.20 · FIP 4.05<br>L5 F5 ERA 3.80<br>1st Inn ERA 3.5<br>K% 22%</div></div>
+      <div class="f5-vs">VS</div>
+      <div class="f5-pc"><div class="f5-pn r">B. Ashcraft</div><div class="f5-ps r">PIT Home<br>ERA 2.89 · FIP 2.75<br>L5 F5 ERA 2.30<br>1st Inn ERA 1.8<br>Curve whiff 50.9%</div></div>
+    </div>
+    <div class="f5-pg">
+      <div class="f5-pb"><div class="f5-pt" style="color:var(--amber)">CHC</div><div class="f5-pp" style="color:var(--amber)">36%</div><div class="f5-po">+178</div><div class="f5-psub">F5 win prob · odds</div></div>
+      <div class="f5-pb win"><div class="f5-pt" style="color:var(--green)">PIT</div><div class="f5-pp">64%</div><div class="f5-po">-148</div><div class="f5-psub">F5 win prob · odds</div></div>
+    </div>
+    <div class="f5-tot"><div><div class="f5-tm u">UNDER</div><div class="f5-tp">~3.8 proj F5 runs</div><div class="f5-ts">CHC proj ER: 1.7 · PIT proj ER: 2.1 · PNC ×0.97</div></div><span class="badge b-under">F5 UNDER</span></div>
+    <div class="why"><div class="why-lbl">Why PIT</div><div class="why-t">Ashcraft's L5 F5 ERA 2.30 at home with 1.8 1st inn ERA. Wicks struggled away (3.80 L5 F5 ERA). PIT at 64%.</div><div class="wdiv"></div><div class="why-lbl">Why Under</div><div class="why-t">Ashcraft allows little early. PNC neutral. Combined proj 3.8 — UNDER at 4.5.</div></div>
+  </div>
+</div>
+
+<!-- F5-4: STL@MIL -->
+<div class="f5c">
+  <div class="f5h" onclick="tog('f4')">
+    <div><div class="f5m">STL @ MIL</div><div class="f5t">7:40 PM · AmFam Field</div></div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px"><span class="badge b-mod">MIL ML</span><span class="badge b-under">UNDER F5</span></div>
+    <div class="chev" id="chev-f4">▼</div>
+  </div>
+  <div class="coll" id="f4">
+    <div class="f5-pitch-row">
+      <div class="f5-pc"><div class="f5-pn">M. McGreevy</div><div class="f5-ps">STL Away<br>ERA 4.50 · FIP 4.30<br>L5 F5 ERA 4.10<br>1st Inn ERA 3.8<br>K% 18.5%</div></div>
+      <div class="f5-vs">VS</div>
+      <div class="f5-pc"><div class="f5-pn r">K. Harrison</div><div class="f5-ps r">MIL Home<br>ERA 2.89 · FIP 2.70<br>L5 F5 ERA 2.40<br>1st Inn ERA 2.1<br>K% 29.4%</div></div>
+    </div>
+    <div class="f5-pg">
+      <div class="f5-pb"><div class="f5-pt" style="color:var(--red)">STL</div><div class="f5-pp" style="color:var(--red)">31%</div><div class="f5-po">+230</div><div class="f5-psub">F5 win prob · odds</div></div>
+      <div class="f5-pb win"><div class="f5-pt" style="color:var(--green)">MIL</div><div class="f5-pp">69%</div><div class="f5-po">-165</div><div class="f5-psub">F5 win prob · odds</div></div>
+    </div>
+    <div class="f5-tot"><div><div class="f5-tm u">UNDER</div><div class="f5-tp">~3.9 proj F5 runs</div><div class="f5-ts">STL proj ER: 2.3 · MIL proj ER: 1.6 · AmFam ×0.97</div></div><span class="badge b-under">F5 UNDER</span></div>
+    <div class="why"><div class="why-lbl">Why MIL</div><div class="why-t">Harrison dominant at home (L5 F5 ERA 2.40, 1st inn 2.1). McGreevy's 4.10 L5 F5 ERA means STL will score. But Harrison limits them. MIL 69%.</div><div class="wdiv"></div><div class="why-lbl">Why Under</div><div class="why-t">Harrison locks down MIL side. McGreevy limits ceiling too. Combined 3.9 proj — lean UNDER at 4.5.</div></div>
+  </div>
+</div>
+
+<!-- F5-5: WSH@CLE -->
+<div class="f5c">
+  <div class="f5h" onclick="tog('f5g')">
+    <div><div class="f5m">WSH @ CLE</div><div class="f5t">6:10 PM · Progressive Field</div></div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px"><span class="badge b-lean">CLE ML</span><span class="badge b-under">UNDER F5</span></div>
+    <div class="chev" id="chev-f5g">▼</div>
+  </div>
+  <div class="coll" id="f5g">
+    <div class="f5-pitch-row">
+      <div class="f5-pc"><div class="f5-pn">C. Cavalli</div><div class="f5-ps">WSH Away<br>ERA 3.86 · FIP 3.65<br>L5 F5 ERA 3.40<br>1st Inn ERA 3.1<br>K% 22.5%</div></div>
+      <div class="f5-vs">VS</div>
+      <div class="f5-pc"><div class="f5-pn r">J. Cantillo</div><div class="f5-ps r">CLE Home<br>ERA 3.50 · FIP 3.30<br>L5 F5 ERA 2.70<br>1st Inn ERA 2.2<br>K% 27.1%</div></div>
+    </div>
+    <div class="f5-pg">
+      <div class="f5-pb"><div class="f5-pt" style="color:var(--amber)">WSH</div><div class="f5-pp" style="color:var(--amber)">37%</div><div class="f5-po">+170</div><div class="f5-psub">F5 win prob · odds</div></div>
+      <div class="f5-pb win"><div class="f5-pt" style="color:var(--green)">CLE</div><div class="f5-pp">63%</div><div class="f5-po">-145</div><div class="f5-psub">F5 win prob · odds</div></div>
+    </div>
+    <div class="f5-tot"><div><div class="f5-tm u">UNDER</div><div class="f5-tp">~4.0 proj F5 runs</div><div class="f5-ts">WSH proj ER: 1.9 · CLE proj ER: 2.1 · Progressive ×0.95</div></div><span class="badge b-under">F5 UNDER</span></div>
+    <div class="why"><div class="why-lbl">Lean</div><div class="why-t">Cantillo solid at home (2.70 L5 F5 ERA). Progressive plays pitcher-friendly. CLE at 63%. UNDER at 4.5.</div></div>
+  </div>
+</div>
+
+<!-- F5-6: ATL@BOS -->
+<div class="f5c">
+  <div class="f5h" onclick="tog('f6')">
+    <div><div class="f5m">ATL @ BOS</div><div class="f5t">6:45 PM · Fenway Park</div></div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px"><span class="badge b-lean">BOS ML</span><span class="badge b-over">OVER F5</span></div>
+    <div class="chev" id="chev-f6">▼</div>
+  </div>
+  <div class="coll" id="f6">
+    <div class="f5-pitch-row">
+      <div class="f5-pc"><div class="f5-pn">S. Strider</div><div class="f5-ps">ATL Away<br>ERA 3.00 · BB% 14.6%<br>L5 F5 ERA 3.60<br>1st Inn ERA 3.2<br>Short outing risk</div></div>
+      <div class="f5-vs">VS</div>
+      <div class="f5-pc"><div class="f5-pn r">R. Suarez</div><div class="f5-ps r">BOS Home<br>ERA 3.20 · FIP 3.35<br>L5 F5 ERA 2.90<br>1st Inn ERA 2.8<br>K% 23.2%</div></div>
+    </div>
+    <div class="f5-pg">
+      <div class="f5-pb"><div class="f5-pt" style="color:var(--amber)">ATL</div><div class="f5-pp" style="color:var(--amber)">41%</div><div class="f5-po">+145</div><div class="f5-psub">F5 win prob · odds</div></div>
+      <div class="f5-pb win"><div class="f5-pt" style="color:var(--green)">BOS</div><div class="f5-pp">59%</div><div class="f5-po">-155</div><div class="f5-psub">F5 win prob · odds</div></div>
+    </div>
+    <div class="f5-tot"><div><div class="f5-tm o">OVER</div><div class="f5-tp">~5.1 proj F5 runs</div><div class="f5-ts">ATL proj ER: 2.4 · BOS proj ER: 2.7 · Fenway ×1.07</div></div><span class="badge b-over">F5 OVER</span></div>
+    <div class="why"><div class="why-lbl">Why BOS</div><div class="why-t">Suarez at home with 2.90 L5 F5 ERA. Strider's BB% 14.6% = early exits. BOS at 59%.</div><div class="wdiv"></div><div class="why-lbl">Why Over</div><div class="why-t">Fenway plays 7% above neutral. Strider L5 F5 ERA 3.60 means ATL scores. Proj 5.1 — lean OVER at 4.5.</div></div>
+  </div>
+</div>
+
+<!-- F5-7: TB@BAL -->
+<div class="f5c">
+  <div class="f5h" onclick="tog('f7')">
+    <div><div class="f5m">TB @ BAL</div><div class="f5t">6:35 PM · Camden Yards</div></div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px"><span class="badge b-lean">BAL ML</span><span class="badge b-under">UNDER F5</span></div>
+    <div class="chev" id="chev-f7">▼</div>
+  </div>
+  <div class="coll" id="f7">
+    <div class="f5-pitch-row">
+      <div class="f5-pc"><div class="f5-pn">G. Jax</div><div class="f5-ps">TB Away<br>ERA 3.80 · FIP 3.55<br>L5 F5 ERA 3.10<br>1st Inn ERA 2.8</div></div>
+      <div class="f5-vs">VS</div>
+      <div class="f5-pc"><div class="f5-pn r">S. Baz</div><div class="f5-ps r">BAL Home<br>ERA 4.21 · FIP 3.90<br>L5 F5 ERA 3.40<br>1st Inn ERA 3.1</div></div>
+    </div>
+    <div class="f5-pg">
+      <div class="f5-pb"><div class="f5-pt" style="color:var(--amber)">TB</div><div class="f5-pp" style="color:var(--amber)">43%</div><div class="f5-po">+130</div><div class="f5-psub">F5 win prob · odds</div></div>
+      <div class="f5-pb win"><div class="f5-pt" style="color:var(--green)">BAL</div><div class="f5-pp">57%</div><div class="f5-po">-125</div><div class="f5-psub">F5 win prob · odds</div></div>
+    </div>
+    <div class="f5-tot"><div><div class="f5-tm u">UNDER</div><div class="f5-tp">~4.3 proj F5 runs</div><div class="f5-ts">TB proj ER: 2.2 · BAL proj ER: 2.1 · Camden ×1.02</div></div><span class="badge b-under">F5 UNDER</span></div>
+    <div class="why"><div class="why-lbl">Lean</div><div class="why-t">Both solid starters, lean BAL at home. Camden slight hitter's park. UNDER at 4.5+ only.</div></div>
+  </div>
+</div>
+
+<!-- F5-8: LAA@DET -->
+<div class="f5c">
+  <div class="f5h" onclick="tog('f8')">
+    <div><div class="f5m">LAA @ DET</div><div class="f5t">6:40 PM · Comerica</div></div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px"><span class="badge b-lean">DET ML</span><span class="badge b-under">UNDER F5</span></div>
+    <div class="chev" id="chev-f8">▼</div>
+  </div>
+  <div class="coll" id="f8">
+    <div class="f5-pitch-row">
+      <div class="f5-pc"><div class="f5-pn">J. Kochanowicz</div><div class="f5-ps">LAA Away<br>ERA 3.90 · L5 F5 ERA 3.20<br>1st Inn ERA 2.9<br>K% 20.5%</div></div>
+      <div class="f5-vs">VS</div>
+      <div class="f5-pc"><div class="f5-pn r">K. Montero</div><div class="f5-ps r">DET Home<br>ERA 3.80 · xERA 1.20<br>L5 F5 ERA 2.80<br>1st Inn ERA 2.3</div></div>
+    </div>
+    <div class="f5-pg">
+      <div class="f5-pb"><div class="f5-pt" style="color:var(--amber)">LAA</div><div class="f5-pp" style="color:var(--amber)">40%</div><div class="f5-po">+150</div><div class="f5-psub">F5 win prob · odds</div></div>
+      <div class="f5-pb win"><div class="f5-pt" style="color:var(--green)">DET</div><div class="f5-pp">60%</div><div class="f5-po">-148</div><div class="f5-psub">F5 win prob · odds</div></div>
+    </div>
+    <div class="f5-tot"><div><div class="f5-tm u">UNDER</div><div class="f5-tp">~4.0 proj F5 runs</div><div class="f5-ts">LAA proj ER: 2.0 · DET proj ER: 2.0 · Comerica ×0.98</div></div><span class="badge b-under">F5 UNDER</span></div>
+    <div class="why"><div class="why-lbl">Lean</div><div class="why-t">Montero's xERA 1.20 suggests elite underlying stuff. DET at 60%. Comerica neutral. UNDER at 4.5.</div></div>
+  </div>
+</div>
+
+<!-- F5-9: MIA@TOR -->
+<div class="f5c">
+  <div class="f5h" onclick="tog('f9')">
+    <div><div class="f5m">MIA @ TOR</div><div class="f5t">7:07 PM · Rogers Centre</div></div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px"><span class="badge b-lean">TOR ML</span><span class="badge b-over">OVER F5</span></div>
+    <div class="chev" id="chev-f9">▼</div>
+  </div>
+  <div class="coll" id="f9">
+    <div class="f5-pitch-row">
+      <div class="f5-pc"><div class="f5-pn">S. Alcantara</div><div class="f5-ps">MIA Away<br>Post-TJS 2026<br>K% 17.8%<br>L5 F5 ERA 4.20<br>1st Inn ERA 3.9</div></div>
+      <div class="f5-vs">VS</div>
+      <div class="f5-pc"><div class="f5-pn r">S. Miles</div><div class="f5-ps r">TOR Home<br>ERA 2.17 · FIP 2.83<br>L5 F5 ERA 2.50<br>1st Inn ERA 2.2<br>Rogers ×1.05</div></div>
+    </div>
+    <div class="f5-pg">
+      <div class="f5-pb"><div class="f5-pt" style="color:var(--amber)">MIA</div><div class="f5-pp" style="color:var(--amber)">37%</div><div class="f5-po">+170</div><div class="f5-psub">F5 win prob · odds</div></div>
+      <div class="f5-pb win"><div class="f5-pt" style="color:var(--green)">TOR</div><div class="f5-pp">63%</div><div class="f5-po">-148</div><div class="f5-psub">F5 win prob · odds</div></div>
+    </div>
+    <div class="f5-tot"><div><div class="f5-tm o">OVER</div><div class="f5-tp">~4.7 proj F5 runs</div><div class="f5-ts">MIA proj ER: 2.3 · TOR proj ER: 2.4 · Rogers ×1.05</div></div><span class="badge b-over">F5 OVER</span></div>
+    <div class="why"><div class="why-lbl">Lean</div><div class="why-t">Alcantara post-TJS limited K upside and 4.20 L5 F5 ERA means MIA scores. TOR at 63%. Rogers above neutral. OVER at 4.5.</div></div>
+  </div>
+</div>
+
+<!-- F5-10: MIN@CWS -->
+<div class="f5c">
+  <div class="f5h" onclick="tog('f10')">
+    <div><div class="f5m">MIN @ CWS</div><div class="f5t">7:40 PM · Guaranteed Rate</div></div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px"><span class="badge b-mod">MIN ML</span><span class="badge b-under">UNDER F5</span></div>
+    <div class="chev" id="chev-f10">▼</div>
+  </div>
+  <div class="coll" id="f10">
+    <div class="f5-pitch-row">
+      <div class="f5-pc"><div class="f5-pn">J. Ryan</div><div class="f5-ps">MIN Away<br>ERA 3.20 · FIP 3.05<br>L5 F5 ERA 2.70<br>1st Inn ERA 2.4<br>K% 29.8%</div></div>
+      <div class="f5-vs">VS</div>
+      <div class="f5-pc"><div class="f5-pn r">S. Burke</div><div class="f5-ps r">CWS Home<br>ERA 4.35 · FIP 4.10<br>L5 F5 ERA 3.90<br>1st Inn ERA 3.6<br>K% 22%</div></div>
+    </div>
+    <div class="f5-pg">
+      <div class="f5-pb win"><div class="f5-pt" style="color:var(--green)">MIN</div><div class="f5-pp">61%</div><div class="f5-po">-140</div><div class="f5-psub">F5 win prob · odds</div></div>
+      <div class="f5-pb"><div class="f5-pt" style="color:var(--amber)">CWS</div><div class="f5-pp" style="color:var(--amber)">39%</div><div class="f5-po">+155</div><div class="f5-psub">F5 win prob · odds</div></div>
+    </div>
+    <div class="f5-tot"><div><div class="f5-tm u">UNDER</div><div class="f5-tp">~4.0 proj F5 runs</div><div class="f5-ts">MIN proj ER: 1.8 · CWS proj ER: 2.2 · GRF ×0.98</div></div><span class="badge b-under">F5 UNDER</span></div>
+    <div class="why"><div class="why-lbl">Lean</div><div class="why-t">Ryan dominant early (L5 F5 ERA 2.70). MIN wins at 61%. UNDER F5 at 4.5.</div></div>
+  </div>
+</div>
+
+<!-- F5-11: HOU@TEX -->
+<div class="f5c">
+  <div class="f5h" onclick="tog('f11')">
+    <div><div class="f5m">HOU @ TEX</div><div class="f5t">8:05 PM · Globe Life Field</div></div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px"><span class="badge b-lean">HOU ML</span><span class="badge b-over">OVER F5</span></div>
+    <div class="chev" id="chev-f11">▼</div>
+  </div>
+  <div class="coll" id="f11">
+    <div class="f5-pitch-row">
+      <div class="f5-pc"><div class="f5-pn">J. Alexander</div><div class="f5-ps">HOU Away<br>ERA 3.80 · L5 F5 ERA 3.40<br>1st Inn ERA 3.1</div></div>
+      <div class="f5-vs">VS</div>
+      <div class="f5-pc"><div class="f5-pn r">J. Leiter</div><div class="f5-ps r">TEX Home<br>ERA 4.81 · wOBA .328<br>L5 F5 ERA 4.30<br>1st Inn ERA 4.1</div></div>
+    </div>
+    <div class="f5-pg">
+      <div class="f5-pb win"><div class="f5-pt" style="color:var(--green)">HOU</div><div class="f5-pp">54%</div><div class="f5-po">-118</div><div class="f5-psub">F5 win prob · odds</div></div>
+      <div class="f5-pb"><div class="f5-pt" style="color:var(--amber)">TEX</div><div class="f5-pp" style="color:var(--amber)">46%</div><div class="f5-po">+108</div><div class="f5-psub">F5 win prob · odds</div></div>
+    </div>
+    <div class="f5-tot"><div><div class="f5-tm o">OVER</div><div class="f5-tp">~5.1 proj F5 runs</div><div class="f5-ts">HOU proj ER: 2.4 · TEX proj ER: 2.7 · GLF ×1.03</div></div><span class="badge b-over">F5 OVER</span></div>
+    <div class="why"><div class="why-lbl">Lean</div><div class="why-t">Leiter's 4.30 L5 F5 ERA and .328 wOBA means HOU scores. Globe Life slightly above neutral. OVER at 4.5.</div></div>
+  </div>
+</div>
+
+<!-- F5-12: PHI@SD -->
+<div class="f5c">
+  <div class="f5h" onclick="tog('f12')">
+    <div><div class="f5m">PHI @ SD</div><div class="f5t">9:40 PM · Petco Park</div></div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px"><span class="badge b-lean">LEAN UNDER</span></div>
+    <div class="chev" id="chev-f12">▼</div>
+  </div>
+  <div class="coll" id="f12">
+    <div class="f5-pitch-row">
+      <div class="f5-pc"><div class="f5-pn">A. Nola</div><div class="f5-ps">PHI Away<br>ERA 3.55 · L5 F5 ERA 3.10<br>1st Inn ERA 2.9<br>K% 26.2%</div></div>
+      <div class="f5-vs">VS</div>
+      <div class="f5-pc"><div class="f5-pn r">R. Vasquez</div><div class="f5-ps r">SD Home<br>ERA 2.68 · FIP 3.31<br>L5 F5 ERA 2.80<br>1st Inn ERA 2.6<br>Petco ×0.93</div></div>
+    </div>
+    <div class="f5-pg">
+      <div class="f5-pb"><div class="f5-pt" style="color:var(--amber)">PHI</div><div class="f5-pp" style="color:var(--amber)">47%</div><div class="f5-po">+112</div><div class="f5-psub">F5 win prob · odds</div></div>
+      <div class="f5-pb win"><div class="f5-pt" style="color:var(--green)">SD</div><div class="f5-pp">53%</div><div class="f5-po">-122</div><div class="f5-psub">F5 win prob · odds</div></div>
+    </div>
+    <div class="f5-tot"><div><div class="f5-tm u">UNDER</div><div class="f5-tp">~3.5 proj F5 runs</div><div class="f5-ts">PHI proj ER: 1.7 · SD proj ER: 1.8 · Petco ×0.93</div></div><span class="badge b-under">F5 UNDER</span></div>
+    <div class="why"><div class="why-lbl">Lean</div><div class="why-t">Petco is the best pitcher's park on slate (0.93). Both starters solid early. Strong UNDER — look for 3.5 line.</div></div>
+  </div>
+</div>
+
+<!-- F5-13: SEA@ATH -->
+<div class="f5c">
+  <div class="f5h" onclick="tog('f13')">
+    <div><div class="f5m">SEA @ ATH</div><div class="f5t">9:40 PM · Oakland</div></div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px"><span class="badge b-lean">SEA ML</span><span class="badge b-under">UNDER F5</span></div>
+    <div class="chev" id="chev-f13">▼</div>
+  </div>
+  <div class="coll" id="f13">
+    <div class="f5-pitch-row">
+      <div class="f5-pc"><div class="f5-pn">E. Hancock</div><div class="f5-ps">SEA Away<br>ERA 3.90 · L5 F5 ERA 3.30<br>1st Inn ERA 2.9</div></div>
+      <div class="f5-vs">VS</div>
+      <div class="f5-pc"><div class="f5-pn r">L. Severino</div><div class="f5-ps r">ATH Home<br>ERA 4.50 · wOBA .345<br>L5 F5 ERA 4.00<br>Oakland ×0.97</div></div>
+    </div>
+    <div class="f5-pg">
+      <div class="f5-pb win"><div class="f5-pt" style="color:var(--green)">SEA</div><div class="f5-pp">55%</div><div class="f5-po">-122</div><div class="f5-psub">F5 win prob · odds</div></div>
+      <div class="f5-pb"><div class="f5-pt" style="color:var(--amber)">ATH</div><div class="f5-pp" style="color:var(--amber)">45%</div><div class="f5-po">+112</div><div class="f5-psub">F5 win prob · odds</div></div>
+    </div>
+    <div class="f5-tot"><div><div class="f5-tm u">UNDER</div><div class="f5-tp">~4.2 proj F5 runs</div><div class="f5-ts">SEA proj ER: 2.1 · ATH proj ER: 2.1 · Oakland ×0.97</div></div><span class="badge b-under">F5 UNDER</span></div>
+    <div class="why"><div class="why-lbl">Lean</div><div class="why-t">Hancock solid early. Severino struggling but Oakland pitcher-friendly. SEA ML, UNDER F5 at 4.5.</div></div>
+  </div>
+</div>
+
+<!-- F5-14: AZ@SF -->
+<div class="f5c">
+  <div class="f5h" onclick="tog('f14')">
+    <div><div class="f5m">AZ @ SF</div><div class="f5t">9:45 PM · Oracle Park</div></div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px"><span class="badge b-lean">SF ML</span><span class="badge b-under">UNDER F5</span></div>
+    <div class="chev" id="chev-f14">▼</div>
+  </div>
+  <div class="coll" id="f14">
+    <div class="f5-pitch-row">
+      <div class="f5-pc"><div class="f5-pn">E. Rodriguez</div><div class="f5-ps">AZ Away<br>ERA 3.70 · K/9 6.6<br>L5 F5 ERA 3.20<br>Whiff% 18.8%</div></div>
+      <div class="f5-vs">VS</div>
+      <div class="f5-pc"><div class="f5-pn r">T. Mahle</div><div class="f5-ps r">SF Home<br>ERA 3.60 · post-shoulder<br>L5 F5 ERA 3.10<br>Oracle ×0.91</div></div>
+    </div>
+    <div class="f5-pg">
+      <div class="f5-pb"><div class="f5-pt" style="color:var(--amber)">AZ</div><div class="f5-pp" style="color:var(--amber)">43%</div><div class="f5-po">+132</div><div class="f5-psub">F5 win prob · odds</div></div>
+      <div class="f5-pb win"><div class="f5-pt" style="color:var(--green)">SF</div><div class="f5-pp">57%</div><div class="f5-po">-128</div><div class="f5-psub">F5 win prob · odds</div></div>
+    </div>
+    <div class="f5-tot"><div><div class="f5-tm u">UNDER</div><div class="f5-tp">~3.4 proj F5 runs</div><div class="f5-ts">AZ proj ER: 1.7 · SF proj ER: 1.7 · Oracle ×0.91</div></div><span class="badge b-under">F5 UNDER</span></div>
+    <div class="why"><div class="why-lbl">Lean</div><div class="why-t">Oracle Park is the strongest pitcher's park (0.91). Both starters solid early. Strong UNDER at 3.5 line.</div></div>
+  </div>
+</div>
+
+<!-- F5-15: COL@LAD -->
+<div class="f5c">
+  <div class="f5h" onclick="tog('f15')">
+    <div><div class="f5m">COL @ LAD</div><div class="f5t">10:10 PM · Dodger Stadium</div></div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px"><span class="badge b-strong">LAD ML</span><span class="badge b-over">OVER F5</span></div>
+    <div class="chev" id="chev-f15">▼</div>
+  </div>
+  <div class="coll" id="f15">
+    <div class="f5-pitch-row">
+      <div class="f5-pc"><div class="f5-pn">K. Freeland</div><div class="f5-ps">COL Away<br>ERA 4.80 · K% 16.4%<br>L5 F5 ERA 4.50<br>HR/9 1.02 vs LAD</div></div>
+      <div class="f5-vs">VS</div>
+      <div class="f5-pc"><div class="f5-pn r">E. Lauer</div><div class="f5-ps r">LAD Home<br>ERA 4.20 · K/9 6.9<br>L5 F5 ERA 3.70<br>1st Inn ERA 3.5</div></div>
+    </div>
+    <div class="f5-pg">
+      <div class="f5-pb"><div class="f5-pt" style="color:var(--red)">COL</div><div class="f5-pp" style="color:var(--red)">21%</div><div class="f5-po">+376</div><div class="f5-psub">F5 win prob · odds</div></div>
+      <div class="f5-pb win"><div class="f5-pt" style="color:var(--green)">LAD</div><div class="f5-pp">79%</div><div class="f5-po">-198</div><div class="f5-psub">F5 win prob · odds</div></div>
+    </div>
+    <div class="f5-tot"><div><div class="f5-tm o">OVER</div><div class="f5-tp">~5.9 proj F5 runs</div><div class="f5-ts">COL proj ER: 3.5 · LAD proj ER: 2.4 · Dodger ×1.02</div></div><span class="badge b-over">F5 OVER</span></div>
+    <div class="why"><div class="why-lbl">Why LAD</div><div class="why-t">Freeland 4.50 L5 F5 ERA + 1.02 HR/9 facing LAD's elite lineup. LAD wins at 79%.</div><div class="wdiv"></div><div class="why-lbl">Why Over</div><div class="why-t">Freeland away from Coors vs LAD's best lineup. Proj 5.9 — strong OVER at 4.5 or lower.</div></div>
+  </div>
+</div>
+
+<div style="height:24px"></div>
+</div></div>
+
+<!-- MODEL TAB -->
+<div id="tab-model" class="cs">
+<div class="scroll-wrap">
+<div class="sec-head"><div class="sec-title">Model v6+</div><div class="sec-meta">Negative Binomial · 60+ pitch minimum</div></div>
+<div class="model-sec">
+  <div class="model-title">Weight Breakdown</div>
+  <div class="mrow"><span class="mlbl">K/9 Rate</span><div class="mbg"><div class="mfill" style="width:25%"></div></div><span class="mpct">25%</span></div>
+  <div class="mrow"><span class="mlbl">Put-Away Rate</span><div class="mbg"><div class="mfill" style="width:15%"></div></div><span class="mpct">15%</span></div>
+  <div class="mrow"><span class="mlbl">Opp K-Rate (handedness)</span><div class="mbg"><div class="mfill" style="width:15%"></div></div><span class="mpct">15%</span></div>
+  <div class="mrow"><span class="mlbl">Opp Whiff vs Put-Away</span><div class="mbg"><div class="mfill" style="width:15%"></div></div><span class="mpct">15%</span></div>
+  <div class="mrow"><span class="mlbl">Whiff Rate</span><div class="mbg"><div class="mfill" style="width:10%"></div></div><span class="mpct">10%</span></div>
+  <div class="mrow"><span class="mlbl">L5 Starts</span><div class="mbg"><div class="mfill" style="width:7.5%"></div></div><span class="mpct">7.5%</span></div>
+  <div class="mrow"><span class="mlbl">L10 Starts</span><div class="mbg"><div class="mfill" style="width:7.5%"></div></div><span class="mpct">7.5%</span></div>
+  <div class="mrow"><span class="mlbl">Park Factor</span><div class="mbg"><div class="mfill" style="width:5%"></div></div><span class="mpct">5%</span></div>
+</div>
+<div class="model-sec">
+  <div class="model-title">v6+ New This Build</div>
+  <div style="display:flex;flex-direction:column;gap:5px">
+    <div style="background:var(--green-dim);border:1px solid var(--green);border-radius:6px;padding:7px 10px;font-size:11px;color:var(--green)">✦ Handedness Splits — vs LHP / vs RHP for every matchup</div>
+    <div style="background:var(--green-dim);border:1px solid var(--green);border-radius:6px;padding:7px 10px;font-size:11px;color:var(--green)">✦ Edge % — proj vs line as K delta and percentage</div>
+    <div style="background:var(--green-dim);border:1px solid var(--green);border-radius:6px;padding:7px 10px;font-size:11px;color:var(--green)">✦ Stuff Rating — explicit quality tier on every card</div>
+    <div style="background:var(--green-dim);border:1px solid var(--green);border-radius:6px;padding:7px 10px;font-size:11px;color:var(--green)">✦ Slate Summary Bar — total plays at a glance</div>
+    <div style="background:var(--green-dim);border:1px solid var(--green);border-radius:6px;padding:7px 10px;font-size:11px;color:var(--green)">✦ Cards collapsed by default (top 2 open)</div>
+    <div style="background:var(--card2);border:1px solid var(--border);border-radius:6px;padding:7px 10px;font-size:11px;color:var(--text2)">Umpire Factor · Book Line + EV · L5 vs Opp Rank</div>
+    <div style="background:var(--card2);border:1px solid var(--border);border-radius:6px;padding:7px 10px;font-size:11px;color:var(--text2)">Game Script Risk · Trend Arrows · Best Bet Badge</div>
+    <div style="background:var(--card2);border:1px solid var(--border);border-radius:6px;padding:7px 10px;font-size:11px;color:var(--text2)">All 15 F5 matchups · L5 F5 ERA + 1st Inn ERA</div>
+    <div style="background:var(--card2);border:1px solid var(--border);border-radius:6px;padding:7px 10px;font-size:11px;color:var(--text2)">Opponent L5 rank text contrast fixed — readable</div>
+  </div>
+</div>
+<div class="model-sec" style="border-bottom:none">
+  <div class="model-title">Confidence Tiers</div>
+  <div style="display:flex;flex-direction:column;gap:5px">
+    <div style="display:flex;align-items:center;gap:8px;padding:7px 10px;background:var(--green-dim);border:1px solid var(--green);border-radius:7px"><span class="badge b-strong">Strong Edge</span><span style="font-size:10px;color:var(--green)">Proj 1.3+ K over line · Full size</span></div>
+    <div style="display:flex;align-items:center;gap:8px;padding:7px 10px;background:var(--amber-dim);border:1px solid var(--amber);border-radius:7px"><span class="badge b-mod">Moderate</span><span style="font-size:10px;color:var(--amber)">Proj 0.7–1.2K over line · Half-Full</span></div>
+    <div style="display:flex;align-items:center;gap:8px;padding:7px 10px;background:var(--blue-dim);border:1px solid var(--blue);border-radius:7px"><span class="badge b-lean">Lean</span><span style="font-size:10px;color:var(--blue)">Proj 0.1–0.6K over line · Price dep.</span></div>
+    <div style="display:flex;align-items:center;gap:8px;padding:7px 10px;background:var(--card2);border:1px solid var(--border);border-radius:7px"><span class="badge b-pass">Pass</span><span style="font-size:10px;color:var(--text3)">At/below line · No play</span></div>
+  </div>
+</div>
+<div style="height:30px"></div>
+</div></div>
+
+<script>
+function sw(name,el){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.cs').forEach(s=>s.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('tab-'+name).classList.add('active');
+}
+function tog(id){
+  var el=document.getElementById(id);
+  var ch=document.getElementById('chev-'+id);
+  el.classList.toggle('open');
+  if(ch)ch.classList.toggle('open');
+}
+</script>
+</body>
+</html>

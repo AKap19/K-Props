@@ -1462,7 +1462,8 @@ function tog(id){var el=document.getElementById(id);var ch=document.getElementBy
 </script>
 
 <script>
-// Live data - updates L10, sparklines, proj K, and reorders cards
+// Live data - updates L10, sparklines, proj K and real book lines
+// Cards stay in YOUR order - only data updates automatically
 (async function() {
   try {
     const res = await fetch('/api/kdata');
@@ -1471,10 +1472,8 @@ function tog(id){var el=document.getElementById(id);var ch=document.getElementBy
     if (!data.success || !data.all) return;
 
     const all = data.all;
-    const plays = data.plays || [];
-    const passes = data.passes || [];
 
-    // Helper: find card element by pitcher name
+    // Helper: find card by pitcher name
     function findCard(name) {
       for (const el of document.querySelectorAll('.gc-pitcher')) {
         if (el.textContent.includes(name)) return el.closest('.gc');
@@ -1482,104 +1481,93 @@ function tog(id){var el=document.getElementById(id);var ch=document.getElementBy
       return null;
     }
 
-    // Helper: K class
     const kc = (k,a) => k>=a+1?'kn-h':k<=a-1.5?'kn-l':'kn-m';
 
-    // Helper: build sparkline SVG
     function buildSpark(vals, color) {
       const W=120,H=28,mn=Math.min(...vals),mx=Math.max(...vals),rng=Math.max(mx-mn,1);
       const x=i=>((i/(vals.length-1))*W).toFixed(1);
       const y=v=>(H-((v-mn)/rng)*(H-4)-2).toFixed(1);
       const pts=vals.map((v,i)=>x(i)+','+y(v)).join(' L ');
-      const dots=vals.slice(-3).map((v,i)=>{const idx=vals.length-3+i;return `<circle cx="${x(idx)}" cy="${y(v)}" r="2.5" fill="${color}"/>`;}).join('');
+      const dots=vals.slice(-3).map((v,i)=>{
+        const idx=vals.length-3+i;
+        return `<circle cx="${x(idx)}" cy="${y(v)}" r="2.5" fill="${color}"/>`;
+      }).join('');
       return `<svg width="${W}" height="${H}" class="spark-svg"><path d="M ${pts}" fill="none" stroke="${color}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>${dots}</svg>`;
     }
 
-    // Step 1: Update each card's data
+    let updated = 0;
+
+    // Only update cards that exist in the static HTML (your curated 13)
     all.forEach(p => {
+      const card = findCard(p.name);
+      if (!card) return; // skip pitchers not in your curated cards
+
       if (!p.starts || p.starts.length === 0) return;
       const ks = p.starts.map(s => s.k);
       const avg = ks.reduce((a,b)=>a+b,0)/ks.length;
       const tc = p.trend?.color || '#ffb83d';
       const txt = p.trend?.txt || '→';
-      const card = findCard(p.name);
-      if (!card) return;
 
-      // L10 row with dates
+      // Update L10 row with real Ks + dates
       const l10Row = card.querySelector('.l10-row');
       if (l10Row) {
         l10Row.innerHTML = p.starts.map(s => {
           const dt = s.date ? s.date.slice(5).replace('-','/') : '';
-          return `<div class="l10c"><span class="kn ${kc(s.k,avg)}" style="font-weight:700">${s.k}</span><span class="op">${s.opp||'?'}</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">${dt}</span></div>`;
+          return `<div class="l10c">` +
+            `<span class="kn ${kc(s.k,avg)}" style="font-weight:700">${s.k}</span>` +
+            `<span class="op">${s.opp||'?'}</span>` +
+            `<span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">${dt}</span>` +
+            `</div>`;
         }).join('');
       }
 
-      // L10 label
+      // Update L10 label
       const l10Label = card.querySelector('.l10-label');
-      if (l10Label) l10Label.innerHTML = `L10 · Avg ${avg.toFixed(1)}K ✓ <span style="color:${tc}">${txt}</span>`;
+      if (l10Label) {
+        l10Label.innerHTML = `L10 · Avg ${avg.toFixed(1)}K ✓ <span style="color:${tc}">${txt}</span>`;
+      }
 
-      // Sparkline
+      // Update sparkline
       const sparkWrap = card.querySelector('.sparkline-wrap');
       if (sparkWrap) {
         const reversed = [...ks].reverse();
-        sparkWrap.innerHTML = `<span class="spark-lbl">L10 →</span>${buildSpark(reversed, tc)}<span style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text2);flex-shrink:0">avg ${avg.toFixed(1)}</span><span class="spark-trend" style="color:${tc}">${txt}</span>`;
+        sparkWrap.innerHTML =
+          `<span class="spark-lbl">L10 →</span>` +
+          buildSpark(reversed, tc) +
+          `<span style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text2);flex-shrink:0">avg ${avg.toFixed(1)}</span>` +
+          `<span class="spark-trend" style="color:${tc}">${txt}</span>`;
       }
 
-      // Proj K in header
+      // Update proj K in header
       const projEl = card.querySelector('[style*="font-size:22px"]');
       if (projEl && p.projK) projEl.textContent = p.projK + 'K';
+
+      // Update real book line if available from Odds API
+      if (p.lineSource === '✓' && p.line) {
+        const lineEl = card.querySelector('.pbox-val[style*="color:var(--text)"]');
+        if (lineEl) lineEl.textContent = p.line;
+
+        // Update odds display
+        if (p.overOdds && p.underOdds) {
+          const lineRow = card.querySelector('.pbox-line');
+          const over = p.overOdds > 0 ? '+'+p.overOdds : p.overOdds;
+          const under = p.underOdds > 0 ? '+'+p.underOdds : p.underOdds;
+          if (lineRow) lineRow.textContent = `O ${over} · U ${under}`;
+        }
+      }
+
+      updated++;
     });
 
-    // Step 2: Reorder cards in the scroll-wrap
-    const scrollWrap = document.querySelector('#tab-k .scroll-wrap');
-    if (scrollWrap) {
-      const secHead = scrollWrap.querySelector('.sec-head');
-      
-      // Collect all current play card elements mapped by name
-      const cardEls = {};
-      document.querySelectorAll('#tab-k .gc').forEach(card => {
-        const pitcherEl = card.querySelector('.gc-pitcher');
-        if (pitcherEl) cardEls[pitcherEl.textContent.trim().replace(/[LR]$/,'').trim()] = card;
-      });
-
-      // Reinsert play cards in API rank order after secHead
-      let anchor = secHead;
-      plays.forEach(p => {
-        // Find matching card
-        const card = findCard(p.name);
-        if (!card) return;
-        // Update rank ring
-        const rankText = card.querySelector('text[text-anchor="middle"]');
-        if (rankText) rankText.textContent = p.rank;
-        // Move card to correct position
-        anchor.parentNode.insertBefore(card, anchor.nextSibling);
-        anchor = card;
-      });
-
-      // Update stat bar
-      const bar = document.querySelector('.stat-bar');
-      if (bar) {
-        const strong = plays.filter(p=>p.tier==='strong').length;
-        const mod = plays.filter(p=>p.tier==='mod').length;
-        const under = plays.filter(p=>p.tier==='under').length;
-        bar.innerHTML = `
-          <div class="sb-item"><div class="sb-val" style="color:var(--green)">${strong}</div><div class="sb-lbl">Strong</div></div>
-          <div class="sb-item"><div class="sb-val" style="color:var(--amber)">${mod}</div><div class="sb-lbl">Moderate</div></div>
-          <div class="sb-item"><div class="sb-val" style="color:var(--red)">${under}</div><div class="sb-lbl">Under</div></div>
-          <div class="sb-item"><div class="sb-val" style="color:var(--text2)">${passes.length}</div><div class="sb-lbl">Pass</div></div>
-        `;
-      }
-    }
-
-    // Toast
+    // Show toast
     const toast = document.createElement('div');
     toast.style.cssText = 'position:fixed;bottom:12px;right:12px;background:#13151e;border:1px solid #3dffa0;color:#3dffa0;font-family:"DM Mono",monospace;font-size:9px;padding:5px 10px;border-radius:5px;z-index:9999;';
-    toast.textContent = `✓ ${plays.length} plays · lines ${data.linesSource}`;
+    toast.textContent = `✓ Live data: ${updated} pitchers · ${data.linesSource}`;
     document.body.appendChild(toast);
     setTimeout(() => toast.remove(), 4000);
 
   } catch(e) {
-    console.warn('Live data:', e.message);
+    // Silent fail - static data remains intact
   }
 })();
 </script>

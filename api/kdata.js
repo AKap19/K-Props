@@ -61,9 +61,28 @@ async function getProbableStarters(date) {
   return starters;
 }
 
+// Cache for game team lookups
+const gameTeamCache = {};
+
+async function getGameTeams(gamePk) {
+  if (!gamePk) return { home: '', away: '' };
+  if (gameTeamCache[gamePk]) return gameTeamCache[gamePk];
+  try {
+    const data = await fetchJSON(`${MLB_API}/game/${gamePk}/linescore`);
+    const result = {
+      home: data?.teams?.home?.team?.abbreviation || '',
+      away: data?.teams?.away?.team?.abbreviation || '',
+    };
+    gameTeamCache[gamePk] = result;
+    return result;
+  } catch(e) {
+    return { home: '', away: '' };
+  }
+}
+
 // 2. Get pitcher's 2026 game log - last N starts
 async function getPitcherLog(pitcherId, numStarts = 10) {
-  const url = `${MLB_API}/people/${pitcherId}/stats?stats=gameLog&group=pitching&season=2026&gameType=R&hydrate=game(teams)`;
+  const url = `${MLB_API}/people/${pitcherId}/stats?stats=gameLog&group=pitching&season=2026&gameType=R`;
   try {
     const data = await fetchJSON(url);
     const splits = data?.stats?.[0]?.splits || [];
@@ -73,27 +92,17 @@ async function getPitcherLog(pitcherId, numStarts = 10) {
       .slice(-numStarts)
       .reverse(); // most recent first
     
-    return starts.map(s => {
-      // MLB Stats API gameLog: opponent lives in s.game.teams
-      // The pitcher's own team is s.team.abbreviation
-      // The opponent is whichever team in s.game.teams is NOT the pitcher's team
+    // Fetch game teams in parallel for all starts
+    const teams = await Promise.all(
+      starts.map(s => getGameTeams(s.game?.gamePk || s.gamePk))
+    );
+
+    return starts.map((s, i) => {
+      const pitcherTeam = s.team?.abbreviation || '';
+      const { home, away } = teams[i];
       let opp = '?';
-      try {
-        const pitcherTeam = s.team?.abbreviation || s.team?.name || '';
-        const gameTeams = s.game?.teams || {};
-        const home = gameTeams.home?.team?.abbreviation || '';
-        const away = gameTeams.away?.team?.abbreviation || '';
-        if (home && away) {
-          opp = (home === pitcherTeam || s.isHome) ? away : home;
-          // If isHome is available use it directly
-          if (s.isHome === true) opp = away;
-          if (s.isHome === false) opp = home;
-        } else {
-          // Fallback: try opponent field directly
-          opp = s.opponent?.abbreviation || '?';
-        }
-      } catch(e) {
-        opp = '?';
+      if (home && away) {
+        opp = pitcherTeam === home ? away : home;
       }
       return {
         k:    parseInt(s.stat.strikeOuts || 0),

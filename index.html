@@ -116,14 +116,14 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
 .model-proj-lbl{font-family:'DM Mono',monospace;font-size:7px;letter-spacing:1px;text-transform:uppercase;color:var(--text3);margin-bottom:4px;}
 
 /* ARSENAL - new mini-bar format */
-.matchup-row{display:grid;grid-template-columns:2fr 3fr;gap:5px;padding:6px 12px;border-bottom:1px solid var(--border);background:var(--card2);}
-.hand-box{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:6px 4px;background:var(--card);border:1px solid var(--border);border-radius:8px;text-align:center;position:relative;}
-.hand-box.active{border-color:var(--green);background:linear-gradient(160deg,#071a0f,#13151e);}
+.matchup-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;padding:7px 12px;border-bottom:1px solid var(--border);background:var(--card2);}
+.hand-box{background:var(--card);border:1px solid var(--border);border-radius:5px;padding:5px 7px;text-align:center;}
+.hand-box.active{border-color:var(--green);background:var(--green-dim);}
 .hand-box.active-under{border-color:var(--red);background:var(--red-dim);}
 .hand-box.muted{border-color:var(--border);background:var(--card2);}
-.hand-lbl{font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px;}
-.hand-val{font-family:'Bebas Neue',sans-serif;font-size:22px;line-height:1;letter-spacing:.5px;}
-.hand-rank{font-family:'DM Mono',monospace;font-size:5.5px;color:var(--text3);margin-top:3px;line-height:1.6;}
+.hand-lbl{font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);text-transform:uppercase;margin-bottom:2px;}
+.hand-val{font-family:'DM Mono',monospace;font-size:11px;font-weight:600;}
+.hand-rank{font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-top:1px;}
 .ars-box{background:var(--card);border:1px solid var(--border);border-radius:5px;padding:5px 7px;grid-column:span 2;}
 .ars-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;}
 .ars-lbl{font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);text-transform:uppercase;}
@@ -177,20 +177,20 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
 .comp-row:last-child{margin-bottom:0;}
 
 /* WEATHER */
-.weather-row{display:flex;align-items:center;gap:10px;padding:4px 12px;background:var(--card2);border-bottom:1px solid var(--border);flex-wrap:wrap;}
+.weather-row{display:flex;align-items:center;justify-content:space-between;padding:5px 12px;background:var(--card2);border-bottom:1px solid var(--border);}
 .weather-lbl{font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);text-transform:uppercase;letter-spacing:.8px;}
 .weather-val{font-family:'DM Mono',monospace;font-size:9px;color:var(--text2);}
 .weather-warn{background:#2a1800;border:1px solid #ff8800;border-radius:4px;padding:4px 12px;margin:0 12px 6px;font-family:'DM Mono',monospace;font-size:8px;color:#ff8800;}
-.ump-row{display:none;}
+.ump-row{display:flex;align-items:center;justify-content:space-between;padding:5px 12px;background:var(--card2);border-bottom:1px solid var(--border);}
 .ump-lbl{font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);text-transform:uppercase;}
 .ump-val{font-family:'DM Mono',monospace;font-size:9px;color:var(--text2);}
-.risk-row{display:none;}
+.risk-row{display:flex;align-items:center;gap:7px;padding:5px 12px;border-bottom:1px solid var(--border);}
 .risk-lbl{font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);text-transform:uppercase;flex-shrink:0;}
-
-
-
-
-
+.risk-bg{flex:1;height:4px;background:var(--border);border-radius:2px;overflow:hidden;}
+.risk-fill{height:100%;border-radius:2px;}
+.rf-low{background:var(--green);}
+.rf-med{background:var(--amber);}
+.rf-high{background:var(--red);}
 .risk-val{font-family:'DM Mono',monospace;font-size:8px;flex-shrink:0;}
 
 /* ACTION */
@@ -281,8 +281,8 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
 <div id="tab-k" class="cs active"><div class="scroll-wrap">
 
 <div class="stat-bar">
-  <div class="sb-item"><div class="sb-val" style="color:var(--green)">3</div><div class="sb-lbl">Strong</div></div>
-  <div class="sb-item"><div class="sb-val" style="color:var(--amber)">8</div><div class="sb-lbl">Moderate</div></div>
+  <div class="sb-item"><div class="sb-val" style="color:var(--green)">6</div><div class="sb-lbl">Strong</div></div>
+  <div class="sb-item"><div class="sb-val" style="color:var(--amber)">5</div><div class="sb-lbl">Moderate</div></div>
   <div class="sb-item"><div class="sb-val" style="color:var(--red)">2</div><div class="sb-lbl">Under</div></div>
   <div class="sb-item"><div class="sb-val" style="color:var(--text3)">18</div><div class="sb-lbl">Pass</div></div>
   <div class="sb-item"><div class="sb-val" style="color:var(--purple)">2</div><div class="sb-lbl">Below</div></div>
@@ -325,7 +325,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
 <div class="conf-bar-wrap"><div class="conf-direction"><span style="color:var(--green);font-weight:700;">↑ OVER 5.5 Ks</span><span class="conf-pct" style="color:var(--green)">88%</span></div><div class="conf-bar-bg"><div class="conf-bar-fill conf-bar-over" style="width:88%"></div></div></div>
 <div class="p-sec"><div class="p-sec-label">Pitcher Stats</div><div class="stats-row"><div class="sp"><span class="lbl">ERA</span><span class="vg">1.76<span style="color:#3dffa0;font-size:6px;vertical-align:super;">✓</span></span></div><div class="sp"><span class="lbl">K/9</span><span class="vg">11.4</span></div><div class="sp"><span class="lbl">K%</span><span class="vg">31.2%</span></div><div class="sp"><span class="lbl">Whiff%</span><span class="vg">33.8%</span></div><div class="sp"><span class="lbl">FPS%</span><span class="vg">66%</span></div><div class="sp"><span class="lbl">BB%</span><span class="vg">4.8%</span></div></div></div>
 <div class="model-proj"><div class="model-proj-lbl">Model Projections</div><div class="stats-row"><div class="sp"><span class="lbl">Pitches</span><span>96</span></div><div class="sp"><span class="lbl">ER</span><span class="vg">1.8</span></div><div class="sp"><span class="lbl">H</span><span class="vg">3.8</span></div><div class="sp"><span class="lbl">BB</span><span class="vg">1.4</span></div><div class="sp"><span class="lbl">Park</span><span class="vg">Progressive 0.95</span></div><div class="sp"><span class="lbl">Park</span><span class="va">Dodger Stad 1.02</span></div><div class="sp"><span class="lbl">Proj K</span><span class="vg">7.0</span></div><div class="sp"><span class="lbl">Norm L10</span><span class="va">6.6 ✓</span></div></div></div>
-<div class="matchup-row">
+<div class="matchup-row" style="grid-template-columns:1fr 1fr 1fr;">
   <div class="hand-box active"><div class="hand-lbl">BOS K% vs LHP</div><div class="hand-val" style="color:var(--amber)">21.8%</div><div class="hand-rank">#18 · Chase 28% · SwStr 11%</div></div>
   <div class="ars-box" style="border-color:var(--green);background:var(--green-dim);">
     <div class="ars-header"><span class="ars-lbl">Arsenal Match</span><span class="ars-score" style="color:var(--green)">STRONG · 25.3%</span></div>
@@ -336,10 +336,11 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
   <div class="fp-box" style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:5px 7px;text-align:center;"><div class="hand-lbl">Finishing Power</div><div class="fp-score" style="color:var(--green);font-family:'Bebas Neue',sans-serif;font-size:14px;line-height:1;">ELITE</div><div class="fp-sub" style="font-size:7px;color:var(--text3);font-family:'DM Mono',monospace;">68%×30%=20.4</div></div>
 </div>
 <div class="l10-sec"><div class="l10-header"><div class="l10-label">L10 · Avg 6.7K ✓ <span style="color:#3dffa0">↑ Hot</span></div><div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--green)">Trend ↑</div></div>
-<div class="l10-row"><div class="l10c"><span class="kn kn-m" style="font-weight:700;">6</span><span class="op">DET</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-h" style="font-weight:700;">9</span><span class="op">BAL</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-m" style="font-weight:700;">6</span><span class="op">ATL</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-h" style="font-weight:700;">8</span><span class="op">MIN</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-m" style="font-weight:700;">7</span><span class="op">MIL</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-l" style="font-weight:700;">5</span><span class="op">KC</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-h" style="font-weight:700;">8</span><span class="op">ATH</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-m" style="font-weight:700;">6</span><span class="op">LAD</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-m" style="font-weight:700;">6</span><span class="op">TEX</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-m" style="font-weight:700;">6</span><span class="op">HOU</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div></div></div>
+<div class="l10-row"><div class="l10c"><span class="kn kn-m">6</span><span class="op">DET</span></div><div class="l10c"><span class="kn kn-h">9</span><span class="op">BAL</span></div><div class="l10c"><span class="kn kn-m">6</span><span class="op">ATL</span></div><div class="l10c"><span class="kn kn-h">8</span><span class="op">MIN</span></div><div class="l10c"><span class="kn kn-m">7</span><span class="op">MIL</span></div><div class="l10c"><span class="kn kn-l">5</span><span class="op">KC</span></div><div class="l10c"><span class="kn kn-h">8</span><span class="op">ATH</span></div><div class="l10c"><span class="kn kn-m">6</span><span class="op">LAD</span></div><div class="l10c"><span class="kn kn-m">6</span><span class="op">TEX</span></div><div class="l10c"><span class="kn kn-m">6</span><span class="op">HOU</span></div></div></div>
 <div class="comp-box"><div class="comp-lbl">v6+ vs v7</div><div class="comp-row"><span style="color:var(--text3)">v6+ Proj K</span><span>6.8K</span></div><div class="comp-row"><span style="color:var(--text3)">v7 Proj K</span><span style="color:var(--green)">7.0K (corrected)</span></div><div class="comp-row"><span style="color:var(--text3)">Real data note</span><span style="color:var(--text3)">51Ks/7 starts · L5=33Ks · ERA 2.40</span></div></div>
 <div class="proj-sec"><div class="proj-grid"><div class="pbox hl"><div class="pbox-lbl">Proj Ks</div><div class="pbox-val" style="color:var(--green)">7.0</div><div class="pbox-sub">verified L5 6.6K avg</div><div style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-top:2px;">Floor: 5K · 20th pct L10</div></div><div class="pbox"><div class="pbox-lbl">Est. Book Line</div><div class="pbox-val" style="color:var(--text)">5.5</div><div class="pbox-line">O -135 est · U +112</div><div class="edge-row"><span class="edge-pill ep-strong">+1.5K / +27% Edge</span></div></div></div><div class="proj-grid"><div class="pbox"><div class="pbox-lbl">Stuff Rating</div><div class="pbox-val" style="color:var(--green);font-size:18px">Elite</div><div class="pbox-sub">11.4 K/9 · slider dom</div></div><div class="pbox"><div class="pbox-lbl">Progressive Field</div><div class="pbox-val" style="color:var(--green);font-size:18px">0.95</div><div class="pbox-sub">Pitcher-friendly ✓</div></div></div></div>
-<div class="weather-row"><span class="weather-lbl">⛅</span><span class="weather-val">74°F · 7mph cross · 0% rain · Neutral</span><span style="color:var(--border);margin:0 2px;">·</span><span class="weather-lbl">⚾</span><span class="ump-val" style="color:var(--green)">K-Friendly +0.4</span></div>
+<div class="weather-row"><span class="weather-lbl">⛅ Weather</span><span class="weather-val" style="color:var(--green)">74°F · 7mph cross · 0% rain · Neutral</span></div>
+<div class="ump-row"><span class="ump-lbl">⚾ Ump</span><span class="ump-val" style="color:var(--green)">K-Friendly +0.4</span></div>
 <div class="risk-row"><span class="risk-lbl">Game Script</span><div class="risk-bg"><div class="risk-fill rf-low" style="width:15%"></div></div><span class="risk-val" style="color:var(--green)">Low</span></div>
 <div class="act-sec"><div class="act-lbl">Action</div><div class="act-text"><strong>OVER 5.5 Ks — Full Size.</strong> Messick elite (9.6 K/9, 2.40 ERA, 51Ks/7 starts, 5:1 K:BB). Verified L5 avg 6.6K. Arsenal STRONG — slider generates 30% whiff vs BOS RHBs. BOS K% 21.8% — avg but Messick overpowers contact hitters. Progressive pitcher-friendly at 0.95. <span class="hg">Proj 7.0 vs 5.5 — +1.5K edge. Best bet of the slate at -135 or better.</span></div></div>
 </div></div></div>
@@ -376,7 +377,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
 <div class="conf-bar-wrap"><div class="conf-direction"><span style="color:var(--green);font-weight:700;">↑ OVER 5.5 Ks</span><span class="conf-pct" style="color:var(--green)">82%</span></div><div class="conf-bar-bg"><div class="conf-bar-fill conf-bar-over" style="width:82%"></div></div></div>
 <div class="p-sec"><div class="p-sec-label">Pitcher Stats</div><div class="stats-row"><div class="sp"><span class="lbl">ERA</span><span class="va">4.02<span style="color:#3dffa0;font-size:6px;vertical-align:super;">✓</span></span></div><div class="sp"><span class="lbl">K/9</span><span class="vg">9.8</span></div><div class="sp"><span class="lbl">K%</span><span class="vg">28.4%</span></div><div class="sp"><span class="lbl">Whiff%</span><span class="vg">29.4%</span></div><div class="sp"><span class="lbl">FPS%</span><span class="vg">64%</span></div><div class="sp"><span class="lbl">BB%</span><span class="vg">3.0%</span></div></div></div>
 <div class="model-proj"><div class="model-proj-lbl">Model Projections</div><div class="stats-row"><div class="sp"><span class="lbl">Pitches</span><span>94</span></div><div class="sp"><span class="lbl">ER</span><span class="vg">2.0</span></div><div class="sp"><span class="lbl">H</span><span class="vg">4.2</span></div><div class="sp"><span class="lbl">BB</span><span class="vg">1.2</span></div><div class="sp"><span class="lbl">Park</span><span class="vg">T-Mobile 0.94</span></div><div class="sp"><span class="lbl">Proj K</span><span class="vg">6.8</span></div><div class="sp"><span class="lbl">Norm L10</span><span class="vg">6.8</span></div></div></div>
-<div class="matchup-row">
+<div class="matchup-row" style="grid-template-columns:1fr 1fr 1fr;">
   <div class="hand-box active"><div class="hand-lbl">ARI K% vs RHP</div><div class="hand-val" style="color:var(--amber)">21.6%</div><div class="hand-rank">#19 · Chase 27% · SwStr 10%</div></div>
   <div class="ars-box" style="border-color:var(--green);background:var(--green-dim);">
     <div class="ars-header"><span class="ars-lbl">Arsenal Match</span><span class="ars-score" style="color:var(--green)">STRONG · 25.7%</span></div>
@@ -387,10 +388,11 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
   <div class="fp-box" style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:5px 7px;text-align:center;"><div class="hand-lbl">Finishing Power</div><div class="fp-score" style="color:var(--green);font-family:'Bebas Neue',sans-serif;font-size:14px;line-height:1;">STRONG</div><div class="fp-sub" style="font-size:7px;color:var(--text3);font-family:'DM Mono',monospace;">64%×29%=18.6</div></div>
 </div>
 <div class="l10-sec"><div class="l10-header"><div class="l10-label">L10 · Avg 5.9K ✓ <span style="color:#3dffa0">↑ Hot last start</span></div></div>
-<div class="l10-row"><div class="l10c"><span class="kn kn-h" style="font-weight:700;">9</span><span class="op">ATL</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-h" style="font-weight:700;">7</span><span class="op">STL</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-l" style="font-weight:700;">1</span><span class="op">STL</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-m" style="font-weight:700;">5</span><span class="op">TEX</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-m" style="font-weight:700;">6</span><span class="op">TEX</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-m" style="font-weight:700;">5</span><span class="op">LAA</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-m" style="font-weight:700;">6</span><span class="op">LAA</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-m" style="font-weight:700;">6</span><span class="op">CLE</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-m" style="font-weight:700;">5</span><span class="op">CLE</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-h" style="font-weight:700;">9</span><span class="op">HOU</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div></div></div>
+<div class="l10-row"><div class="l10c"><span class="kn kn-h">9</span><span class="op">ATL</span></div><div class="l10c"><span class="kn kn-h">7</span><span class="op">STL</span></div><div class="l10c"><span class="kn kn-l">1</span><span class="op">STL</span></div><div class="l10c"><span class="kn kn-m">5</span><span class="op">TEX</span></div><div class="l10c"><span class="kn kn-m">6</span><span class="op">TEX</span></div><div class="l10c"><span class="kn kn-m">5</span><span class="op">LAA</span></div><div class="l10c"><span class="kn kn-m">6</span><span class="op">LAA</span></div><div class="l10c"><span class="kn kn-m">6</span><span class="op">CLE</span></div><div class="l10c"><span class="kn kn-m">5</span><span class="op">CLE</span></div><div class="l10c"><span class="kn kn-h">9</span><span class="op">HOU</span></div></div></div>
 <div class="comp-box"><div class="comp-lbl">v6+ vs v7</div><div class="comp-row"><span style="color:var(--text3)">v6+ Proj K</span><span>6.4K</span></div><div class="comp-row"><span style="color:var(--text3)">v7 Proj K</span><span style="color:var(--green)">6.8K (+0.4K)</span></div></div>
 <div class="proj-sec"><div class="proj-grid"><div class="pbox hl"><div class="pbox-lbl">Proj Ks</div><div class="pbox-val" style="color:var(--green)">6.8</div><div class="pbox-sub">v7 blended</div><div style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-top:2px;">Floor: 5K · 20th pct L10</div></div><div class="pbox"><div class="pbox-lbl">Est. Book Line</div><div class="pbox-val" style="color:var(--text)">5.5</div><div class="pbox-line">O -122 est · U +100</div><div class="edge-row"><span class="edge-pill ep-strong">+1.3K / +24% Edge</span></div></div></div><div class="proj-grid"><div class="pbox"><div class="pbox-lbl">Stuff Rating</div><div class="pbox-val" style="color:var(--green);font-size:18px">A+</div><div class="pbox-sub">10.2 K/9 · elite ctrl</div></div><div class="pbox"><div class="pbox-lbl">T-Mobile Park</div><div class="pbox-val" style="color:var(--green);font-size:18px">0.94</div><div class="pbox-sub">Best pitcher park ✓</div></div></div></div>
-<div class="weather-row"><span class="weather-lbl">⛅</span><span class="weather-val">52°F · Retractable roof · Weather neutral</span><span style="color:var(--border);margin:0 2px;">·</span><span class="weather-lbl">⚾</span><span class="ump-val" style="color:var(--text2)">Neutral 0.0</span></div>
+<div class="weather-row"><span class="weather-lbl">⛅ Weather</span><span class="weather-val" style="color:var(--green)">52°F · Retractable roof · Weather neutral</span></div>
+<div class="ump-row"><span class="ump-lbl">⚾ Ump</span><span class="ump-val" style="color:var(--text2)">Neutral 0.0</span></div>
 <div class="risk-row"><span class="risk-lbl">Game Script</span><div class="risk-bg"><div class="risk-fill rf-low" style="width:14%"></div></div><span class="risk-val" style="color:var(--green)">Low</span></div>
 <div class="act-sec"><div class="act-lbl">Action</div><div class="act-text"><strong>OVER 5.5 Ks — Full Size.</strong> Woo 59Ks in 8 starts = 7.4/start avg — higher than modeled. 2 blow-up starts skew ERA to 4.02 but control metrics excellent (BB% 3.0%). Sinker/slider plays well vs ARI RHBs who expand the zone. T-Mobile best pitcher park on slate at 0.94. ARI #19 K lineup is avg but Woo doesn't need high-K lineups — he manufactures Ks through pitch sequencing. <span class="hg">Proj 6.8 vs 5.5 at -122 or better. Highest floor play of the slate.</span></div></div>
 </div></div></div>
@@ -411,7 +413,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
 <div class="conf-bar-wrap"><div class="conf-direction"><span style="color:var(--green);font-weight:700;">↑ OVER 5.5 Ks</span><span class="conf-pct" style="color:var(--green)">78%</span></div><div class="conf-bar-bg"><div class="conf-bar-fill conf-bar-over" style="width:78%"></div></div></div>
 <div class="p-sec"><div class="p-sec-label">Pitcher Stats</div><div class="stats-row"><div class="sp"><span class="lbl">ERA</span><span class="vg">2.31<span style="color:#3dffa0;font-size:6px;vertical-align:super;">✓</span></span></div><div class="sp"><span class="lbl">K/9</span><span class="vg">9.8</span></div><div class="sp"><span class="lbl">K%</span><span class="vg">27.4%</span></div><div class="sp"><span class="lbl">Whiff%</span><span class="vg">28.4%</span></div><div class="sp"><span class="lbl">FPS%</span><span class="va">62%</span></div><div class="sp"><span class="lbl">BB%</span><span class="vg">4.4%</span></div></div></div>
 <div class="model-proj"><div class="model-proj-lbl">Model</div><div class="stats-row"><div class="sp"><span class="lbl">Proj K</span><span class="va">6.2</span></div><div class="sp"><span class="lbl">Norm L10</span><span class="va">6.3</span></div><div class="sp"><span class="lbl">WSH K%</span><span class="vr">20.4% #23</span></div></div></div>
-<div class="matchup-row">
+<div class="matchup-row" style="grid-template-columns:1fr 1fr 1fr;">
   <div class="hand-box active"><div class="hand-lbl">WSH K% vs RHP</div><div class="hand-val" style="color:var(--red)">20.4%</div><div class="hand-rank">#23 · Chase 24% · SwStr 9%</div></div>
   <div class="ars-box" style="border-color:var(--amber);background:var(--amber-dim);"><div class="ars-header"><span class="ars-lbl">Arsenal Match</span><span class="ars-score" style="color:var(--amber)">AVERAGE · 23.9%</span></div>
     <div class="ars-pitch-row"><span class="ars-pname">Slider</span><div class="ars-bar-bg"><div class="ars-bar-fill" style="width:44%;background:var(--green)"></div></div><span class="ars-usage">44%</span><span class="ars-whiff" style="color:var(--green)">26% whiff ←</span></div>
@@ -421,10 +423,10 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
   <div class="fp-box" style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:5px 7px;text-align:center;"><div class="hand-lbl">Finishing Power</div><div class="fp-score" style="color:var(--amber);font-family:'Bebas Neue',sans-serif;font-size:14px;line-height:1;">AVERAGE</div><div class="fp-sub" style="font-size:7px;color:var(--text3);font-family:'DM Mono',monospace;">60%×26%=15.6</div></div>
 </div>
 <div class="l10-sec"><div class="l10-header"><div class="l10-label">L10 · Avg 5.9K ✓ <span style="color:#3dffa0">↑ Elite 2026</span></div></div>
-<div class="l10-row"><div class="l10c"><span class="kn kn-h" style="font-weight:700;">7</span><span class="op">WSH</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-m" style="font-weight:700;">5</span><span class="op">LAD</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-h" style="font-weight:700;">7</span><span class="op">LAD</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-h" style="font-weight:700;">8</span><span class="op">COL</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-l" style="font-weight:700;">4</span><span class="op">MIN</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-m" style="font-weight:700;">6</span><span class="op">MIL</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-m" style="font-weight:700;">5</span><span class="op">CHC</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-m" style="font-weight:700;">5</span><span class="op">PHI</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-h" style="font-weight:700;">7</span><span class="op">SF</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-m" style="font-weight:700;">5</span><span class="op">BOS</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div></div></div>
+<div class="l10-row"><div class="l10c"><span class="kn kn-h">7</span><span class="op">WSH</span></div><div class="l10c"><span class="kn kn-m">5</span><span class="op">LAD</span></div><div class="l10c"><span class="kn kn-h">7</span><span class="op">LAD</span></div><div class="l10c"><span class="kn kn-h">8</span><span class="op">COL</span></div><div class="l10c"><span class="kn kn-l">4</span><span class="op">MIN</span></div><div class="l10c"><span class="kn kn-m">6</span><span class="op">MIL</span></div><div class="l10c"><span class="kn kn-m">5</span><span class="op">CHC</span></div><div class="l10c"><span class="kn kn-m">5</span><span class="op">PHI</span></div><div class="l10c"><span class="kn kn-h">7</span><span class="op">SF</span></div><div class="l10c"><span class="kn kn-m">5</span><span class="op">BOS</span></div></div></div>
 <div class="comp-box"><div class="comp-lbl">v6+ vs v7</div><div class="comp-row"><span style="color:var(--text3)">v6+</span><span>5.8K</span></div><div class="comp-row"><span style="color:var(--text3)">v7</span><span style="color:var(--green)">6.2K (+0.4K)</span></div><div class="comp-row"><span style="color:var(--text3)">WSH note</span><span style="color:var(--text3)">#23 contact limits upside</span></div></div>
 <div class="proj-sec"><div class="proj-grid"><div class="pbox hl"><div class="pbox-lbl">Proj Ks</div><div class="pbox-val" style="color:var(--amber)">6.2</div><div style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-top:2px;">Floor: 4K · 20th pct</div></div><div class="pbox"><div class="pbox-lbl">Est. Book Line</div><div class="pbox-val" style="color:var(--text)">5.5</div><div class="pbox-line">O -115 est · U -105</div><div class="edge-row"><span class="edge-pill ep-mod">+0.7K · thin edge</span></div></div></div></div>
-<div class="weather-row"><span class="weather-lbl">⛅</span><span class="weather-val" style="color:var(--green)">78°F · 8mph cross · Neutral</span><span style="color:var(--text3);font-size:6px;margin-left:6px;font-family:\'DM Mono\',monospace;">⚾ Ump N/A</span></div>
+<div class="weather-row"><span class="weather-lbl">⛅ Weather</span><span class="weather-val" style="color:var(--green)">78°F · 8mph cross · Neutral</span></div>
 <div class="act-sec"><div class="act-lbl">Action</div><div class="act-text"><strong>OVER 5.5 — Half Size.</strong> King elite 2026: ERA 2.31, Hard Hit only 31.9%. Soft contact specialist. WSH #23 K lineup is a headwind but King has been generating Ks even vs contact teams. Nationals Park slight pitcher-friendly. <span class="hg">Proj 6.2 vs 5.5 — better edge than modeled. Full size at -115 or better.</span></div></div>
 </div></div></div>
 
@@ -441,7 +443,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
 <div class="conf-bar-wrap"><div class="conf-direction"><span style="color:var(--amber);font-weight:700;">↑ OVER 5.5 Ks</span><span class="conf-pct" style="color:var(--amber)">72%</span></div><div class="conf-bar-bg"><div class="conf-bar-fill conf-bar-over" style="width:72%"></div></div></div>
 <div class="p-sec"><div class="p-sec-label">Pitcher Stats</div><div class="stats-row"><div class="sp"><span class="lbl">ERA</span><span class="va">3.50<span style="color:#8e94aa;font-size:6px;vertical-align:super;">~</span></span></div><div class="sp"><span class="lbl">K/9</span><span class="vg">10.2</span></div><div class="sp"><span class="lbl">K%</span><span class="vg">27.8%</span></div><div class="sp"><span class="lbl">Whiff%</span><span class="vg">29.8%</span></div><div class="sp"><span class="lbl">FPS%</span><span class="vg">63%</span></div><div class="sp"><span class="lbl">BB%</span><span class="vr">8.8%</span></div></div></div>
 <div class="model-proj"><div class="model-proj-lbl">Model</div><div class="stats-row"><div class="sp"><span class="lbl">Proj K</span><span class="va">6.9</span></div><div class="sp"><span class="lbl">Norm L10</span><span class="va">6.9</span></div><div class="sp"><span class="lbl">MIL K%</span><span class="va">21.8%</span></div><div class="sp"><span class="lbl">Pitches</span><span>91</span></div></div></div>
-<div class="matchup-row">
+<div class="matchup-row" style="grid-template-columns:1fr 1fr 1fr;">
   <div class="hand-box active"><div class="hand-lbl">MIL K% vs RHP</div><div class="hand-val" style="color:var(--amber)">21.8%</div><div class="hand-rank">#16 · Chase 27% · SwStr 10%</div></div>
   <div class="ars-box" style="border-color:var(--green);background:var(--green-dim);"><div class="ars-header"><span class="ars-lbl">Arsenal Match</span><span class="ars-score" style="color:var(--green)">STRONG · 24.0%</span></div>
     <div class="ars-pitch-row"><span class="ars-pname">Slider</span><div class="ars-bar-bg"><div class="ars-bar-fill" style="width:42%;background:var(--green)"></div></div><span class="ars-usage">42%</span><span class="ars-whiff" style="color:var(--green)">27% whiff ←</span></div>
@@ -451,10 +453,10 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
   <div class="fp-box" style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:5px 7px;text-align:center;"><div class="hand-lbl">Finishing Power</div><div class="fp-score" style="color:var(--amber);font-family:'Bebas Neue',sans-serif;font-size:14px;line-height:1;">AVERAGE</div><div class="fp-sub" style="font-size:7px;color:var(--text3);font-family:'DM Mono',monospace;">60%×27%=16.2</div></div>
 </div>
 <div class="l10-sec"><div class="l10-header"><div class="l10-label">L10 · Avg 5.7K ~ <span style="color:#ffb83d">→ Consistent</span></div></div>
-<div class="l10-row"><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">6</span><span class="op">MIL</span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">6</span><span class="op">MIL</span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">6</span><span class="op">MIN</span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">5</span><span class="op">MIN</span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">6</span><span class="op">LAD</span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">5</span><span class="op">LAD</span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">6</span><span class="op">SD</span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">5</span><span class="op">SD</span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">6</span><span class="op">COL</span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">6</span><span class="op">COL</span></div></div></div>
+<div class="l10-row"><div class="l10c"><span class="kn kn-m">6</span><span class="op">MIL</span></div><div class="l10c"><span class="kn kn-m">6</span><span class="op">MIL</span></div><div class="l10c"><span class="kn kn-m">6</span><span class="op">MIN</span></div><div class="l10c"><span class="kn kn-m">5</span><span class="op">MIN</span></div><div class="l10c"><span class="kn kn-m">6</span><span class="op">LAD</span></div><div class="l10c"><span class="kn kn-m">5</span><span class="op">LAD</span></div><div class="l10c"><span class="kn kn-m">6</span><span class="op">SD</span></div><div class="l10c"><span class="kn kn-m">5</span><span class="op">SD</span></div><div class="l10c"><span class="kn kn-m">6</span><span class="op">COL</span></div><div class="l10c"><span class="kn kn-m">6</span><span class="op">COL</span></div></div></div>
 <div class="comp-box"><div class="comp-lbl">v6+ vs v7</div><div class="comp-row"><span style="color:var(--text3)">v6+</span><span>6.2K</span></div><div class="comp-row"><span style="color:var(--text3)">v7</span><span style="color:var(--green)">6.9K (+0.7K)</span></div><div class="comp-row"><span style="color:var(--text3)">Risk</span><span style="color:var(--text3)">BB% 9.2% limits depth</span></div></div>
 <div class="proj-sec"><div class="proj-grid"><div class="pbox hl"><div class="pbox-lbl">Proj Ks</div><div class="pbox-val" style="color:var(--amber)">6.9</div><div style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-top:2px;">Floor: 6K · 20th pct</div></div><div class="pbox"><div class="pbox-lbl">Est. Book Line</div><div class="pbox-val" style="color:var(--text)">5.5</div><div class="pbox-line">O -120 est · U +100</div><div class="edge-row"><span class="edge-pill ep-mod">+1.4K / +25%</span></div></div></div></div>
-<div class="weather-row"><span class="weather-lbl">⛅</span><span class="weather-val" style="color:var(--green)">89°F · Roof closed · Neutral</span><span style="color:var(--text3);font-size:6px;margin-left:6px;font-family:\'DM Mono\',monospace;">⚾ Ump N/A</span></div>
+<div class="weather-row"><span class="weather-lbl">⛅ Weather</span><span class="weather-val" style="color:var(--green)">89°F · Roof closed · Neutral</span></div>
 <div class="act-sec"><div class="act-lbl">Action</div><div class="act-text"><strong>OVER 5.5 — Half to Full.</strong> Arsenal STRONG — slider 27% whiff vs MIL. The BB% (9.2%) is the variance risk: a bad control day means pitch count burns fast and short outings. MIL mid-tier K lineup helps. Minute Maid roof closed, weather neutral. <span class="ha">Proj 6.9 vs 5.5 at -120 or better. Half size given BB% variance.</span></div></div>
 </div></div></div>
 
@@ -471,7 +473,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
 <div class="conf-bar-wrap"><div class="conf-direction"><span style="color:var(--amber);font-weight:700;">↑ OVER 5.5 Ks</span><span class="conf-pct" style="color:var(--amber)">65%</span></div><div class="conf-bar-bg"><div class="conf-bar-fill conf-bar-over" style="width:65%"></div></div></div>
 <div class="p-sec"><div class="p-sec-label">Pitcher Stats</div><div class="stats-row"><div class="sp"><span class="lbl">ERA</span><span class="vg">3.19<span style="color:#3dffa0;font-size:6px;vertical-align:super;">✓</span></span></div><div class="sp"><span class="lbl">K/9</span><span class="vg">10.0</span></div><div class="sp"><span class="lbl">K%</span><span class="vg">27.2%</span></div><div class="sp"><span class="lbl">Whiff%</span><span class="vg">29.8%</span></div><div class="sp"><span class="lbl">FPS%</span><span class="vg">63%</span></div><div class="sp"><span class="lbl">BB%</span><span class="vg">2.9%</span></div></div></div>
 <div class="model-proj"><div class="model-proj-lbl">Model</div><div class="stats-row"><div class="sp"><span class="lbl">Proj K</span><span class="va">6.8</span></div><div class="sp"><span class="lbl">Norm L10</span><span class="va">6.8</span></div><div class="sp"><span class="lbl">LAA K%</span><span class="vg">25.6% #2</span></div></div></div>
-<div class="matchup-row">
+<div class="matchup-row" style="grid-template-columns:1fr 1fr 1fr;">
   <div class="hand-box active"><div class="hand-lbl">LAA K% vs RHP</div><div class="hand-val" style="color:var(--green)">25.6%</div><div class="hand-rank">#2 · Chase 32% · SwStr 13%</div></div>
   <div class="ars-box" style="border-color:var(--green);background:var(--green-dim);"><div class="ars-header"><span class="ars-lbl">Arsenal Match</span><span class="ars-score" style="color:var(--green)">STRONG · 24.8%</span></div>
     <div class="ars-pitch-row"><span class="ars-pname">Sinker</span><div class="ars-bar-bg"><div class="ars-bar-fill" style="width:44%;background:var(--amber)"></div></div><span class="ars-usage">44%</span><span class="ars-whiff" style="color:var(--amber)">25% whiff</span></div>
@@ -481,10 +483,10 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
   <div class="fp-box" style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:5px 7px;text-align:center;"><div class="hand-lbl">Finishing Power</div><div class="fp-score" style="color:var(--amber);font-family:'Bebas Neue',sans-serif;font-size:14px;line-height:1;">AVERAGE</div><div class="fp-sub" style="font-size:7px;color:var(--text3);font-family:'DM Mono',monospace;">62%×27%=16.7</div></div>
 </div>
 <div class="l10-sec"><div class="l10-header"><div class="l10-label">L10 · Avg 5.0K ✓ <span style="color:#ffb83d">→ Consistent</span></div></div>
-<div class="l10-row"><div class="l10c"><span class="kn kn-l" style="font-weight:700;">2</span><span class="op">MIA</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-h" style="font-weight:700;">7</span><span class="op">NYY</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-h" style="font-weight:700;">6</span><span class="op">MIN</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-l" style="font-weight:700;">1</span><span class="op">—</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-h" style="font-weight:700;">6</span><span class="op">MIN</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-h" style="font-weight:700;">6</span><span class="op">MIN</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-h" style="font-weight:700;">7</span><span class="op">TBR</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-h" style="font-weight:700;">6</span><span class="op">CLE</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-m" style="font-weight:700;">5</span><span class="op">SEA</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-m" style="font-weight:700;">4</span><span class="op">MIL</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div></div></div>
+<div class="l10-row"><div class="l10c"><span class="kn kn-l">2</span><span class="op">MIA</span></div><div class="l10c"><span class="kn kn-h">7</span><span class="op">NYY</span></div><div class="l10c"><span class="kn kn-h">6</span><span class="op">MIN</span></div><div class="l10c"><span class="kn kn-l">1</span><span class="op">—</span></div><div class="l10c"><span class="kn kn-h">6</span><span class="op">MIN</span></div><div class="l10c"><span class="kn kn-h">6</span><span class="op">MIN</span></div><div class="l10c"><span class="kn kn-h">7</span><span class="op">TBR</span></div><div class="l10c"><span class="kn kn-h">6</span><span class="op">CLE</span></div><div class="l10c"><span class="kn kn-m">5</span><span class="op">SEA</span></div><div class="l10c"><span class="kn kn-m">4</span><span class="op">MIL</span></div></div></div>
 <div class="comp-box"><div class="comp-lbl">v6+ vs v7</div><div class="comp-row"><span style="color:var(--text3)">v6+</span><span>6.2K</span></div><div class="comp-row"><span style="color:var(--text3)">v7</span><span style="color:var(--green)">6.8K (+0.6K)</span></div><div class="comp-row"><span style="color:var(--text3)">Key boost</span><span style="color:var(--text3)">LAA #2 K lineup</span></div></div>
 <div class="proj-sec"><div class="proj-grid"><div class="pbox hl"><div class="pbox-lbl">Proj Ks</div><div class="pbox-val" style="color:var(--amber)">6.8</div><div style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-top:2px;">Floor: 5K · 20th pct</div></div><div class="pbox"><div class="pbox-lbl">Est. Book Line</div><div class="pbox-val" style="color:var(--text)">5.5</div><div class="pbox-line">O -118 est · U -102</div><div class="edge-row"><span class="edge-pill ep-mod">+1.3K / +24%</span></div></div></div></div>
-<div class="weather-row"><span class="weather-lbl">⛅</span><span class="weather-val" style="color:var(--green)">Dome · Weather neutral</span><span style="color:var(--text3);font-size:6px;margin-left:6px;font-family:\'DM Mono\',monospace;">⚾ Ump N/A</span></div>
+<div class="weather-row"><span class="weather-lbl">⛅ Weather</span><span class="weather-val" style="color:var(--green)">Dome · Weather neutral</span></div>
 <div class="act-sec"><div class="act-lbl">Action</div><div class="act-text"><strong>OVER 5.5 — Half to Full.</strong> LAA #2 K lineup is the edge maker here — they expand the zone and generate swings outside. Rasmussen sinker/slider mix plays directly into that tendency. Dome removes all weather variance. His L10 is reliable 6.8 avg with only one down start (5K floor). <span class="ha">Proj 6.8 vs 5.5. Full size play at -118 or better.</span></div></div>
 </div></div></div>
 
@@ -517,7 +519,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
 <div class="conf-bar-wrap"><div class="conf-direction"><span style="color:var(--amber);font-weight:700;">↑ OVER 5.5 Ks</span><span class="conf-pct" style="color:var(--amber)">62%</span></div><div class="conf-bar-bg"><div class="conf-bar-fill conf-bar-over" style="width:62%"></div></div></div>
 <div class="p-sec"><div class="p-sec-label">Pitcher Stats</div><div class="stats-row"><div class="sp"><span class="lbl">ERA</span><span class="va">4.58<span style="color:#3dffa0;font-size:6px;vertical-align:super;">✓</span></span></div><div class="sp"><span class="lbl">K/9</span><span class="va">7.4</span></div><div class="sp"><span class="lbl">K%</span><span class="va">23.1%</span></div><div class="sp"><span class="lbl">Whiff%</span><span class="va">27.8%</span></div><div class="sp"><span class="lbl">FPS%</span><span class="vg">63%</span></div><div class="sp"><span class="lbl">BB%</span><span class="va">6.8%</span></div></div></div>
 <div class="model-proj"><div class="model-proj-lbl">Model Projections</div><div class="stats-row"><div class="sp"><span class="lbl">Pitches</span><span>94</span></div><div class="sp"><span class="lbl">ER</span><span class="vg">2.2</span></div><div class="sp"><span class="lbl">H</span><span class="vg">4.4</span></div><div class="sp"><span class="lbl">BB</span><span class="vg">1.3</span></div><div class="sp"><span class="lbl">Park</span><span class="vg">GR Field 0.94</span></div><div class="sp"><span class="lbl">Proj K</span><span class="vg">7.3</span></div><div class="sp"><span class="lbl">Norm L10</span><span class="vg">7.1</span></div></div></div>
-<div class="matchup-row">
+<div class="matchup-row" style="grid-template-columns:1fr 1fr 1fr;">
   <div class="hand-box active"><div class="hand-lbl">CWS K% vs LHP</div><div class="hand-val" style="color:var(--green)">26.2%</div><div class="hand-rank">#3 · Chase 31% · SwStr 13%</div></div>
   <div class="ars-box" style="border-color:var(--green);background:var(--green-dim);">
     <div class="ars-header"><span class="ars-lbl">Arsenal Match</span><span class="ars-score" style="color:var(--green)">STRONG · 26.6%</span></div>
@@ -528,10 +530,11 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
   <div class="fp-box" style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:5px 7px;text-align:center;"><div class="hand-lbl">Finishing Power</div><div class="fp-score" style="color:var(--green);font-family:'Bebas Neue',sans-serif;font-size:14px;line-height:1;">STRONG</div><div class="fp-sub" style="font-size:7px;color:var(--text3);font-family:'DM Mono',monospace;">66%×30%=19.8</div></div>
 </div>
 <div class="l10-sec"><div class="l10-header"><div class="l10-label">L10 · Avg 5.1K ✓ <span style="color:#ffb83d">↑ Trending up</span></div></div>
-<div class="l10-row"><div class="l10c"><span class="kn kn-h" style="font-weight:700;">7</span><span class="op">NYM</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-m" style="font-weight:700;">4</span><span class="op">—</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-m" style="font-weight:700;">4</span><span class="op">ATL</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-h" style="font-weight:700;">7</span><span class="op">BOS</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-m" style="font-weight:700;">4</span><span class="op">CIN</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-h" style="font-weight:700;">8</span><span class="op">ATL</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-l" style="font-weight:700;">3</span><span class="op">MIN</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">6</span><span class="op">CLE</span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">4</span><span class="op">MIN</span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">4</span><span class="op">CHC</span></div></div></div>
+<div class="l10-row"><div class="l10c"><span class="kn kn-h">7</span><span class="op">NYM</span></div><div class="l10c"><span class="kn kn-m">4</span><span class="op">—</span></div><div class="l10c"><span class="kn kn-m">4</span><span class="op">ATL</span></div><div class="l10c"><span class="kn kn-h">7</span><span class="op">BOS</span></div><div class="l10c"><span class="kn kn-m">4</span><span class="op">CIN</span></div><div class="l10c"><span class="kn kn-h">8</span><span class="op">ATL</span></div><div class="l10c"><span class="kn kn-l">3</span><span class="op">MIN</span></div><div class="l10c"><span class="kn kn-m">6</span><span class="op">CLE</span></div><div class="l10c"><span class="kn kn-m">4</span><span class="op">MIN</span></div><div class="l10c"><span class="kn kn-m">4</span><span class="op">CHC</span></div></div></div>
 <div class="comp-box"><div class="comp-lbl">v6+ vs v7</div><div class="comp-row"><span style="color:var(--text3)">v6+ Proj K</span><span>6.4K</span></div><div class="comp-row"><span style="color:var(--text3)">v7 Proj K</span><span style="color:var(--green)">7.3K (+0.9K)</span></div><div class="comp-row"><span style="color:var(--text3)">Key boost</span><span style="color:var(--text3)">CWS #3 K lineup vs LHP</span></div></div>
 <div class="proj-sec"><div class="proj-grid"><div class="pbox hl"><div class="pbox-lbl">Proj Ks</div><div class="pbox-val" style="color:var(--green)">7.3</div><div class="pbox-sub">v7 blended</div><div style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-top:2px;">Floor: 6K · 20th pct L10</div></div><div class="pbox"><div class="pbox-lbl">Est. Book Line</div><div class="pbox-val" style="color:var(--text)">5.5</div><div class="pbox-line">O -130 est · U +108</div><div class="edge-row"><span class="edge-pill ep-strong">+1.8K / +33% Edge</span></div></div></div><div class="proj-grid"><div class="pbox"><div class="pbox-lbl">Stuff Rating</div><div class="pbox-val" style="color:var(--green);font-size:18px">A+</div><div class="pbox-sub">9.8 K/9 · sinker/curve</div></div><div class="pbox"><div class="pbox-lbl">GR Field</div><div class="pbox-val" style="color:var(--text2);font-size:18px">0.94</div><div class="pbox-sub">Pitcher-friendly ✓</div></div></div></div>
-<div class="weather-row"><span class="weather-lbl">⛅</span><span class="weather-val">78°F · 8mph · 0% rain · Neutral outdoor</span><span style="color:var(--border);margin:0 2px;">·</span><span class="weather-lbl">⚾</span><span class="ump-val" style="color:var(--text2)">Neutral +0.1</span></div>
+<div class="weather-row"><span class="weather-lbl">⛅ Weather</span><span class="weather-val" style="color:var(--green)">78°F · 8mph · 0% rain · Neutral outdoor</span></div>
+<div class="ump-row"><span class="ump-lbl">⚾ Ump</span><span class="ump-val" style="color:var(--text2)">Neutral +0.1</span></div>
 <div class="risk-row"><span class="risk-lbl">Game Script</span><div class="risk-bg"><div class="risk-fill rf-low" style="width:18%"></div></div><span class="risk-val" style="color:var(--green)">Low</span></div>
 <div class="act-sec"><div class="act-lbl">Action</div><div class="act-text"><strong>OVER 5.5 Ks — Full Size.</strong> CWS #3 K lineup vs LHP is the key matchup driver. Valdez ERA 4.58 in 2026 with DET — served 5-game suspension recently. BUT last start vs NYM: 7K, 6.2 IP on 106 pitches — trending better. Sinker/curve mix plays well vs CWS. GRF pitcher-friendly. <span class="ha">Proj 7.3 vs 5.5 — real data suggests moderate play, not strong edge. Half size at -120 or better.</span></div></div>
 </div></div></div>
@@ -552,7 +555,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
 <div class="conf-bar-wrap"><div class="conf-direction"><span style="color:var(--amber);font-weight:700;">↑ OVER 4.5 Ks</span><span class="conf-pct" style="color:var(--amber)">72%</span></div><div class="conf-bar-bg"><div class="conf-bar-fill conf-bar-over" style="width:72%"></div></div></div>
 <div class="p-sec"><div class="p-sec-label">Pitcher Stats</div><div class="stats-row"><div class="sp"><span class="lbl">ERA</span><span class="vg">2.85<span style="color:#3dffa0;font-size:6px;vertical-align:super;">✓</span></span></div><div class="sp"><span class="lbl">K/9</span><span class="vg">8.8</span></div><div class="sp"><span class="lbl">K%</span><span class="vg">24.2%</span></div><div class="sp"><span class="lbl">Whiff%</span><span class="vg">27.6%</span></div><div class="sp"><span class="lbl">BB%</span><span class="vg">4.8%</span></div></div></div>
 <div class="model-proj"><div class="model-proj-lbl">Model</div><div class="stats-row"><div class="sp"><span class="lbl">Proj K</span><span class="va">6.0</span></div><div class="sp"><span class="lbl">Norm L10</span><span class="va">6.0</span></div><div class="sp"><span class="lbl">MIN K%</span><span class="va">21.2% #20</span></div><div class="sp"><span class="lbl">PNC</span><span class="vg">0.97</span></div></div></div>
-<div class="matchup-row">
+<div class="matchup-row" style="grid-template-columns:1fr 1fr 1fr;">
   <div class="hand-box active"><div class="hand-lbl">MIN K% vs RHP</div><div class="hand-val" style="color:var(--amber)">21.2%</div><div class="hand-rank">#20 · Chase 27% · SwStr 10%</div></div>
   <div class="ars-box" style="border-color:var(--amber);background:var(--amber-dim);"><div class="ars-header"><span class="ars-lbl">Arsenal Match</span><span class="ars-score" style="color:var(--amber)">AVERAGE · 22.9%</span></div>
     <div class="ars-pitch-row"><span class="ars-pname">Sinker</span><div class="ars-bar-bg"><div class="ars-bar-fill" style="width:44%;background:var(--amber)"></div></div><span class="ars-usage">44%</span><span class="ars-whiff" style="color:var(--amber)">21% whiff</span></div>
@@ -562,10 +565,10 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
   <div class="fp-box" style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:5px 7px;text-align:center;"><div class="hand-lbl">Finishing Power</div><div class="fp-score" style="color:var(--amber);font-family:'Bebas Neue',sans-serif;font-size:14px;line-height:1;">AVERAGE</div><div class="fp-sub" style="font-size:7px;color:var(--text3);font-family:'DM Mono',monospace;">60%×26%=15.6</div></div>
 </div>
 <div class="l10-sec"><div class="l10-header"><div class="l10-label">L10 · Avg 4.7K ✓ <span style="color:#ffb83d">→ Consistent</span></div></div>
-<div class="l10-row"><div class="l10c"><span class="kn kn-m" style="font-weight:700;">5</span><span class="op">CIN</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-m" style="font-weight:700;">5</span><span class="op">MIL</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-m" style="font-weight:700;">4</span><span class="op">CIN</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-m" style="font-weight:700;">4</span><span class="op">SF</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-m" style="font-weight:700;">5</span><span class="op">ARI</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-m" style="font-weight:700;">4</span><span class="op">ATL</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-m" style="font-weight:700;">5</span><span class="op">CIN</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-m" style="font-weight:700;">4</span><span class="op">STL</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-h" style="font-weight:700;">6</span><span class="op">STL</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-m" style="font-weight:700;">5</span><span class="op">HOU</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div></div></div>
+<div class="l10-row"><div class="l10c"><span class="kn kn-m">5</span><span class="op">CIN</span></div><div class="l10c"><span class="kn kn-m">5</span><span class="op">MIL</span></div><div class="l10c"><span class="kn kn-m">4</span><span class="op">CIN</span></div><div class="l10c"><span class="kn kn-m">4</span><span class="op">SF</span></div><div class="l10c"><span class="kn kn-m">5</span><span class="op">ARI</span></div><div class="l10c"><span class="kn kn-m">4</span><span class="op">ATL</span></div><div class="l10c"><span class="kn kn-m">5</span><span class="op">CIN</span></div><div class="l10c"><span class="kn kn-m">4</span><span class="op">STL</span></div><div class="l10c"><span class="kn kn-h">6</span><span class="op">STL</span></div><div class="l10c"><span class="kn kn-m">5</span><span class="op">HOU</span></div></div></div>
 <div class="comp-box"><div class="comp-lbl">v6+ vs v7</div><div class="comp-row"><span style="color:var(--text3)">v6+</span><span>5.4K</span></div><div class="comp-row"><span style="color:var(--text3)">v7</span><span style="color:var(--green)">6.0K (+0.6K)</span></div></div>
 <div class="proj-sec"><div class="proj-grid"><div class="pbox hl"><div class="pbox-lbl">Proj Ks</div><div class="pbox-val" style="color:var(--amber)">6.0</div><div style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-top:2px;">Floor: 5K · 20th pct</div></div><div class="pbox"><div class="pbox-lbl">Est. Book Line</div><div class="pbox-val" style="color:var(--text)">4.5</div><div class="pbox-line">O -122 est · U +100</div><div class="edge-row"><span class="edge-pill ep-mod">+1.5K / +33%</span></div></div></div></div>
-<div class="weather-row"><span class="weather-lbl">⛅</span><span class="weather-val" style="color:var(--green)">72°F · 9mph cross · Neutral</span><span style="color:var(--text3);font-size:6px;margin-left:6px;font-family:\'DM Mono\',monospace;">⚾ Ump N/A</span></div>
+<div class="weather-row"><span class="weather-lbl">⛅ Weather</span><span class="weather-val" style="color:var(--green)">72°F · 9mph cross · Neutral</span></div>
 <div class="act-sec"><div class="act-lbl">Action</div><div class="act-text"><strong>OVER 4.5 — Half Size.</strong> Keller's sinker generates groundballs but his slider is the K pitch — 26% whiff vs MIN. MIN #20 K lineup is avg but PNC park suppresses offense and keeps games close, meaning Keller stays in longer. 4.5 line gives substantial cushion. L10 avg 6.0 with no start below 5 Ks normalized. <span class="ha">Proj 6.0 vs 4.5 — best cushion on the slate. Play at -122 or better.</span></div></div>
 </div></div></div>
 
@@ -598,7 +601,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
 <div class="conf-bar-wrap"><div class="conf-direction"><span style="color:var(--amber);font-weight:700;">↑ OVER 4.5 Ks</span><span class="conf-pct" style="color:var(--amber)">58%</span></div><div class="conf-bar-bg"><div class="conf-bar-fill conf-bar-over" style="width:58%"></div></div></div>
 <div class="p-sec"><div class="p-sec-label">Pitcher Stats</div><div class="stats-row"><div class="sp"><span class="lbl">ERA</span><span class="va">4.93<span style="color:#3dffa0;font-size:6px;vertical-align:super;">✓</span></span></div><div class="sp"><span class="lbl">K/9</span><span class="va">8.5</span></div><div class="sp"><span class="lbl">K%</span><span class="va">26.8%</span></div><div class="sp"><span class="lbl">Whiff%</span><span class="va">28.4%</span></div><div class="sp"><span class="lbl">Hard Hit%</span><span class="vr">46%</span></div><div class="sp"><span class="lbl">BB%</span><span class="va">11.2%</span></div></div></div>
 <div class="model-proj"><div class="model-proj-lbl">Model Projections</div><div class="stats-row"><div class="sp"><span class="lbl">Pitches</span><span>98</span></div><div class="sp"><span class="lbl">ER</span><span class="vg">1.6</span></div><div class="sp"><span class="lbl">H</span><span class="vg">3.4</span></div><div class="sp"><span class="lbl">BB</span><span class="vg">1.2</span></div><div class="sp"><span class="lbl">Park</span><span class="va">Dodger Stad 1.02</span></div><div class="sp"><span class="lbl">Proj K</span><span class="va">6.5</span></div><div class="sp"><span class="lbl">Season K avg</span><span class="va">6.1/start</span></div></div></div>
-<div class="matchup-row">
+<div class="matchup-row" style="grid-template-columns:1fr 1fr 1fr;">
   <div class="hand-box active"><div class="hand-lbl">PHI K% vs RHP</div><div class="hand-val" style="color:var(--amber)">21.2%</div><div class="hand-rank">#29 · Chase 26% · SwStr 9%</div></div>
   <div class="ars-box" style="border-color:var(--green);background:var(--green-dim);">
     <div class="ars-header"><span class="ars-lbl">Arsenal Match</span><span class="ars-score" style="color:var(--green)">STRONG · 27.4%</span></div>
@@ -609,10 +612,11 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
   <div class="fp-box" style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:5px 7px;text-align:center;"><div class="hand-lbl">Finishing Power</div><div class="fp-score" style="color:var(--amber);font-family:'Bebas Neue',sans-serif;font-size:14px;line-height:1;">STRONG</div><div class="fp-sub" style="font-size:7px;color:var(--text3);font-family:'DM Mono',monospace;">64%×28%=17.9</div></div>
 </div>
 <div class="l10-sec"><div class="l10-header"><div class="l10-label">L10 · Avg 4.3K ✓ <span style="color:#ffb83d">→ Flat</span></div></div>
-<div class="l10-row"><div class="l10c"><span class="kn kn-m" style="font-weight:700;">4</span><span class="op">MIL</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-h" style="font-weight:700;">6</span><span class="op">LAA</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-m" style="font-weight:700;">4</span><span class="op">RAN</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-m" style="font-weight:700;">4</span><span class="op">ATL</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-h" style="font-weight:700;">6</span><span class="op">CHC</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-m" style="font-weight:700;">4</span><span class="op">PIT</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">5</span><span class="op">MIA</span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">3</span><span class="op">NYY</span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">3</span><span class="op">COL</span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">4</span><span class="op">ARI</span></div></div></div>
+<div class="l10-row"><div class="l10c"><span class="kn kn-m">4</span><span class="op">MIL</span></div><div class="l10c"><span class="kn kn-h">6</span><span class="op">LAA</span></div><div class="l10c"><span class="kn kn-m">4</span><span class="op">RAN</span></div><div class="l10c"><span class="kn kn-m">4</span><span class="op">ATL</span></div><div class="l10c"><span class="kn kn-h">6</span><span class="op">CHC</span></div><div class="l10c"><span class="kn kn-m">4</span><span class="op">PIT</span></div><div class="l10c"><span class="kn kn-m">5</span><span class="op">MIA</span></div><div class="l10c"><span class="kn kn-m">3</span><span class="op">NYY</span></div><div class="l10c"><span class="kn kn-m">3</span><span class="op">COL</span></div><div class="l10c"><span class="kn kn-m">4</span><span class="op">ARI</span></div></div></div>
 <div class="comp-box"><div class="comp-lbl">v6+ vs v7</div><div class="comp-row"><span style="color:var(--text3)">v6+ Proj K</span><span>8.4K</span></div><div class="comp-row"><span style="color:var(--text3)">v7 Proj K</span><span style="color:var(--amber)">6.5K (corrected)</span></div><div class="comp-row"><span style="color:var(--text3)">Note</span><span style="color:var(--text3)">ERA 4.93 · Hard Hit 46% · real data correction</span></div></div>
 <div class="proj-sec"><div class="proj-grid"><div class="pbox hl"><div class="pbox-lbl">Proj Ks</div><div class="pbox-val" style="color:var(--amber)">6.5</div><div class="pbox-sub">corrected · ERA 4.93</div><div style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-top:2px;">Floor: 4K · 20th pct L10</div></div><div class="pbox"><div class="pbox-lbl">Est. Book Line</div><div class="pbox-val" style="color:var(--text)">5.5</div><div class="pbox-line">O -118 est · U -102</div><div class="edge-row"><span class="edge-pill ep-mod">+1.0K · Moderate edge</span></div></div></div><div class="proj-grid"><div class="pbox"><div class="pbox-lbl">Stuff Rating</div><div class="pbox-val" style="color:var(--green);font-size:18px">Elite+</div><div class="pbox-sub">12.4 K/9 · elite command</div></div><div class="pbox"><div class="pbox-lbl">Dodger Stadium</div><div class="pbox-val" style="color:var(--text2);font-size:18px">1.02</div><div class="pbox-sub">7mph out · slight hitter</div></div></div></div>
-<div class="weather-row"><span class="weather-lbl">⛅</span><span class="weather-val">72°F · 7mph hard out · Slight hitter boost</span><span style="color:var(--border);margin:0 2px;">·</span><span class="weather-lbl">⚾</span><span class="ump-val" style="color:var(--text2)">Neutral +0.1</span></div>
+<div class="weather-row"><span class="weather-lbl">⛅ Weather</span><span class="weather-val" style="color:var(--amber)">72°F · 7mph hard out · Slight hitter boost</span></div>
+<div class="ump-row"><span class="ump-lbl">⚾ Ump</span><span class="ump-val" style="color:var(--text2)">Neutral +0.1</span></div>
 <div class="risk-row"><span class="risk-lbl">Game Script</span><div class="risk-bg"><div class="risk-fill rf-low" style="width:14%"></div></div><span class="risk-val" style="color:var(--green)">Low</span></div>
 <div class="act-sec"><div class="act-lbl">Action</div><div class="act-text"><strong>OVER 6.5 Ks — Full Size.</strong> Sasaki trending in May (ERA dropping from 6.35 to 4.93). Hard Hit% 46% and wOBA .364 are real contact concerns — his Ks come in bunches but hitters are squaring him up. PHI #29 K lineup is the key limiting factor here. Arsenal STRONG in theory but execution has been inconsistent. <span class="ha">Proj 6.5 vs 5.5 — thin moderate edge. Only at -112 or better. Real data suggests caution vs our original projection.</span></div></div>
 </div></div></div>
@@ -649,7 +653,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
 <div class="conf-bar-wrap"><div class="conf-direction"><span style="color:var(--amber);font-weight:700;">↑ OVER 4.5 Ks</span><span class="conf-pct" style="color:var(--amber)">62%</span></div><div class="conf-bar-bg"><div class="conf-bar-fill conf-bar-over" style="width:62%"></div></div></div>
 <div class="p-sec"><div class="p-sec-label">Pitcher Stats</div><div class="stats-row"><div class="sp"><span class="lbl">ERA</span><span class="vr">5.40<span style="color:#3dffa0;font-size:6px;vertical-align:super;">✓</span></span></div><div class="sp"><span class="lbl">K/9</span><span class="va">7.2</span></div><div class="sp"><span class="lbl">K%</span><span class="va">22.4%</span></div><div class="sp"><span class="lbl">Whiff%</span><span class="va">27.1%</span></div><div class="sp"><span class="lbl">FPS%</span><span class="vg">65%</span></div><div class="sp"><span class="lbl">BB%</span><span class="va">5.8%</span></div></div></div>
 <div class="model-proj"><div class="model-proj-lbl">Model Projections</div><div class="stats-row"><div class="sp"><span class="lbl">Pitches</span><span>94</span></div><div class="sp"><span class="lbl">ER</span><span class="vg">2.1</span></div><div class="sp"><span class="lbl">H</span><span class="vg">4.4</span></div><div class="sp"><span class="lbl">BB</span><span class="va">1.6</span></div><div class="sp"><span class="lbl">Proj K</span><span class="vg">7.0</span></div><div class="sp"><span class="lbl">Norm L10</span><span class="vg">7.3</span></div></div></div>
-<div class="matchup-row">
+<div class="matchup-row" style="grid-template-columns:1fr 1fr 1fr;">
   <div class="hand-box active"><div class="hand-lbl">LAD K% vs RHP</div><div class="hand-val" style="color:var(--red)">18.4%</div><div class="hand-rank">#29 · Chase 25% · SwStr 9%</div></div>
   <div class="ars-box" style="border-color:var(--green);background:var(--green-dim);">
     <div class="ars-header"><span class="ars-lbl">Arsenal Match</span><span class="ars-score" style="color:var(--green)">STRONG · 24.3%</span></div>
@@ -660,10 +664,11 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
   <div class="fp-box" style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:5px 7px;text-align:center;"><div class="hand-lbl">Finishing Power</div><div class="fp-score" style="color:var(--green);font-family:'Bebas Neue',sans-serif;font-size:14px;line-height:1;">STRONG</div><div class="fp-sub" style="font-size:7px;color:var(--text3);font-family:'DM Mono',monospace;">63%×31%=19.5</div></div>
 </div>
 <div class="l10-sec"><div class="l10-header"><div class="l10-label">L10 · Avg 4.1K ✓ <span style="color:#ffb83d">↑ Improving</span></div></div>
-<div class="l10-row"><div class="l10c"><span class="kn kn-m" style="font-weight:700;">3</span><span class="op">CLE</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-h" style="font-weight:700;">7</span><span class="op">PHI</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-m" style="font-weight:700;">5</span><span class="op">SD</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-m" style="font-weight:700;">3</span><span class="op">MIN</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-m" style="font-weight:700;">4</span><span class="op">ATL</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">3</span><span class="op">STL</span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-h" style="font-style:italic;">6</span><span class="op">WSH</span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">4</span><span class="op">MIL</span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">3</span><span class="op">CHC</span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">3</span><span class="op">HOU</span></div></div></div>
+<div class="l10-row"><div class="l10c"><span class="kn kn-m">3</span><span class="op">CLE</span></div><div class="l10c"><span class="kn kn-h">7</span><span class="op">PHI</span></div><div class="l10c"><span class="kn kn-m">5</span><span class="op">SD</span></div><div class="l10c"><span class="kn kn-m">3</span><span class="op">MIN</span></div><div class="l10c"><span class="kn kn-m">4</span><span class="op">ATL</span></div><div class="l10c"><span class="kn kn-m">3</span><span class="op">STL</span></div><div class="l10c"><span class="kn kn-h">6</span><span class="op">WSH</span></div><div class="l10c"><span class="kn kn-m">4</span><span class="op">MIL</span></div><div class="l10c"><span class="kn kn-m">3</span><span class="op">CHC</span></div><div class="l10c"><span class="kn kn-m">3</span><span class="op">HOU</span></div></div></div>
 <div class="comp-box"><div class="comp-lbl">v6+ vs v7</div><div class="comp-row"><span style="color:var(--text3)">v6+ Proj K</span><span>6.6K</span></div><div class="comp-row"><span style="color:var(--text3)">v7 Proj K</span><span style="color:var(--green)">7.0K (+0.4K)</span></div><div class="comp-row"><span style="color:var(--text3)">LAD contact note</span><span style="color:var(--text3)">Deflates from 7.3 L10 avg</span></div></div>
 <div class="proj-sec"><div class="proj-grid"><div class="pbox hl"><div class="pbox-lbl">Proj Ks</div><div class="pbox-val" style="color:var(--green)">7.0</div><div class="pbox-sub">v7 blended</div><div style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-top:2px;">Floor: 5K · 20th pct L10</div></div><div class="pbox"><div class="pbox-lbl">Est. Book Line</div><div class="pbox-val" style="color:var(--text)">5.5</div><div class="pbox-line">O -125 est · U +104</div><div class="edge-row"><span class="edge-pill ep-strong">+1.5K / +27% Edge</span></div></div></div><div class="proj-grid"><div class="pbox"><div class="pbox-lbl">Stuff Rating</div><div class="pbox-val" style="color:var(--green);font-size:18px">Elite</div><div class="pbox-sub">10.8 K/9 · slider</div></div><div class="pbox"><div class="pbox-lbl">Dodger Stadium</div><div class="pbox-val" style="color:var(--text2);font-size:18px">1.02</div><div class="pbox-sub">7mph out · slight</div></div></div></div>
-<div class="weather-row"><span class="weather-lbl">⛅</span><span class="weather-val">72°F · 7mph hard out · Slight hitter boost</span><span style="color:var(--border);margin:0 2px;">·</span><span class="weather-lbl">⚾</span><span class="ump-val" style="color:var(--text2)">Neutral +0.1</span></div>
+<div class="weather-row"><span class="weather-lbl">⛅ Weather</span><span class="weather-val" style="color:var(--amber)">72°F · 7mph hard out · Slight hitter boost</span></div>
+<div class="ump-row"><span class="ump-lbl">⚾ Ump</span><span class="ump-val" style="color:var(--text2)">Neutral +0.1</span></div>
 <div class="risk-row"><span class="risk-lbl">Game Script</span><div class="risk-bg"><div class="risk-fill rf-low" style="width:18%"></div></div><span class="risk-val" style="color:var(--green)">Low</span></div>
 <div class="act-sec"><div class="act-lbl">Action</div><div class="act-text"><strong>OVER 5.5 Ks — Full Size.</strong> Painter ERA 5.40 but FIP 3.59 — defense and bad luck inflating ERA. K/9 down from projection but trending up last 3 starts. LAD #29 K-rate is vs average pitching — elite stuff profile like Painter still generates Ks against contact lineups by forcing weak contact. Slider 29% whiff vs LAD RHBs in particular. 7mph blowing out at Dodger Stadium is a minimal factor. <span class="hg">Proj 7.0 vs 5.5 at -125 or better. Strong play despite LAD lineup.</span></div></div>
 </div></div></div>
@@ -700,7 +705,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
 <div class="conf-bar-wrap"><div class="conf-direction"><span style="color:var(--amber);font-weight:700;">↑ OVER 4.5 Ks</span><span class="conf-pct" style="color:var(--amber)">54%</span></div><div class="conf-bar-bg"><div class="conf-bar-fill conf-bar-over" style="width:54%"></div></div></div>
 <div class="p-sec"><div class="p-sec-label">Pitcher Stats</div><div class="stats-row"><div class="sp"><span class="lbl">ERA</span><span class="vg">3.46<span style="color:#3dffa0;font-size:6px;vertical-align:super;">✓</span></span></div><div class="sp"><span class="lbl">K/9</span><span class="va">7.6</span></div><div class="sp"><span class="lbl">K%</span><span class="va">23.8%</span></div><div class="sp"><span class="lbl">Whiff%</span><span class="va">27.2%</span></div><div class="sp"><span class="lbl">FPS%</span><span class="vg">64%</span></div><div class="sp"><span class="lbl">BB%</span><span class="vg">4.4%</span></div></div></div>
 <div class="model-proj"><div class="model-proj-lbl">Model Projections</div><div class="stats-row"><div class="sp"><span class="lbl">Pitches</span><span>96</span></div><div class="sp"><span class="lbl">ER</span><span class="vg">2.0</span></div><div class="sp"><span class="lbl">H</span><span class="vg">4.2</span></div><div class="sp"><span class="lbl">BB</span><span class="vg">1.2</span></div><div class="sp"><span class="lbl">Park</span><span class="vg">PNC Park 0.97</span></div><div class="sp"><span class="lbl">Proj K</span><span class="vg">6.9</span></div><div class="sp"><span class="lbl">Norm L10</span><span class="vg">6.9</span></div></div></div>
-<div class="matchup-row">
+<div class="matchup-row" style="grid-template-columns:1fr 1fr 1fr;">
   <div class="hand-box active"><div class="hand-lbl">PIT K% vs RHP</div><div class="hand-val" style="color:var(--amber)">21.8%</div><div class="hand-rank">#16 · Chase 28% · SwStr 11%</div></div>
   <div class="ars-box" style="border-color:var(--green);background:var(--green-dim);">
     <div class="ars-header"><span class="ars-lbl">Arsenal Match</span><span class="ars-score" style="color:var(--green)">STRONG · 23.7%</span></div>
@@ -711,10 +716,11 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
   <div class="fp-box" style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:5px 7px;text-align:center;"><div class="hand-lbl">Finishing Power</div><div class="fp-score" style="color:var(--amber);font-family:'Bebas Neue',sans-serif;font-size:14px;line-height:1;">STRONG</div><div class="fp-sub" style="font-size:7px;color:var(--text3);font-family:'DM Mono',monospace;">64%×28%=17.9</div></div>
 </div>
 <div class="l10-sec"><div class="l10-header"><div class="l10-label">L10 · Avg 3.2K ✓ <span style="color:#ffb83d">→ Volatile</span></div></div>
-<div class="l10-row"><div class="l10c"><span class="kn kn-h" style="font-weight:700;">7</span><span class="op">MIA</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-m" style="font-weight:700;">3</span><span class="op">BOS</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-m" style="font-weight:700;">2</span><span class="op">BOS</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-l" style="font-weight:700;">1</span><span class="op">DET</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-m" style="font-weight:700;">3</span><span class="op">MIL</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-m" style="font-weight:700;">2</span><span class="op">DET</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-h" style="font-weight:700;">7</span><span class="op">BOS</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-m" style="font-weight:700;">2</span><span class="op">DET</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">2</span><span class="op">HOU</span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">3</span><span class="op">TOR</span></div></div></div>
+<div class="l10-row"><div class="l10c"><span class="kn kn-h">7</span><span class="op">MIA</span></div><div class="l10c"><span class="kn kn-m">3</span><span class="op">BOS</span></div><div class="l10c"><span class="kn kn-m">2</span><span class="op">BOS</span></div><div class="l10c"><span class="kn kn-l">1</span><span class="op">DET</span></div><div class="l10c"><span class="kn kn-m">3</span><span class="op">MIL</span></div><div class="l10c"><span class="kn kn-m">2</span><span class="op">DET</span></div><div class="l10c"><span class="kn kn-h">7</span><span class="op">BOS</span></div><div class="l10c"><span class="kn kn-m">2</span><span class="op">DET</span></div><div class="l10c"><span class="kn kn-m">2</span><span class="op">HOU</span></div><div class="l10c"><span class="kn kn-m">3</span><span class="op">TOR</span></div></div></div>
 <div class="comp-box"><div class="comp-lbl">v6+ vs v7</div><div class="comp-row"><span style="color:var(--text3)">v6+ Proj K</span><span>6.2K</span></div><div class="comp-row"><span style="color:var(--text3)">v7 Proj K</span><span style="color:var(--green)">6.9K (+0.7K)</span></div></div>
 <div class="proj-sec"><div class="proj-grid"><div class="pbox hl"><div class="pbox-lbl">Proj Ks</div><div class="pbox-val" style="color:var(--green)">6.9</div><div class="pbox-sub">v7 blended</div><div style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-top:2px;">Floor: 6K · 20th pct L10</div></div><div class="pbox"><div class="pbox-lbl">Est. Book Line</div><div class="pbox-val" style="color:var(--text)">5.5</div><div class="pbox-line">O -125 est · U +104</div><div class="edge-row"><span class="edge-pill ep-strong">+1.4K / +25% Edge</span></div></div></div><div class="proj-grid"><div class="pbox"><div class="pbox-lbl">Stuff Rating</div><div class="pbox-val" style="color:var(--green);font-size:18px">A+</div><div class="pbox-sub">10.4 K/9 · elite ctrl</div></div><div class="pbox"><div class="pbox-lbl">PNC Park</div><div class="pbox-val" style="color:var(--green);font-size:18px">0.97</div><div class="pbox-sub">Pitcher-friendly ✓</div></div></div></div>
-<div class="weather-row"><span class="weather-lbl">⛅</span><span class="weather-val">72°F · 9mph cross · 0% rain · Neutral</span><span style="color:var(--border);margin:0 2px;">·</span><span class="weather-lbl">⚾</span><span class="ump-val" style="color:var(--text2)">Neutral +0.1</span></div>
+<div class="weather-row"><span class="weather-lbl">⛅ Weather</span><span class="weather-val" style="color:var(--green)">72°F · 9mph cross · 0% rain · Neutral</span></div>
+<div class="ump-row"><span class="ump-lbl">⚾ Ump</span><span class="ump-val" style="color:var(--text2)">Neutral +0.1</span></div>
 <div class="risk-row"><span class="risk-lbl">Game Script</span><div class="risk-bg"><div class="risk-fill rf-low" style="width:15%"></div></div><span class="risk-val" style="color:var(--green)">Low</span></div>
 <div class="act-sec"><div class="act-lbl">Action</div><div class="act-text"><strong>OVER 5.5 Ks — Full Size.</strong> Ober elite command (4.0% BB — never gives starts away for free). Consistent L10 with no start below 6 normalized Ks. PIT #16 K lineup is avg but Ober exploits them with slider — 28% whiff. PNC pitcher-friendly at 0.97. Clean game script risk — low-scoring game expected means full 6+ innings. <span class="hg">Proj 6.9 vs 5.5 at -125 or better. Most consistent play on the slate.</span></div></div>
 </div></div></div>
@@ -732,7 +738,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
 <div class="conf-bar-wrap"><div class="conf-direction"><span style="color:var(--amber);font-weight:700;">↑ OVER 4.5 Ks</span><span class="conf-pct" style="color:var(--amber)">52%</span></div><div class="conf-bar-bg"><div class="conf-bar-fill conf-bar-over" style="width:52%"></div></div></div>
 <div class="p-sec"><div class="p-sec-label">Pitcher Stats</div><div class="stats-row"><div class="sp"><span class="lbl">ERA</span><span class="vg">3.18<span style="color:#3dffa0;font-size:6px;vertical-align:super;">✓</span></span></div><div class="sp"><span class="lbl">K/9</span><span class="vr">5.6</span></div><div class="sp"><span class="lbl">K%</span><span class="va">17.6%</span></div><div class="sp"><span class="lbl">Whiff%</span><span>26.4%</span></div><div class="sp"><span class="lbl">BB%</span><span class="va">5.1%</span></div><div class="sp"><span class="lbl">BOS trade ✓</span></div></div></div>
 <div class="model-proj"><div class="model-proj-lbl">Model</div><div class="stats-row"><div class="sp"><span class="lbl">Proj K</span><span class="va">5.2</span></div><div class="sp"><span class="lbl">Norm L10</span><span class="va">5.3</span></div><div class="sp"><span class="lbl">CLE K%</span><span class="va">21.2%</span></div><div class="sp"><span class="lbl">Progressive</span><span class="vg">0.95</span></div></div></div>
-<div class="matchup-row">
+<div class="matchup-row" style="grid-template-columns:1fr 1fr 1fr;">
   <div class="hand-box active"><div class="hand-lbl">CLE K% vs RHP</div><div class="hand-val" style="color:var(--amber)">21.2%</div><div class="hand-rank">#20 · Chase 26% · SwStr 10%</div></div>
   <div class="ars-box" style="border-color:var(--amber);background:var(--amber-dim);"><div class="ars-header"><span class="ars-lbl">Arsenal Match</span><span class="ars-score" style="color:var(--amber)">AVERAGE · 22.0%</span></div>
     <div class="ars-pitch-row"><span class="ars-pname">Slider</span><div class="ars-bar-bg"><div class="ars-bar-fill" style="width:40%;background:var(--amber)"></div></div><span class="ars-usage">40%</span><span class="ars-whiff" style="color:var(--amber)">24% whiff</span></div>
@@ -742,10 +748,10 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
   <div class="fp-box" style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:5px 7px;text-align:center;"><div class="hand-lbl">Finishing Power</div><div class="fp-score" style="color:var(--red);font-family:'Bebas Neue',sans-serif;font-size:14px;line-height:1;">WEAK</div><div class="fp-sub" style="font-size:7px;color:var(--text3);font-family:'DM Mono',monospace;">58%×24%=13.9</div></div>
 </div>
 <div class="l10-sec"><div class="l10-header"><div class="l10-label">L10 · Avg 3.5K ✓ <span style="color:#ffb83d">↑ Last start spike</span></div></div>
-<div class="l10-row"><div class="l10c"><span class="kn kn-h" style="font-weight:700;">9</span><span class="op">KC</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-l" style="font-weight:700;">2</span><span class="op">PHI</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-m" style="font-weight:700;">3</span><span class="op">BOS</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-l" style="font-weight:700;">2</span><span class="op">DET</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-m" style="font-weight:700;">4</span><span class="op">TEX</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c"><span class="kn kn-l" style="font-weight:700;">2</span><span class="op">MIN</span><span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:0.7;"></span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-h" style="font-style:italic;">5</span><span class="op">STL</span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">3</span><span class="op">STL</span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-l" style="font-style:italic;">2</span><span class="op">MIA</span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">3</span><span class="op">STL</span></div></div></div>
+<div class="l10-row"><div class="l10c"><span class="kn kn-h">9</span><span class="op">KC</span></div><div class="l10c"><span class="kn kn-l">2</span><span class="op">PHI</span></div><div class="l10c"><span class="kn kn-m">3</span><span class="op">BOS</span></div><div class="l10c"><span class="kn kn-l">2</span><span class="op">DET</span></div><div class="l10c"><span class="kn kn-m">4</span><span class="op">TEX</span></div><div class="l10c"><span class="kn kn-l">2</span><span class="op">MIN</span></div><div class="l10c"><span class="kn kn-h">5</span><span class="op">STL</span></div><div class="l10c"><span class="kn kn-m">3</span><span class="op">STL</span></div><div class="l10c"><span class="kn kn-l">2</span><span class="op">MIA</span></div><div class="l10c"><span class="kn kn-m">3</span><span class="op">STL</span></div></div></div>
 <div class="comp-box"><div class="comp-lbl">v6+ vs v7</div><div class="comp-row"><span style="color:var(--text3)">v6+</span><span>4.8K</span></div><div class="comp-row"><span style="color:var(--text3)">v7</span><span style="color:var(--green)">5.2K (+0.4K)</span></div><div class="comp-row"><span style="color:var(--text3)">Note</span><span style="color:var(--text3)">Thin — price key</span></div></div>
 <div class="proj-sec"><div class="proj-grid"><div class="pbox hl"><div class="pbox-lbl">Proj Ks</div><div class="pbox-val" style="color:var(--amber)">5.2</div><div style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-top:2px;">Floor: 4K · 20th pct</div></div><div class="pbox"><div class="pbox-lbl">Est. Book Line</div><div class="pbox-val" style="color:var(--text)">4.5</div><div class="pbox-line">O -115 est · U -105</div><div class="edge-row"><span class="edge-pill ep-mod">+0.7K OVER 4.5</span></div></div></div></div>
-<div class="weather-row"><span class="weather-lbl">⛅</span><span class="weather-val" style="color:var(--green)">74°F · 7mph · Neutral · Progressive 0.95</span><span style="color:var(--text3);font-size:6px;margin-left:6px;font-family:\'DM Mono\',monospace;">⚾ Ump N/A</span></div>
+<div class="weather-row"><span class="weather-lbl">⛅ Weather</span><span class="weather-val" style="color:var(--green)">74°F · 7mph · Neutral · Progressive 0.95</span></div>
 <div class="act-sec"><div class="act-lbl">Action</div><div class="act-text"><strong>OVER 4.5 — Half Size.</strong> Gray post-trade ERA 4.43 (from 4.28 with STL) — early Boston adjustment. The K rate (8.2 K/9) is actually holding vs his career norms. BOS had him for one brutal start that skewed the ERA. Progressive pitcher-friendly at 0.95 and a K-friendly ump today. L10 volatile but avg 5.3 vs the 4.5 line gives decent cushion. <span class="ha">Proj 5.2 vs 4.5 — playable but price sensitive. Only at -108 or better.</span></div></div>
 </div></div></div>
 
@@ -762,7 +768,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
 <div class="conf-bar-wrap"><div class="conf-direction"><span style="color:var(--red);font-weight:700;">↓ UNDER 4.5 Ks</span><span class="conf-pct" style="color:var(--red)">81%</span></div><div class="conf-bar-bg"><div class="conf-bar-fill conf-bar-under" style="width:81%"></div></div></div>
 <div class="p-sec"><div class="p-sec-label">Pitcher Stats</div><div class="stats-row"><div class="sp"><span class="lbl">ERA</span><span class="vr">5.82<span style="color:#8e94aa;font-size:6px;vertical-align:super;">~</span></span></div><div class="sp"><span class="lbl">K/9</span><span class="vr">7.2</span></div><div class="sp"><span class="lbl">K%</span><span class="vr">19.4%</span></div><div class="sp"><span class="lbl">Whiff%</span><span class="vr">22.4%</span></div><div class="sp"><span class="lbl">Coors</span><span class="vr">1.28</span></div></div></div>
 <div class="model-proj"><div class="model-proj-lbl">Model</div><div class="stats-row"><div class="sp"><span class="lbl">Park</span><span class="vr">Coors 1.28</span></div><div class="sp"><span class="lbl">Proj K</span><span class="vr">3.8</span></div><div class="sp"><span class="lbl">Norm L10</span><span class="vr">3.9</span></div><div class="sp"><span class="lbl">SF K%</span><span class="va">21.8%</span></div></div></div>
-<div class="matchup-row">
+<div class="matchup-row" style="grid-template-columns:1fr 1fr 1fr;">
   <div class="hand-box active-under"><div class="hand-lbl">SF K% vs RHP</div><div class="hand-val" style="color:var(--amber)">21.8%</div><div class="hand-rank">#18 · Chase 27% · SwStr 10%</div></div>
   <div class="ars-box" style="border-color:var(--red);background:var(--red-dim);"><div class="ars-header"><span class="ars-lbl">Arsenal Match</span><span class="ars-score" style="color:var(--amber)">AVERAGE · 20.2%</span></div>
     <div class="ars-pitch-row"><span class="ars-pname">Fastball</span><div class="ars-bar-bg"><div class="ars-bar-fill" style="width:45%;background:var(--red)"></div></div><span class="ars-usage">45%</span><span class="ars-whiff" style="color:var(--red)">19% whiff</span></div>
@@ -772,10 +778,10 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
   <div class="fp-box" style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:5px 7px;text-align:center;"><div class="hand-lbl">Finishing Power</div><div class="fp-score" style="color:var(--red);font-family:'Bebas Neue',sans-serif;font-size:14px;line-height:1;">WEAK</div><div class="fp-sub" style="font-size:7px;color:var(--text3);font-family:'DM Mono',monospace;">52%×21%=10.9</div></div>
 </div>
 <div class="l10-sec"><div class="l10-header"><div class="l10-label">L10 · Avg 3.1K ~ <span style="color:#ff5a5a">→ Weak</span></div></div>
-<div class="l10-row"><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">3</span><span class="op">SF</span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">3</span><span class="op">LAD</span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">4</span><span class="op">SD</span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">2</span><span class="op">PHI</span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">3</span><span class="op">ATL</span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">4</span><span class="op">MIL</span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">3</span><span class="op">CHC</span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">2</span><span class="op">STL</span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">4</span><span class="op">MIN</span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">3</span><span class="op">ARI</span></div></div>y:0.65;"><span class="kn kn-m">3<span style="font-size:5px;vertical-align:super;color:var(--text3);">~</span></span><span class="op">ATL</span></div><div class="l10c" style="opacity:0.65;"><span class="kn kn-m">4<span style="font-size:5px;vertical-align:super;color:var(--text3);">~</span></span><span class="op">MIL</span></div><div class="l10c" style="opacity:0.65;"><span class="kn kn-m">3<span style="font-size:5px;vertical-align:super;color:var(--text3);">~</span></span><span class="op">CHC</span></div><div class="l10c" style="opacity:0.65;"><span class="kn kn-m">2<span style="font-size:5px;vertical-align:super;color:var(--text3);">~</span></span><span class="op">STL</span></div><div class="l10c" style="opacity:0.65;"><span class="kn kn-m">4<span style="font-size:5px;vertical-align:super;color:var(--text3);">~</span></span><span class="op">MIN</span></div><div class="l10c" style="opacity:0.65;"><span class="kn kn-m">3<span style="font-size:5px;vertical-align:super;color:var(--text3);">~</span></span><span class="op">ARI</span></div></div></div>
+<div class="l10-row"><div class="l10c"><span class="kn kn-m">3</span><span class="op">SF</span></div><div class="l10c"><span class="kn kn-m">3</span><span class="op">LAD</span></div><div class="l10c"><span class="kn kn-m">4</span><span class="op">SD</span></div><div class="l10c"><span class="kn kn-m">2</span><span class="op">PHI</span></div><div class="l10c"><span class="kn kn-m">3</span><span class="op">ATL</span></div><div class="l10c"><span class="kn kn-m">4</span><span class="op">MIL</span></div><div class="l10c"><span class="kn kn-m">3</span><span class="op">CHC</span></div><div class="l10c"><span class="kn kn-m">2</span><span class="op">STL</span></div><div class="l10c"><span class="kn kn-m">4</span><span class="op">MIN</span></div><div class="l10c"><span class="kn kn-m">3</span><span class="op">ARI</span></div></div></div>
 <div class="comp-box"><div class="comp-lbl">v6+ vs v7</div><div class="comp-row"><span style="color:var(--text3)">v6+ / v7</span><span style="color:var(--red)">3.8K (same)</span></div></div>
 <div class="proj-sec"><div class="proj-grid"><div class="pbox hl-under"><div class="pbox-lbl">Proj Ks</div><div class="pbox-val" style="color:var(--red)">3.8</div><div style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-top:2px;">Floor: 3K · 20th pct</div></div><div class="pbox"><div class="pbox-lbl">Est. Line</div><div class="pbox-val" style="color:var(--text)">4.5</div><div class="edge-row"><span class="edge-pill ep-under">UNDER 4.5</span></div></div></div></div>
-<div class="weather-row"><span class="weather-lbl">⛅</span><span class="weather-val" style="color:var(--text2)">76°F · Coors · Check wind at game time</span><span style="color:var(--text3);font-size:6px;margin-left:6px;font-family:\'DM Mono\',monospace;">⚾ Ump N/A</span></div>
+<div class="weather-row"><span class="weather-lbl">⛅ Weather</span><span class="weather-val" style="color:var(--text2)">76°F · Coors · Check wind at game time</span></div>
 <div class="act-sec"><div class="act-lbl">Action</div><div class="act-text"><strong>UNDER 4.5 — Lean.</strong> Coors 1.28 + weak K + Arsenal barely AVERAGE. <span class="hr">UNDER at +100 or better.</span></div></div>
 </div></div></div>
 <!-- CARD 13 COMPLETE: ADRIAN HOUSER - Lean Under -->
@@ -807,7 +813,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
 <div class="conf-bar-wrap"><div class="conf-direction"><span style="color:var(--red);font-weight:700;">↓ UNDER 4.5 Ks</span><span class="conf-pct" style="color:var(--red)">80%</span></div><div class="conf-bar-bg"><div class="conf-bar-fill conf-bar-under" style="width:80%"></div></div></div>
 <div class="p-sec"><div class="p-sec-label">Pitcher Stats</div><div class="p-name" style="font-size:13px;font-weight:700;margin-bottom:4px;">Adrian Houser <span class="p-tag">SF · Away</span></div><div class="stats-row"><div class="sp"><span class="lbl">ERA</span><span class="va">4.50<span style="color:#8e94aa;font-size:6px;vertical-align:super;">~</span></span></div><div class="sp"><span class="lbl">K/9</span><span class="vr">7.4</span></div><div class="sp"><span class="lbl">K%</span><span class="vr">19.8%</span></div><div class="sp"><span class="lbl">Whiff%</span><span class="vr">22.1%</span></div><div class="sp"><span class="lbl">GB-heavy</span></div></div></div>
 <div class="model-proj"><div class="model-proj-lbl">Model Projections</div><div class="stats-row"><div class="sp"><span class="lbl">Park</span><span class="vr">Coors 1.28</span></div><div class="sp"><span class="lbl">Proj K</span><span class="vr">3.9</span></div><div class="sp"><span class="lbl">Norm L10</span><span class="vr">3.9</span></div><div class="sp"><span class="lbl">SF K% vs RHP</span><span class="va">21.8%</span></div><div class="sp"><span class="lbl">Coors</span><span class="vr">1.28</span></div></div></div>
-<div class="matchup-row">
+<div class="matchup-row" style="grid-template-columns:1fr 1fr 1fr;">
   <div class="hand-box active-under"><div class="hand-lbl">SF K% vs RHP</div><div class="hand-val" style="color:var(--amber)">21.8%</div><div class="hand-rank">#18 · Chase 27% · SwStr 10%</div></div>
   <div class="ars-box" style="border-color:var(--red);background:var(--red-dim);">
     <div class="ars-header"><span class="ars-lbl">Arsenal Match</span><span class="ars-score" style="color:var(--amber)">AVERAGE · 21.4%</span></div>
@@ -818,10 +824,10 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
   <div class="fp-box" style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:5px 7px;text-align:center;"><div class="hand-lbl">Finishing Power</div><div class="fp-score" style="color:var(--red);font-family:'Bebas Neue',sans-serif;font-size:14px;line-height:1;">WEAK</div><div class="fp-sub" style="font-size:7px;color:var(--text3);font-family:'DM Mono',monospace;">54%×22%=11.9</div></div>
 </div>
 <div class="l10-sec"><div class="l10-header"><div class="l10-label">L10 · Avg 2.8K ~ <span style="color:#ff5a5a">↓ Weak</span></div></div>
-<div class="l10-row"><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">3</span><span class="op">LAD</span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">3</span><span class="op">SD</span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">2</span><span class="op">PHI</span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-h" style="font-style:italic;">4</span><span class="op">MIL</span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">3</span><span class="op">ATL</span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">2</span><span class="op">CHC</span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">3</span><span class="op">STL</span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">2</span><span class="op">CIN</span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">3</span><span class="op">MIN</span></div><div class="l10c" style="opacity:0.38;"><span class="kn kn-m" style="font-style:italic;">3</span><span class="op">ARI</span></div></div></div>
+<div class="l10-row"><div class="l10c"><span class="kn kn-m">3</span><span class="op">LAD</span></div><div class="l10c"><span class="kn kn-m">3</span><span class="op">SD</span></div><div class="l10c"><span class="kn kn-m">2</span><span class="op">PHI</span></div><div class="l10c"><span class="kn kn-h">4</span><span class="op">MIL</span></div><div class="l10c"><span class="kn kn-m">3</span><span class="op">ATL</span></div><div class="l10c"><span class="kn kn-m">2</span><span class="op">CHC</span></div><div class="l10c"><span class="kn kn-m">3</span><span class="op">STL</span></div><div class="l10c"><span class="kn kn-m">2</span><span class="op">CIN</span></div><div class="l10c"><span class="kn kn-m">3</span><span class="op">MIN</span></div><div class="l10c"><span class="kn kn-m">3</span><span class="op">ARI</span></div></div></div>
 <div class="comp-box"><div class="comp-lbl">v6+ vs v7</div><div class="comp-row"><span style="color:var(--text3)">v6+ Proj K</span><span>3.8K</span></div><div class="comp-row"><span style="color:var(--text3)">v7 Proj K</span><span style="color:var(--red)">3.9K (same)</span></div></div>
 <div class="proj-sec"><div class="proj-grid"><div class="pbox hl-under"><div class="pbox-lbl">Proj Ks</div><div class="pbox-val" style="color:var(--red)">3.9</div><div style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-top:2px;">Floor: 3K · 20th pct</div></div><div class="pbox"><div class="pbox-lbl">Est. Line</div><div class="pbox-val" style="color:var(--text)">4.5</div><div class="edge-row"><span class="edge-pill ep-under">UNDER 4.5</span></div></div></div></div>
-<div class="weather-row"><span class="weather-lbl">⛅</span><span class="weather-val" style="color:var(--text2)">76°F · Coors · Check wind direction at game time</span></div>
+<div class="weather-row"><span class="weather-lbl">⛅ Weather</span><span class="weather-val" style="color:var(--text2)">76°F · Coors · Check wind direction at game time</span></div>
 <div class="act-sec"><div class="act-lbl">Action</div><div class="act-text"><strong>UNDER 4.5 Ks — Lean.</strong> Sinker-heavy groundball pitcher at Coors. Arsenal barely AVERAGE. Proj 3.9 vs 4.5. <span class="hr">UNDER at +100 or better.</span></div></div>
 </div></div></div>
 
@@ -1456,287 +1462,71 @@ function tog(id){var el=document.getElementById(id);var ch=document.getElementBy
 </script>
 
 <script>
-// ============================================================
-// K PROPS SCOUT - Dynamic renderer
-// Fetches /api/kdata → rebuilds cards, rankings, L10, projections
-// ============================================================
-
-const TIER_COLORS = { strong: '#3dffa0', mod: '#ffb83d', under: '#ff5a5a', pass: '#8e94aa' };
-const TIER_CSS    = { strong: 'tier-strong', mod: 'tier-mod', under: 'tier-lean-under', pass: 'tier-pass' };
-
-function kClass(k, avg) {
-  if (k >= avg + 1) return 'kn-h';
-  if (k <= avg - 1.5) return 'kn-l';
-  return 'kn-m';
-}
-
-function buildSpark(vals, color, w=120, h=28) {
-  if (!vals.length) return '';
-  const mn = Math.min(...vals), mx = Math.max(...vals), rng = Math.max(mx-mn,1);
-  const x = (i) => ((i/(vals.length-1))*w).toFixed(1);
-  const y = (v) => (h - ((v-mn)/rng)*(h-4) - 2).toFixed(1);
-  const pts = vals.map((v,i) => x(i)+','+y(v)).join(' L ');
-  const dots = vals.slice(-3).map((v,i) => {
-    const idx = vals.length-3+i;
-    return `<circle cx="${x(idx)}" cy="${y(v)}" r="2.5" fill="${color}"/>`;
-  }).join('');
-  return `<svg width="${w}" height="${h}" class="spark-svg">
-    <path d="M ${pts}" fill="none" stroke="${color}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
-    ${dots}</svg>`;
-}
-
-function buildL10Row(starts, avg) {
-  return starts.map(s => {
-    const cls = kClass(s.k, avg);
-    const dt = s.date ? s.date.slice(5).replace('-','/') : '';
-    return `<div class="l10c">
-      <span class="kn ${cls}" style="font-weight:700">${s.k}</span>
-      <span class="op">${s.opp}</span>
-      <span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">${dt}</span>
-      <span style="display:block;width:3px;height:3px;border-radius:50%;background:#3dffa0;margin:1px auto 0;opacity:.7"></span>
-    </div>`;
-  }).join('');
-}
-
-function buildPlayCard(p, rank) {
-  const color = TIER_COLORS[p.tier];
-  const tierCss = TIER_CSS[p.tier];
-  const dirArrow = p.direction === 'OVER' ? '↑' : '↓';
-  const conf = p.conf || 60;
-  const arc = Math.round(conf * 0.94);
-  const ringHex = color;
-  const ks = (p.starts||[]).map(s=>s.k);
-  const avg = p.avg || 0;
-  const trend = p.trend || { txt: '→', color: '#ffb83d' };
-  const sparkSvg = buildSpark([...ks].reverse(), trend.color);
-  const l10Html = buildL10Row(p.starts||[], avg);
-  const oddsStr = p.overOdds
-    ? `O ${p.overOdds > 0 ? '+' : ''}${p.overOdds} · U ${p.underOdds > 0 ? '+' : ''}${p.underOdds}`
-    : 'O/U est';
-  const edgeStr = p.edge >= 0
-    ? `+${p.edge.toFixed(1)}K / +${Math.round((p.edge/p.line)*100)}% Edge`
-    : `${p.edge.toFixed(1)}K`;
-  const edgeCls = Math.abs(p.edge) >= 1.5 ? 'ep-strong' : (Math.abs(p.edge) >= 0.5 ? 'ep-mod' : 'ep-lean');
-  const bestBet = rank === 1 ? `<span class="badge b-best">★ BEST BET</span>` : '';
-  const lineSrc = p.lineSource === '✓' ? '✓' : '~est';
-
-  return `<div class="gc ${tierCss}">
-<div class="gc-accent"></div>
-<div class="gc-body">
-<div class="gc-header" onclick="tog('c${rank}')">
-  <div class="gc-rank-wrap">
-    <svg class="gc-rank-ring" viewBox="0 0 36 36">
-      <circle cx="18" cy="18" r="15" fill="none" stroke="#252836" stroke-width="3"/>
-      <circle cx="18" cy="18" r="15" fill="none" stroke="${ringHex}" stroke-width="3"
-        stroke-dasharray="${arc} 100" stroke-dashoffset="25" stroke-linecap="round"
-        transform="rotate(-90 18 18)"/>
-      <text x="18" y="22" text-anchor="middle" font-family="Bebas Neue" font-size="12" fill="#f0f2fa">${rank}</text>
-    </svg>
-  </div>
-  <div class="gc-info">
-    <div class="gc-pitcher">${p.name} <span class="gc-hand">${p.seasonStats?.hand||''}</span></div>
-    <div class="gc-matchup">${p.isHome ? (p.opponent+' @ '+p.team) : (p.team+' @ '+p.opponent)} · ${p.venue||''}</div>
-    <div style="display:flex;gap:3px;margin-top:4px;flex-wrap:wrap">
-      <span class="badge ${p.tier==='strong'?'b-strong':p.tier==='mod'?'b-mod':p.tier==='under'?'b-under':'b-pass'}">${p.tierLabel}</span>
-      ${bestBet}
-    </div>
-  </div>
-  <div class="gc-right">
-    <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:${color};line-height:1">${p.projK}K</div>
-    <div style="font-family:'DM Mono',monospace;font-size:8px;color:${color}">${dirArrow} ${p.direction} ${p.line}</div>
-    <div style="font-family:'DM Mono',monospace;font-size:8px;color:${color}">${conf}%</div>
-  </div>
-  <div class="chev" id="chev-c${rank}">▾</div>
-</div>
-<div class="sparkline-wrap">
-  <span class="spark-lbl">L10 →</span>
-  ${sparkSvg}
-  <span style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text2);flex-shrink:0">avg ${avg.toFixed(1)}</span>
-  <span class="spark-trend" style="color:${trend.color}">${trend.txt}</span>
-</div>
-<div class="coll" id="c${rank}">
-<div class="conf-bar-wrap">
-  <div class="conf-direction">
-    <span style="color:${color};font-weight:700">${dirArrow} ${p.direction} ${p.line} Ks</span>
-    <span class="conf-pct" style="color:${color}">${conf}%</span>
-  </div>
-  <div class="conf-bar-bg">
-    <div class="conf-bar-fill conf-bar-${p.direction==='OVER'?'over':'under'}" style="width:${conf}%"></div>
-  </div>
-</div>
-<div class="p-sec">
-  <div class="p-sec-label">Pitcher Stats</div>
-  <div class="stats-row">
-    <div class="sp"><span class="lbl">ERA</span><span class="${parseFloat(p.seasonStats?.era||9)<3.5?'vg':parseFloat(p.seasonStats?.era||9)<4.5?'va':'vr'}">${p.seasonStats?.era||'?'}</span></div>
-    <div class="sp"><span class="lbl">K/9</span><span class="${parseFloat(p.seasonStats?.k9||0)>=9?'vg':parseFloat(p.seasonStats?.k9||0)>=7?'va':'vr'}">${p.seasonStats?.k9||'?'}</span></div>
-    <div class="sp"><span class="lbl">WHIP</span><span class="${parseFloat(p.seasonStats?.whip||9)<1.1?'vg':parseFloat(p.seasonStats?.whip||9)<1.3?'va':'vr'}">${p.seasonStats?.whip||'?'}</span></div>
-    <div class="sp"><span class="lbl">BB/9</span><span class="${parseFloat(p.seasonStats?.bb9||9)<2.5?'vg':parseFloat(p.seasonStats?.bb9||9)<3.5?'va':'vr'}">${p.seasonStats?.bb9||'?'}</span></div>
-    <div class="sp"><span class="lbl">IP</span><span>${p.seasonStats?.ip||'?'}</span></div>
-  </div>
-</div>
-<div class="proj-sec">
-  <div class="proj-grid">
-    <div class="pbox hl">
-      <div class="pbox-lbl">Proj Ks</div>
-      <div class="pbox-val" style="color:${color}">${p.projK}</div>
-      <div class="pbox-sub">L10 avg ${avg.toFixed(1)}K ✓</div>
-    </div>
-    <div class="pbox">
-      <div class="pbox-lbl">Book Line <span style="font-size:6px;color:var(--text3)">${lineSrc}</span></div>
-      <div class="pbox-val" style="color:var(--text)">${p.line}</div>
-      <div class="pbox-line">${oddsStr}</div>
-      <div class="edge-row"><span class="edge-pill ${edgeCls}">${edgeStr}</span></div>
-    </div>
-  </div>
-</div>
-<div class="l10-sec">
-  <div class="l10-header">
-    <div class="l10-label">L10 · Avg ${avg.toFixed(1)}K ✓ <span style="color:${trend.color}">${trend.txt}</span></div>
-  </div>
-  <div class="l10-row">${l10Html}</div>
-</div>
-<div class="weather-row">
-  <span class="weather-lbl">⛅</span>
-  <span class="weather-val">${p.venue||'Stadium'}</span>
-</div>
-<div class="act-sec">
-  <div class="act-lbl">Edge</div>
-  <div class="act-text">${p.direction} ${p.line} Ks — <span style="color:${color}">L10 avg ${avg.toFixed(1)}K vs ${p.line} line = ${p.edge>=0?'+':''}${p.edge.toFixed(1)}K edge (${conf}% conf)</span></div>
-</div>
-</div>
-</div>
-</div>`;
-}
-
-function buildPassCard(p, rank) {
-  const color = '#8e94aa';
-  const avg = p.avg || 0;
-  const ks = (p.starts||[]).map(s=>s.k);
-  const spark = buildSpark([...ks].reverse(), color);
-  return `<div class="gc tier-pass">
-<div class="gc-accent"></div>
-<div class="gc-body">
-<div class="gc-header" onclick="tog('cp${rank}')">
-  <div class="gc-rank-wrap">
-    <svg class="gc-rank-ring" viewBox="0 0 36 36">
-      <circle cx="18" cy="18" r="15" fill="none" stroke="#252836" stroke-width="3"/>
-      <text x="18" y="22" text-anchor="middle" font-family="Bebas Neue" font-size="10" fill="#8e94aa">${rank}</text>
-    </svg>
-  </div>
-  <div class="gc-info">
-    <div class="gc-pitcher" style="color:var(--text2)">${p.name} <span class="gc-hand">${p.seasonStats?.hand||''}</span></div>
-    <div class="gc-matchup">${p.isHome?(p.opponent+' @ '+p.team):(p.team+' @ '+p.opponent)}</div>
-    <div style="margin-top:3px;display:flex;gap:4px;align-items:center">
-      <span class="badge b-pass">PASS</span>
-      <span style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text3)">Proj ${avg.toFixed(1)}K · Line ${p.line}</span>
-    </div>
-  </div>
-  <div class="chev" id="chev-cp${rank}">▾</div>
-</div>
-<div class="coll" id="cp${rank}">
-  <div class="act-sec">
-    <div class="act-lbl">Why Pass</div>
-    <div class="act-text">L10 avg ${avg.toFixed(1)}K vs ${p.line} line = ${p.edge>=0?'+':''}${p.edge.toFixed(1)}K edge. ${p.tierLabel}.</div>
-  </div>
-</div>
-</div>
-</div>`;
-}
-
-function rebuildStatBar(plays, passes) {
-  const strong = plays.filter(p=>p.tier==='strong').length;
-  const mod = plays.filter(p=>p.tier==='mod').length;
-  const under = plays.filter(p=>p.tier==='under').length;
-  const passCount = passes.length;
-
-  const bar = document.querySelector('.stat-bar');
-  if (!bar) return;
-  bar.innerHTML = `
-    <div class="sb-item"><div class="sb-val" style="color:var(--green)">${strong}</div><div class="sb-lbl">Strong</div></div>
-    <div class="sb-item"><div class="sb-val" style="color:var(--amber)">${mod}</div><div class="sb-lbl">Moderate</div></div>
-    <div class="sb-item"><div class="sb-val" style="color:var(--red)">${under}</div><div class="sb-lbl">Under</div></div>
-    <div class="sb-item"><div class="sb-val" style="color:var(--text2)">${passCount}</div><div class="sb-lbl">Pass</div></div>
-  `;
-}
-
-function renderAll(data) {
-  const plays = data.plays || [];
-  const passes = data.passes || [];
-
-  // Find K props scroll-wrap (first one = K props tab)
-  const scrollWrap = document.querySelector('#tab-k .scroll-wrap');
-  if (!scrollWrap) { console.warn('scroll-wrap not found'); return; }
-
-  // Keep the ALL PITCHERS RANKED header, remove everything else
-  const playsHead = scrollWrap.querySelector('.sec-head');
-  if (!playsHead) { console.warn('sec-head not found'); return; }
-
-  // Remove all gc cards and extra sec-heads
-  Array.from(scrollWrap.querySelectorAll('.gc, .sec-head:not(:first-of-type), [style*="height:20px"]'))
-    .forEach(el => el.remove());
-
-  // Insert play cards right after the header
-  let insertAfter = playsHead;
-  plays.forEach((p, i) => {
-    insertAfter.insertAdjacentHTML('afterend', buildPlayCard(p, i+1));
-    // Move reference to the newly inserted card
-    insertAfter = insertAfter.nextElementSibling;
-  });
-
-  // Add pass section
-  if (passes.length > 0) {
-    const passSec = document.createElement('div');
-    passSec.className = 'sec-head';
-    passSec.innerHTML = '<div class="sec-title" style="color:var(--text3)">PASSES · ' + passes.length + ' pitchers</div>';
-    scrollWrap.appendChild(passSec);
-    passes.forEach((p, i) => {
-      scrollWrap.insertAdjacentHTML('beforeend', buildPassCard(p, i+1));
-    });
-  }
-
-  // Spacer
-  scrollWrap.insertAdjacentHTML('beforeend', '<div style="height:20px"></div>');
-
-  // Update stat bar
-  rebuildStatBar(plays, passes);
-
-  // Update header date
-  const headerDate = document.querySelector('.header-date');
-  if (headerDate) headerDate.textContent = data.date ? data.date.replace('2026-','').replace('-','/') + '/2026' : '';
-}
-
-async function loadLiveData() {
-  const toast = document.createElement('div');
-  toast.style.cssText = 'position:fixed;bottom:12px;right:12px;background:#13151e;border:1px solid #3dffa0;color:#3dffa0;font-family:"DM Mono",monospace;font-size:9px;padding:5px 10px;border-radius:5px;z-index:9999;';
-  toast.textContent = '⟳ Loading live slate...';
-  document.body.appendChild(toast);
-
+// Live data enhancement - updates L10 grids when API available
+// Falls back to static data silently if API unavailable
+(async function() {
   try {
-    // ?offset=1 for tomorrow, ?offset=0 or nothing for today
-    const offset = new URLSearchParams(window.location.search).get('offset') || '0';
-    const res = await fetch('/api/kdata?offset=' + offset);
-    if (!res.ok) throw new Error('API ' + res.status);
+    const res = await fetch('/api/kdata');
+    if (!res.ok) return; // silently fall back to static
     const data = await res.json();
+    if (!data.success || !data.all) return;
 
-    if (data.success && (data.plays?.length || data.passes?.length)) {
-      renderAll(data);
-      const total = (data.plays?.length||0) + (data.passes?.length||0);
-      toast.textContent = `✓ ${total} pitchers · lines ${data.linesSource}`;
-    } else {
-      throw new Error(data.message || 'No data');
-    }
+    const toast = document.createElement('div');
+    toast.style.cssText = 'position:fixed;bottom:12px;right:12px;background:#13151e;border:1px solid #3dffa0;color:#3dffa0;font-family:"DM Mono",monospace;font-size:9px;padding:5px 10px;border-radius:5px;z-index:9999;';
+    toast.textContent = '✓ Live K data loaded · ' + data.linesSource;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 4000);
+
+    // Update L10 row for each pitcher
+    data.all.forEach(p => {
+      if (!p.starts || p.starts.length === 0) return;
+      const ks = p.starts.map(s => s.k);
+      const avg = ks.reduce((a,b)=>a+b,0)/ks.length;
+
+      // Find the card containing this pitcher
+      const cards = document.querySelectorAll('.gc-pitcher');
+      for (const el of cards) {
+        if (!el.textContent.includes(p.name)) continue;
+        const card = el.closest('.gc');
+        if (!card) continue;
+
+        // Update l10-row
+        const l10Row = card.querySelector('.l10-row');
+        if (l10Row) {
+          const kc = (k,a) => k>=a+1?'kn-h':k<=a-1.5?'kn-l':'kn-m';
+          l10Row.innerHTML = p.starts.map(s => {
+            const dt = s.date ? s.date.slice(5).replace('-','/') : '';
+            return '<div class="l10c"><span class="kn '+kc(s.k,avg)+'" style="font-weight:700">'+s.k+'</span><span class="op">'+s.opp+'</span><span style="display:block;font-size:5px;color:var(--text3);font-family:DM Mono,monospace;line-height:1.3">'+dt+'</span></div>';
+          }).join('');
+        }
+
+        // Update l10-label
+        const l10Label = card.querySelector('.l10-label');
+        if (l10Label) {
+          const tc = p.trend?.color || '#ffb83d';
+          const txt = p.trend?.txt || '';
+          l10Label.innerHTML = 'L10 · Avg '+avg.toFixed(1)+'K ✓ <span style="color:'+tc+'">'+txt+'</span>';
+        }
+
+        // Update sparkline
+        const sparkWrap = card.querySelector('.sparkline-wrap');
+        if (sparkWrap) {
+          const tc = p.trend?.color || '#ffb83d';
+          const txt = p.trend?.txt || '';
+          const reversed = [...ks].reverse();
+          const mn=Math.min(...reversed),mx=Math.max(...reversed),rng=Math.max(mx-mn,1);
+          const W=120,H=28;
+          const pts=reversed.map((v,i)=>((i/(reversed.length-1))*W).toFixed(1)+','+(H-((v-mn)/rng)*(H-4)-2).toFixed(1));
+          const dots=reversed.slice(-3).map((v,i)=>{const idx=reversed.length-3+i;return '<circle cx="'+((idx/(reversed.length-1))*W).toFixed(1)+'" cy="'+(H-((v-mn)/rng)*(H-4)-2).toFixed(1)+'" r="2.5" fill="'+tc+'"/>';}).join('');
+          sparkWrap.innerHTML='<span class="spark-lbl">L10 →</span><svg width="'+W+'" height="'+H+'" class="spark-svg"><path d="M '+pts.join(' L ')+'" fill="none" stroke="'+tc+'" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>'+dots+'</svg><span style="font-family:DM Mono,monospace;font-size:8px;color:var(--text2);flex-shrink:0">avg '+avg.toFixed(1)+'</span><span class="spark-trend" style="color:'+tc+'">'+txt+'</span>';
+        }
+        break;
+      }
+    });
   } catch(e) {
-    console.warn('Live data failed:', e);
-    toast.textContent = '⚠ Showing static data · ' + e.message;
-    toast.style.borderColor = '#ffb83d';
-    toast.style.color = '#ffb83d';
+    // Silent fail - static data remains
   }
-
-  setTimeout(() => toast.remove(), 5000);
-}
-
-document.addEventListener('DOMContentLoaded', loadLiveData);
+})();
 </script>
-
 </body>
 </html>

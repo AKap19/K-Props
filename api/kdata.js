@@ -63,7 +63,7 @@ async function getProbableStarters(date) {
 
 // 2. Get pitcher's 2026 game log - last N starts
 async function getPitcherLog(pitcherId, numStarts = 10) {
-  const url = `${MLB_API}/people/${pitcherId}/stats?stats=gameLog&group=pitching&season=2026&gameType=R`;
+  const url = `${MLB_API}/people/${pitcherId}/stats?stats=gameLog&group=pitching&season=2026&gameType=R&hydrate=game(teams)`;
   try {
     const data = await fetchJSON(url);
     const splits = data?.stats?.[0]?.splits || [];
@@ -73,17 +73,42 @@ async function getPitcherLog(pitcherId, numStarts = 10) {
       .slice(-numStarts)
       .reverse(); // most recent first
     
-    return starts.map(s => ({
-      k:    parseInt(s.stat.strikeOuts || 0),
-      opp:  s.opponent?.abbreviation || '?',
-      date: s.date || '?',
-      ip:   s.stat.inningsPitched || '0',
-      era:  parseFloat(s.stat.era || 0),
-    }));
+    return starts.map(s => {
+      // MLB Stats API gameLog: opponent lives in s.game.teams
+      // The pitcher's own team is s.team.abbreviation
+      // The opponent is whichever team in s.game.teams is NOT the pitcher's team
+      let opp = '?';
+      try {
+        const pitcherTeam = s.team?.abbreviation || s.team?.name || '';
+        const gameTeams = s.game?.teams || {};
+        const home = gameTeams.home?.team?.abbreviation || '';
+        const away = gameTeams.away?.team?.abbreviation || '';
+        if (home && away) {
+          opp = (home === pitcherTeam || s.isHome) ? away : home;
+          // If isHome is available use it directly
+          if (s.isHome === true) opp = away;
+          if (s.isHome === false) opp = home;
+        } else {
+          // Fallback: try opponent field directly
+          opp = s.opponent?.abbreviation || '?';
+        }
+      } catch(e) {
+        opp = '?';
+      }
+      return {
+        k:    parseInt(s.stat.strikeOuts || 0),
+        opp,
+        date: s.date || '?',
+        ip:   s.stat.inningsPitched || '0',
+        era:  parseFloat(s.stat.era || 0),
+      };
+    });
   } catch(e) {
     return [];
   }
 }
+
+
 
 // 3. Get pitcher's season stats for ERA, K/9, K%, whiff
 async function getPitcherSeasonStats(pitcherId) {
@@ -118,14 +143,14 @@ async function getKPropLines(oddsApiKey) {
     
     // Get pitcher strikeout props for all events
     const eventIds = events.slice(0, 20).map(e => e.id).join(',');
-    const propsUrl = `${ODDS_API}/sports/baseball_mlb/events/${events[0].id}/odds?apiKey=${oddsApiKey}&regions=us&markets=pitcher_strikeouts&oddsFormat=american&bookmakers=draftkings,fanduel,betmgm`;
+    const propsUrl = `${ODDS_API}/sports/baseball_mlb/events/${events[0].id}/odds?apiKey=${oddsApiKey}&regions=us&markets=pitcher_strikeouts&oddsFormat=american&bookmakers=fanduel`;
     
     // Fetch props per event (batch to save API calls)
     const lines = {};
     
     for (const event of events.slice(0, 16)) {
       try {
-        const propsUrl = `${ODDS_API}/sports/baseball_mlb/events/${event.id}/odds?apiKey=${oddsApiKey}&regions=us&markets=pitcher_strikeouts&oddsFormat=american&bookmakers=draftkings,fanduel`;
+        const propsUrl = `${ODDS_API}/sports/baseball_mlb/events/${event.id}/odds?apiKey=${oddsApiKey}&regions=us&markets=pitcher_strikeouts&oddsFormat=american&bookmakers=fanduel`;
         const props = await fetchJSON(propsUrl);
         
         for (const bookmaker of (props.bookmakers || [])) {

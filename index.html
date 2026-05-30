@@ -1663,30 +1663,31 @@ function renderAll(data) {
   const plays = data.plays || [];
   const passes = data.passes || [];
 
-  // Find K props scroll-wrap
-  const scrollWrap = document.querySelector('#tab-kp .scroll-wrap');
-  if (!scrollWrap) return;
+  // Find K props scroll-wrap (first one = K props tab)
+  const scrollWrap = document.querySelector('#tab-k .scroll-wrap');
+  if (!scrollWrap) { console.warn('scroll-wrap not found'); return; }
 
-  // Keep the section headers, rebuild everything else
-  const secHeads = Array.from(scrollWrap.querySelectorAll('.sec-head'));
-  const playsHead = secHeads[0];
+  // Keep the ALL PITCHERS RANKED header, remove everything else
+  const playsHead = scrollWrap.querySelector('.sec-head');
+  if (!playsHead) { console.warn('sec-head not found'); return; }
 
-  // Remove all existing gc cards
-  scrollWrap.querySelectorAll('.gc').forEach(el => el.remove());
-  // Remove spacer
-  scrollWrap.querySelectorAll('[style*="height:20px"]').forEach(el => el.remove());
+  // Remove all gc cards and extra sec-heads
+  Array.from(scrollWrap.querySelectorAll('.gc, .sec-head:not(:first-of-type), [style*="height:20px"]'))
+    .forEach(el => el.remove());
 
-  // Render play cards after first sec-head
+  // Insert play cards right after the header
+  let insertAfter = playsHead;
   plays.forEach((p, i) => {
-    const cardHtml = buildPlayCard(p, i+1);
-    playsHead.insertAdjacentHTML('afterend', cardHtml);
+    insertAfter.insertAdjacentHTML('afterend', buildPlayCard(p, i+1));
+    // Move reference to the newly inserted card
+    insertAfter = insertAfter.nextElementSibling;
   });
 
-  // Add pass section header and cards
+  // Add pass section
   if (passes.length > 0) {
     const passSec = document.createElement('div');
     passSec.className = 'sec-head';
-    passSec.innerHTML = `<div class="sec-title">PASS CARDS</div><div class="sec-meta">${passes.length} pitchers · no edge today</div>`;
+    passSec.innerHTML = '<div class="sec-title" style="color:var(--text3)">PASSES · ' + passes.length + ' pitchers</div>';
     scrollWrap.appendChild(passSec);
     passes.forEach((p, i) => {
       scrollWrap.insertAdjacentHTML('beforeend', buildPassCard(p, i+1));
@@ -1699,11 +1700,9 @@ function renderAll(data) {
   // Update stat bar
   rebuildStatBar(plays, passes);
 
-  // Update date/slate info
-  const slateDate = document.querySelector('.slate-date');
-  if (slateDate) slateDate.textContent = data.date || '';
-  const slateGames = document.querySelector('.slate-games');
-  if (slateGames) slateGames.textContent = (data.totalGames||0) + ' Games · Full Slate';
+  // Update header date
+  const headerDate = document.querySelector('.header-date');
+  if (headerDate) headerDate.textContent = data.date ? data.date.replace('2026-','').replace('-','/') + '/2026' : '';
 }
 
 async function loadLiveData() {

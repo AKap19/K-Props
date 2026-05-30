@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/kdata.js": {
+      "runtime": "nodejs20.x"
+    }
+  }
+}

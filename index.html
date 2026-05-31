@@ -2287,9 +2287,6 @@ function tog(id){var el=document.getElementById(id);var ch=document.getElementBy
     if (!res.ok) return;
     const data = await res.json();
     if (!data.success || !data.all) return;
-    const kc=(k,a)=>k>=a+1?'kn-h':k<=a-1.5?'kn-l':'kn-m';
-    function spark(vals,color){const W=120,H=28,mn=Math.min(...vals),mx=Math.max(...vals),rng=Math.max(mx-mn,1);const x=i=>((i/(vals.length-1))*W).toFixed(1),y=v=>(H-((v-mn)/rng)*(H-4)-2).toFixed(1);const pts=vals.map((v,i)=>x(i)+','+y(v)).join(' L ');const dots=vals.slice(-3).map((v,i)=>{const idx=vals.length-3+i;return `<circle cx="${x(idx)}" cy="${y(v)}" r="2.5" fill="${color}"/>`;}).join('');return `<svg width="${W}" height="${H}" class="spark-svg"><path d="M ${pts}" fill="none" stroke="${color}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>${dots}</svg>`;}
-    function pitchBar(p,o){const max=110,pct=Math.min(Math.round((p/max)*100),100);const col=p>=90?'var(--green)':p>=75?'var(--amber)':'var(--red)';return `<div style="display:flex;align-items:center;gap:3px;margin-bottom:3px;"><div style="flex:1;background:var(--bg2);border-radius:2px;height:6px;overflow:hidden;"><div style="width:${pct}%;height:100%;background:${col};border-radius:2px;"></div></div><span style="font-family:'DM Mono',monospace;font-size:5px;color:${col};width:18px;text-align:right;flex-shrink:0">${p}p</span><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);width:14px;text-align:right;flex-shrink:0">${o}o</span></div>`;}
     let n=0;
     data.all.forEach(p=>{
       if(!p.starts?.length)return;
@@ -2298,18 +2295,9 @@ function tog(id){var el=document.getElementById(id);var ch=document.getElementBy
         const card=el.closest('.gc');if(!card)continue;
         const ks=p.starts.map(s=>s.k),avg=ks.reduce((a,b)=>a+b,0)/ks.length;
         const tc=p.trend?.color||'#ffb83d',txt=p.trend?.txt||'→';
-        // Update sparkline
+        // Update sparkline text only - no SVG
         const sw=card.querySelector('.sparkline-wrap');
-        if(sw)sw.innerHTML=`<span class="spark-lbl">L10 →</span>${spark([...ks].reverse(),tc)}<span style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text2);flex-shrink:0">avg ${avg.toFixed(1)}</span><span class="spark-trend" style="color:${tc}">${txt}</span>`;
-        // Update pitch count box
-        const pcBoxes=card.querySelectorAll('[style*="Pitch Counts"],.pc-box');
-        const pcBox=Array.from(card.querySelectorAll('div')).find(d=>d.textContent.includes('Pitch Counts'));
-        if(pcBox){
-          const l4=p.starts.slice(0,4);
-          let bars=`<div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;">Pitch Counts · L${l4.length}</div>`;
-          l4.forEach(s=>{const pc=s.pitches||0,ou=s.outs||0;if(pc>0)bars+=pitchBar(pc,ou);});
-          if(l4.some(s=>s.pitches>0))pcBox.innerHTML=bars;
-        }
+        if(sw)sw.innerHTML=`<span class="spark-lbl">L10 →</span><span style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text2);flex-shrink:0">avg ${avg.toFixed(1)}K</span><span class="spark-trend" style="color:${tc}">${txt}</span>`;
         n++;break;
       }
     });

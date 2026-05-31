@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>K Props Scout · May 31, 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -4563,9 +4566,14 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
 
 <script>
 window.addEventListener('pageshow', function(e) {
-  if (e.persisted) {
+  // Always reset on pageshow - handles Safari bfcache
+  document.querySelectorAll('.coll').forEach(function(el){ el.classList.remove('open'); });
+  document.querySelectorAll('[id^="chev-"]').forEach(function(el){ el.classList.remove('open'); });
+});
+// Also reset on visibility change (tab switch)
+document.addEventListener('visibilitychange', function() {
+  if (!document.hidden) {
     document.querySelectorAll('.coll').forEach(function(el){ el.classList.remove('open'); });
-    document.querySelectorAll('[id^="chev-"]').forEach(function(el){ el.classList.remove('open'); });
   }
 });
 function sw(name,el){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.cs').forEach(s=>s.classList.remove('active'));el.classList.add('active');document.getElementById('tab-'+name).classList.add('active');}

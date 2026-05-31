@@ -105,11 +105,13 @@ async function getPitcherLog(pitcherId, numStarts = 10) {
         opp = pitcherTeam === home ? away : home;
       }
       return {
-        k:    parseInt(s.stat.strikeOuts || 0),
+        k:       parseInt(s.stat.strikeOuts || 0),
         opp,
-        date: s.date || '?',
-        ip:   s.stat.inningsPitched || '0',
-        era:  parseFloat(s.stat.era || 0),
+        date:    s.date || '?',
+        ip:      s.stat.inningsPitched || '0',
+        era:     parseFloat(s.stat.era || 0),
+        pitches: parseInt(s.stat.numberOfPitches || 0),
+        outs:    parseInt(s.stat.outsPitched || 0),
       };
     });
   } catch(e) {

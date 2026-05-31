@@ -242,7 +242,7 @@ function calcTrend(starts) {
 // Main handler
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Cache-Control', 's-maxage=86400'); // cache 24 hours
+  res.setHeader('Cache-Control', 's-maxage=43200'); // cache 12 hours
 
   const oddsApiKey = process.env.ODDS_API_KEY || null;
   const date = TARGET_DATE || getDateStr(parseInt(req.query.offset || 0));

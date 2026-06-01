@@ -92,16 +92,19 @@ async function getPitcherLog(pitcherId, numStarts = 10) {
       .slice(-numStarts)
       .reverse(); // most recent first
     
-    // Fetch game teams in parallel for all starts
+    // FIX: gamePk lives at s.game.gamePk — check all possible locations
     const teams = await Promise.all(
-      starts.map(s => getGameTeams(s.game?.gamePk || s.gamePk))
+      starts.map(s => {
+        const gamePk = s.game?.gamePk ?? s.gamePk ?? s.game?.id ?? null;
+        return getGameTeams(gamePk);
+      })
     );
 
     return starts.map((s, i) => {
       const pitcherTeam = s.team?.abbreviation || '';
       const { home, away } = teams[i];
       let opp = '?';
-      if (home && away) {
+      if (home && away && pitcherTeam) {
         opp = pitcherTeam === home ? away : home;
       }
       return {
@@ -119,9 +122,7 @@ async function getPitcherLog(pitcherId, numStarts = 10) {
   }
 }
 
-
-
-// 3. Get pitcher's season stats for ERA, K/9, K%, whiff
+// 3. Get pitcher's season stats
 async function getPitcherSeasonStats(pitcherId) {
   const url = `${MLB_API}/people/${pitcherId}/stats?stats=season&group=pitching&season=2026&gameType=R`;
   try {
@@ -152,11 +153,6 @@ async function getKPropLines(oddsApiKey) {
     
     if (!events || events.length === 0) return {};
     
-    // Get pitcher strikeout props for all events
-    const eventIds = events.slice(0, 20).map(e => e.id).join(',');
-    const propsUrl = `${ODDS_API}/sports/baseball_mlb/events/${events[0].id}/odds?apiKey=${oddsApiKey}&regions=us&markets=pitcher_strikeouts&oddsFormat=american&bookmakers=fanduel`;
-    
-    // Fetch props per event (batch to save API calls)
     const lines = {};
     
     for (const event of events.slice(0, 16)) {
@@ -168,7 +164,6 @@ async function getKPropLines(oddsApiKey) {
           for (const market of (bookmaker.markets || [])) {
             if (market.key !== 'pitcher_strikeouts') continue;
             for (const outcome of (market.outcomes || [])) {
-              // outcome.description = pitcher name, outcome.name = Over/Under, outcome.point = line
               const name = outcome.description || '';
               if (!lines[name]) lines[name] = { over: null, under: null, line: null, book: bookmaker.key };
               if (outcome.name === 'Over') {
@@ -195,9 +190,7 @@ async function getKPropLines(oddsApiKey) {
 // 5. Estimate line from K/9 if no real line available
 function estimateLine(k9) {
   const k9f = parseFloat(k9) || 5.0;
-  // Rough model: K/9 → expected Ks in ~5.5 IP outing
   const expectedKs = (k9f / 9) * 5.5;
-  // Round to nearest 0.5
   return Math.round(expectedKs * 2) / 2;
 }
 
@@ -269,14 +262,12 @@ export default async function handler(req, res) {
           ? starts.reduce((a,b) => a+b.k, 0) / starts.length 
           : 0;
 
-        // Find real line or estimate
         const realLine = realLines[starter.name];
         const line = realLine?.line || estimateLine(seasonStats.k9);
         const lineSource = realLine ? '✓' : '~est';
         const overOdds = realLine?.over || null;
         const underOdds = realLine?.under || null;
 
-        // Determine direction
         const direction = avg < line - 0.7 ? 'UNDER' : 'OVER';
         
         const { tier, label: tierLabel } = calcTier(avg, line, direction, seasonStats.starts);
@@ -308,9 +299,8 @@ export default async function handler(req, res) {
     const allPitchers = pitcherData
       .filter(r => r.status === 'fulfilled')
       .map(r => r.value)
-      .filter(p => p.seasonStats.starts >= 1); // must have at least 1 start this year
+      .filter(p => p.seasonStats.starts >= 1);
 
-    // Sort: strong first, then mod, then under, then pass — within each by edge desc
     const tierOrder = { strong: 0, mod: 1, under: 2, pass: 3 };
     allPitchers.sort((a, b) => {
       const to = tierOrder[a.tier] - tierOrder[b.tier];
@@ -318,10 +308,8 @@ export default async function handler(req, res) {
       return b.edge - a.edge;
     });
 
-    // Assign ranks
     allPitchers.forEach((p, i) => { p.rank = i + 1; });
 
-    // Separate plays from passes
     const plays = allPitchers.filter(p => p.tier !== 'pass');
     const passes = allPitchers.filter(p => p.tier === 'pass');
 

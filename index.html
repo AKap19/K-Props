@@ -287,13 +287,457 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
 </style>
 </head>
 <body>
-<div class="header"><div><div class="logo">K PROPS SCOUT</div><div class="logo-sub">v9.9 · June 15, 2026</div></div><div class="header-date"><div style="color:var(--text);font-weight:700;">June 15, 2026</div><div>9 Games · v9.9 · 12/17 FD Lines</div></div></div><div class="tabs"><div class="tab active" onclick="sw('k',this)">⚡ K Props</div><div class="tab" onclick="sw('f5',this)">🔴 F5</div><div class="tab" onclick="sw('nrfi',this)">🎯 NRFI</div><div class="tab" onclick="sw('model',this)">⚙ Model</div></div>
-<div id="tab-k" class="cs active"><div class="scroll-wrap"><div class="stat-bar"><div class="sb-item"><div class="sb-val" style="color:#00ff94">0</div><div class="sb-lbl">Strong</div></div><div class="sb-item"><div class="sb-val" style="color:var(--amber)">0</div><div class="sb-lbl">Mod</div></div><div class="sb-item"><div class="sb-val" style="color:#2dd4bf">3</div><div class="sb-lbl">Lean O</div></div><div class="sb-item"><div class="sb-val" style="color:#c084fc">4</div><div class="sb-lbl">Lean U</div></div><div class="sb-item"><div class="sb-val" style="color:var(--red)">0</div><div class="sb-lbl">Under</div></div><div class="sb-item"><div class="sb-val" style="color:var(--text2)">10</div><div class="sb-lbl">Pass</div></div></div><div id="k-sort-bar" style="display:flex;gap:6px;padding:8px 12px 4px;align-items:center;"><span style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text3);letter-spacing:1px;text-transform:uppercase;margin-right:4px;">Sort</span><button onclick="sortCards('tier')" id="sort-tier" class="sort-btn" style="font-family:'DM Mono',monospace;font-size:9px;padding:4px 10px;border-radius:20px;border:1px solid #00ff94;background:#002b18;color:#00ff94;cursor:pointer;">Tier</button><button onclick="sortCards('cap')" id="sort-cap" class="sort-btn" style="font-family:'DM Mono',monospace;font-size:9px;padding:4px 10px;border-radius:20px;border:1px solid var(--border2);background:var(--card2);color:var(--text3);cursor:pointer;">CAP %</button><button onclick="sortCards('time')" id="sort-time" class="sort-btn" style="font-family:'DM Mono',monospace;font-size:9px;padding:4px 10px;border-radius:20px;border:1px solid var(--border2);background:var(--card2);color:var(--text3);cursor:pointer;">Game Time</button></div><div class="sec-head"><div class="sec-title">ALL PITCHERS · RANKED</div><div class="sec-meta">v9.9 · 12/17 FD Lines · Matchup Putaway · LG 20.5%</div></div><div class="gc tier-lean-over-soft" data-tier="2" data-cap="56" data-time="1300" data-edge="6" data-game="ATH-PIT" data-gamesort="13000570">
+<div class="header"><div><div class="logo">K PROPS SCOUT</div><div class="logo-sub">v9.9 · June 15, 2026</div></div><div class="header-date"><div style="color:var(--text);font-weight:700;">June 15, 2026</div><div>9 Games · v9.9 · 12/17 FD Lines · Best-line tiering</div></div></div><div class="tabs"><div class="tab active" onclick="sw('k',this)">⚡ K Props</div><div class="tab" onclick="sw('f5',this)">🔴 F5</div><div class="tab" onclick="sw('nrfi',this)">🎯 NRFI</div><div class="tab" onclick="sw('model',this)">⚙ Model</div></div>
+<div id="tab-k" class="cs active"><div class="scroll-wrap"><div class="stat-bar"><div class="sb-item"><div class="sb-val" style="color:#00ff94">1</div><div class="sb-lbl">Strong</div></div><div class="sb-item"><div class="sb-val" style="color:var(--amber)">2</div><div class="sb-lbl">Mod</div></div><div class="sb-item"><div class="sb-val" style="color:#2dd4bf">3</div><div class="sb-lbl">Lean O</div></div><div class="sb-item"><div class="sb-val" style="color:#c084fc">4</div><div class="sb-lbl">Lean U</div></div><div class="sb-item"><div class="sb-val" style="color:var(--red)">0</div><div class="sb-lbl">Under</div></div><div class="sb-item"><div class="sb-val" style="color:var(--text2)">7</div><div class="sb-lbl">Pass</div></div></div><div id="k-sort-bar" style="display:flex;gap:6px;padding:8px 12px 4px;align-items:center;"><span style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text3);letter-spacing:1px;text-transform:uppercase;margin-right:4px;">Sort</span><button onclick="sortCards('tier')" id="sort-tier" class="sort-btn" style="font-family:'DM Mono',monospace;font-size:9px;padding:4px 10px;border-radius:20px;border:1px solid #00ff94;background:#002b18;color:#00ff94;cursor:pointer;">Tier</button><button onclick="sortCards('cap')" id="sort-cap" class="sort-btn" style="font-family:'DM Mono',monospace;font-size:9px;padding:4px 10px;border-radius:20px;border:1px solid var(--border2);background:var(--card2);color:var(--text3);cursor:pointer;">CAP %</button><button onclick="sortCards('time')" id="sort-time" class="sort-btn" style="font-family:'DM Mono',monospace;font-size:9px;padding:4px 10px;border-radius:20px;border:1px solid var(--border2);background:var(--card2);color:var(--text3);cursor:pointer;">Game Time</button></div><div class="sec-head"><div class="sec-title">ALL PITCHERS · RANKED</div><div class="sec-meta">v9.9 · 12/17 FD Lines · Best-line tiering · max -220</div></div><div class="gc tier-strong" data-tier="0" data-cap="71" data-time="1300" data-edge="15" data-game="AZ-LAA" data-gamesort="13000076">
 <div class="gc-accent"></div>
 <div class="gc-body">
 <div class="gc-header" onclick="tog('c1')">
   <div style="display:flex;align-items:center;justify-content:center;width:28px;flex-shrink:0;">
-    <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;line-height:1;color:#8e94aa">1</span>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;line-height:1;color:#00e5a0">1</span>
+  </div>
+  <div class="gc-info">
+    <div class="gc-pitcher">Walbert Ureña <span class="gc-hand">R</span> <span class="badge b-strong" style="font-size:7px;padding:1px 5px;">STRONG EDGE</span></div><div style="font-family:'DM Mono',monospace;font-size:8px;color:#f0c040;letter-spacing:0.5px;padding:2px 8px 4px;background:#1a1408;border-bottom:1px solid #2a2010;">▶ BET 3.5 Ks · MAIN LINE 4.5</div>
+    <div class="gc-matchup">LAA vs AZ · Chase Field</div>
+    <div style="font-family:'DM Mono',monospace;font-size:8.5px;color:#c8d0e8;margin-top:3px;line-height:1.5;">L10 5.3K raw · 4.87K adj · avg 5.37IP · <span style="color:var(--text2)">opp #9/30 · 23.8%K</span> · <span style="color:var(--green)"><span style="color:#00e5a0;font-weight:700;">CAP 70%</span> · P(O) 74%</span> · <span style="color:var(--amber)">σ1.6K</span> <span style="color:#3dffa0;font-weight:600;">Hot</span></div>
+  </div>
+  <div class="gc-right" style="text-align:right;flex-shrink:0;min-width:68px;">
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#00e5a0;line-height:1;">5.0K</div>
+    <div style="font-family:'DM Mono',monospace;font-size:8px;color:#00ff94;font-weight:700;">↑ OVER 3.5 Ks</div>
+    <div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--green);font-weight:600;">P(O) 74%</div>
+  </div>
+  <div class="chev" id="chev-c1">▾</div>
+</div>
+<div class="coll" id="c1">
+  <div style="padding:8px 12px;border-bottom:1px solid var(--border);background:var(--card2);">
+
+  <!-- Row 1: direction label -->
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+    <span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#00ff94;">↑ OVER 3.5 Ks</span>
+    <span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);letter-spacing:.5px;">MODEL METRICS</span>
+  </div>
+
+  <!-- Row 2: two metric boxes side by side -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:6px;">
+
+    <!-- P(over/under) box -->
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:6px 8px;">
+      <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">P(over line)</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--green);line-height:1;">74%</div>
+      <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin-top:2px;">Poisson model implied</div>
+    </div>
+
+    <!-- Projection stability box -->
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:6px 8px;">
+      <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Proj Stability</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--amber);line-height:1;">Moderate</div>
+      <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin-top:2px;">σ 1.6K · L10 spread</div>
+    </div>
+
+  </div>
+
+  <!-- P(over) bar — honest label -->
+  <div>
+    <div style="display:flex;justify-content:space-between;margin-bottom:2px;">
+      <span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">P(over) · Poisson</span>
+      <span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--green);">74%</span>
+    </div>
+    <div style="height:4px;background:var(--border);border-radius:2px;overflow:hidden;">
+      <div style="height:100%;width:74%;background:var(--green);border-radius:2px;"></div>
+    </div>
+    <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin-top:2px;">
+      Not a win rate — model probability only. Backtest before sizing.
+    </div>
+  </div>
+
+</div>
+  <div class="l10-sec">
+    <div class="l10-header"><div class="l10-label">L10 · AVG 5.3K ✓ <span style="color:#3dffa0">↑ HOT</span></div></div>
+    <div class="l10-row"><div class="l10c"><span class="kn kn-h">7</span><span class="kn-norm kn-h" style="opacity:1">107p</span><span class="op">HOU</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">6/9</span></div><div class="l10c"><span class="kn kn-h">7</span><span class="kn-norm kn-h" style="opacity:1">99p</span><span class="op">COL</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">6/3</span></div><div class="l10c"><span class="kn kn-m">5</span><span class="kn-norm kn-m" style="opacity:1">92p</span><span class="op">TB</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/29</span></div><div class="l10c"><span class="kn kn-m">6</span><span class="kn-norm kn-m" style="opacity:1">93p</span><span class="op">TEX</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/23</span></div><div class="l10c"><span class="kn kn-m">4</span><span class="kn-norm kn-m" style="opacity:1">92p</span><span class="op">ATH</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/18</span></div><div class="l10c"><span class="kn kn-m">4</span><span class="kn-norm kn-m" style="opacity:1">91p</span><span class="op">CLE</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/12</span></div><div class="l10c"><span class="kn kn-m">5</span><span class="kn-norm kn-m" style="opacity:1">90p</span><span class="op">CWS</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/6</span></div><div class="l10c"><span class="kn kn-m">4</span><span class="kn-norm kn-m" style="opacity:1">68p</span><span class="op">NYM</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/1</span></div><div class="l10c"><span class="kn kn-l">3</span><span class="kn-norm kn-l" style="opacity:1">81p</span><span class="op">?</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">4/25</span></div><div class="l10c"><span class="kn kn-h">8</span><span class="kn-norm kn-h" style="opacity:1">92p</span><span class="op">SD</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">4/19</span></div></div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:7px 12px;border-bottom:1px solid var(--border);">
+    <div style="display:flex;flex-direction:column;gap:5px;">
+      <div style="background:var(--card2);border:1px solid var(--border);border-radius:5px;padding:6px 8px;">
+        <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px;">OPP K% vs RHP · AZ</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--text2);line-height:1;">23.8% <span style="font-size:13px;color:var(--text2);font-weight:700;">#9</span><span style="font-size:9px;color:var(--text3);">/30</span></div>
+
+      </div>
+      <div class="ars-box" style="border-color:var(--amber);background:var(--card2);">
+        <div class="ars-header"><span class="ars-lbl">Arsenal</span><span class="ars-score" style="color:var(--amber)">MOD · 28.1% whiff</span></div>
+        <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin:2px 0 3px;">Chase 30.6% · Swing 43.0%</div>
+        <div style="display:flex;align-items:center;margin-bottom:2px;"><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);width:58px;flex-shrink:0;">PITCH</span><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);margin-left:auto;width:24px;text-align:right;flex-shrink:0;">USE%</span><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);width:28px;text-align:right;flex-shrink:0;">WHF%</span><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);width:28px;text-align:right;flex-shrink:0;">PUT%</span><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);width:20px;text-align:center;flex-shrink:0;"></span></div><div style="display:flex;align-items:center;margin-bottom:2px;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);width:58px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Changeup</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-left:auto;width:24px;text-align:right;flex-shrink:0;">32%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--green);width:28px;text-align:right;flex-shrink:0;">35.5%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--green);width:28px;text-align:right;flex-shrink:0;">24.0%</span><span style="width:20px;text-align:center;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;"><span style="background:var(--green);color:#000;font-size:4px;font-weight:700;padding:1px 2px;border-radius:2px;font-family:DM Mono,monospace;">PUT</span></span></div><div style="display:flex;align-items:center;margin-bottom:2px;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);width:58px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Sinker</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-left:auto;width:24px;text-align:right;flex-shrink:0;">31%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);width:28px;text-align:right;flex-shrink:0;">20.5%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--amber);width:28px;text-align:right;flex-shrink:0;">23.7%</span><span style="width:20px;flex-shrink:0;"></span></div><div style="display:flex;align-items:center;margin-bottom:2px;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);width:58px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">4-Seam Fastball</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-left:auto;width:24px;text-align:right;flex-shrink:0;">22%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--amber);width:28px;text-align:right;flex-shrink:0;">24.5%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--amber);width:28px;text-align:right;flex-shrink:0;">19.2%</span><span style="width:20px;flex-shrink:0;"></span></div><div style="display:flex;align-items:center;margin-bottom:2px;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);width:58px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Sweeper</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-left:auto;width:24px;text-align:right;flex-shrink:0;">15%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--amber);width:28px;text-align:right;flex-shrink:0;">30.0%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);width:28px;text-align:right;flex-shrink:0;">17.0%</span><span style="width:20px;flex-shrink:0;"></span></div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:5px;">
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:5px 7px;"><div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px;">Real FD Lines · model=5.0</div><div style="display:grid;grid-template-columns:30px 50px 52px 1fr;gap:2px;padding:1px 0 2px;"><span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">Line</span><span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">FD Odds</span><span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">P(over)</span><span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">EV%</span></div><div style="display:grid;grid-template-columns:30px 50px 52px 1fr;gap:2px;align-items:center;padding:2px 0;border-top:1px solid var(--border);"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);">O2.5</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">-550</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">O -702</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:#7dd3fc;">+3.4%</span></div><div style="display:grid;grid-template-columns:30px 50px 52px 1fr;gap:2px;align-items:center;padding:2px 0;border-top:1px solid var(--border);"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);">O3.5</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">-205</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">O -277</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:#00e5a0;">+9.4%</span></div><div style="display:grid;grid-template-columns:30px 50px 52px 1fr;gap:2px;align-items:center;padding:2px 0;border-top:1px solid var(--border);"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);">O4.5</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">+ 114</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">O -127</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:#00e5a0;">+19.7%</span></div><div style="display:grid;grid-template-columns:30px 50px 52px 1fr;gap:2px;align-items:center;padding:2px 0;border-top:1px solid var(--border);background:rgba(0,229,160,0.10);"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);">O5.5</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">+ 250</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">O +160</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:#00e5a0;font-weight:700;">+34.4%</span></div><div style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);margin-top:3px;">Real FD odds · Poisson model P(over) · ★ = best EV line</div></div>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:5px 7px;text-align:center;"><div class="hand-lbl">Finishing Power</div><div style="color:var(--amber);font-family:'Bebas Neue',sans-serif;font-size:13px;line-height:1.1;">AVERAGE</div><div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--amber);font-weight:700;margin-top:1px;">20.5%</div><div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin-top:2px;">LG 20.5%</div><div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--amber);margin-top:2px;font-weight:700;">1.00× · 10% wt</div><div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Best: Changeup 35.5% WHF</div></div>
+    </div>
+  </div>
+  <div class="p-sec">
+    <div class="p-sec-label">Season Stats</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:3px;">
+      <div class="sp"><span class="lbl">ERA</span><span style="color:var(--green)">2.44</span></div>
+      <div class="sp"><span class="lbl">K/9</span><span style="color:var(--amber)">8.9</span></div>
+      <div class="sp"><span class="lbl">BB/9</span><span style="color:var(--amber)">3.0</span></div>
+      <div class="sp"><span class="lbl">Whiff</span><span style="color:var(--amber)">28.1%</span></div>
+      <div class="sp"><span class="lbl">FPS</span><span class="vg">50.8%</span></div>
+      <div class="sp"><span class="lbl">K%</span><span style="color:var(--amber)">22.7%</span></div>
+    </div>
+  </div>
+  <div class="proj-sec">
+    <div class="proj-grid">
+      <div class="pbox hl">
+        <div class="pbox-lbl">Proj Ks</div>
+        <div class="pbox-val" style="color:#00e5a0">5.0K</div>
+        <div class="pbox-sub">L4 avg 5.3K · 5.37IP avg ✓</div><div style="display:flex;align-items:center;justify-content:space-between;margin-top:5px;margin-bottom:3px;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:#00ff94;font-weight:700;letter-spacing:.3px;">✓ OVER +1.5K</span><span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">O74% · σ1.55K</span></div><div style="position:relative;height:8px;border-radius:4px;overflow:visible;background:linear-gradient(to right,rgba(255,60,90,0.35) 0%,rgba(255,60,90,0.35) 30.6%,rgba(0,220,120,0.45) 30.6%,rgba(0,220,120,0.45) 100%);"><div style="position:absolute;left:30.6%;top:-2px;bottom:-2px;width:2.5px;background:#ffffff;border-radius:1px;transform:translateX(-50%);opacity:0.9;"></div><div style="position:absolute;left:50.0%;top:50%;width:10px;height:10px;border-radius:50%;background:#00ff94;border:2px solid var(--bg);transform:translate(-50%,-50%);z-index:2;box-shadow:0 0 4px #00ff94;"></div></div><div style="position:relative;display:flex;justify-content:space-between;margin-top:2px;"><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);">1K</span><span style="font-family:'DM Mono',monospace;font-size:5.5px;color:var(--text2);position:absolute;left:30.6%;transform:translateX(-50%);">L3.5</span><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);">9K</span></div>
+      </div>
+      <div class="pbox">
+        <div class="pbox-lbl">FanDuel Line</div><div class="pbox-val">3.5</div><div style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-top:2px;">O 114 · U -205</div>
+        <div class="edge-badge" style="color:#00e5a0;border-color:#00e5a0;">+1.5K / +43% Edge</div>
+      </div>
+    </div>
+  </div>
+  <div class="act-sec"><div class="act-lbl">Signal</div><div class="act-text">Strong over edge — projects 5.0K vs 3.5 line (+1.5K). Adj L10 4.87K (raw 5.3K). MOD arsenal, 28.1% whiff, 50.8% FPS. OPP K RANK #9 K rate 23.8% #9/30. Moderate projection (σ1.6K). <span style="color:#3dffa0;font-weight:600;">Hot</span> L10 pattern. CAP 70% · P(O) 74%. Play over.</div></div>
+</div>
+</div>
+</div><div class="gc tier-mod" data-tier="1" data-cap="59" data-time="1205" data-edge="9" data-game="CHC-COL" data-gamesort="12050123">
+<div class="gc-accent"></div>
+<div class="gc-body">
+<div class="gc-header" onclick="tog('c2')">
+  <div style="display:flex;align-items:center;justify-content:center;width:28px;flex-shrink:0;">
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;line-height:1;color:#7dd3fc">2</span>
+  </div>
+  <div class="gc-info">
+    <div class="gc-pitcher">Shota Imanaga <span class="gc-hand">L</span> <span class="badge b-mod" style="font-size:7px;padding:1px 5px;">MOD EDGE</span></div><div style="font-family:'DM Mono',monospace;font-size:8px;color:#f0c040;letter-spacing:0.5px;padding:2px 8px 4px;background:#1a1408;border-bottom:1px solid #2a2010;">▶ BET 5.5 Ks · MAIN LINE 6.5</div>
+    <div class="gc-matchup">CHC vs COL · Wrigley Field</div>
+    <div style="font-family:'DM Mono',monospace;font-size:8.5px;color:#c8d0e8;margin-top:3px;line-height:1.5;">L10 5.0K raw · 4.63K adj · avg 5.9IP · <span style="color:var(--green)">opp #28/30 · 29.6%K</span> · <span style="color:var(--amber)"><span style="color:var(--text3);font-weight:700;">CAP 59%</span> · P(O) 62%</span> · <span style="color:var(--red)">σ2.6K</span> <span style="color:#ffb83d;font-weight:600;">Volatile</span></div>
+  </div>
+  <div class="gc-right" style="text-align:right;flex-shrink:0;min-width:68px;">
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#7dd3fc;line-height:1;">6.4K</div>
+    <div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--amber);font-weight:700;">↑ OVER 5.5 Ks</div>
+    <div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--amber);font-weight:600;">P(O) 62%</div>
+  </div>
+  <div class="chev" id="chev-c2">▾</div>
+</div>
+<div class="coll" id="c2">
+  <div style="padding:8px 12px;border-bottom:1px solid var(--border);background:var(--card2);">
+
+  <!-- Row 1: direction label -->
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+    <span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:var(--amber);">↑ OVER 5.5 Ks</span>
+    <span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);letter-spacing:.5px;">MODEL METRICS</span>
+  </div>
+
+  <!-- Row 2: two metric boxes side by side -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:6px;">
+
+    <!-- P(over/under) box -->
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:6px 8px;">
+      <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">P(over line)</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--amber);line-height:1;">62%</div>
+      <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin-top:2px;">Poisson model implied</div>
+    </div>
+
+    <!-- Projection stability box -->
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:6px 8px;">
+      <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Proj Stability</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--red);line-height:1;">Volatile</div>
+      <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin-top:2px;">σ 2.6K · L10 spread</div>
+    </div>
+
+  </div>
+
+  <!-- P(over) bar — honest label -->
+  <div>
+    <div style="display:flex;justify-content:space-between;margin-bottom:2px;">
+      <span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">P(over) · Poisson</span>
+      <span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--amber);">62%</span>
+    </div>
+    <div style="height:4px;background:var(--border);border-radius:2px;overflow:hidden;">
+      <div style="height:100%;width:62%;background:var(--amber);border-radius:2px;"></div>
+    </div>
+    <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin-top:2px;">
+      Not a win rate — model probability only. Backtest before sizing.
+    </div>
+  </div>
+
+</div>
+  <div class="l10-sec">
+    <div class="l10-header"><div class="l10-label">L10 · AVG 5.0K ✓ <span style="color:#ffb83d">→ VOLATILE</span></div></div>
+    <div class="l10-row"><div class="l10c"><span class="kn kn-h">7</span><span class="kn-norm kn-h" style="opacity:1">90p</span><span class="op">COL</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">6/10</span></div><div class="l10c"><span class="kn kn-m">5</span><span class="kn-norm kn-m" style="opacity:1">84p</span><span class="op">ATH</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">6/4</span></div><div class="l10c"><span class="kn kn-l">2</span><span class="kn-norm kn-l" style="opacity:1">75p</span><span class="op">STL</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/29</span></div><div class="l10c"><span class="kn kn-m">6</span><span class="kn-norm kn-m" style="opacity:1">94p</span><span class="op">HOU</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/24</span></div><div class="l10c"><span class="kn kn-l">2</span><span class="kn-norm kn-l" style="opacity:1">79p</span><span class="op">MIL</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/18</span></div><div class="l10c"><span class="kn kn-m">6</span><span class="kn-norm kn-m" style="opacity:1">96p</span><span class="op">ATL</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/13</span></div><div class="l10c"><span class="kn kn-h">10</span><span class="kn-norm kn-h" style="opacity:1">99p</span><span class="op">CIN</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/7</span></div><div class="l10c"><span class="kn kn-m">5</span><span class="kn-norm kn-m" style="opacity:1">87p</span><span class="op">AZ</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/2</span></div><div class="l10c"><span class="kn kn-m">6</span><span class="kn-norm kn-m" style="opacity:1">100p</span><span class="op">LAD</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">4/26</span></div><div class="l10c"><span class="kn kn-l">1</span><span class="kn-norm kn-l" style="opacity:1">87p</span><span class="op">PHI</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">4/21</span></div></div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:7px 12px;border-bottom:1px solid var(--border);">
+    <div style="display:flex;flex-direction:column;gap:5px;">
+      <div style="background:var(--card2);border:1px solid var(--border);border-radius:5px;padding:6px 8px;">
+        <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px;">OPP K% vs LHP · COL</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--green);line-height:1;">29.6% <span style="font-size:13px;color:var(--green);font-weight:700;">#28</span><span style="font-size:9px;color:var(--text3);">/30</span></div>
+
+      </div>
+      <div class="ars-box" style="border-color:var(--green);background:var(--green-dim);">
+        <div class="ars-header"><span class="ars-lbl">Arsenal</span><span class="ars-score" style="color:var(--green)">STRONG · 30.9% whiff</span></div>
+        <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin:2px 0 3px;">Chase 37.0% · Swing 51.1%</div>
+        <div style="display:flex;align-items:center;margin-bottom:2px;"><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);width:58px;flex-shrink:0;">PITCH</span><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);margin-left:auto;width:24px;text-align:right;flex-shrink:0;">USE%</span><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);width:28px;text-align:right;flex-shrink:0;">WHF%</span><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);width:28px;text-align:right;flex-shrink:0;">PUT%</span><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);width:20px;text-align:center;flex-shrink:0;"></span></div><div style="display:flex;align-items:center;margin-bottom:2px;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);width:58px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">4-Seam Fastball</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-left:auto;width:24px;text-align:right;flex-shrink:0;">43%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);width:28px;text-align:right;flex-shrink:0;">19.9%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--amber);width:28px;text-align:right;flex-shrink:0;">18.1%</span><span style="width:20px;flex-shrink:0;"></span></div><div style="display:flex;align-items:center;margin-bottom:2px;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);width:58px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Split-Finger</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-left:auto;width:24px;text-align:right;flex-shrink:0;">34%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--green);width:28px;text-align:right;flex-shrink:0;">42.1%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--green);width:28px;text-align:right;flex-shrink:0;">24.5%</span><span style="width:20px;flex-shrink:0;"></span></div><div style="display:flex;align-items:center;margin-bottom:2px;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);width:58px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Sweeper</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-left:auto;width:24px;text-align:right;flex-shrink:0;">13%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--green);width:28px;text-align:right;flex-shrink:0;">40.0%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--green);width:28px;text-align:right;flex-shrink:0;">25.0%</span><span style="width:20px;flex-shrink:0;"></span></div><div style="display:flex;align-items:center;margin-bottom:2px;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);width:58px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Sinker</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-left:auto;width:24px;text-align:right;flex-shrink:0;">7%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);width:28px;text-align:right;flex-shrink:0;">15.6%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--green);width:28px;text-align:right;flex-shrink:0;">28.6%</span><span style="width:20px;text-align:center;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;"><span style="background:var(--green);color:#000;font-size:4px;font-weight:700;padding:1px 2px;border-radius:2px;font-family:DM Mono,monospace;">PUT</span></span></div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:5px;">
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:5px 7px;"><div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px;">Real FD Lines · model=6.4</div><div style="display:grid;grid-template-columns:30px 50px 52px 1fr;gap:2px;padding:1px 0 2px;"><span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">Line</span><span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">FD Odds</span><span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">P(over)</span><span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">EV%</span></div><div style="display:grid;grid-template-columns:30px 50px 52px 1fr;gap:2px;align-items:center;padding:2px 0;border-top:1px solid var(--border);"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);">O4.5</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">-470</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">O -325</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:#ff4d6d;">-7.2%</span></div><div style="display:grid;grid-template-columns:30px 50px 52px 1fr;gap:2px;align-items:center;padding:2px 0;border-top:1px solid var(--border);"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);">O5.5</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">-200</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">O -161</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:#ff4d6d;">-7.6%</span></div><div style="display:grid;grid-template-columns:30px 50px 52px 1fr;gap:2px;align-items:center;padding:2px 0;border-top:1px solid var(--border);"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);">O6.5</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">+ 112</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">O +118</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:#ff4d6d;">-3.0%</span></div><div style="display:grid;grid-template-columns:30px 50px 52px 1fr;gap:2px;align-items:center;padding:2px 0;border-top:1px solid var(--border);background:rgba(0,229,160,0.10);"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);">O7.5</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">+ 225</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">O +220</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:#7dd3fc;font-weight:700;">+1.6%</span></div><div style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);margin-top:3px;">Real FD odds · Poisson model P(over) · ★ = best EV line</div></div>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:5px 7px;text-align:center;"><div class="hand-lbl">Finishing Power</div><div style="color:var(--green);font-family:'Bebas Neue',sans-serif;font-size:13px;line-height:1.1;">STRONG</div><div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--green);font-weight:700;margin-top:1px;">24.2%</div><div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin-top:2px;">LG 20.5%</div><div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--green);margin-top:2px;font-weight:700;">1.18× · 10% wt</div><div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Best: Sinker 15.6% WHF</div></div>
+    </div>
+  </div>
+  <div class="p-sec">
+    <div class="p-sec-label">Season Stats</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:3px;">
+      <div class="sp"><span class="lbl">ERA</span><span style="color:var(--amber)">4.44</span></div>
+      <div class="sp"><span class="lbl">K/9</span><span style="color:var(--green)">9.0</span></div>
+      <div class="sp"><span class="lbl">BB/9</span><span style="color:var(--amber)">3.0</span></div>
+      <div class="sp"><span class="lbl">Whiff</span><span style="color:var(--green)">30.9%</span></div>
+      <div class="sp"><span class="lbl">FPS</span><span class="vg">56.9%</span></div>
+      <div class="sp"><span class="lbl">K%</span><span style="color:var(--amber)">24.8%</span></div>
+    </div>
+  </div>
+  <div class="proj-sec">
+    <div class="proj-grid">
+      <div class="pbox hl">
+        <div class="pbox-lbl">Proj Ks</div>
+        <div class="pbox-val" style="color:#7dd3fc">6.4K</div>
+        <div class="pbox-sub">L4 avg 5.0K · 5.9IP avg ✓</div><div style="display:flex;align-items:center;justify-content:space-between;margin-top:5px;margin-bottom:3px;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--amber);font-weight:700;letter-spacing:.3px;">↑ OVER +0.9K</span><span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">O62% · σ2.57K</span></div><div style="position:relative;height:8px;border-radius:4px;overflow:visible;background:linear-gradient(to right,rgba(255,60,90,0.35) 0%,rgba(255,60,90,0.35) 42.9%,rgba(0,220,120,0.45) 42.9%,rgba(0,220,120,0.45) 100%);"><div style="position:absolute;left:42.9%;top:-2px;bottom:-2px;width:2.5px;background:#ffffff;border-radius:1px;transform:translateX(-50%);opacity:0.9;"></div><div style="position:absolute;left:49.9%;top:50%;width:8px;height:8px;border-radius:50%;background:var(--amber);border:1.5px solid var(--bg);transform:translate(-50%,-50%);z-index:2;box-shadow:0 0 4px var(--amber);"></div></div><div style="position:relative;display:flex;justify-content:space-between;margin-top:2px;"><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);">0K</span><span style="font-family:'DM Mono',monospace;font-size:5.5px;color:var(--text2);position:absolute;left:42.9%;transform:translateX(-50%);">L5.5</span><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);">13K</span></div>
+      </div>
+      <div class="pbox">
+        <div class="pbox-lbl">FanDuel Line</div><div class="pbox-val">5.5</div><div style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-top:2px;">O 112 · U -200</div>
+        <div class="edge-badge" style="color:#7dd3fc;border-color:#7dd3fc;">+0.9K / +16% Edge</div>
+      </div>
+    </div>
+  </div>
+  <div class="act-sec"><div class="act-lbl">Signal</div><div class="act-text">Moderate over edge — projects 6.4K vs 5.5 line (+0.9K). Adj L10 4.63K (raw 5.0K). STRONG arsenal, 30.9% whiff, 56.9% FPS. OPP K RANK #28 K rate 29.6% #28/30. Volatile projection (σ2.6K). <span style="color:#ffb83d;font-weight:600;">Volatile</span> L10 pattern. CAP 59% · P(O) 62%. Over looks playable.</div></div>
+</div>
+</div>
+</div><div class="gc tier-mod" data-tier="1" data-cap="59" data-time="1185" data-edge="8" data-game="SD-STL" data-gamesort="11850172">
+<div class="gc-accent"></div>
+<div class="gc-body">
+<div class="gc-header" onclick="tog('c3')">
+  <div style="display:flex;align-items:center;justify-content:center;width:28px;flex-shrink:0;">
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;line-height:1;color:#7dd3fc">3</span>
+  </div>
+  <div class="gc-info">
+    <div class="gc-pitcher">Dustin May <span class="gc-hand">R</span> <span class="badge b-mod" style="font-size:7px;padding:1px 5px;">MOD EDGE</span></div><div style="font-family:'DM Mono',monospace;font-size:8px;color:#f0c040;letter-spacing:0.5px;padding:2px 8px 4px;background:#1a1408;border-bottom:1px solid #2a2010;">▶ BET 4.5 Ks · MAIN LINE 5.5</div>
+    <div class="gc-matchup">STL vs SD · Busch Stadium</div>
+    <div style="font-family:'DM Mono',monospace;font-size:8.5px;color:#c8d0e8;margin-top:3px;line-height:1.5;">L10 5.5K raw · 5.12K adj · avg 5.93IP · <span style="color:var(--green)">opp #27/30 · 26.3%K</span> · <span style="color:var(--amber)"><span style="color:var(--text3);font-weight:700;">CAP 59%</span> · P(O) 61%</span> · <span style="color:var(--red)">σ2.4K</span> <span style="color:#3dffa0;font-weight:600;">Hot</span></div>
+  </div>
+  <div class="gc-right" style="text-align:right;flex-shrink:0;min-width:68px;">
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#7dd3fc;line-height:1;">5.3K</div>
+    <div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--amber);font-weight:700;">↑ OVER 4.5 Ks</div>
+    <div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--amber);font-weight:600;">P(O) 61%</div>
+  </div>
+  <div class="chev" id="chev-c3">▾</div>
+</div>
+<div class="coll" id="c3">
+  <div style="padding:8px 12px;border-bottom:1px solid var(--border);background:var(--card2);">
+
+  <!-- Row 1: direction label -->
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+    <span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:var(--amber);">↑ OVER 4.5 Ks</span>
+    <span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);letter-spacing:.5px;">MODEL METRICS</span>
+  </div>
+
+  <!-- Row 2: two metric boxes side by side -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:6px;">
+
+    <!-- P(over/under) box -->
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:6px 8px;">
+      <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">P(over line)</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--amber);line-height:1;">61%</div>
+      <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin-top:2px;">Poisson model implied</div>
+    </div>
+
+    <!-- Projection stability box -->
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:6px 8px;">
+      <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Proj Stability</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--red);line-height:1;">Volatile</div>
+      <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin-top:2px;">σ 2.4K · L10 spread</div>
+    </div>
+
+  </div>
+
+  <!-- P(over) bar — honest label -->
+  <div>
+    <div style="display:flex;justify-content:space-between;margin-bottom:2px;">
+      <span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">P(over) · Poisson</span>
+      <span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--amber);">61%</span>
+    </div>
+    <div style="height:4px;background:var(--border);border-radius:2px;overflow:hidden;">
+      <div style="height:100%;width:61%;background:var(--amber);border-radius:2px;"></div>
+    </div>
+    <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin-top:2px;">
+      Not a win rate — model probability only. Backtest before sizing.
+    </div>
+  </div>
+
+</div>
+  <div class="l10-sec">
+    <div class="l10-header"><div class="l10-label">L10 · AVG 5.5K ✓ <span style="color:#3dffa0">↑ HOT</span></div></div>
+    <div class="l10-row"><div class="l10c"><span class="kn kn-m">6</span><span class="kn-norm kn-m" style="opacity:1">101p</span><span class="op">NYM</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">6/9</span></div><div class="l10c"><span class="kn kn-h">9</span><span class="kn-norm kn-h" style="opacity:1">90p</span><span class="op">TEX</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">6/2</span></div><div class="l10c"><span class="kn kn-h">9</span><span class="kn-norm kn-h" style="opacity:1">87p</span><span class="op">MIL</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/27</span></div><div class="l10c"><span class="kn kn-h">7</span><span class="kn-norm kn-h" style="opacity:1">91p</span><span class="op">PIT</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/21</span></div><div class="l10c"><span class="kn kn-l">3</span><span class="kn-norm kn-l" style="opacity:1">91p</span><span class="op">KC</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/15</span></div><div class="l10c"><span class="kn kn-h">7</span><span class="kn-norm kn-h" style="opacity:1">97p</span><span class="op">SD</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/9</span></div><div class="l10c"><span class="kn kn-l">3</span><span class="kn-norm kn-l" style="opacity:1">95p</span><span class="op">LAD</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/3</span></div><div class="l10c"><span class="kn kn-l">2</span><span class="kn-norm kn-l" style="opacity:1">95p</span><span class="op">PIT</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">4/27</span></div><div class="l10c"><span class="kn kn-m">5</span><span class="kn-norm kn-m" style="opacity:1">97p</span><span class="op">MIA</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">4/21</span></div><div class="l10c"><span class="kn kn-l">4</span><span class="kn-norm kn-l" style="opacity:1">91p</span><span class="op">CLE</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">4/15</span></div></div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:7px 12px;border-bottom:1px solid var(--border);">
+    <div style="display:flex;flex-direction:column;gap:5px;">
+      <div style="background:var(--card2);border:1px solid var(--border);border-radius:5px;padding:6px 8px;">
+        <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px;">OPP K% vs RHP · SD</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--green);line-height:1;">26.3% <span style="font-size:13px;color:var(--green);font-weight:700;">#27</span><span style="font-size:9px;color:var(--text3);">/30</span></div>
+
+      </div>
+      <div class="ars-box" style="border-color:var(--amber);background:var(--card2);">
+        <div class="ars-header"><span class="ars-lbl">Arsenal</span><span class="ars-score" style="color:var(--amber)">MOD · 21.2% whiff</span></div>
+        <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin:2px 0 3px;">Chase 30.9% · Swing 47.5%</div>
+        <div style="display:flex;align-items:center;margin-bottom:2px;"><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);width:58px;flex-shrink:0;">PITCH</span><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);margin-left:auto;width:24px;text-align:right;flex-shrink:0;">USE%</span><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);width:28px;text-align:right;flex-shrink:0;">WHF%</span><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);width:28px;text-align:right;flex-shrink:0;">PUT%</span><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);width:20px;text-align:center;flex-shrink:0;"></span></div><div style="display:flex;align-items:center;margin-bottom:2px;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);width:58px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">4-Seam Fastball</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-left:auto;width:24px;text-align:right;flex-shrink:0;">26%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);width:28px;text-align:right;flex-shrink:0;">19.3%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--amber);width:28px;text-align:right;flex-shrink:0;">18.8%</span><span style="width:20px;flex-shrink:0;"></span></div><div style="display:flex;align-items:center;margin-bottom:2px;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);width:58px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Cutter</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-left:auto;width:24px;text-align:right;flex-shrink:0;">22%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);width:28px;text-align:right;flex-shrink:0;">21.0%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);width:28px;text-align:right;flex-shrink:0;">13.5%</span><span style="width:20px;flex-shrink:0;"></span></div><div style="display:flex;align-items:center;margin-bottom:2px;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);width:58px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Sweeper</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-left:auto;width:24px;text-align:right;flex-shrink:0;">20%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--green);width:28px;text-align:right;flex-shrink:0;">33.0%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--green);width:28px;text-align:right;flex-shrink:0;">25.7%</span><span style="width:20px;text-align:center;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;"><span style="background:var(--green);color:#000;font-size:4px;font-weight:700;padding:1px 2px;border-radius:2px;font-family:DM Mono,monospace;">PUT</span></span></div><div style="display:flex;align-items:center;margin-bottom:2px;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);width:58px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Sinker</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-left:auto;width:24px;text-align:right;flex-shrink:0;">17%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);width:28px;text-align:right;flex-shrink:0;">14.8%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--amber);width:28px;text-align:right;flex-shrink:0;">18.8%</span><span style="width:20px;flex-shrink:0;"></span></div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:5px;">
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:5px 7px;"><div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px;">Real FD Lines · model=5.3</div><div style="display:grid;grid-template-columns:30px 50px 52px 1fr;gap:2px;padding:1px 0 2px;"><span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">Line</span><span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">FD Odds</span><span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">P(over)</span><span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">EV%</span></div><div style="display:grid;grid-template-columns:30px 50px 52px 1fr;gap:2px;align-items:center;padding:2px 0;border-top:1px solid var(--border);"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);">O3.5</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">-320</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">O -344</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:#7dd3fc;">+1.7%</span></div><div style="display:grid;grid-template-columns:30px 50px 52px 1fr;gap:2px;align-items:center;padding:2px 0;border-top:1px solid var(--border);"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);">O4.5</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">-132</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">O -157</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:#00e5a0;">+7.3%</span></div><div style="display:grid;grid-template-columns:30px 50px 52px 1fr;gap:2px;align-items:center;padding:2px 0;border-top:1px solid var(--border);"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);">O5.5</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">+ 172</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">O +129</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:#00e5a0;">+18.7%</span></div><div style="display:grid;grid-template-columns:30px 50px 52px 1fr;gap:2px;align-items:center;padding:2px 0;border-top:1px solid var(--border);background:rgba(0,229,160,0.10);"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);">O6.5</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">+ 360</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">O +253</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:#00e5a0;font-weight:700;">+30.1%</span></div><div style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);margin-top:3px;">Real FD odds · Poisson model P(over) · ★ = best EV line</div></div>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:5px 7px;text-align:center;"><div class="hand-lbl">Finishing Power</div><div style="color:var(--amber);font-family:'Bebas Neue',sans-serif;font-size:13px;line-height:1.1;">AVERAGE</div><div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--amber);font-weight:700;margin-top:1px;">20.7%</div><div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin-top:2px;">LG 20.5%</div><div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--amber);margin-top:2px;font-weight:700;">1.01× · 10% wt</div><div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Best: Sweeper 33.0% WHF</div></div>
+    </div>
+  </div>
+  <div class="p-sec">
+    <div class="p-sec-label">Season Stats</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:3px;">
+      <div class="sp"><span class="lbl">ERA</span><span style="color:var(--amber)">4.21</span></div>
+      <div class="sp"><span class="lbl">K/9</span><span style="color:var(--amber)">8.2</span></div>
+      <div class="sp"><span class="lbl">BB/9</span><span style="color:var(--amber)">3.0</span></div>
+      <div class="sp"><span class="lbl">Whiff</span><span style="color:var(--red)">21.2%</span></div>
+      <div class="sp"><span class="lbl">FPS</span><span class="vg">58.8%</span></div>
+      <div class="sp"><span class="lbl">K%</span><span style="color:var(--amber)">21.9%</span></div>
+    </div>
+  </div>
+  <div class="proj-sec">
+    <div class="proj-grid">
+      <div class="pbox hl">
+        <div class="pbox-lbl">Proj Ks</div>
+        <div class="pbox-val" style="color:#7dd3fc">5.3K</div>
+        <div class="pbox-sub">L4 avg 5.5K · 5.93IP avg ✓</div><div style="display:flex;align-items:center;justify-content:space-between;margin-top:5px;margin-bottom:3px;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--amber);font-weight:700;letter-spacing:.3px;">↑ OVER +0.8K</span><span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">O61% · σ2.38K</span></div><div style="position:relative;height:8px;border-radius:4px;overflow:visible;background:linear-gradient(to right,rgba(255,60,90,0.35) 0%,rgba(255,60,90,0.35) 40.0%,rgba(0,220,120,0.45) 40.0%,rgba(0,220,120,0.45) 100%);"><div style="position:absolute;left:40.0%;top:-2px;bottom:-2px;width:2.5px;background:#ffffff;border-radius:1px;transform:translateX(-50%);opacity:0.9;"></div><div style="position:absolute;left:47.1%;top:50%;width:8px;height:8px;border-radius:50%;background:var(--amber);border:1.5px solid var(--bg);transform:translate(-50%,-50%);z-index:2;box-shadow:0 0 4px var(--amber);"></div></div><div style="position:relative;display:flex;justify-content:space-between;margin-top:2px;"><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);">0K</span><span style="font-family:'DM Mono',monospace;font-size:5.5px;color:var(--text2);position:absolute;left:40.0%;transform:translateX(-50%);">L4.5</span><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);">11K</span></div>
+      </div>
+      <div class="pbox">
+        <div class="pbox-lbl">FanDuel Line</div><div class="pbox-val">4.5</div><div style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-top:2px;">O 172 · U -132</div>
+        <div class="edge-badge" style="color:#7dd3fc;border-color:#7dd3fc;">+0.8K / +18% Edge</div>
+      </div>
+    </div>
+  </div>
+  <div class="act-sec"><div class="act-lbl">Signal</div><div class="act-text">Moderate over edge — projects 5.3K vs 4.5 line (+0.8K). Adj L10 5.12K (raw 5.5K). MOD arsenal, 21.2% whiff, 58.8% FPS. OPP K RANK #27 K rate 26.3% #27/30. Volatile projection (σ2.4K). <span style="color:#3dffa0;font-weight:600;">Hot</span> L10 pattern. CAP 59% · P(O) 61%. Over looks playable.</div></div>
+</div>
+</div>
+</div><div class="gc tier-lean-over-soft" data-tier="2" data-cap="58" data-time="1150" data-edge="8" data-game="CIN-NYM" data-gamesort="11500261">
+<div class="gc-accent"></div>
+<div class="gc-body">
+<div class="gc-header" onclick="tog('c4')">
+  <div style="display:flex;align-items:center;justify-content:center;width:28px;flex-shrink:0;">
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;line-height:1;color:#8e94aa">4</span>
+  </div>
+  <div class="gc-info">
+    <div class="gc-pitcher">Chase Burns <span class="gc-hand">R</span> <span class="badge b-lean-over" style="font-size:7px;padding:1px 5px;">LEAN OVER</span></div><div style="font-family:'DM Mono',monospace;font-size:8px;color:#f0c040;letter-spacing:0.5px;padding:2px 8px 4px;background:#1a1408;border-bottom:1px solid #2a2010;">▶ BET 6.5 Ks · MAIN LINE 7.5</div>
+    <div class="gc-matchup">CIN vs NYM · Great American Ball Park</div>
+    <div style="font-family:'DM Mono',monospace;font-size:8.5px;color:#c8d0e8;margin-top:3px;line-height:1.5;">L10 7.0K raw · 6.51K adj · avg 5.93IP · <span style="color:var(--amber)">opp #12/30 · 24.0%K</span> · <span style="color:var(--amber)"><span style="color:var(--text3);font-weight:700;">CAP 58%</span> · P(O) 59%</span> · <span style="color:var(--amber)">σ2.2K</span> <span style="color:#3dffa0;font-weight:600;">Hot</span></div>
+  </div>
+  <div class="gc-right" style="text-align:right;flex-shrink:0;min-width:68px;">
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#8e94aa;line-height:1;">7.3K</div>
+    <div style="font-family:'DM Mono',monospace;font-size:8px;color:#2dd4bf;font-weight:700;">↑ OVER 6.5 Ks</div>
+    <div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--amber);font-weight:600;">P(O) 59%</div>
+  </div>
+  <div class="chev" id="chev-c4">▾</div>
+</div>
+<div class="coll" id="c4">
+  <div style="padding:8px 12px;border-bottom:1px solid var(--border);background:var(--card2);">
+
+  <!-- Row 1: direction label -->
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+    <span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#2dd4bf;">↑ OVER 6.5 Ks</span>
+    <span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);letter-spacing:.5px;">MODEL METRICS</span>
+  </div>
+
+  <!-- Row 2: two metric boxes side by side -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:6px;">
+
+    <!-- P(over/under) box -->
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:6px 8px;">
+      <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">P(over line)</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--amber);line-height:1;">59%</div>
+      <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin-top:2px;">Poisson model implied</div>
+    </div>
+
+    <!-- Projection stability box -->
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:6px 8px;">
+      <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Proj Stability</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--amber);line-height:1;">Moderate</div>
+      <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin-top:2px;">σ 2.2K · L10 spread</div>
+    </div>
+
+  </div>
+
+  <!-- P(over) bar — honest label -->
+  <div>
+    <div style="display:flex;justify-content:space-between;margin-bottom:2px;">
+      <span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">P(over) · Poisson</span>
+      <span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--amber);">59%</span>
+    </div>
+    <div style="height:4px;background:var(--border);border-radius:2px;overflow:hidden;">
+      <div style="height:100%;width:59%;background:var(--amber);border-radius:2px;"></div>
+    </div>
+    <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin-top:2px;">
+      Not a win rate — model probability only. Backtest before sizing.
+    </div>
+  </div>
+
+</div>
+  <div class="l10-sec">
+    <div class="l10-header"><div class="l10-label">L10 · AVG 7.0K ✓ <span style="color:#3dffa0">↑ HOT</span></div></div>
+    <div class="l10-row"><div class="l10c"><span class="kn kn-m">7</span><span class="kn-norm kn-m" style="opacity:1">105p</span><span class="op">SD</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">6/9</span></div><div class="l10c"><span class="kn kn-h">9</span><span class="kn-norm kn-h" style="opacity:1">98p</span><span class="op">KC</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">6/3</span></div><div class="l10c"><span class="kn kn-m">8</span><span class="kn-norm kn-m" style="opacity:1">90p</span><span class="op">NYM</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/26</span></div><div class="l10c"><span class="kn kn-h">9</span><span class="kn-norm kn-h" style="opacity:1">86p</span><span class="op">PHI</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/19</span></div><div class="l10c"><span class="kn kn-m">7</span><span class="kn-norm kn-m" style="opacity:1">95p</span><span class="op">WSH</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/14</span></div><div class="l10c"><span class="kn kn-l">2</span><span class="kn-norm kn-l" style="opacity:1">87p</span><span class="op">HOU</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/9</span></div><div class="l10c"><span class="kn kn-m">7</span><span class="kn-norm kn-m" style="opacity:1">94p</span><span class="op">PIT</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/3</span></div><div class="l10c"><span class="kn kn-h">9</span><span class="kn-norm kn-h" style="opacity:1">97p</span><span class="op">COL</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">4/28</span></div><div class="l10c"><span class="kn kn-m">8</span><span class="kn-norm kn-m" style="opacity:1">97p</span><span class="op">TB</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">4/21</span></div><div class="l10c"><span class="kn kn-l">4</span><span class="kn-norm kn-l" style="opacity:1">87p</span><span class="op">SF</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">4/16</span></div></div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:7px 12px;border-bottom:1px solid var(--border);">
+    <div style="display:flex;flex-direction:column;gap:5px;">
+      <div style="background:var(--card2);border:1px solid var(--border);border-radius:5px;padding:6px 8px;">
+        <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px;">OPP K% vs RHP · NYM</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--amber);line-height:1;">24.0% <span style="font-size:13px;color:var(--amber);font-weight:700;">#12</span><span style="font-size:9px;color:var(--text3);">/30</span></div>
+
+      </div>
+      <div class="ars-box" style="border-color:var(--green);background:var(--green-dim);">
+        <div class="ars-header"><span class="ars-lbl">Arsenal</span><span class="ars-score" style="color:var(--green)">ELITE · 33.7% whiff</span></div>
+        <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin:2px 0 3px;">Chase 33.2% · Swing 48.8%</div>
+        <div style="display:flex;align-items:center;margin-bottom:2px;"><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);width:58px;flex-shrink:0;">PITCH</span><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);margin-left:auto;width:24px;text-align:right;flex-shrink:0;">USE%</span><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);width:28px;text-align:right;flex-shrink:0;">WHF%</span><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);width:28px;text-align:right;flex-shrink:0;">PUT%</span><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);width:20px;text-align:center;flex-shrink:0;"></span></div><div style="display:flex;align-items:center;margin-bottom:2px;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);width:58px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">4-Seam Fastball</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-left:auto;width:24px;text-align:right;flex-shrink:0;">57%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);width:28px;text-align:right;flex-shrink:0;">19.8%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);width:28px;text-align:right;flex-shrink:0;">14.9%</span><span style="width:20px;flex-shrink:0;"></span></div><div style="display:flex;align-items:center;margin-bottom:2px;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);width:58px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Slider</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-left:auto;width:24px;text-align:right;flex-shrink:0;">37%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--green);width:28px;text-align:right;flex-shrink:0;">53.3%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--green);width:28px;text-align:right;flex-shrink:0;">35.9%</span><span style="width:20px;text-align:center;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;"><span style="background:var(--green);color:#000;font-size:4px;font-weight:700;padding:1px 2px;border-radius:2px;font-family:DM Mono,monospace;">PUT</span></span></div><div style="display:flex;align-items:center;margin-bottom:2px;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);width:58px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Changeup</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-left:auto;width:24px;text-align:right;flex-shrink:0;">6%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--green);width:28px;text-align:right;flex-shrink:0;">35.5%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);width:28px;text-align:right;flex-shrink:0;">14.3%</span><span style="width:20px;flex-shrink:0;"></span></div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:5px;">
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:5px 7px;"><div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px;">Real FD Lines · model=7.3</div><div style="display:grid;grid-template-columns:30px 50px 52px 1fr;gap:2px;padding:1px 0 2px;"><span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">Line</span><span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">FD Odds</span><span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">P(over)</span><span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">EV%</span></div><div style="display:grid;grid-template-columns:30px 50px 52px 1fr;gap:2px;align-items:center;padding:2px 0;border-top:1px solid var(--border);"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);">O5.5</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">-420</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">O -279</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:#ff4d6d;">-8.9%</span></div><div style="display:grid;grid-template-columns:30px 50px 52px 1fr;gap:2px;align-items:center;padding:2px 0;border-top:1px solid var(--border);"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);">O6.5</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">-192</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">O -146</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:#ff4d6d;">-9.7%</span></div><div style="display:grid;grid-template-columns:30px 50px 52px 1fr;gap:2px;align-items:center;padding:2px 0;border-top:1px solid var(--border);"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);">O7.5</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">+ 106</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">O +124</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:#ff4d6d;">-8.1%</span></div><div style="display:grid;grid-template-columns:30px 50px 52px 1fr;gap:2px;align-items:center;padding:2px 0;border-top:1px solid var(--border);"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);">O8.5</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">+ 210</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">O +222</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:#ff4d6d;">-3.7%</span></div><div style="display:grid;grid-template-columns:30px 50px 52px 1fr;gap:2px;align-items:center;padding:2px 0;border-top:1px solid var(--border);background:rgba(0,229,160,0.10);"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);">O9.5</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">+ 420</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">O +397</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:#7dd3fc;font-weight:700;">+4.6%</span></div><div style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);margin-top:3px;">Real FD odds · Poisson model P(over) · ★ = best EV line</div></div>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:5px 7px;text-align:center;"><div class="hand-lbl">Finishing Power</div><div style="color:var(--green);font-family:'Bebas Neue',sans-serif;font-size:13px;line-height:1.1;">STRONG</div><div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--green);font-weight:700;margin-top:1px;">27.0%</div><div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin-top:2px;">LG 20.5%</div><div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--green);margin-top:2px;font-weight:700;">1.32× · 10% wt</div><div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Best: Slider 53.3% WHF</div></div>
+    </div>
+  </div>
+  <div class="p-sec">
+    <div class="p-sec-label">Season Stats</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:3px;">
+      <div class="sp"><span class="lbl">ERA</span><span style="color:var(--green)">2.14</span></div>
+      <div class="sp"><span class="lbl">K/9</span><span style="color:var(--green)">10.5</span></div>
+      <div class="sp"><span class="lbl">BB/9</span><span style="color:var(--amber)">3.0</span></div>
+      <div class="sp"><span class="lbl">Whiff</span><span style="color:var(--green)">33.7%</span></div>
+      <div class="sp"><span class="lbl">FPS</span><span class="vg">59.6%</span></div>
+      <div class="sp"><span class="lbl">K%</span><span style="color:var(--amber)">29.6%</span></div>
+    </div>
+  </div>
+  <div class="proj-sec">
+    <div class="proj-grid">
+      <div class="pbox hl">
+        <div class="pbox-lbl">Proj Ks</div>
+        <div class="pbox-val" style="color:#8e94aa">7.3K</div>
+        <div class="pbox-sub">L4 avg 7.0K · 5.93IP avg ✓</div><div style="display:flex;align-items:center;justify-content:space-between;margin-top:5px;margin-bottom:3px;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:#2dd4bf;font-weight:700;letter-spacing:.3px;">LEAN +0.8K</span><span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">O59% · σ2.19K</span></div><div style="position:relative;height:8px;border-radius:4px;overflow:visible;background:linear-gradient(to right,rgba(255,60,90,0.35) 0%,rgba(255,60,90,0.35) 42.7%,rgba(0,220,120,0.45) 42.7%,rgba(0,220,120,0.45) 100%);"><div style="position:absolute;left:42.7%;top:-2px;bottom:-2px;width:2.5px;background:#ffffff;border-radius:1px;transform:translateX(-50%);opacity:0.9;"></div><div style="position:absolute;left:50.0%;top:50%;width:8px;height:8px;border-radius:50%;background:#2dd4bf;border:1.5px solid var(--bg);transform:translate(-50%,-50%);z-index:2;box-shadow:0 0 4px #2dd4bf;"></div></div><div style="position:relative;display:flex;justify-content:space-between;margin-top:2px;"><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);">2K</span><span style="font-family:'DM Mono',monospace;font-size:5.5px;color:var(--text2);position:absolute;left:42.7%;transform:translateX(-50%);">L6.5</span><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);">13K</span></div>
+      </div>
+      <div class="pbox">
+        <div class="pbox-lbl">FanDuel Line</div><div class="pbox-val">6.5</div><div style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-top:2px;">O 106 · U -192</div>
+        <div class="edge-badge" style="color:#7dd3fc;border-color:#7dd3fc;">+0.8K / +12% Edge</div>
+      </div>
+    </div>
+  </div>
+  <div class="act-sec"><div class="act-lbl">Signal</div><div class="act-text">Pass — projects 7.3K vs 6.5 (+0.8K), edge too thin. Adj L10 6.51K (raw 7.0K). OPP K RANK #12 K rate 24.0% #12/30. Moderate projection (σ2.2K). <span style="color:#3dffa0;font-weight:600;">Hot</span> L10 pattern. CAP 58% · P(O) 59%.</div></div>
+</div>
+</div>
+</div><div class="gc tier-lean-over-soft" data-tier="2" data-cap="56" data-time="1300" data-edge="6" data-game="ATH-PIT" data-gamesort="13000251">
+<div class="gc-accent"></div>
+<div class="gc-body">
+<div class="gc-header" onclick="tog('c5')">
+  <div style="display:flex;align-items:center;justify-content:center;width:28px;flex-shrink:0;">
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;line-height:1;color:#8e94aa">5</span>
   </div>
   <div class="gc-info">
     <div class="gc-pitcher">J.T. Ginn <span class="gc-hand">R</span> <span class="badge b-lean-over" style="font-size:7px;padding:1px 5px;">LEAN OVER</span></div>
@@ -305,9 +749,9 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
     <div style="font-family:'DM Mono',monospace;font-size:8px;color:#2dd4bf;font-weight:700;">↑ OVER 4.5 Ks</div>
     <div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--amber);font-weight:600;">P(O) 58%</div>
   </div>
-  <div class="chev" id="chev-c1">▾</div>
+  <div class="chev" id="chev-c5">▾</div>
 </div>
-<div class="coll" id="c1">
+<div class="coll" id="c5">
   <div style="padding:8px 12px;border-bottom:1px solid var(--border);background:var(--card2);">
 
   <!-- Row 1: direction label -->
@@ -399,12 +843,12 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
   <div class="act-sec"><div class="act-lbl">Signal</div><div class="act-text">Pass — projects 5.1K vs 4.5 (+0.6K), edge too thin. Adj L10 4.84K (raw 5.4K). OPP K RANK #19 K rate 25.4% #20/30. Volatile projection (σ2.4K). <span style="color:#ffb83d;font-weight:600;">Volatile</span> L10 pattern. CAP 56% · P(O) 58%.</div></div>
 </div>
 </div>
-</div><div class="gc tier-lean-over-soft" data-tier="2" data-cap="55" data-time="1210" data-edge="5" data-game="DET-HOU" data-gamesort="12100589">
+</div><div class="gc tier-lean-over-soft" data-tier="2" data-cap="55" data-time="1210" data-edge="5" data-game="DET-HOU" data-gamesort="12100225">
 <div class="gc-accent"></div>
 <div class="gc-body">
-<div class="gc-header" onclick="tog('c2')">
+<div class="gc-header" onclick="tog('c6')">
   <div style="display:flex;align-items:center;justify-content:center;width:28px;flex-shrink:0;">
-    <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;line-height:1;color:#8e94aa">2</span>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;line-height:1;color:#8e94aa">6</span>
   </div>
   <div class="gc-info">
     <div class="gc-pitcher">Kai-Wei Teng <span class="gc-hand">R</span> <span class="badge b-lean-over" style="font-size:7px;padding:1px 5px;">LEAN OVER</span></div>
@@ -416,9 +860,9 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
     <div style="font-family:'DM Mono',monospace;font-size:8px;color:#2dd4bf;font-weight:700;">↑ OVER 3.5 Ks</div>
     <div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--amber);font-weight:600;">P(O) 57%</div>
   </div>
-  <div class="chev" id="chev-c2">▾</div>
+  <div class="chev" id="chev-c6">▾</div>
 </div>
-<div class="coll" id="c2">
+<div class="coll" id="c6">
   <div style="padding:8px 12px;border-bottom:1px solid var(--border);background:var(--card2);">
 
   <!-- Row 1: direction label -->
@@ -510,123 +954,12 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
   <div class="act-sec"><div class="act-lbl">Signal</div><div class="act-text">Pass — projects 4.0K vs 3.5 (+0.5K), edge too thin. Adj L10 3.78K (raw 4.1K). OPP K RANK #20 K rate 25.4% #19/30. Volatile projection (σ2.5K). <span style="color:#ffb83d;font-weight:600;">Volatile</span> L10 pattern. CAP 55% · P(O) 57%.</div></div>
 </div>
 </div>
-</div><div class="gc tier-lean-over-soft" data-tier="2" data-cap="55" data-time="1300" data-edge="5" data-game="AZ-LAA" data-gamesort="13000506">
+</div><div class="gc tier-lean-under-soft" data-tier="4" data-cap="26" data-time="1120" data-edge="-18" data-game="MIA-PHI" data-gamesort="11200482">
 <div class="gc-accent"></div>
 <div class="gc-body">
-<div class="gc-header" onclick="tog('c3')">
+<div class="gc-header" onclick="tog('c7')">
   <div style="display:flex;align-items:center;justify-content:center;width:28px;flex-shrink:0;">
-    <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;line-height:1;color:#8e94aa">3</span>
-  </div>
-  <div class="gc-info">
-    <div class="gc-pitcher">Walbert Ureña <span class="gc-hand">R</span> <span class="badge b-lean-over" style="font-size:7px;padding:1px 5px;">LEAN OVER</span></div>
-    <div class="gc-matchup">LAA vs AZ · Chase Field</div>
-    <div style="font-family:'DM Mono',monospace;font-size:8.5px;color:#c8d0e8;margin-top:3px;line-height:1.5;">L10 5.3K raw · 4.87K adj · avg 5.37IP · <span style="color:var(--text2)">opp #9/30 · 23.8%K</span> · <span style="color:var(--amber)"><span style="color:var(--text3);font-weight:700;">CAP 55%</span> · P(O) 56%</span> · <span style="color:var(--amber)">σ1.6K</span> <span style="color:#3dffa0;font-weight:600;">Hot</span></div>
-  </div>
-  <div class="gc-right" style="text-align:right;flex-shrink:0;min-width:68px;">
-    <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#8e94aa;line-height:1;">5.0K</div>
-    <div style="font-family:'DM Mono',monospace;font-size:8px;color:#2dd4bf;font-weight:700;">↑ OVER 4.5 Ks</div>
-    <div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--amber);font-weight:600;">P(O) 56%</div>
-  </div>
-  <div class="chev" id="chev-c3">▾</div>
-</div>
-<div class="coll" id="c3">
-  <div style="padding:8px 12px;border-bottom:1px solid var(--border);background:var(--card2);">
-
-  <!-- Row 1: direction label -->
-  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
-    <span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:#2dd4bf;">↑ OVER 4.5 Ks</span>
-    <span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);letter-spacing:.5px;">MODEL METRICS</span>
-  </div>
-
-  <!-- Row 2: two metric boxes side by side -->
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:6px;">
-
-    <!-- P(over/under) box -->
-    <div style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:6px 8px;">
-      <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">P(over line)</div>
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--amber);line-height:1;">56%</div>
-      <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin-top:2px;">Poisson model implied</div>
-    </div>
-
-    <!-- Projection stability box -->
-    <div style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:6px 8px;">
-      <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Proj Stability</div>
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--amber);line-height:1;">Moderate</div>
-      <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin-top:2px;">σ 1.6K · L10 spread</div>
-    </div>
-
-  </div>
-
-  <!-- P(over) bar — honest label -->
-  <div>
-    <div style="display:flex;justify-content:space-between;margin-bottom:2px;">
-      <span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">P(over) · Poisson</span>
-      <span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--amber);">56%</span>
-    </div>
-    <div style="height:4px;background:var(--border);border-radius:2px;overflow:hidden;">
-      <div style="height:100%;width:56%;background:var(--amber);border-radius:2px;"></div>
-    </div>
-    <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin-top:2px;">
-      Not a win rate — model probability only. Backtest before sizing.
-    </div>
-  </div>
-
-</div>
-  <div class="l10-sec">
-    <div class="l10-header"><div class="l10-label">L10 · AVG 5.3K ✓ <span style="color:#3dffa0">↑ HOT</span></div></div>
-    <div class="l10-row"><div class="l10c"><span class="kn kn-h">7</span><span class="kn-norm kn-h" style="opacity:1">107p</span><span class="op">HOU</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">6/9</span></div><div class="l10c"><span class="kn kn-h">7</span><span class="kn-norm kn-h" style="opacity:1">99p</span><span class="op">COL</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">6/3</span></div><div class="l10c"><span class="kn kn-m">5</span><span class="kn-norm kn-m" style="opacity:1">92p</span><span class="op">TB</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/29</span></div><div class="l10c"><span class="kn kn-m">6</span><span class="kn-norm kn-m" style="opacity:1">93p</span><span class="op">TEX</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/23</span></div><div class="l10c"><span class="kn kn-m">4</span><span class="kn-norm kn-m" style="opacity:1">92p</span><span class="op">ATH</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/18</span></div><div class="l10c"><span class="kn kn-m">4</span><span class="kn-norm kn-m" style="opacity:1">91p</span><span class="op">CLE</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/12</span></div><div class="l10c"><span class="kn kn-m">5</span><span class="kn-norm kn-m" style="opacity:1">90p</span><span class="op">CWS</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/6</span></div><div class="l10c"><span class="kn kn-m">4</span><span class="kn-norm kn-m" style="opacity:1">68p</span><span class="op">NYM</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/1</span></div><div class="l10c"><span class="kn kn-l">3</span><span class="kn-norm kn-l" style="opacity:1">81p</span><span class="op">?</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">4/25</span></div><div class="l10c"><span class="kn kn-h">8</span><span class="kn-norm kn-h" style="opacity:1">92p</span><span class="op">SD</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">4/19</span></div></div>
-  </div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:7px 12px;border-bottom:1px solid var(--border);">
-    <div style="display:flex;flex-direction:column;gap:5px;">
-      <div style="background:var(--card2);border:1px solid var(--border);border-radius:5px;padding:6px 8px;">
-        <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px;">OPP K% vs RHP · AZ</div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--text2);line-height:1;">23.8% <span style="font-size:13px;color:var(--text2);font-weight:700;">#9</span><span style="font-size:9px;color:var(--text3);">/30</span></div>
-
-      </div>
-      <div class="ars-box" style="border-color:var(--amber);background:var(--card2);">
-        <div class="ars-header"><span class="ars-lbl">Arsenal</span><span class="ars-score" style="color:var(--amber)">MOD · 28.1% whiff</span></div>
-        <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin:2px 0 3px;">Chase 30.6% · Swing 43.0%</div>
-        <div style="display:flex;align-items:center;margin-bottom:2px;"><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);width:58px;flex-shrink:0;">PITCH</span><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);margin-left:auto;width:24px;text-align:right;flex-shrink:0;">USE%</span><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);width:28px;text-align:right;flex-shrink:0;">WHF%</span><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);width:28px;text-align:right;flex-shrink:0;">PUT%</span><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);width:20px;text-align:center;flex-shrink:0;"></span></div><div style="display:flex;align-items:center;margin-bottom:2px;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);width:58px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Changeup</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-left:auto;width:24px;text-align:right;flex-shrink:0;">32%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--green);width:28px;text-align:right;flex-shrink:0;">35.5%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--green);width:28px;text-align:right;flex-shrink:0;">24.0%</span><span style="width:20px;text-align:center;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;"><span style="background:var(--green);color:#000;font-size:4px;font-weight:700;padding:1px 2px;border-radius:2px;font-family:DM Mono,monospace;">PUT</span></span></div><div style="display:flex;align-items:center;margin-bottom:2px;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);width:58px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Sinker</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-left:auto;width:24px;text-align:right;flex-shrink:0;">31%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);width:28px;text-align:right;flex-shrink:0;">20.5%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--amber);width:28px;text-align:right;flex-shrink:0;">23.7%</span><span style="width:20px;flex-shrink:0;"></span></div><div style="display:flex;align-items:center;margin-bottom:2px;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);width:58px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">4-Seam Fastball</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-left:auto;width:24px;text-align:right;flex-shrink:0;">22%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--amber);width:28px;text-align:right;flex-shrink:0;">24.5%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--amber);width:28px;text-align:right;flex-shrink:0;">19.2%</span><span style="width:20px;flex-shrink:0;"></span></div><div style="display:flex;align-items:center;margin-bottom:2px;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);width:58px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Sweeper</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-left:auto;width:24px;text-align:right;flex-shrink:0;">15%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--amber);width:28px;text-align:right;flex-shrink:0;">30.0%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);width:28px;text-align:right;flex-shrink:0;">17.0%</span><span style="width:20px;flex-shrink:0;"></span></div>
-      </div>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:5px;">
-      <div style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:5px 7px;"><div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px;">Real FD Lines · model=5.0</div><div style="display:grid;grid-template-columns:30px 50px 52px 1fr;gap:2px;padding:1px 0 2px;"><span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">Line</span><span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">FD Odds</span><span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">P(over)</span><span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">EV%</span></div><div style="display:grid;grid-template-columns:30px 50px 52px 1fr;gap:2px;align-items:center;padding:2px 0;border-top:1px solid var(--border);"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);">O2.5</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">-550</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">O -702</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:#7dd3fc;">+3.4%</span></div><div style="display:grid;grid-template-columns:30px 50px 52px 1fr;gap:2px;align-items:center;padding:2px 0;border-top:1px solid var(--border);"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);">O3.5</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">-205</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">O -277</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:#00e5a0;">+9.4%</span></div><div style="display:grid;grid-template-columns:30px 50px 52px 1fr;gap:2px;align-items:center;padding:2px 0;border-top:1px solid var(--border);"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);">O4.5</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">+ 114</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">O -127</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:#00e5a0;">+19.7%</span></div><div style="display:grid;grid-template-columns:30px 50px 52px 1fr;gap:2px;align-items:center;padding:2px 0;border-top:1px solid var(--border);background:rgba(0,229,160,0.10);"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);">O5.5</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">+ 250</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">O +160</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:#00e5a0;font-weight:700;">+34.4%</span></div><div style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);margin-top:3px;">Real FD odds · Poisson model P(over) · ★ = best EV line</div></div>
-      <div style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:5px 7px;text-align:center;"><div class="hand-lbl">Finishing Power</div><div style="color:var(--amber);font-family:'Bebas Neue',sans-serif;font-size:13px;line-height:1.1;">AVERAGE</div><div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--amber);font-weight:700;margin-top:1px;">20.5%</div><div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin-top:2px;">LG 20.5%</div><div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--amber);margin-top:2px;font-weight:700;">1.00× · 10% wt</div><div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Best: Changeup 35.5% WHF</div></div>
-    </div>
-  </div>
-  <div class="p-sec">
-    <div class="p-sec-label">Season Stats</div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:3px;">
-      <div class="sp"><span class="lbl">ERA</span><span style="color:var(--green)">2.44</span></div>
-      <div class="sp"><span class="lbl">K/9</span><span style="color:var(--amber)">8.9</span></div>
-      <div class="sp"><span class="lbl">BB/9</span><span style="color:var(--amber)">3.0</span></div>
-      <div class="sp"><span class="lbl">Whiff</span><span style="color:var(--amber)">28.1%</span></div>
-      <div class="sp"><span class="lbl">FPS</span><span class="vg">50.8%</span></div>
-      <div class="sp"><span class="lbl">K%</span><span style="color:var(--amber)">22.7%</span></div>
-    </div>
-  </div>
-  <div class="proj-sec">
-    <div class="proj-grid">
-      <div class="pbox hl">
-        <div class="pbox-lbl">Proj Ks</div>
-        <div class="pbox-val" style="color:#8e94aa">5.0K</div>
-        <div class="pbox-sub">L4 avg 5.3K · 5.37IP avg ✓</div><div style="display:flex;align-items:center;justify-content:space-between;margin-top:5px;margin-bottom:3px;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:#2dd4bf;font-weight:700;letter-spacing:.3px;">LEAN +0.5K</span><span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">O56% · σ1.55K</span></div><div style="position:relative;height:8px;border-radius:4px;overflow:visible;background:linear-gradient(to right,rgba(255,60,90,0.35) 0%,rgba(255,60,90,0.35) 43.5%,rgba(0,220,120,0.45) 43.5%,rgba(0,220,120,0.45) 100%);"><div style="position:absolute;left:43.5%;top:-2px;bottom:-2px;width:2.5px;background:#ffffff;border-radius:1px;transform:translateX(-50%);opacity:0.9;"></div><div style="position:absolute;left:50.0%;top:50%;width:7px;height:7px;border-radius:50%;background:#2dd4bf;border:1.5px solid var(--bg);transform:translate(-50%,-50%);z-index:2;box-shadow:0 0 4px #2dd4bf;"></div></div><div style="position:relative;display:flex;justify-content:space-between;margin-top:2px;"><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);">1K</span><span style="font-family:'DM Mono',monospace;font-size:5.5px;color:var(--text2);position:absolute;left:43.5%;transform:translateX(-50%);">L4.5</span><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);">9K</span></div>
-      </div>
-      <div class="pbox">
-        <div class="pbox-lbl">FanDuel Line</div><div class="pbox-val">4.5</div><div style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-top:2px;">O 114 · U -205</div>
-        <div class="edge-badge" style="color:#7dd3fc;border-color:#7dd3fc;">+0.5K / +11% Edge</div>
-      </div>
-    </div>
-  </div>
-  <div class="act-sec"><div class="act-lbl">Signal</div><div class="act-text">Pass — projects 5.0K vs 4.5 (+0.5K), edge too thin. Adj L10 4.87K (raw 5.3K). OPP K RANK #9 K rate 23.8% #9/30. Moderate projection (σ1.6K). <span style="color:#3dffa0;font-weight:600;">Hot</span> L10 pattern. CAP 55% · P(O) 56%.</div></div>
-</div>
-</div>
-</div><div class="gc tier-lean-under-soft" data-tier="4" data-cap="26" data-time="1120" data-edge="-18" data-game="MIA-PHI" data-gamesort="11200505">
-<div class="gc-accent"></div>
-<div class="gc-body">
-<div class="gc-header" onclick="tog('c4')">
-  <div style="display:flex;align-items:center;justify-content:center;width:28px;flex-shrink:0;">
-    <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;line-height:1;color:#8e94aa">4</span>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;line-height:1;color:#8e94aa">7</span>
   </div>
   <div class="gc-info">
     <div class="gc-pitcher">Zack Wheeler <span class="gc-hand">R</span> <span class="badge b-lean-under" style="font-size:7px;padding:1px 5px;">LEAN UNDER</span></div>
@@ -638,9 +971,9 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
     <div style="font-family:'DM Mono',monospace;font-size:8px;color:#c084fc;font-weight:700;">↓ UNDER 7.5 Ks</div>
     <div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text2);font-weight:600;">P(O) 22%</div>
   </div>
-  <div class="chev" id="chev-c4">▾</div>
+  <div class="chev" id="chev-c7">▾</div>
 </div>
-<div class="coll" id="c4">
+<div class="coll" id="c7">
   <div style="padding:8px 12px;border-bottom:1px solid var(--border);background:var(--card2);">
 
   <!-- Row 1: direction label -->
@@ -732,12 +1065,12 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
   <div class="act-sec"><div class="act-lbl">Signal</div><div class="act-text">Pass — projects 5.7K vs 7.5 (-1.8K), edge too thin. Adj L10 5.57K (raw 5.9K). OPP K RANK #13 K rate 24.3% #13/30. Moderate projection (σ1.7K). <span style="color:#7dd3fc;font-weight:600;">Consistent</span> L10 pattern. CAP 26% · P(O) 22%.</div></div>
 </div>
 </div>
-</div><div class="gc tier-lean-under-soft" data-tier="4" data-cap="24" data-time="1300" data-edge="-17" data-game="AZ-LAA" data-gamesort="13000506">
+</div><div class="gc tier-lean-under-soft" data-tier="4" data-cap="24" data-time="1300" data-edge="-17" data-game="AZ-LAA" data-gamesort="13000076">
 <div class="gc-accent"></div>
 <div class="gc-body">
-<div class="gc-header" onclick="tog('c5')">
+<div class="gc-header" onclick="tog('c8')">
   <div style="display:flex;align-items:center;justify-content:center;width:28px;flex-shrink:0;">
-    <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;line-height:1;color:#8e94aa">5</span>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;line-height:1;color:#8e94aa">8</span>
   </div>
   <div class="gc-info">
     <div class="gc-pitcher">Ryne Nelson <span class="gc-hand">R</span> <span class="badge b-lean-under" style="font-size:7px;padding:1px 5px;">LEAN UNDER</span></div>
@@ -749,9 +1082,9 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
     <div style="font-family:'DM Mono',monospace;font-size:8px;color:#c084fc;font-weight:700;">↓ UNDER 5.5 Ks</div>
     <div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text2);font-weight:600;">P(O) 18%</div>
   </div>
-  <div class="chev" id="chev-c5">▾</div>
+  <div class="chev" id="chev-c8">▾</div>
 </div>
-<div class="coll" id="c5">
+<div class="coll" id="c8">
   <div style="padding:8px 12px;border-bottom:1px solid var(--border);background:var(--card2);">
 
   <!-- Row 1: direction label -->
@@ -843,12 +1176,12 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
   <div class="act-sec"><div class="act-lbl">Signal</div><div class="act-text">Pass — projects 3.8K vs 5.5 (-1.7K), edge too thin. Adj L10 3.61K (raw 3.8K). OPP K RANK #30 K rate 28.3% #30/30. Moderate projection (σ2.0K). <span style="color:#ff5a5a;font-weight:600;">Cooling</span> L10 pattern. CAP 24% · P(O) 18%.</div></div>
 </div>
 </div>
-</div><div class="gc tier-lean-under-soft" data-tier="4" data-cap="27" data-time="1330" data-edge="-12" data-game="LAD-TB" data-gamesort="13300580">
+</div><div class="gc tier-lean-under-soft" data-tier="4" data-cap="27" data-time="1330" data-edge="-12" data-game="LAD-TB" data-gamesort="13300416">
 <div class="gc-accent"></div>
 <div class="gc-body">
-<div class="gc-header" onclick="tog('c6')">
+<div class="gc-header" onclick="tog('c9')">
   <div style="display:flex;align-items:center;justify-content:center;width:28px;flex-shrink:0;">
-    <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;line-height:1;color:#8e94aa">6</span>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;line-height:1;color:#8e94aa">9</span>
   </div>
   <div class="gc-info">
     <div class="gc-pitcher">Eric Lauer <span class="gc-hand">L</span> <span class="badge b-lean-under" style="font-size:7px;padding:1px 5px;">LEAN UNDER</span></div>
@@ -860,9 +1193,9 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
     <div style="font-family:'DM Mono',monospace;font-size:8px;color:#c084fc;font-weight:700;">↓ UNDER 3.5 Ks</div>
     <div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text2);font-weight:600;">P(O) 20%</div>
   </div>
-  <div class="chev" id="chev-c6">▾</div>
+  <div class="chev" id="chev-c9">▾</div>
 </div>
-<div class="coll" id="c6">
+<div class="coll" id="c9">
   <div style="padding:8px 12px;border-bottom:1px solid var(--border);background:var(--card2);">
 
   <!-- Row 1: direction label -->
@@ -954,12 +1287,12 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
   <div class="act-sec"><div class="act-lbl">Signal</div><div class="act-text">Pass — projects 2.3K vs 3.5 (-1.2K), edge too thin. Adj L10 2.76K (raw 3.1K). OPP K RANK #3 K rate 20.6% #3/30. Volatile projection (σ2.6K). <span style="color:#ffb83d;font-weight:600;">Volatile</span> L10 pattern. CAP 27% · P(O) 20%.</div></div>
 </div>
 </div>
-</div><div class="gc tier-lean-under-soft" data-tier="4" data-cap="30" data-time="1205" data-edge="-10" data-game="CHC-COL" data-gamesort="12050153">
+</div><div class="gc tier-lean-under-soft" data-tier="4" data-cap="30" data-time="1205" data-edge="-10" data-game="CHC-COL" data-gamesort="12050123">
 <div class="gc-accent"></div>
 <div class="gc-body">
-<div class="gc-header" onclick="tog('c7')">
+<div class="gc-header" onclick="tog('c10')">
   <div style="display:flex;align-items:center;justify-content:center;width:28px;flex-shrink:0;">
-    <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;line-height:1;color:#8e94aa">7</span>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;line-height:1;color:#8e94aa">10</span>
   </div>
   <div class="gc-info">
     <div class="gc-pitcher">Michael Lorenzen <span class="gc-hand">R</span> <span class="badge b-lean-under" style="font-size:7px;padding:1px 5px;">LEAN UNDER</span></div>
@@ -971,9 +1304,9 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
     <div style="font-family:'DM Mono',monospace;font-size:8px;color:#c084fc;font-weight:700;">↓ UNDER 4.5 Ks</div>
     <div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text2);font-weight:600;">P(O) 27%</div>
   </div>
-  <div class="chev" id="chev-c7">▾</div>
+  <div class="chev" id="chev-c10">▾</div>
 </div>
-<div class="coll" id="c7">
+<div class="coll" id="c10">
   <div style="padding:8px 12px;border-bottom:1px solid var(--border);background:var(--card2);">
 
   <!-- Row 1: direction label -->
@@ -1065,12 +1398,12 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
   <div class="act-sec"><div class="act-lbl">Signal</div><div class="act-text">Pass — projects 3.5K vs 4.5 (-1.0K), edge too thin. Adj L10 3.85K (raw 4.2K). OPP K RANK #11 K rate 24.0% #11/30. Moderate projection (σ1.5K). <span style="color:#ffb83d;font-weight:600;">Volatile</span> L10 pattern. CAP 30% · P(O) 27%.</div></div>
 </div>
 </div>
-</div><div class="gc tier-pass" data-tier="5" data-cap="0" data-time="1210" data-edge="0" data-game="DET-HOU" data-gamesort="12100589">
+</div><div class="gc tier-pass" data-tier="5" data-cap="0" data-time="1210" data-edge="0" data-game="DET-HOU" data-gamesort="12100225">
 <div class="gc-accent"></div>
 <div class="gc-body">
-<div class="gc-header" onclick="tog('c8')">
+<div class="gc-header" onclick="tog('c11')">
   <div style="display:flex;align-items:center;justify-content:center;width:28px;flex-shrink:0;">
-    <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;line-height:1;color:#8e94aa">8</span>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;line-height:1;color:#8e94aa">11</span>
   </div>
   <div class="gc-info">
     <div class="gc-pitcher">Troy Melton <span class="gc-hand">R</span> <span class="badge b-pass" style="font-size:7px;padding:1px 5px;">PASS</span></div>
@@ -1082,9 +1415,9 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
     <div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text3);font-weight:700;">— PASS</div>
     <div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text3);font-weight:600;">P(O) —%</div>
   </div>
-  <div class="chev" id="chev-c8">▾</div>
+  <div class="chev" id="chev-c11">▾</div>
 </div>
-<div class="coll" id="c8">
+<div class="coll" id="c11">
   <div style="padding:8px 12px;border-bottom:1px solid var(--border);background:var(--card2);"><div style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">Insufficient data — no model metrics available.</div></div>
   <div class="l10-sec">
     <div class="l10-header"><div class="l10-label">L4 · AVG NoneK ? <span style="color:#ffb83d">→ CONSISTENT</span></div></div>
@@ -1135,12 +1468,12 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
   <div class="act-sec"><div class="act-lbl">Signal</div><div class="act-text">Insufficient data — only 4 2026 starts. No projection run.</div></div>
 </div>
 </div>
-</div><div class="gc tier-pass" data-tier="5" data-cap="0" data-time="1300" data-edge="0" data-game="ATH-PIT" data-gamesort="13000570">
+</div><div class="gc tier-pass" data-tier="5" data-cap="0" data-time="1300" data-edge="0" data-game="ATH-PIT" data-gamesort="13000251">
 <div class="gc-accent"></div>
 <div class="gc-body">
-<div class="gc-header" onclick="tog('c9')">
+<div class="gc-header" onclick="tog('c12')">
   <div style="display:flex;align-items:center;justify-content:center;width:28px;flex-shrink:0;">
-    <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;line-height:1;color:#8e94aa">9</span>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;line-height:1;color:#8e94aa">12</span>
   </div>
   <div class="gc-info">
     <div class="gc-pitcher">Jared Jones <span class="gc-hand">R</span> <span class="badge b-pass" style="font-size:7px;padding:1px 5px;">PASS</span></div>
@@ -1152,9 +1485,9 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
     <div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text3);font-weight:700;">— PASS</div>
     <div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text3);font-weight:600;">P(O) —%</div>
   </div>
-  <div class="chev" id="chev-c9">▾</div>
+  <div class="chev" id="chev-c12">▾</div>
 </div>
-<div class="coll" id="c9">
+<div class="coll" id="c12">
   <div style="padding:8px 12px;border-bottom:1px solid var(--border);background:var(--card2);"><div style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">Insufficient data — no model metrics available.</div></div>
   <div class="l10-sec">
     <div class="l10-header"><div class="l10-label">L3 · AVG NoneK ? <span style="color:#ffb83d">→ CONSISTENT</span></div></div>
@@ -1205,12 +1538,12 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
   <div class="act-sec"><div class="act-lbl">Signal</div><div class="act-text">Insufficient data — only 3 2026 starts. No projection run.</div></div>
 </div>
 </div>
-</div><div class="gc tier-pass" data-tier="5" data-cap="0" data-time="1125" data-edge="0" data-game="KC-WSH" data-gamesort="11250593">
+</div><div class="gc tier-pass" data-tier="5" data-cap="0" data-time="1125" data-edge="0" data-game="KC-WSH" data-gamesort="11250548">
 <div class="gc-accent"></div>
 <div class="gc-body">
-<div class="gc-header" onclick="tog('c10')">
+<div class="gc-header" onclick="tog('c13')">
   <div style="display:flex;align-items:center;justify-content:center;width:28px;flex-shrink:0;">
-    <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;line-height:1;color:#8e94aa">10</span>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;line-height:1;color:#8e94aa">13</span>
   </div>
   <div class="gc-info">
     <div class="gc-pitcher">Andrew Alvarez <span class="gc-hand">L</span> <span class="badge b-pass" style="font-size:7px;padding:1px 5px;">PASS</span></div>
@@ -1222,9 +1555,9 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
     <div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text3);font-weight:700;">— PASS</div>
     <div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text3);font-weight:600;">P(O) —%</div>
   </div>
-  <div class="chev" id="chev-c10">▾</div>
+  <div class="chev" id="chev-c13">▾</div>
 </div>
-<div class="coll" id="c10">
+<div class="coll" id="c13">
   <div style="padding:8px 12px;border-bottom:1px solid var(--border);background:var(--card2);"><div style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">Insufficient data — no model metrics available.</div></div>
   <div class="l10-sec">
     <div class="l10-header"><div class="l10-label">L2 · AVG NoneK ? <span style="color:#8e94aa">→ LIMITED DATA</span></div></div>
@@ -1275,12 +1608,12 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
   <div class="act-sec"><div class="act-lbl">Signal</div><div class="act-text">Insufficient data — only 2 2026 starts. No projection run.</div></div>
 </div>
 </div>
-</div><div class="gc tier-pass" data-tier="5" data-cap="0" data-time="1120" data-edge="0" data-game="MIA-PHI" data-gamesort="11200505">
+</div><div class="gc tier-pass" data-tier="5" data-cap="0" data-time="1120" data-edge="0" data-game="MIA-PHI" data-gamesort="11200482">
 <div class="gc-accent"></div>
 <div class="gc-body">
-<div class="gc-header" onclick="tog('c11')">
+<div class="gc-header" onclick="tog('c14')">
   <div style="display:flex;align-items:center;justify-content:center;width:28px;flex-shrink:0;">
-    <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;line-height:1;color:#8e94aa">11</span>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;line-height:1;color:#8e94aa">14</span>
   </div>
   <div class="gc-info">
     <div class="gc-pitcher">Ryan Gusto <span class="gc-hand">R</span> <span class="badge b-pass" style="font-size:7px;padding:1px 5px;">PASS</span></div>
@@ -1292,9 +1625,9 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
     <div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text3);font-weight:700;">— PASS</div>
     <div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text3);font-weight:600;">P(O) —%</div>
   </div>
-  <div class="chev" id="chev-c11">▾</div>
+  <div class="chev" id="chev-c14">▾</div>
 </div>
-<div class="coll" id="c11">
+<div class="coll" id="c14">
   <div style="padding:8px 12px;border-bottom:1px solid var(--border);background:var(--card2);"><div style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">Insufficient data — no model metrics available.</div></div>
   <div class="l10-sec">
     <div class="l10-header"><div class="l10-label">L2 · AVG NoneK ? <span style="color:#8e94aa">→ LIMITED DATA</span></div></div>
@@ -1345,12 +1678,12 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
   <div class="act-sec"><div class="act-lbl">Signal</div><div class="act-text">Insufficient data — only 2 2026 starts. No projection run.</div></div>
 </div>
 </div>
-</div><div class="gc tier-pass" data-tier="5" data-cap="0" data-time="1150" data-edge="0" data-game="CIN-NYM" data-gamesort="11500558">
+</div><div class="gc tier-pass" data-tier="5" data-cap="0" data-time="1150" data-edge="0" data-game="CIN-NYM" data-gamesort="11500261">
 <div class="gc-accent"></div>
 <div class="gc-body">
-<div class="gc-header" onclick="tog('c12')">
+<div class="gc-header" onclick="tog('c15')">
   <div style="display:flex;align-items:center;justify-content:center;width:28px;flex-shrink:0;">
-    <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;line-height:1;color:#8e94aa">12</span>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;line-height:1;color:#8e94aa">15</span>
   </div>
   <div class="gc-info">
     <div class="gc-pitcher">Tobias Myers <span class="gc-hand">R</span> <span class="badge b-pass" style="font-size:7px;padding:1px 5px;">PASS</span></div>
@@ -1362,9 +1695,9 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
     <div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text3);font-weight:700;">— PASS</div>
     <div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text3);font-weight:600;">P(O) —%</div>
   </div>
-  <div class="chev" id="chev-c12">▾</div>
+  <div class="chev" id="chev-c15">▾</div>
 </div>
-<div class="coll" id="c12">
+<div class="coll" id="c15">
   <div style="padding:8px 12px;border-bottom:1px solid var(--border);background:var(--card2);"><div style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">Insufficient data — no model metrics available.</div></div>
   <div class="l10-sec">
     <div class="l10-header"><div class="l10-label">L2 · AVG NoneK ? <span style="color:#8e94aa">→ LIMITED DATA</span></div></div>
@@ -1415,340 +1748,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
   <div class="act-sec"><div class="act-lbl">Signal</div><div class="act-text">Insufficient data — only 2 2026 starts. No projection run.</div></div>
 </div>
 </div>
-</div><div class="gc tier-pass" data-tier="5" data-cap="47" data-time="1205" data-edge="-1" data-game="CHC-COL" data-gamesort="12050153">
-<div class="gc-accent"></div>
-<div class="gc-body">
-<div class="gc-header" onclick="tog('c13')">
-  <div style="display:flex;align-items:center;justify-content:center;width:28px;flex-shrink:0;">
-    <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;line-height:1;color:#8e94aa">13</span>
-  </div>
-  <div class="gc-info">
-    <div class="gc-pitcher">Shota Imanaga <span class="gc-hand">L</span> <span class="badge b-pass" style="font-size:7px;padding:1px 5px;">PASS</span></div>
-    <div class="gc-matchup">CHC vs COL · Wrigley Field</div>
-    <div style="font-family:'DM Mono',monospace;font-size:8.5px;color:#c8d0e8;margin-top:3px;line-height:1.5;">L10 5.0K raw · 4.63K adj · avg 5.9IP · <span style="color:var(--green)">opp #28/30 · 29.6%K</span> · <span style="color:var(--text2)"><span style="color:#ff4d6d;font-weight:700;">CAP 47%</span> · P(O) 46%</span> · <span style="color:var(--red)">σ2.6K</span> <span style="color:#ffb83d;font-weight:600;">Volatile</span></div>
-  </div>
-  <div class="gc-right" style="text-align:right;flex-shrink:0;min-width:68px;">
-    <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#8e94aa;line-height:1;">6.4K</div>
-    <div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text3);font-weight:700;">— PASS</div>
-    <div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text2);font-weight:600;">P(O) 46%</div>
-  </div>
-  <div class="chev" id="chev-c13">▾</div>
-</div>
-<div class="coll" id="c13">
-  <div style="padding:8px 12px;border-bottom:1px solid var(--border);background:var(--card2);">
-
-  <!-- Row 1: direction label -->
-  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
-    <span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:var(--text3);">— PASS</span>
-    <span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);letter-spacing:.5px;">MODEL METRICS</span>
-  </div>
-
-  <!-- Row 2: two metric boxes side by side -->
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:6px;">
-
-    <!-- P(over/under) box -->
-    <div style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:6px 8px;">
-      <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">P(over line)</div>
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--text2);line-height:1;">46%</div>
-      <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin-top:2px;">Poisson model implied</div>
-    </div>
-
-    <!-- Projection stability box -->
-    <div style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:6px 8px;">
-      <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Proj Stability</div>
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--red);line-height:1;">Volatile</div>
-      <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin-top:2px;">σ 2.6K · L10 spread</div>
-    </div>
-
-  </div>
-
-  <!-- P(over) bar — honest label -->
-  <div>
-    <div style="display:flex;justify-content:space-between;margin-bottom:2px;">
-      <span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">P(over) · Poisson</span>
-      <span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text2);">46%</span>
-    </div>
-    <div style="height:4px;background:var(--border);border-radius:2px;overflow:hidden;">
-      <div style="height:100%;width:46%;background:var(--text2);border-radius:2px;"></div>
-    </div>
-    <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin-top:2px;">
-      Not a win rate — model probability only. Backtest before sizing.
-    </div>
-  </div>
-
-</div>
-  <div class="l10-sec">
-    <div class="l10-header"><div class="l10-label">L10 · AVG 5.0K ✗ <span style="color:#ffb83d">→ VOLATILE</span></div></div>
-    <div class="l10-row"><div class="l10c"><span class="kn kn-h">7</span><span class="kn-norm kn-h" style="opacity:1">90p</span><span class="op">COL</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">6/10</span></div><div class="l10c"><span class="kn kn-m">5</span><span class="kn-norm kn-m" style="opacity:1">84p</span><span class="op">ATH</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">6/4</span></div><div class="l10c"><span class="kn kn-l">2</span><span class="kn-norm kn-l" style="opacity:1">75p</span><span class="op">STL</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/29</span></div><div class="l10c"><span class="kn kn-m">6</span><span class="kn-norm kn-m" style="opacity:1">94p</span><span class="op">HOU</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/24</span></div><div class="l10c"><span class="kn kn-l">2</span><span class="kn-norm kn-l" style="opacity:1">79p</span><span class="op">MIL</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/18</span></div><div class="l10c"><span class="kn kn-m">6</span><span class="kn-norm kn-m" style="opacity:1">96p</span><span class="op">ATL</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/13</span></div><div class="l10c"><span class="kn kn-h">10</span><span class="kn-norm kn-h" style="opacity:1">99p</span><span class="op">CIN</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/7</span></div><div class="l10c"><span class="kn kn-m">5</span><span class="kn-norm kn-m" style="opacity:1">87p</span><span class="op">AZ</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/2</span></div><div class="l10c"><span class="kn kn-m">6</span><span class="kn-norm kn-m" style="opacity:1">100p</span><span class="op">LAD</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">4/26</span></div><div class="l10c"><span class="kn kn-l">1</span><span class="kn-norm kn-l" style="opacity:1">87p</span><span class="op">PHI</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">4/21</span></div></div>
-  </div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:7px 12px;border-bottom:1px solid var(--border);">
-    <div style="display:flex;flex-direction:column;gap:5px;">
-      <div style="background:var(--card2);border:1px solid var(--border);border-radius:5px;padding:6px 8px;">
-        <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px;">OPP K% vs LHP · COL</div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--green);line-height:1;">29.6% <span style="font-size:13px;color:var(--green);font-weight:700;">#28</span><span style="font-size:9px;color:var(--text3);">/30</span></div>
-
-      </div>
-      <div class="ars-box" style="border-color:var(--green);background:var(--green-dim);">
-        <div class="ars-header"><span class="ars-lbl">Arsenal</span><span class="ars-score" style="color:var(--green)">STRONG · 30.9% whiff</span></div>
-        <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin:2px 0 3px;">Chase 37.0% · Swing 51.1%</div>
-        <div style="display:flex;align-items:center;margin-bottom:2px;"><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);width:58px;flex-shrink:0;">PITCH</span><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);margin-left:auto;width:24px;text-align:right;flex-shrink:0;">USE%</span><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);width:28px;text-align:right;flex-shrink:0;">WHF%</span><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);width:28px;text-align:right;flex-shrink:0;">PUT%</span><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);width:20px;text-align:center;flex-shrink:0;"></span></div><div style="display:flex;align-items:center;margin-bottom:2px;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);width:58px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">4-Seam Fastball</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-left:auto;width:24px;text-align:right;flex-shrink:0;">43%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);width:28px;text-align:right;flex-shrink:0;">19.9%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--amber);width:28px;text-align:right;flex-shrink:0;">18.1%</span><span style="width:20px;flex-shrink:0;"></span></div><div style="display:flex;align-items:center;margin-bottom:2px;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);width:58px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Split-Finger</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-left:auto;width:24px;text-align:right;flex-shrink:0;">34%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--green);width:28px;text-align:right;flex-shrink:0;">42.1%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--green);width:28px;text-align:right;flex-shrink:0;">24.5%</span><span style="width:20px;flex-shrink:0;"></span></div><div style="display:flex;align-items:center;margin-bottom:2px;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);width:58px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Sweeper</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-left:auto;width:24px;text-align:right;flex-shrink:0;">13%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--green);width:28px;text-align:right;flex-shrink:0;">40.0%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--green);width:28px;text-align:right;flex-shrink:0;">25.0%</span><span style="width:20px;flex-shrink:0;"></span></div><div style="display:flex;align-items:center;margin-bottom:2px;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);width:58px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Sinker</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-left:auto;width:24px;text-align:right;flex-shrink:0;">7%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);width:28px;text-align:right;flex-shrink:0;">15.6%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--green);width:28px;text-align:right;flex-shrink:0;">28.6%</span><span style="width:20px;text-align:center;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;"><span style="background:var(--green);color:#000;font-size:4px;font-weight:700;padding:1px 2px;border-radius:2px;font-family:DM Mono,monospace;">PUT</span></span></div>
-      </div>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:5px;">
-      <div style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:5px 7px;"><div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px;">Real FD Lines · model=6.4</div><div style="display:grid;grid-template-columns:30px 50px 52px 1fr;gap:2px;padding:1px 0 2px;"><span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">Line</span><span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">FD Odds</span><span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">P(over)</span><span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">EV%</span></div><div style="display:grid;grid-template-columns:30px 50px 52px 1fr;gap:2px;align-items:center;padding:2px 0;border-top:1px solid var(--border);"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);">O4.5</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">-470</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">O -325</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:#ff4d6d;">-7.2%</span></div><div style="display:grid;grid-template-columns:30px 50px 52px 1fr;gap:2px;align-items:center;padding:2px 0;border-top:1px solid var(--border);"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);">O5.5</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">-200</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">O -161</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:#ff4d6d;">-7.6%</span></div><div style="display:grid;grid-template-columns:30px 50px 52px 1fr;gap:2px;align-items:center;padding:2px 0;border-top:1px solid var(--border);"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);">O6.5</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">+ 112</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">O +118</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:#ff4d6d;">-3.0%</span></div><div style="display:grid;grid-template-columns:30px 50px 52px 1fr;gap:2px;align-items:center;padding:2px 0;border-top:1px solid var(--border);background:rgba(0,229,160,0.10);"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);">O7.5</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">+ 225</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">O +220</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:#7dd3fc;font-weight:700;">+1.6%</span></div><div style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);margin-top:3px;">Real FD odds · Poisson model P(over) · ★ = best EV line</div></div>
-      <div style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:5px 7px;text-align:center;"><div class="hand-lbl">Finishing Power</div><div style="color:var(--green);font-family:'Bebas Neue',sans-serif;font-size:13px;line-height:1.1;">STRONG</div><div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--green);font-weight:700;margin-top:1px;">24.2%</div><div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin-top:2px;">LG 20.5%</div><div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--green);margin-top:2px;font-weight:700;">1.18× · 10% wt</div><div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Best: Sinker 15.6% WHF</div></div>
-    </div>
-  </div>
-  <div class="p-sec">
-    <div class="p-sec-label">Season Stats</div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:3px;">
-      <div class="sp"><span class="lbl">ERA</span><span style="color:var(--amber)">4.44</span></div>
-      <div class="sp"><span class="lbl">K/9</span><span style="color:var(--green)">9.0</span></div>
-      <div class="sp"><span class="lbl">BB/9</span><span style="color:var(--amber)">3.0</span></div>
-      <div class="sp"><span class="lbl">Whiff</span><span style="color:var(--green)">30.9%</span></div>
-      <div class="sp"><span class="lbl">FPS</span><span class="vg">56.9%</span></div>
-      <div class="sp"><span class="lbl">K%</span><span style="color:var(--amber)">24.8%</span></div>
-    </div>
-  </div>
-  <div class="proj-sec">
-    <div class="proj-grid">
-      <div class="pbox hl">
-        <div class="pbox-lbl">Proj Ks</div>
-        <div class="pbox-val" style="color:#8e94aa">6.4K</div>
-        <div class="pbox-sub">L4 avg 5.0K · 5.9IP avg ✗</div><div style="display:flex;align-items:center;justify-content:space-between;margin-top:5px;margin-bottom:3px;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);font-weight:700;letter-spacing:.3px;">CLOSE -0.1K</span><span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">O46% · σ2.57K</span></div><div style="position:relative;height:8px;border-radius:4px;overflow:visible;background:linear-gradient(to right,rgba(0,180,255,0.40) 0%,rgba(0,180,255,0.40) 50.7%,rgba(255,60,90,0.20) 50.7%,rgba(255,60,90,0.20) 100%);"><div style="position:absolute;left:50.7%;top:-2px;bottom:-2px;width:2.5px;background:#ffffff;border-radius:1px;transform:translateX(-50%);opacity:0.9;"></div><div style="position:absolute;left:49.9%;top:50%;width:6px;height:6px;border-radius:50%;background:var(--text3);border:1.5px solid var(--bg);transform:translate(-50%,-50%);z-index:2;box-shadow:0 0 4px var(--text3);"></div></div><div style="position:relative;display:flex;justify-content:space-between;margin-top:2px;"><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);">0K</span><span style="font-family:'DM Mono',monospace;font-size:5.5px;color:var(--text2);position:absolute;left:50.7%;transform:translateX(-50%);">L6.5</span><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);">13K</span></div>
-      </div>
-      <div class="pbox">
-        <div class="pbox-lbl">FanDuel Line</div><div class="pbox-val">6.5</div><div style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-top:2px;">O 112 · U -200</div>
-        <div class="edge-badge" style="color:#8e94aa;border-color:#8e94aa;">-0.1K / 2% Edge</div>
-      </div>
-    </div>
-  </div>
-  <div class="act-sec"><div class="act-lbl">Signal</div><div class="act-text">Pass — projects 6.4K vs 6.5 (-0.1K), edge too thin. Adj L10 4.63K (raw 5.0K). OPP K RANK #28 K rate 29.6% #28/30. Volatile projection (σ2.6K). <span style="color:#ffb83d;font-weight:600;">Volatile</span> L10 pattern. CAP 47% · P(O) 46%.</div></div>
-</div>
-</div>
-</div><div class="gc tier-pass" data-tier="5" data-cap="46" data-time="1150" data-edge="-2" data-game="CIN-NYM" data-gamesort="11500558">
-<div class="gc-accent"></div>
-<div class="gc-body">
-<div class="gc-header" onclick="tog('c14')">
-  <div style="display:flex;align-items:center;justify-content:center;width:28px;flex-shrink:0;">
-    <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;line-height:1;color:#8e94aa">14</span>
-  </div>
-  <div class="gc-info">
-    <div class="gc-pitcher">Chase Burns <span class="gc-hand">R</span> <span class="badge b-pass" style="font-size:7px;padding:1px 5px;">PASS</span></div>
-    <div class="gc-matchup">CIN vs NYM · Great American Ball Park</div>
-    <div style="font-family:'DM Mono',monospace;font-size:8.5px;color:#c8d0e8;margin-top:3px;line-height:1.5;">L10 7.0K raw · 6.51K adj · avg 5.93IP · <span style="color:var(--amber)">opp #12/30 · 24.0%K</span> · <span style="color:var(--text2)"><span style="color:#ff4d6d;font-weight:700;">CAP 46%</span> · P(O) 45%</span> · <span style="color:var(--amber)">σ2.2K</span> <span style="color:#3dffa0;font-weight:600;">Hot</span></div>
-  </div>
-  <div class="gc-right" style="text-align:right;flex-shrink:0;min-width:68px;">
-    <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#8e94aa;line-height:1;">7.3K</div>
-    <div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text3);font-weight:700;">— PASS</div>
-    <div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text2);font-weight:600;">P(O) 45%</div>
-  </div>
-  <div class="chev" id="chev-c14">▾</div>
-</div>
-<div class="coll" id="c14">
-  <div style="padding:8px 12px;border-bottom:1px solid var(--border);background:var(--card2);">
-
-  <!-- Row 1: direction label -->
-  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
-    <span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:var(--text3);">— PASS</span>
-    <span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);letter-spacing:.5px;">MODEL METRICS</span>
-  </div>
-
-  <!-- Row 2: two metric boxes side by side -->
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:6px;">
-
-    <!-- P(over/under) box -->
-    <div style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:6px 8px;">
-      <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">P(over line)</div>
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--text2);line-height:1;">45%</div>
-      <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin-top:2px;">Poisson model implied</div>
-    </div>
-
-    <!-- Projection stability box -->
-    <div style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:6px 8px;">
-      <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Proj Stability</div>
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--amber);line-height:1;">Moderate</div>
-      <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin-top:2px;">σ 2.2K · L10 spread</div>
-    </div>
-
-  </div>
-
-  <!-- P(over) bar — honest label -->
-  <div>
-    <div style="display:flex;justify-content:space-between;margin-bottom:2px;">
-      <span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">P(over) · Poisson</span>
-      <span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text2);">45%</span>
-    </div>
-    <div style="height:4px;background:var(--border);border-radius:2px;overflow:hidden;">
-      <div style="height:100%;width:45%;background:var(--text2);border-radius:2px;"></div>
-    </div>
-    <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin-top:2px;">
-      Not a win rate — model probability only. Backtest before sizing.
-    </div>
-  </div>
-
-</div>
-  <div class="l10-sec">
-    <div class="l10-header"><div class="l10-label">L10 · AVG 7.0K ✗ <span style="color:#3dffa0">↑ HOT</span></div></div>
-    <div class="l10-row"><div class="l10c"><span class="kn kn-m">7</span><span class="kn-norm kn-m" style="opacity:1">105p</span><span class="op">SD</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">6/9</span></div><div class="l10c"><span class="kn kn-h">9</span><span class="kn-norm kn-h" style="opacity:1">98p</span><span class="op">KC</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">6/3</span></div><div class="l10c"><span class="kn kn-m">8</span><span class="kn-norm kn-m" style="opacity:1">90p</span><span class="op">NYM</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/26</span></div><div class="l10c"><span class="kn kn-h">9</span><span class="kn-norm kn-h" style="opacity:1">86p</span><span class="op">PHI</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/19</span></div><div class="l10c"><span class="kn kn-m">7</span><span class="kn-norm kn-m" style="opacity:1">95p</span><span class="op">WSH</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/14</span></div><div class="l10c"><span class="kn kn-l">2</span><span class="kn-norm kn-l" style="opacity:1">87p</span><span class="op">HOU</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/9</span></div><div class="l10c"><span class="kn kn-m">7</span><span class="kn-norm kn-m" style="opacity:1">94p</span><span class="op">PIT</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/3</span></div><div class="l10c"><span class="kn kn-h">9</span><span class="kn-norm kn-h" style="opacity:1">97p</span><span class="op">COL</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">4/28</span></div><div class="l10c"><span class="kn kn-m">8</span><span class="kn-norm kn-m" style="opacity:1">97p</span><span class="op">TB</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">4/21</span></div><div class="l10c"><span class="kn kn-l">4</span><span class="kn-norm kn-l" style="opacity:1">87p</span><span class="op">SF</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">4/16</span></div></div>
-  </div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:7px 12px;border-bottom:1px solid var(--border);">
-    <div style="display:flex;flex-direction:column;gap:5px;">
-      <div style="background:var(--card2);border:1px solid var(--border);border-radius:5px;padding:6px 8px;">
-        <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px;">OPP K% vs RHP · NYM</div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--amber);line-height:1;">24.0% <span style="font-size:13px;color:var(--amber);font-weight:700;">#12</span><span style="font-size:9px;color:var(--text3);">/30</span></div>
-
-      </div>
-      <div class="ars-box" style="border-color:var(--green);background:var(--green-dim);">
-        <div class="ars-header"><span class="ars-lbl">Arsenal</span><span class="ars-score" style="color:var(--green)">ELITE · 33.7% whiff</span></div>
-        <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin:2px 0 3px;">Chase 33.2% · Swing 48.8%</div>
-        <div style="display:flex;align-items:center;margin-bottom:2px;"><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);width:58px;flex-shrink:0;">PITCH</span><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);margin-left:auto;width:24px;text-align:right;flex-shrink:0;">USE%</span><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);width:28px;text-align:right;flex-shrink:0;">WHF%</span><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);width:28px;text-align:right;flex-shrink:0;">PUT%</span><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);width:20px;text-align:center;flex-shrink:0;"></span></div><div style="display:flex;align-items:center;margin-bottom:2px;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);width:58px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">4-Seam Fastball</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-left:auto;width:24px;text-align:right;flex-shrink:0;">57%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);width:28px;text-align:right;flex-shrink:0;">19.8%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);width:28px;text-align:right;flex-shrink:0;">14.9%</span><span style="width:20px;flex-shrink:0;"></span></div><div style="display:flex;align-items:center;margin-bottom:2px;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);width:58px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Slider</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-left:auto;width:24px;text-align:right;flex-shrink:0;">37%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--green);width:28px;text-align:right;flex-shrink:0;">53.3%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--green);width:28px;text-align:right;flex-shrink:0;">35.9%</span><span style="width:20px;text-align:center;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;"><span style="background:var(--green);color:#000;font-size:4px;font-weight:700;padding:1px 2px;border-radius:2px;font-family:DM Mono,monospace;">PUT</span></span></div><div style="display:flex;align-items:center;margin-bottom:2px;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);width:58px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Changeup</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-left:auto;width:24px;text-align:right;flex-shrink:0;">6%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--green);width:28px;text-align:right;flex-shrink:0;">35.5%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);width:28px;text-align:right;flex-shrink:0;">14.3%</span><span style="width:20px;flex-shrink:0;"></span></div>
-      </div>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:5px;">
-      <div style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:5px 7px;"><div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px;">Real FD Lines · model=7.3</div><div style="display:grid;grid-template-columns:30px 50px 52px 1fr;gap:2px;padding:1px 0 2px;"><span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">Line</span><span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">FD Odds</span><span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">P(over)</span><span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">EV%</span></div><div style="display:grid;grid-template-columns:30px 50px 52px 1fr;gap:2px;align-items:center;padding:2px 0;border-top:1px solid var(--border);"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);">O5.5</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">-420</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">O -279</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:#ff4d6d;">-8.9%</span></div><div style="display:grid;grid-template-columns:30px 50px 52px 1fr;gap:2px;align-items:center;padding:2px 0;border-top:1px solid var(--border);"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);">O6.5</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">-192</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">O -146</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:#ff4d6d;">-9.7%</span></div><div style="display:grid;grid-template-columns:30px 50px 52px 1fr;gap:2px;align-items:center;padding:2px 0;border-top:1px solid var(--border);"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);">O7.5</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">+ 106</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">O +124</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:#ff4d6d;">-8.1%</span></div><div style="display:grid;grid-template-columns:30px 50px 52px 1fr;gap:2px;align-items:center;padding:2px 0;border-top:1px solid var(--border);"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);">O8.5</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">+ 210</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">O +222</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:#ff4d6d;">-3.7%</span></div><div style="display:grid;grid-template-columns:30px 50px 52px 1fr;gap:2px;align-items:center;padding:2px 0;border-top:1px solid var(--border);background:rgba(0,229,160,0.10);"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);">O9.5</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">+ 420</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">O +397</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:#7dd3fc;font-weight:700;">+4.6%</span></div><div style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);margin-top:3px;">Real FD odds · Poisson model P(over) · ★ = best EV line</div></div>
-      <div style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:5px 7px;text-align:center;"><div class="hand-lbl">Finishing Power</div><div style="color:var(--green);font-family:'Bebas Neue',sans-serif;font-size:13px;line-height:1.1;">STRONG</div><div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--green);font-weight:700;margin-top:1px;">27.0%</div><div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin-top:2px;">LG 20.5%</div><div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--green);margin-top:2px;font-weight:700;">1.32× · 10% wt</div><div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Best: Slider 53.3% WHF</div></div>
-    </div>
-  </div>
-  <div class="p-sec">
-    <div class="p-sec-label">Season Stats</div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:3px;">
-      <div class="sp"><span class="lbl">ERA</span><span style="color:var(--green)">2.14</span></div>
-      <div class="sp"><span class="lbl">K/9</span><span style="color:var(--green)">10.5</span></div>
-      <div class="sp"><span class="lbl">BB/9</span><span style="color:var(--amber)">3.0</span></div>
-      <div class="sp"><span class="lbl">Whiff</span><span style="color:var(--green)">33.7%</span></div>
-      <div class="sp"><span class="lbl">FPS</span><span class="vg">59.6%</span></div>
-      <div class="sp"><span class="lbl">K%</span><span style="color:var(--amber)">29.6%</span></div>
-    </div>
-  </div>
-  <div class="proj-sec">
-    <div class="proj-grid">
-      <div class="pbox hl">
-        <div class="pbox-lbl">Proj Ks</div>
-        <div class="pbox-val" style="color:#8e94aa">7.3K</div>
-        <div class="pbox-sub">L4 avg 7.0K · 5.93IP avg ✗</div><div style="display:flex;align-items:center;justify-content:space-between;margin-top:5px;margin-bottom:3px;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);font-weight:700;letter-spacing:.3px;">CLOSE -0.2K</span><span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">O45% · σ2.19K</span></div><div style="position:relative;height:8px;border-radius:4px;overflow:visible;background:linear-gradient(to right,rgba(0,180,255,0.40) 0%,rgba(0,180,255,0.40) 51.8%,rgba(255,60,90,0.20) 51.8%,rgba(255,60,90,0.20) 100%);"><div style="position:absolute;left:51.8%;top:-2px;bottom:-2px;width:2.5px;background:#ffffff;border-radius:1px;transform:translateX(-50%);opacity:0.9;"></div><div style="position:absolute;left:50.0%;top:50%;width:6px;height:6px;border-radius:50%;background:var(--text3);border:1.5px solid var(--bg);transform:translate(-50%,-50%);z-index:2;box-shadow:0 0 4px var(--text3);"></div></div><div style="position:relative;display:flex;justify-content:space-between;margin-top:2px;"><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);">2K</span><span style="font-family:'DM Mono',monospace;font-size:5.5px;color:var(--text2);position:absolute;left:51.8%;transform:translateX(-50%);">L7.5</span><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);">13K</span></div>
-      </div>
-      <div class="pbox">
-        <div class="pbox-lbl">FanDuel Line</div><div class="pbox-val">7.5</div><div style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-top:2px;">O 106 · U -192</div>
-        <div class="edge-badge" style="color:#8e94aa;border-color:#8e94aa;">-0.2K / 3% Edge</div>
-      </div>
-    </div>
-  </div>
-  <div class="act-sec"><div class="act-lbl">Signal</div><div class="act-text">Pass — projects 7.3K vs 7.5 (-0.2K), edge too thin. Adj L10 6.51K (raw 7.0K). OPP K RANK #12 K rate 24.0% #12/30. Moderate projection (σ2.2K). <span style="color:#3dffa0;font-weight:600;">Hot</span> L10 pattern. CAP 46% · P(O) 45%.</div></div>
-</div>
-</div>
-</div><div class="gc tier-pass" data-tier="5" data-cap="45" data-time="1185" data-edge="-2" data-game="SD-STL" data-gamesort="11850516">
-<div class="gc-accent"></div>
-<div class="gc-body">
-<div class="gc-header" onclick="tog('c15')">
-  <div style="display:flex;align-items:center;justify-content:center;width:28px;flex-shrink:0;">
-    <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;line-height:1;color:#8e94aa">15</span>
-  </div>
-  <div class="gc-info">
-    <div class="gc-pitcher">Dustin May <span class="gc-hand">R</span> <span class="badge b-pass" style="font-size:7px;padding:1px 5px;">PASS</span></div>
-    <div class="gc-matchup">STL vs SD · Busch Stadium</div>
-    <div style="font-family:'DM Mono',monospace;font-size:8.5px;color:#c8d0e8;margin-top:3px;line-height:1.5;">L10 5.5K raw · 5.12K adj · avg 5.93IP · <span style="color:var(--green)">opp #27/30 · 26.3%K</span> · <span style="color:var(--text2)"><span style="color:#ff4d6d;font-weight:700;">CAP 45%</span> · P(O) 44%</span> · <span style="color:var(--red)">σ2.4K</span> <span style="color:#3dffa0;font-weight:600;">Hot</span></div>
-  </div>
-  <div class="gc-right" style="text-align:right;flex-shrink:0;min-width:68px;">
-    <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#8e94aa;line-height:1;">5.3K</div>
-    <div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text3);font-weight:700;">— PASS</div>
-    <div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--text2);font-weight:600;">P(O) 44%</div>
-  </div>
-  <div class="chev" id="chev-c15">▾</div>
-</div>
-<div class="coll" id="c15">
-  <div style="padding:8px 12px;border-bottom:1px solid var(--border);background:var(--card2);">
-
-  <!-- Row 1: direction label -->
-  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
-    <span style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:var(--text3);">— PASS</span>
-    <span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);letter-spacing:.5px;">MODEL METRICS</span>
-  </div>
-
-  <!-- Row 2: two metric boxes side by side -->
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:6px;">
-
-    <!-- P(over/under) box -->
-    <div style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:6px 8px;">
-      <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">P(over line)</div>
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--text2);line-height:1;">44%</div>
-      <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin-top:2px;">Poisson model implied</div>
-    </div>
-
-    <!-- Projection stability box -->
-    <div style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:6px 8px;">
-      <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Proj Stability</div>
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--red);line-height:1;">Volatile</div>
-      <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin-top:2px;">σ 2.4K · L10 spread</div>
-    </div>
-
-  </div>
-
-  <!-- P(over) bar — honest label -->
-  <div>
-    <div style="display:flex;justify-content:space-between;margin-bottom:2px;">
-      <span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">P(over) · Poisson</span>
-      <span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text2);">44%</span>
-    </div>
-    <div style="height:4px;background:var(--border);border-radius:2px;overflow:hidden;">
-      <div style="height:100%;width:44%;background:var(--text2);border-radius:2px;"></div>
-    </div>
-    <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin-top:2px;">
-      Not a win rate — model probability only. Backtest before sizing.
-    </div>
-  </div>
-
-</div>
-  <div class="l10-sec">
-    <div class="l10-header"><div class="l10-label">L10 · AVG 5.5K ✗ <span style="color:#3dffa0">↑ HOT</span></div></div>
-    <div class="l10-row"><div class="l10c"><span class="kn kn-m">6</span><span class="kn-norm kn-m" style="opacity:1">101p</span><span class="op">NYM</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">6/9</span></div><div class="l10c"><span class="kn kn-h">9</span><span class="kn-norm kn-h" style="opacity:1">90p</span><span class="op">TEX</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">6/2</span></div><div class="l10c"><span class="kn kn-h">9</span><span class="kn-norm kn-h" style="opacity:1">87p</span><span class="op">MIL</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/27</span></div><div class="l10c"><span class="kn kn-h">7</span><span class="kn-norm kn-h" style="opacity:1">91p</span><span class="op">PIT</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/21</span></div><div class="l10c"><span class="kn kn-l">3</span><span class="kn-norm kn-l" style="opacity:1">91p</span><span class="op">KC</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/15</span></div><div class="l10c"><span class="kn kn-h">7</span><span class="kn-norm kn-h" style="opacity:1">97p</span><span class="op">SD</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/9</span></div><div class="l10c"><span class="kn kn-l">3</span><span class="kn-norm kn-l" style="opacity:1">95p</span><span class="op">LAD</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">5/3</span></div><div class="l10c"><span class="kn kn-l">2</span><span class="kn-norm kn-l" style="opacity:1">95p</span><span class="op">PIT</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">4/27</span></div><div class="l10c"><span class="kn kn-m">5</span><span class="kn-norm kn-m" style="opacity:1">97p</span><span class="op">MIA</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">4/21</span></div><div class="l10c"><span class="kn kn-l">4</span><span class="kn-norm kn-l" style="opacity:1">91p</span><span class="op">CLE</span><span style="display:block;font-size:5px;color:var(--text3);font-family:'DM Mono',monospace;line-height:1.3">4/15</span></div></div>
-  </div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:7px 12px;border-bottom:1px solid var(--border);">
-    <div style="display:flex;flex-direction:column;gap:5px;">
-      <div style="background:var(--card2);border:1px solid var(--border);border-radius:5px;padding:6px 8px;">
-        <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px;">OPP K% vs RHP · SD</div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--green);line-height:1;">26.3% <span style="font-size:13px;color:var(--green);font-weight:700;">#27</span><span style="font-size:9px;color:var(--text3);">/30</span></div>
-
-      </div>
-      <div class="ars-box" style="border-color:var(--amber);background:var(--card2);">
-        <div class="ars-header"><span class="ars-lbl">Arsenal</span><span class="ars-score" style="color:var(--amber)">MOD · 21.2% whiff</span></div>
-        <div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin:2px 0 3px;">Chase 30.9% · Swing 47.5%</div>
-        <div style="display:flex;align-items:center;margin-bottom:2px;"><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);width:58px;flex-shrink:0;">PITCH</span><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);margin-left:auto;width:24px;text-align:right;flex-shrink:0;">USE%</span><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);width:28px;text-align:right;flex-shrink:0;">WHF%</span><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);width:28px;text-align:right;flex-shrink:0;">PUT%</span><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);width:20px;text-align:center;flex-shrink:0;"></span></div><div style="display:flex;align-items:center;margin-bottom:2px;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);width:58px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">4-Seam Fastball</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-left:auto;width:24px;text-align:right;flex-shrink:0;">26%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);width:28px;text-align:right;flex-shrink:0;">19.3%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--amber);width:28px;text-align:right;flex-shrink:0;">18.8%</span><span style="width:20px;flex-shrink:0;"></span></div><div style="display:flex;align-items:center;margin-bottom:2px;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);width:58px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Cutter</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-left:auto;width:24px;text-align:right;flex-shrink:0;">22%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);width:28px;text-align:right;flex-shrink:0;">21.0%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);width:28px;text-align:right;flex-shrink:0;">13.5%</span><span style="width:20px;flex-shrink:0;"></span></div><div style="display:flex;align-items:center;margin-bottom:2px;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);width:58px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Sweeper</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-left:auto;width:24px;text-align:right;flex-shrink:0;">20%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--green);width:28px;text-align:right;flex-shrink:0;">33.0%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--green);width:28px;text-align:right;flex-shrink:0;">25.7%</span><span style="width:20px;text-align:center;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;"><span style="background:var(--green);color:#000;font-size:4px;font-weight:700;padding:1px 2px;border-radius:2px;font-family:DM Mono,monospace;">PUT</span></span></div><div style="display:flex;align-items:center;margin-bottom:2px;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);width:58px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Sinker</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-left:auto;width:24px;text-align:right;flex-shrink:0;">17%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);width:28px;text-align:right;flex-shrink:0;">14.8%</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--amber);width:28px;text-align:right;flex-shrink:0;">18.8%</span><span style="width:20px;flex-shrink:0;"></span></div>
-      </div>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:5px;">
-      <div style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:5px 7px;"><div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px;">Real FD Lines · model=5.3</div><div style="display:grid;grid-template-columns:30px 50px 52px 1fr;gap:2px;padding:1px 0 2px;"><span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">Line</span><span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">FD Odds</span><span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">P(over)</span><span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">EV%</span></div><div style="display:grid;grid-template-columns:30px 50px 52px 1fr;gap:2px;align-items:center;padding:2px 0;border-top:1px solid var(--border);"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);">O3.5</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">-320</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">O -344</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:#7dd3fc;">+1.7%</span></div><div style="display:grid;grid-template-columns:30px 50px 52px 1fr;gap:2px;align-items:center;padding:2px 0;border-top:1px solid var(--border);"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);">O4.5</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">-132</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">O -157</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:#00e5a0;">+7.3%</span></div><div style="display:grid;grid-template-columns:30px 50px 52px 1fr;gap:2px;align-items:center;padding:2px 0;border-top:1px solid var(--border);"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);">O5.5</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">+ 172</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">O +129</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:#00e5a0;">+18.7%</span></div><div style="display:grid;grid-template-columns:30px 50px 52px 1fr;gap:2px;align-items:center;padding:2px 0;border-top:1px solid var(--border);background:rgba(0,229,160,0.10);"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text2);">O6.5</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">+ 360</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);">O +253</span><span style="font-family:'DM Mono',monospace;font-size:7px;color:#00e5a0;font-weight:700;">+30.1%</span></div><div style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);margin-top:3px;">Real FD odds · Poisson model P(over) · ★ = best EV line</div></div>
-      <div style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:5px 7px;text-align:center;"><div class="hand-lbl">Finishing Power</div><div style="color:var(--amber);font-family:'Bebas Neue',sans-serif;font-size:13px;line-height:1.1;">AVERAGE</div><div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--amber);font-weight:700;margin-top:1px;">20.7%</div><div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin-top:2px;">LG 20.5%</div><div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--amber);margin-top:2px;font-weight:700;">1.01× · 10% wt</div><div style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Best: Sweeper 33.0% WHF</div></div>
-    </div>
-  </div>
-  <div class="p-sec">
-    <div class="p-sec-label">Season Stats</div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:3px;">
-      <div class="sp"><span class="lbl">ERA</span><span style="color:var(--amber)">4.21</span></div>
-      <div class="sp"><span class="lbl">K/9</span><span style="color:var(--amber)">8.2</span></div>
-      <div class="sp"><span class="lbl">BB/9</span><span style="color:var(--amber)">3.0</span></div>
-      <div class="sp"><span class="lbl">Whiff</span><span style="color:var(--red)">21.2%</span></div>
-      <div class="sp"><span class="lbl">FPS</span><span class="vg">58.8%</span></div>
-      <div class="sp"><span class="lbl">K%</span><span style="color:var(--amber)">21.9%</span></div>
-    </div>
-  </div>
-  <div class="proj-sec">
-    <div class="proj-grid">
-      <div class="pbox hl">
-        <div class="pbox-lbl">Proj Ks</div>
-        <div class="pbox-val" style="color:#8e94aa">5.3K</div>
-        <div class="pbox-sub">L4 avg 5.5K · 5.93IP avg ✗</div><div style="display:flex;align-items:center;justify-content:space-between;margin-top:5px;margin-bottom:3px;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);font-weight:700;letter-spacing:.3px;">CLOSE -0.2K</span><span style="font-family:'DM Mono',monospace;font-size:6px;color:var(--text3);">O44% · σ2.38K</span></div><div style="position:relative;height:8px;border-radius:4px;overflow:visible;background:linear-gradient(to right,rgba(0,180,255,0.40) 0%,rgba(0,180,255,0.40) 48.9%,rgba(255,60,90,0.20) 48.9%,rgba(255,60,90,0.20) 100%);"><div style="position:absolute;left:48.9%;top:-2px;bottom:-2px;width:2.5px;background:#ffffff;border-radius:1px;transform:translateX(-50%);opacity:0.9;"></div><div style="position:absolute;left:47.1%;top:50%;width:6px;height:6px;border-radius:50%;background:var(--text3);border:1.5px solid var(--bg);transform:translate(-50%,-50%);z-index:2;box-shadow:0 0 4px var(--text3);"></div></div><div style="position:relative;display:flex;justify-content:space-between;margin-top:2px;"><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);">0K</span><span style="font-family:'DM Mono',monospace;font-size:5.5px;color:var(--text2);position:absolute;left:48.9%;transform:translateX(-50%);">L5.5</span><span style="font-family:'DM Mono',monospace;font-size:5px;color:var(--text3);">11K</span></div>
-      </div>
-      <div class="pbox">
-        <div class="pbox-lbl">FanDuel Line</div><div class="pbox-val">5.5</div><div style="font-family:'DM Mono',monospace;font-size:7px;color:var(--text3);margin-top:2px;">O 172 · U -132</div>
-        <div class="edge-badge" style="color:#8e94aa;border-color:#8e94aa;">-0.2K / 4% Edge</div>
-      </div>
-    </div>
-  </div>
-  <div class="act-sec"><div class="act-lbl">Signal</div><div class="act-text">Pass — projects 5.3K vs 5.5 (-0.2K), edge too thin. Adj L10 5.12K (raw 5.5K). OPP K RANK #27 K rate 26.3% #27/30. Volatile projection (σ2.4K). <span style="color:#3dffa0;font-weight:600;">Hot</span> L10 pattern. CAP 45% · P(O) 44%.</div></div>
-</div>
-</div>
-</div><div class="gc tier-pass" data-tier="5" data-cap="33" data-time="1330" data-edge="-7" data-game="LAD-TB" data-gamesort="13300580">
+</div><div class="gc tier-pass" data-tier="5" data-cap="33" data-time="1330" data-edge="-7" data-game="LAD-TB" data-gamesort="13300416">
 <div class="gc-accent"></div>
 <div class="gc-body">
 <div class="gc-header" onclick="tog('c16')">
@@ -1859,7 +1859,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
   <div class="act-sec"><div class="act-lbl">Signal</div><div class="act-text">Pass — projects 2.8K vs 3.5 (-0.7K), edge too thin. Adj L10 3.0K (raw 3.3K). OPP K RANK #4 K rate 23.2% #6/30. Moderate projection (σ1.6K). <span style="color:#ffb83d;font-weight:600;">Volatile</span> L10 pattern. CAP 33% · P(O) 31%.</div></div>
 </div>
 </div>
-</div><div class="gc tier-pass" data-tier="5" data-cap="36" data-time="1205" data-edge="-8" data-game="MIN-TEX" data-gamesort="12050560">
+</div><div class="gc tier-pass" data-tier="5" data-cap="36" data-time="1205" data-edge="-8" data-game="MIN-TEX" data-gamesort="12050561">
 <div class="gc-accent"></div>
 <div class="gc-body">
 <div class="gc-header" onclick="tog('c17')">
@@ -3027,6 +3027,7 @@ L10-based 5-factor formula. <b style="color:var(--text2)">Step 1 — Normalize:<
 
 <div style="height:20px"></div>
 </div></div>
+
 
 
 
